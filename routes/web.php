@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/crm','Crm@index');
+Route::get('/crm/create','Crm@create');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
