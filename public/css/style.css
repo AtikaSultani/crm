@@ -14,7 +14,7 @@
 
 body {
 
-    color: #000000;
+    color: #797979;
 
     background: #eeeeee;
 
@@ -413,6 +413,7 @@ table tr th { color: #688a7e;}
 .login-wrap {
 
     padding: 20px;
+    background-color:#f1f1e3;
 
 }
 
@@ -2120,7 +2121,7 @@ div[data-role="editor-toolbar"] {
 
   -webkit-border-radius: 0px;
 
-  -moz-border-radius: 0px;
+  -moz-border-radius:0px;
 
   border-radius: 0px;
 
@@ -2129,7 +2130,8 @@ div[data-role="editor-toolbar"] {
   -moz-box-shadow: none;
 
   box-shadow: none;
-
+    width: 1155px;
+ margin-left: 15px;
   margin-bottom: 30px;
 
 }

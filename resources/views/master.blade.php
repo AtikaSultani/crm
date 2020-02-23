@@ -10,7 +10,18 @@
   <link rel="shortcut icon" href="img/favicon.png">
 
   <title>CRM MIS</title>
-
+  <!--this links are for create page>
+  <!-- Bootstrap CSS -->
+ <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet">
+ <!-- bootstrap theme -->
+ <link href="{{ asset('css/bootstrap-theme.css')}}" rel="stylesheet">
+ <!--external css-->
+ <!-- font icon -->
+ <link href="{{ asset('css/elegant-icons-style.css')}}" rel="stylesheet" />
+ <link href="{{ asset('css/font-awesome.min.css')}}" rel="stylesheet" />
+ <!-- Custom styles -->
+ <link href="{{ asset('css/style.css')}}" rel="stylesheet">
+ <link href="{{ asset('css/style-responsive.css')}}" rel="stylesheet" />
   <!-- Bootstrap CSS -->
   <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet">
   <link href="{{ asset('jquery/datetimepicker.min.css')}}" rel="stylesheet">
@@ -66,9 +77,9 @@
           <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="profile-ava">
-                                <img alt="" src="{{asset('img/avatar1_small.jpg')}}">
+                                <img alt="" src="{{asset('img/user_img.jpg')}}" style="width:40px;heigh:40px;">
                             </span>
-                            <span class="username">Rabia Sultani</span>
+                            <span class="username">{{Auth::user()->name}}</span>
                             <b class="caret"></b>
                         </a>
             <ul class="dropdown-menu extended logout">
@@ -77,7 +88,13 @@
                 <a href="#"><i class="icon_profile"></i> My Profile</a>
               </li>
               <li>
-                <a href="login.html"><i class="icon_key_alt"></i> Log Out</a>
+                <a  href="{{ url('logout') }}"
+                    onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><i class="icon_key_alt"></i> Log Out</a>
+
+                  <form id="logout-form" action="{{ url('logout') }}" method="POST" style="display: none;">
+                      @csrf
+                  </form>
               </li>
 
             </ul>
@@ -95,7 +112,7 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu">
           <li class="active">
-            <a class="" href="\crm">
+            <a class="" href="\home">
                           <i class="fa fa-tachometer"></i>
                           <span>Dashboard</span>
                       </a>
@@ -107,8 +124,8 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="{{ url('/crm/create') }}">CRM Registration</a></li>
-              <li><a class="" href="{{ url('/crm/list') }}">CRM list</a></li>
+              <li><a class="" href="{{ url('/home/create') }}">CRM Registration</a></li>
+              <li><a class="" href="{{ url('/home/list') }}">CRM list</a></li>
             </ul>
           </li>
 
@@ -129,7 +146,7 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="{{url('/crm/report')}}">CRM Report</a></li>
+              <li><a class="" href="{{url('/home/report')}}">CRM Report</a></li>
             </ul>
           </li>
 
@@ -144,20 +161,7 @@
     <section id="main-content">
       <section class="wrapper">
 
-        <div class="page-bar" style="background-color:#D3D3D3;border-radius:5px;padding:10px;margin-bottom:20px;color:#808080;font-size:15px;">
 
-          <div   style="float:right;">
-              <div id="">
-                  <i class="fa fa-calendar"></i>
-                  <span><?php echo date('l j F Y'); ?></span>
-              </div>
-          </div>
-           <div>
-                Hotline - Beneficiary Feedback and Complaint Tracking Database
-            </div>
-
-
-     </div>
         <!--overview start-->
 
           @yield('main_content')
@@ -213,7 +217,7 @@
     <script src="{{ asset('js/jquery.slimscroll.min.js')}}"></script>
     <script>
       //knob
-      
+
       $(function() {
         $(".knob").knob({
           'draw': function() {

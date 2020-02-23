@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/crm','Crm@index');
-Route::get('/crm/create','Crm@create');
+Route::get('/home','Home@index');
+Route::get('/home/create','Home@create');
+
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
