@@ -1,5 +1,7 @@
 @extends('master')
-
+@section('title')
+CRM Registration
+@stop
 @section('main_content')
    <div class="row">
         <div class="col-lg-12">
@@ -21,7 +23,8 @@
               </header>
               <div class="panel-body">
                 <div class="form">
-                    <form action="" class="form-horizontal" id=""  method="POST" enctype="multipart/form-data" >
+                    <form  method="POST"  action="{{url('home') }}" class="form-horizontal" enctype="multipart/form-data">
+                        @csrf
                         <input type="hidden" name="student_type" value="3">
                             <div class="form-body">
 
@@ -29,23 +32,24 @@
 
                                     <div class="tab-pane active" id="">
                                         <div class="row reg-content-wrapper">
-                                            <h3 class="block" style="padding: 10px 40px;margin-top: 5px"></h3>
 
                                             <div class="col-sm-6 reg-right-content-wrapper">
                                                 <div class="form-group">
+                                                    <div>
                                                     <label class="control-label col-md-4"> CallerName <span class="required">*</span>
                                                     </label>
                                                     <div class="col-md-6">
-                                                        <input type="text" min="1" class="form-control " name="caller_name" id="" required="required" onblur=""/>
+                                                        <input type="text"  class="form-control " name="caller_name"  required="required" />
                                                         <span id="base_number_field_error" style="color:#f13e64"></span>
+                                                    </div>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="control-label col-md-4"> NumberRecived <span class="required">*</span>
+                                                    <label class="control-label col-md-4"> PhoneNumberRecived <span class="required">*</span>
                                                     </label>
                                                     <div class="col-md-6">
-                                                        <input type="number" class="form-control" name="number_recived" required="required"/>
+                                                        <input type="number" class="form-control" name="tel_no_received" required="required"/>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -54,23 +58,24 @@
                                                     <div class="col-md-6">
                                                         <select name="gender" id="gender" class="form-control">
                                                             <option>Please select</option>
-                                                            <option value="1">Female</option>
-                                                            <option value="2">Male</option>
+                                                            <option value="Female">Female</option>
+                                                            <option value="Male">Male</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="control-label col-md-4"> Recived Date <span class="required">*</span>
+                                                    <label class="control-label col-md-4"> Received Date <span class="required">*</span>
                                                     </label>
                                                     <div class="col-md-6">
-                                                        <input type="text" id="picker" class="form-control" name="number_recived" required="required"/>
+                                                        <input type="date" id="picker" class="form-control" name="received_date" required="required"/>
                                                     </div>
                                                 </div>
+
                                                 <div class="form-group">
                                                     <label class="control-label col-md-4">Status
                                                     </label>
                                                     <div class="col-md-6">
-                                                        <select name="gender" id="gender" class="form-control">
+                                                        <select name="status"  class="form-control">
                                                             <option>Please select</option>
                                                             <option value="1">Registered</option>
                                                             <option value="2">Under investigation</option>
@@ -79,18 +84,31 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="control-label col-md-4">Referred To
+                                                    <label class="control-label col-md-4">Quarter
                                                     </label>
                                                     <div class="col-md-6">
-                                                        <select name="gender" id="gender" class="form-control">
+                                                        <select name="quarter" id="quarter" class="form-control">
                                                             <option>Please select</option>
-                                                            <option value="1">Officer</option>
-                                                            <option value="2">PM</option>
-                                                            <option value="3">Partner</option>
-                                                            <option value="4">DCD/CD</option>
+                                                            <option value="First Quarter">First Quarter</option>
+                                                            <option value="Second Quarter">Second Quarter</option>
+                                                            <option value="Third Quarter">Third Quarter</option>
+                                                            <option value="Fourth Quarter">Fourth Quarter</option>
                                                         </select>
                                                     </div>
                                                 </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-4">Referred To
+                                                    </label>
+                                                    <div class="col-md-6">
+                                                        <select name="referred_to" id="referred_to" class="form-control">
+                                                            <option>Please select</option>
+                                                            @foreach($referred_programs as $referred)
+                                                                <option value="{{$referred->id}}">{{$referred->name}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+
                                             </div>
                                             <div class="col-sm-6" style="direction: ltr">
 
@@ -98,10 +116,11 @@
                                                     <label class="control-label col-md-4">BroadCategory
                                                     </label>
                                                     <div class="col-md-6">
-                                                        <select name="broad_cat" id="gender" class="form-control">
+                                                        <select name="broad_category" id="broad_category" class="form-control">
                                                             <option>Please select</option>
-                                                            <option value=""></option>
-
+                                                            @foreach($broad_category as $b_category)
+                                                               <option value="{{$b_category->id}}">{{$b_category->name}}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
@@ -109,10 +128,11 @@
                                                     <label class="control-label col-md-4">Specific Category
                                                     </label>
                                                     <div class="col-md-6">
-                                                        <select name="specific_cat" id="gender" class="form-control">
+                                                        <select name="specific_category" id="specific_category" class="form-control">
                                                             <option>Please select</option>
-                                                            <option value=""></option>
-
+                                                            @foreach($specific_category as $s_category)
+                                                               <option value="{{$s_category->id}}">{{$s_category->name}}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
@@ -120,19 +140,18 @@
                                                     <label class="control-label col-md-4"> Received By <span class="required">*</span>
                                                     </label>
                                                     <div class="col-md-6">
-                                                        <input type="text" min="1" class="form-control " name="received_by" id="" required="required" onblur=""/>
+                                                        <input type="text"  class="form-control " name="received_by"  required="required"/>
                                                         <span id="base_number_field_error" style="color:#f13e64"></span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-md-4">
-                                                        Name of the Person who shared
-                                                        the action taken
-                                                        with the caller
+                                                        Person who shared
+                                                        the action
                                                         <span class="required">*</span>
                                                     </label>
                                                     <div class="col-md-6">
-                                                        <input type="text" min="1" class="form-control " name="person_who_shared_action" id="" required="required" onblur=""/>
+                                                        <input type="text"  class="form-control " name="person_who_shared_action"  required="required" />
                                                         <span id="base_number_field_error" style="color:#f13e64"></span>
                                                     </div>
                                                 </div>
@@ -143,11 +162,21 @@
                                                         <input type="date" class="form-control" name="close_date" required="required"/>
                                                     </div>
                                                 </div>
+
                                                 <div class="form-group">
-                                                    <label class="control-label col-md-4"> <span class="required">*</span>Description of action taken
+                                                    <label class="control-label col-md-4"> <span class="required">*</span>Description
                                                     </label>
                                                     <div class="col-md-6">
-                                                                <textarea type="text" min="1" class="form-control " name="received_by" id="" required="required" onblur="">
+                                                                <textarea type="text"  class="form-control " name="description"  required="required" >
+                                                                </textarea>
+                                                        <span id="base_number_field_error" style="color:#f13e64"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-4"> <span class="required">*</span>Complaints and feedback file
+                                                    </label>
+                                                    <div class="col-md-6">
+                                                                <input type="file"  class="form-control " name="beneficiary_file">
                                                                 </textarea>
                                                         <span id="base_number_field_error" style="color:#f13e64"></span>
                                                     </div>
@@ -170,36 +199,38 @@
                                                         </span>
                                                             </label>
                                                             <div class="col-md-12">
-                                                                <select name="org_province" id="org_province" class="form-control" required>
+                                                                <select name="province" id="province" class="form-control"  required>
                                                                     <option value="">Please Select...</option>
-                                                                    <option value=" "></option>
+                                                                      @foreach($province as $key=>$value)
+                                                                          <option value="{{$key}}">{{$value}}</option>
+                                                                        @endforeach
                                                                 </select>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-12" style="text-align:left;">
-                                                                District <span class="required">
+                                                            <label class="control-label col-md-12" style="text-align:left;">District <span class="required">*
                                                          </span>
                                                             </label>
                                                             <div class="col-md-12">
-                                                                <select name="district" id="org_district" class="form-control">
+                                                                <select name="district" id="district" class="form-control"  required>
                                                                     <option value="">Please Select...</option>
+                                                                        <option value=""></option>>
                                                                 </select>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-12" style="text-align:left;">Village/Area <span class="required">
-                                                        </span>
+                                                            <label class="control-label col-md-12" style="text-align:left;">Village/Area
                                                             </label>
                                                             <div class="col-md-12">
                                                                 <input type="text" name="village" id="village" class="form-control">
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                                                 </div>
                                             </div>
                                             <div class="col-sm-2"></div>
@@ -218,20 +249,39 @@
 
 
             </section>
-       @endsection
+
   <!-- container section end -->
 
   <!-- javascripts -->
-  <script src="{{ asset('js/jquery.js')}}"></script>
-  <script src="{{ asset('js/bootstrap.min.js')}}"></script>
-  <!-- nice scroll -->
-  <script src="{{ asset('js/jquery.scrollTo.min.js')}}"></script>
-  <script src="{{ asset('js/jquery.nicescroll.js')}}" type="text/javascript"></script>
-  <!-- jquery validate js -->
-  <script type="text/javascript" src="{{ asset('js/jquery.validate.min.js')}}"></script>
+       <script type="text/javascript">
+           $(document).ready(function() {
+             $('select[name="province"]').on('change',function(){
+                var province_id=$(this).val();
+                if(province_id)
+                {
+                    $.ajax({
+                        url:'/home/district/'+province_id,
+                        type:'GET',
+                        datatype:'json',
+                        success:function (data) {
+                            console.log(data);
+                            $('select[name="district"]').empty();
+                            $.each(data,function(key,value){
+                                $('select[name="district"]')
+                                .append('<option value="'+key+'">' + value +'</option>');
+                            });
+                        }
+                    });
+                }
+                else{
+                     $('select[name="district"]').empty();
+                 }
+             });
+          } );
 
-  <!-- custom form validation script for this page-->
-  <script src="{{ asset('js/form-validation-script.js')}}"></script>
-  <!--custome script for all page-->
-  <script src="{{ asset('js/scripts.js')}}"></script>
 
+
+
+       </script>
+
+@endsection

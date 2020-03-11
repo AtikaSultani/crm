@@ -18,19 +18,22 @@ class CreateComplaintsTable extends Migration
           $table->string('caller_name');
           $table->string('tel_no_received');
           $table->string('gender');
-          $table->unsignedbigInteger('province_id');
-          $table->unsignedbigInteger('district_id');
-          $table->string('village');
-          $table->unsignedbigInteger('broad_category_id');
-          $table->unsignedbigInteger('specific_category_id');
           $table->date('received_date');
+          $table->string('status');
           $table->string('quarter');
-          $table->string('statuse');
-          $table->unsignedbigInteger('referred_to');
-          $table->unsignedbigInteger('user_id');
-          $table->string('name_who_shared_action');
+          $table->unsignedBigInteger('referred_to');
+          $table->unsignedBigInteger('broad_category_id');
+          $table->unsignedBigInteger('specific_category_id');
+          $table->string('received_by');
+          $table->string('person_who_shared_action');
           $table->date('close_date');
           $table->string('description');
+          $table->string('beneficiary_file');
+          $table->unsignedBigInteger('province_id');
+          $table->unsignedBigInteger('district_id');
+          $table->string('village');
+          $table->unsignedBigInteger('user_id');
+
 
           $table->foreign('province_id')
             ->references('id')

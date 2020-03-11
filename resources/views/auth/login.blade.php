@@ -26,7 +26,6 @@
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
   <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
-
     <script src="js/respond.min.js"></script>
     <![endif]-->
 
@@ -69,9 +68,8 @@
       <span class="pull-right"> <a href="{{ route('password.request') }}"> Forgot Password?</a></span>
   </label>
           <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
-          <button style="color: #ffffff;" class="btn btn-info btn-lg btn-block" ><a href="register">Signup</a></button>
-
-      </div>
+          <p  class="btn btn-info btn-lg btn-block" ><a  href="register" > <span style="color:#ffffff;">Signup</span>  </a></p>
+</div>
   </form>
     <div class="text-right">
       <div class="credits">

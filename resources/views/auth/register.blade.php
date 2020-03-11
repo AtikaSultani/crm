@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +9,7 @@
     <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
     <link rel="shortcut icon" href="img/favicon.png">
 
-    <title>Login Page</title>
+    <title>Register Page</title>
 
     <!-- Bootstrap CSS -->
     <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet">
@@ -38,54 +37,53 @@
     ======================================================= -->
 </head>
 
-<body class="login-img3-body">
+<body class="login-img3-body" >
 
 <div class="container">
-    <form class="login-form" method="POST" action="{{ route('register') }}">
+    <form class="login-form" method="POST" action="{{ route('register') }}" >
         @csrf
-        <div class="login-wrap">
+        <div class="login-wrap" >
             <p class="login-img"><i class="fa fa-user"></i></p>
             <div class="input-group">
                 <span class="input-group-addon"></span>
                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="Name" autofocus>
 {{--                <input  id="email" type="text" class="form-control @error('email') is-invalid @enderror" placeholder="Email Address" autofocus required>--}}
-                @if($errors->has('email'))
-                    <span class="help-block" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                @endif
             </div>
+            @error('name')
+            <span class="invalid-feedback" role="alert" style="color:#ff383c">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+            @enderror
             <div class="input-group">
                 <span class="input-group-addon"></span>
                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Email" required autocomplete="email">
-            @if($errors->has('email'))
-                    <span class="help-block" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                @endif
             </div>
+            @error('email')
+            <span class="invalid-feedback" role="alert" style="color:#ff383c">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+            @enderror
             <div class="input-group">
                 <span class="input-group-addon"></span>
                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="new-password">
-                @error('password')
-                <span class="invalid-feedback" role="alert">
+
+            </div>
+            @error('password')
+            <span style="color:#ff383c" class="invalid-feedback" role="alert" style="color:#ff383c">
                                       <strong>{{ $message }}</strong>
                                   </span>
-                @enderror
-            </div>
+            @enderror
             <div class="input-group">
                 <span class="input-group-addon"></span>
                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password" required autocomplete="new-password">
-                @error('password')
-                <span class="invalid-feedback" role="alert">
-                                      <strong>{{ $message }}</strong>
-                                  </span>
-                @enderror
+
             </div>
 
             <button class="btn btn-primary btn-lg btn-block" type="submit">Register</button>
+            <p  class="btn btn-info btn-lg btn-block" ><a id="login" href="{{ route('login') }}"><span style="color:#ffffff;">Allready have account?</span></a></p>
         </div>
     </form>
+
 
     <div class="text-right">
         <div class="credits">
