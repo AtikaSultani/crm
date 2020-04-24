@@ -20,6 +20,11 @@ Route::get('/home','Home@dashboard');
 Route::get('/home/list','Home@index');
 Route::get('/home/create','Home@create');
 Route::post('/home','Home@store');
+Route::get('/edit/{id}','Home@edit');
+
+Route::delete('/home/{id}','Home@destroy');
+
+
 Route::get('/home/district/{id}','Home@districts');
 
 

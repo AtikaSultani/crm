@@ -44,7 +44,15 @@
         <link href="{{ asset('css/xcharts.min.css')}}" rel=" stylesheet">
         <link href="{{ asset('css/jquery-ui-1.10.4.min.css')}}" rel="stylesheet">
 
+        <style media="screen">
+        .container{
+                width: 100%;
+              }
+              .table-responsive {
+              	overflow-x: auto;
+              }
 
+        </style>
         <script src="{{ asset('js/jquery.min.js')}}"></script>
         <script src="{{ asset('js/jquery.js')}}"></script>
         <script src="{{ asset('js/jquery-ui-1.10.4.min.js')}}"></script>
@@ -152,7 +160,7 @@
         <ul class="sidebar-menu">
           <li class="active">
             <a class="" href="\home">
-                          <i class="fa fa-tachometer"></i>
+                          <i class="icon_house_alt"></i>
                           <span>Dashboard</span>
                       </a>
           </li>
@@ -173,6 +181,22 @@
             <a class="" href="">
                           <i class="icon_piechart"></i>
                           <span>Charts</span>
+
+                      </a>
+
+          </li>
+          <li>
+            <a class="" href="">
+                          <i class="icon_piechart"></i>
+                          <span>Programs</span>
+
+                      </a>
+
+          </li>
+          <li>
+            <a class="" href="">
+                          <i class="icon_piechart"></i>
+                          <span>Projects</span>
 
                       </a>
 
@@ -264,6 +288,7 @@
           }
         });
       });
+
     </script>
 
 </body>

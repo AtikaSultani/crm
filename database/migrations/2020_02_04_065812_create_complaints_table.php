@@ -14,7 +14,7 @@ class CreateComplaintsTable extends Migration
     public function up()
     {
         Schema::create('complaints', function (Blueprint $table) {
-          $table->bigIncrements('id');
+          $table->bigIncrements('complaints_id');
           $table->string('caller_name');
           $table->string('tel_no_received');
           $table->string('gender');
@@ -22,17 +22,19 @@ class CreateComplaintsTable extends Migration
           $table->string('status');
           $table->string('quarter');
           $table->unsignedBigInteger('referred_to');
+          $table->string('beneficiary_file')->nullable();
           $table->unsignedBigInteger('broad_category_id');
           $table->unsignedBigInteger('specific_category_id');
           $table->string('received_by');
-          $table->string('person_who_shared_action');
+          $table->string('person_who_shared_action')->nullable();
           $table->date('close_date');
           $table->string('description');
-          $table->string('beneficiary_file');
           $table->unsignedBigInteger('province_id');
           $table->unsignedBigInteger('district_id');
-          $table->string('village');
+          $table->string('village')->nullable();
           $table->unsignedBigInteger('user_id');
+
+
 
 
           $table->foreign('province_id')
@@ -54,6 +56,8 @@ class CreateComplaintsTable extends Migration
           $table->foreign('referred_to')
             ->references('id')
             ->on('referred_programs');
+
+
 
             $table->foreign('user_id')
               ->references('id')

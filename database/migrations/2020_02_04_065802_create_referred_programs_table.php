@@ -15,7 +15,7 @@ class CreateReferredProgramsTable extends Migration
     {
         Schema::create('referred_programs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string("name");
+            $table->string("referred_program_name");
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateReferredProgramsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('referred_programs');
+        Schema::dropIfExists('referred_program');
     }
 }

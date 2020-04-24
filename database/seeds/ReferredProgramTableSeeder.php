@@ -12,9 +12,9 @@ class ReferredProgramTableSeeder extends Seeder
      */
     public function run()
     {
-        Referred_program::create(['name'=>'Officer']);
-        Referred_program::create(['name'=>'PM']);
-        Referred_program::create(['name'=>'Partner']);
-        Referred_program::create(['name'=>'DCD/CD']);
+        Referred_program::create(['referred_program_name'=>'Officer']);
+        Referred_program::create(['referred_program_name'=>'PM']);
+        Referred_program::create(['referred_program_name'=>'Partner']);
+        Referred_program::create(['referred_program_name'=>'DCD/CD']);
     }
 }

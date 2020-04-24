@@ -4,7 +4,12 @@ CRM Registration
 @stop
 @section('main_content')
    <div class="row">
-        <div class="col-lg-12">
+           @if(session()->has('msg'))
+               <div class="alert alert-success">
+                   {{ session()->get('msg') }}
+               </div>
+           @endif
+               <div class="col-lg-12">
               <h3 class="page-header"><i class=""></i>Hotline - Beneficiary Feedback and Complaint Tracking Database</h3>
                 <ol class="breadcrumb" >
                   <li><i class="fa fa-home"></i><a href="/crm">Home</a></li>
@@ -77,9 +82,9 @@ CRM Registration
                                                     <div class="col-md-6">
                                                         <select name="status"  class="form-control">
                                                             <option>Please select</option>
-                                                            <option value="1">Registered</option>
-                                                            <option value="2">Under investigation</option>
-                                                            <option value="3">Solved</option>
+                                                            <option value="Registered">Registered</option>
+                                                            <option value="Under investigatio">Under investigation</option>
+                                                            <option value="Solved">Solved</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -89,10 +94,10 @@ CRM Registration
                                                     <div class="col-md-6">
                                                         <select name="quarter" id="quarter" class="form-control">
                                                             <option>Please select</option>
-                                                            <option value="First Quarter">First Quarter</option>
-                                                            <option value="Second Quarter">Second Quarter</option>
-                                                            <option value="Third Quarter">Third Quarter</option>
-                                                            <option value="Fourth Quarter">Fourth Quarter</option>
+                                                            <option value="First">First Quarter</option>
+                                                            <option value="Second">Second Quarter</option>
+                                                            <option value="Third">Third Quarter</option>
+                                                            <option value="Fourth">Fourth Quarter</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -103,11 +108,20 @@ CRM Registration
                                                         <select name="referred_to" id="referred_to" class="form-control">
                                                             <option>Please select</option>
                                                             @foreach($referred_programs as $referred)
-                                                                <option value="{{$referred->id}}">{{$referred->name}}</option>
+                                                                <option value="{{$referred->id}}">{{$referred->referred_program_name}}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-4"> <span class="required">*</span>Beneficiary file
+                                                    </label>
+                                                    <div class="col-md-6">
+                                                                <input type="file"  class="form-control " name="beneficiary_file">
+                                                        <span id="base_number_field_error" style="color:#f13e64"></span>
+                                                    </div>
+                                                </div>
+
 
                                             </div>
                                             <div class="col-sm-6" style="direction: ltr">
@@ -116,10 +130,10 @@ CRM Registration
                                                     <label class="control-label col-md-4">BroadCategory
                                                     </label>
                                                     <div class="col-md-6">
-                                                        <select name="broad_category" id="broad_category" class="form-control">
+                                                        <select name="broad_category" id="broad_category" class="form-control" required>
                                                             <option>Please select</option>
                                                             @foreach($broad_category as $b_category)
-                                                               <option value="{{$b_category->id}}">{{$b_category->name}}</option>
+                                                               <option value="{{$b_category->id}}">{{$b_category->broad_cat_name}}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -131,7 +145,7 @@ CRM Registration
                                                         <select name="specific_category" id="specific_category" class="form-control">
                                                             <option>Please select</option>
                                                             @foreach($specific_category as $s_category)
-                                                               <option value="{{$s_category->id}}">{{$s_category->name}}</option>
+                                                               <option value="{{$s_category->id}}">{{$s_category->specifice_cat_name}}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -163,20 +177,37 @@ CRM Registration
                                                     </div>
                                                 </div>
 
+
+                                                 <div class="form-group">
+                                                    <label class="control-label col-md-4">Project name
+                                                    </label>
+                                                    <div class="col-md-6">
+                                                      <select name="project_name" id="specific_category" class="form-control" required>
+                                                          <option>Please select</option>
+                                                          @foreach($projects as $project)
+                                                             <option value="{{$project->id}}">{{$project->project_name}}</option>
+                                                          @endforeach
+                                                      </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-4">Program name
+                                                    </label>
+                                                    <div class="col-md-6">
+                                                      <select name="program_name" id="specific_category" class="form-control" required>
+                                                          <option>Please select</option>
+                                                          @foreach($programs as $program)
+                                                             <option value="{{$program->id}}">{{$program->program_name}}</option>
+                                                          @endforeach
+                                                      </select>
+                                                    </div>
+                                                </div>
+
                                                 <div class="form-group">
                                                     <label class="control-label col-md-4"> <span class="required">*</span>Description
                                                     </label>
                                                     <div class="col-md-6">
                                                                 <textarea type="text"  class="form-control " name="description"  required="required" >
-                                                                </textarea>
-                                                        <span id="base_number_field_error" style="color:#f13e64"></span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="control-label col-md-4"> <span class="required">*</span>Complaints and feedback file
-                                                    </label>
-                                                    <div class="col-md-6">
-                                                                <input type="file"  class="form-control " name="beneficiary_file">
                                                                 </textarea>
                                                         <span id="base_number_field_error" style="color:#f13e64"></span>
                                                     </div>

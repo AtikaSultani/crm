@@ -11,6 +11,7 @@ class UsersTablesSeeder extends Seeder
      */
     public function run()
     {
+    
 
     }
 }

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Broad_category;
 
-class Complaints extends Controller
+class Broad_category extends Controller
 {
     //
 }

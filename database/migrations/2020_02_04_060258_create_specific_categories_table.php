@@ -15,7 +15,7 @@ class CreateSpecificCategoriesTable extends Migration
     {
         Schema::create('specific_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('specifice_cat_name');
             $table->timestamps();
         });
     }

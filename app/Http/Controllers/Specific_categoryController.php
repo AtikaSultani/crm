@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-class Broad_category extends Controller
+use App\Specific_category;
+class Specific_category extends Controller
 {
     //
 }
