@@ -21,11 +21,14 @@ Route::get('/home/list','Home@index');
 Route::get('/home/create','Home@create');
 Route::post('/home','Home@store');
 Route::get('/edit/{id}','Home@edit');
-
 Route::delete('/home/{id}','Home@destroy');
-
-
 Route::get('/home/district/{id}','Home@districts');
+
+Route::get('/projects/create','ProjectController@create');
+Route::get('/projects','ProjectController@index');
+Route::post('/projects','ProjectController@store');
+Route::get('/edit/{id}','ProjectController@edit');
+Route::delete('/ProjectController/{id}','ProjectController@destroy');
 
 
 Auth::routes();

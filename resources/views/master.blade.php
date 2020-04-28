@@ -194,7 +194,7 @@
 
           </li>
           <li>
-            <a class="" href="">
+            <a class="" href="{{ url('/projects') }}">
                           <i class="icon_piechart"></i>
                           <span>Projects</span>
 
