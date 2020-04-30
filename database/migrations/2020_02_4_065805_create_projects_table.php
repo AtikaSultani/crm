@@ -17,18 +17,19 @@ class CreateProjectsTable extends Migration
           $table->bigIncrements('id');
           $table->string("project_name");
           $table->string("NGO_name");
-          $table->unsignedBigInteger('program_id');
           $table->date("start_date");
           $table->date("end_date");
           $table->string("donors");
           $table->string("activities");
-          $table->string("direct_beneficiaries");
-          $table->string("indirect_beneficiaries");
-          $table->string("on_budject_project");
-          $table->string("off_budject_project");
-          $table->string("budjet");
+          $table->string("direct_beneficiaries")->nullable();
+          $table->string("indirect_beneficiaries")->nullable();
+          $table->string("on_budject_project")->nullable();
+          $table->string("off_budject_project")->nullable();
+          $table->string("budjet")->nullable();
           $table->unsignedBigInteger('province_id');
           $table->unsignedBigInteger('district_id');
+          $table->string('project_manager');
+
 
           $table->foreign('province_id')
             ->references('id')
@@ -38,9 +39,7 @@ class CreateProjectsTable extends Migration
             ->references('id')
             ->on('districts');
 
-            $table->foreign('program_id')
-              ->references('id')
-              ->on('Programs');
+
 
           $table->timestamps();
       });

@@ -116,7 +116,7 @@
                               <td>{{$key->description}}</td>
                               <td>{{$key->program_name}}</td>
                               <td>{{$key->project_name}}</td>
-                              <td>{{$key->referred_program_name}}</td>
+                              <td>{{$key->referred_to}}</td>
                               <td>{{$key->broad_cat_name}}</td>
                               <td>{{$key->specifice_cat_name}}</td>
                               <td>{{$key->province_name}}</td>

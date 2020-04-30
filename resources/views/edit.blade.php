@@ -65,16 +65,15 @@ Update CRM
                                                     </label>
                                                     <div class="col-md-6">
                                                         <select name="gender" id="gender" class="form-control">
-                                                          @if($data->gender == 'Male')
+                                                                @if($data->gender=='Male')
                                                                   <option value="Male">Male</option>
                                                                   <option value="Female">Female</option>
-                                                              @endif
+                                                                @else
+                                                                <option value="Female">Female</option>
+                                                                <option value="Male">Male</option>
+                                                                @endif
 
-                                                               <!-- Check if the gender if fenake -->
-                                                              @if($data->gender == 'Female')
-                                                                  <option value="Female">Female</option>
-                                                                  <option value="Male">Male</option>
-                                                              @endif
+
                                                         </select>
                                                     </div>
                                                 </div>
@@ -92,24 +91,12 @@ Update CRM
                                                     <div class="col-md-6">
 
                                                         <select name="status" id="status"  class="form-control">
-                                                            @if($data->status =='Registered')
-                                                            <option value="Registered">Registered</option>
-                                                            <option value="Under investigatio">Under investigation</option>
-                                                            <option value="Solved">Solved</option>
-                                                            @endif
-
-                                                            @if($data->status == 'Under investigation')
-                                                            <option value="Under investigatio">Under investigation</option>
-                                                            <option value="Registered">Registered</option>
-                                                            <option value="Solved">Solved</option>
-                                                            @endif
-
-                                                            @if($data->status == 'Solved')
-                                                            <option value="Solved">Solved</option>
-                                                            <option value="Under investigatio">Under investigation</option>
-                                                            <option value="Registered">Registered</option>
-                                                            @endif
-
+                                                          @foreach($statuses as $status)
+                                                            <option value="{{$status}}"
+                                                            @if($status==$data->status)
+                                                            selected
+                                                            @endif>{{$status}}</option>
+                                                          @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
@@ -118,33 +105,12 @@ Update CRM
                                                     </label>
                                                     <div class="col-md-6">
                                                         <select name="quarter" id="quarter" class="form-control">
-                                                            @if($data->quarter=='First')
-                                                            <option value="First">First Quarter</option>
-                                                            <option value="Second">Second Quarter</option>
-                                                            <option value="Third">Third Quarter</option>
-                                                            <option value="Fourth">Fourth Quarter</option>
-                                                            @endif
 
-                                                            @if($data->quarter=='Second')
-                                                            <option value="Second">Second Quarter</option>
                                                             <option value="First">First Quarter</option>
+                                                            <option value="Second">Second Quarter</option>
                                                             <option value="Third">Third Quarter</option>
                                                             <option value="Fourth">Fourth Quarter</option>
-                                                            @endif
 
-                                                            @if($data->quarter=='Third')
-                                                            <option value="Third">Third Quarter</option>
-                                                            <option value="First">First Quarter</option>
-                                                            <option value="Second">Second Quarter</option>
-                                                            <option value="Fourth">Fourth Quarter</option>
-                                                            @endif
-
-                                                            @if($data->quarter=='Fourth')
-                                                            <option value="Fourth">Fourth Quarter</option>
-                                                            <option value="First">First Quarter</option>
-                                                            <option value="Second">Second Quarter</option>
-                                                            <option value="Third">Third Quarter</option>
-                                                            @endif
 
                                                         </select>
                                                     </div>
@@ -154,30 +120,12 @@ Update CRM
                                                     </label>
                                                     <div class="col-md-6">
                                                         <select name="referred_to" id="referred_to" class="form-control">
-                                                              @if($data->referred_to =='1')
-                                                                <option value="officer">Officer</option>
-                                                                <option value="PM">PM</option>
-                                                                <option value="partner">Partner</option>
-                                                                <option value="DCD/CD">DCD/CD</option>
-                                                              @endif
-                                                              @if($data->referred_to =='2')
-                                                                <option value="PM">PM</option>
-                                                                <option value="officer">Officer</option>
-                                                                <option value="partner">Partner</option>
-                                                                <option value="DCD/CD">DCD/CD</option>
-                                                              @endif
-                                                              @if($data->referred_to =='3')
-                                                                  <option value="partner">Partner</option>
-                                                                  <option value="officer">Officer</option>
-                                                                  <option value="PM">PM</option>
-                                                                  <option value="DCD/CD">DCD/CD</option>
-                                                              @endif
-                                                              @if($data->referred_to =='3')
+
                                                                   <option value="DCD/CD">DCD/CD</option>
                                                                   <option value="officer">Officer</option>
                                                                   <option value="partner">Partner</option>
                                                                   <option value="PM">PM</option>
-                                                              @endif
+
 
                                                         </select>
                                                     </div>
@@ -201,9 +149,14 @@ Update CRM
                                                     </label>
                                                     <div class="col-md-6">
                                                         <select name="broad_category" id="broad_category" class="form-control">
-                                                          @foreach($data->broad_categorys==$category)
-                                                               <option value="{{$category->id}}">{{$category->broad_cat_name}}</option>
-                                                          @endforeach
+
+                                                          @foreach($broad_category as $key)
+                                                             <option value="{{$key->id}}"
+                                                               @if($key->id==$data->broad_category_id)
+                                                               selected
+                                                               @endif
+                                                               >{{$key->broad_cat_name}}</option>
+                                                             @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
@@ -212,8 +165,13 @@ Update CRM
                                                     </label>
                                                     <div class="col-md-6">
                                                         <select name="specific_category" id="specific_category" class="form-control">
-                                                            <option>Please select</option>
-                                                               <option value=""></option>
+                                                            @foreach($specific_category as $key)
+                                                               <option value="{{$key->id}}"
+                                                                 @if($key->id==$data->specific_category_id)
+                                                                 selected
+                                                                 @endif
+                                                                 >{{$key->specifice_cat_name}}</option>
+                                                               @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
@@ -221,7 +179,7 @@ Update CRM
                                                     <label class="control-label col-md-4"> Received By <span class="required">*</span>
                                                     </label>
                                                     <div class="col-md-6">
-                                                        <input type="text"  class="form-control " name="received_by"  required="required"/>
+                                                        <input type="text"  class="form-control " name="received_by"  required="required" value="{{$data->received_by}}"/>
                                                         <span id="base_number_field_error" style="color:#f13e64"></span>
                                                     </div>
                                                 </div>
@@ -240,7 +198,7 @@ Update CRM
                                                     <label class="control-label col-md-4"> Close Date <span class="required">*</span>
                                                     </label>
                                                     <div class="col-md-6">
-                                                        <input type="date" class="form-control" name="close_date" required="required"/>
+                                                        <input type="date" class="form-control" name="close_date" required="required" value="{{$data->person_who_shared_action}}"/>
                                                     </div>
                                                 </div>
 
@@ -248,7 +206,7 @@ Update CRM
                                                     <label class="control-label col-md-4"> <span class="required">*</span>Description
                                                     </label>
                                                     <div class="col-md-6">
-                                                                <textarea type="text"  class="form-control " name="description"  required="required" >
+                                                                <textarea type="text"  class="form-control " name="description"  required="required" value={{$data->description}} >
                                                                 </textarea>
                                                         <span id="base_number_field_error" style="color:#f13e64"></span>
                                                     </div>
@@ -266,7 +224,7 @@ Update CRM
                                                     <label class="control-label col-md-4"> Project Name <span class="required">*</span>
                                                     </label>
                                                     <div class="col-md-6">
-                                                        <input type="text"  class="form-control " name="project_name"  required="required" />
+                                                        <input type="text"  class="form-control " name="project_name"  required="required" value="{{$data->	project_id}}" />
                                                         <span id="base_number_field_error" style="color:#f13e64"></span>
                                                     </div>
                                                     </div>
@@ -291,9 +249,13 @@ Update CRM
                                                             </label>
                                                             <div class="col-md-12">
                                                                 <select name="province" id="province" class="form-control"  required>
-
-                                                                          <option value=""></option>
-
+                                                                  @foreach($provinces as $key)
+                                                                     <option value="{{$key->id}}"
+                                                                       @if($key->id==$data->province_id)
+                                                                       selected
+                                                                       @endif
+                                                                       >{{$key->province_name}}</option>
+                                                                     @endforeach
                                                                 </select>
                                                             </div>
                                                         </div>

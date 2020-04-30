@@ -21,9 +21,8 @@ class ProjectController extends Controller
       $data=DB::table('projects')
       ->join('provinces','provinces.id','=','projects.province_id')
       ->join('districts','districts.id','=','projects.district_id')
-      ->join('programs','programs.id','=','projects.program_id')
        ->get();
-      return view("projects.projects",compact('data'));
+      return view("projects.index",compact('data'));
 
     }
     public function create()
@@ -33,15 +32,21 @@ class ProjectController extends Controller
       $programs=Programs::all();
       return view('projects.create',compact('province','district','programs'));
     }
-/**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-
+         $request->validate([
+          'project_name'=>"required|unique:projects",
+          'NGO_name'=>"required",
+          'program_name'=>"required",
+          'start_date'=>"required|date",
+          'end_date'=>"required|date",
+          'donors'=>"required",
+          'activities'=>"required",
+          'province'=>"required",
+          'district'=>"required",
+          'project_manager'=>"required"
+         ]);
         Projects::create([
           'project_name'=>$request->project_name,
           'NGO_name'=>$request->NGO_name,
@@ -57,6 +62,7 @@ class ProjectController extends Controller
           'budjet'=>$request->budjet,
           'province_id'=>$request->province,
           'district_id'=>$request->district,
+          'project_manager'=>$request->project_manager,
         ]);
         if ('Projects'!='') {
             return redirect()->back()->with("msg", "The Project Added Successfully ");
@@ -66,46 +72,24 @@ class ProjectController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Project  $project
-     * @return \Illuminate\Http\Response
-     */
     public function show(Project $project)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Project  $project
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Project $project)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Project  $project
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Project $project)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Project  $project
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
 

@@ -18,11 +18,11 @@ class complaints extends Model
 
         public function broad_categorys()
         {
-          return $this->hasMany(Broad_category::class);
+          return $this->belongsTo(Broad_category::class);
         }
         public function referred_programs()
         {
-          return $this->hasMany(Referred_program::class);
+          return $this->belongsTo(Referred::class);
         }
         public function specific_categorys()
         {

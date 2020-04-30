@@ -8,8 +8,8 @@ class provinces extends Model
 {
     //
 
-public function complaints()
-{
-  return $this->belongsTo(Complaints::$this);
-}
+    public function complaints()
+    {
+      return $this->hasMany(Complaints::$this);
+    }
 }

@@ -8,9 +8,9 @@ class specific_category extends Model
 {
     //
 
-public function complaints()
-{
-  return $this->hasOne(Complaints::$this);
-}
+    public function complaints()
+    {
+      return $this->hasMany(Complaints::$this);
+    }
 
 }

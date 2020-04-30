@@ -41,133 +41,197 @@ CRM Registration
                                             <div class="col-sm-6 reg-right-content-wrapper">
                                                 <div class="form-group">
                                                     <div>
-                                                    <label class="control-label col-md-4"> ProjectName <span class="required">*</span>
+                                                    <label class="control-label col-md-4"> ProjectName <span  >*</span>
                                                     </label>
                                                     <div class="col-md-6">
-                                                        <input type="text"  class="form-control " name="project_name"  required="required" />
-                                                        <span id="base_number_field_error" style="color:#f13e64"></span>
+                                                        <input type="text"  class="form-control " name="project_name"/>
+                                                        @error('project_name')
+                                                        <div style="color:red;">
+                                                          {{$message}}
+                                                        </div>
+                                                        @enderror
                                                     </div>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="control-label col-md-4"> NGO Name <span class="required">*</span>
+                                                    <label class="control-label col-md-4"> NGO Name <span  >*</span>
                                                     </label>
                                                     <div class="col-md-6">
-                                                        <input type="text" class="form-control" name="NGO_name" required="required"/>
+                                                        <input type="text" class="form-control" name="NGO_name"/>
+                                                        @error('NGO_name')
+                                                        <div style="color:red;">
+                                                          {{$message}}
+                                                        </div>
+                                                        @enderror
                                                     </div>
                                                 </div>
+
+                                                  <div class="form-group">
+                                                      <label class="control-label col-md-4"> StartDate <span >*</span>
+                                                      </label>
+                                                      <div class="col-md-6">
+                                                          <input type="date" id="picker" class="form-control" name="start_date" />
+                                                          @error('start_date')
+                                                          <div style="color:red;">
+                                                            {{$message}}
+                                                          </div>
+                                                          @enderror
+                                                      </div>
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label class="control-label col-md-4"> EndtDate <span  >*</span>
+                                                      </label>
+                                                      <div class="col-md-6">
+                                                          <input type="date" id="picker" class="form-control" name="end_date"/>
+                                                          @error('end_date')
+                                                          <div style="color:red;">
+                                                            {{$message}}
+                                                          </div>
+                                                          @enderror
+                                                      </div>
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label class="control-label col-md-4"> Donors <span  >*</span>
+                                                      </label>
+                                                      <div class="col-md-6">
+                                                          <input type="text" class="form-control" name="donors"/>
+                                                          @error('donors')
+                                                          <div style="color:red;">
+                                                            {{$message}}
+                                                          </div>
+                                                          @enderror
+                                                      </div>
+                                                  </div>
                                                 <div class="form-group">
-                                                    <label class="control-label col-md-4">Program name
+                                                    <label class="control-label col-md-4"> Activities<span >*</span>
                                                     </label>
                                                     <div class="col-md-6">
-                                                      <select name="program_name" id="specific_category" class="form-control" required>
-                                                          <option>Please select</option>
-                                                          @foreach($programs as $program)
-                                                             <option value="{{$program->id}}">{{$program->program_name}}</option>
-                                                          @endforeach
-                                                      </select>
-                                                    </div>
-                                                  </div>
-                                                  <div class="form-group">
-                                                      <label class="control-label col-md-4"> StartDate <span class="required">*</span>
-                                                      </label>
-                                                      <div class="col-md-6">
-                                                          <input type="date" id="picker" class="form-control" name="start_date" required="required"/>
-                                                      </div>
-                                                  </div>
-                                                  <div class="form-group">
-                                                      <label class="control-label col-md-4"> EndtDate <span class="required">*</span>
-                                                      </label>
-                                                      <div class="col-md-6">
-                                                          <input type="date" id="picker" class="form-control" name="end_date" required="required"/>
-                                                      </div>
-                                                  </div>
-                                                  <div class="form-group">
-                                                      <label class="control-label col-md-4"> Donors <span class="required">*</span>
-                                                      </label>
-                                                      <div class="col-md-6">
-                                                          <input type="text" class="form-control" name="donors" required="required"/>
-                                                      </div>
-                                                  </div>
-                                                <div class="form-group">
-                                                    <label class="control-label col-md-4"> Activities<span class="required">*</span>
-                                                    </label>
-                                                    <div class="col-md-6">
-                                                      <textarea type="text"  class="form-control " name="activities"  required="required" >
+                                                      <textarea type="text"  class="form-control " name="activities" >
                                                       </textarea>
-                                                        <span id="base_number_field_error" style="color:#f13e64"></span>
+                                                      @error('activities')
+                                                      <div style="color:red;">
+                                                        {{$message}}
+                                                      </div>
+                                                      @enderror
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-4">
+                                                        DirectBeneficiaries
+
+                                                    </label>
+                                                    <div class="col-md-6">
+                                                        <input type="text"  class="form-control " name="direct_beneficiaries" />
+                                                        @error('direct_beneficiaries')
+                                                        <div style="color:red;">
+                                                          {{$message}}
+                                                        </div>
+                                                        @enderror
                                                     </div>
                                                 </div>
 
                                             </div>
                                             <div class="col-sm-6" style="direction: ltr">
 
-                                              <div class="form-group">
-                                                  <label class="control-label col-md-4">
-                                                      DirectBeneficiaries
-                                                      <span class="required">*</span>
-                                                  </label>
-                                                  <div class="col-md-6">
-                                                      <input type="text"  class="form-control " name="direct_beneficiaries"  required="required" />
-                                                      <span id="base_number_field_error" style="color:#f13e64"></span>
-                                                  </div>
-                                              </div>
+
                                               <div class="form-group">
                                                   <label class="control-label col-md-4">
                                                       IndirectBeneficiaries
-                                                      <span class="required">*</span>
+
                                                   </label>
                                                   <div class="col-md-6">
-                                                      <input type="text"  class="form-control " name="indirect_beneficiaries"  required="required" />
-                                                      <span id="base_number_field_error" style="color:#f13e64"></span>
+                                                      <input type="text"  class="form-control " name="indirect_beneficiaries"/>
+                                                      @error('indirect_beneficiaries')
+                                                      <div style="color:red;">
+                                                        {{$message}}
+                                                      </div>
+                                                      @enderror
                                                   </div>
                                               </div>
                                               <div class="form-group">
-                                                  <label class="control-label col-md-4">OnBudjet <span class="required">*</span>
+                                                  <label class="control-label col-md-4">OnBudjet
                                                   </label>
                                                   <div class="col-md-6">
-                                                      <input type="text" class="form-control" name="on_budjet" required="required"/>
+                                                      <input type="text" class="form-control" name="on_budjet"/>
+
                                                   </div>
                                               </div>
                                               <div class="form-group">
-                                                  <label class="control-label col-md-4">OffBudjet <span class="required">*</span>
+                                                  <label class="control-label col-md-4">OffBudjet
                                                   </label>
                                                   <div class="col-md-6">
-                                                      <input type="text" class="form-control" name="off_budjet" required="required"/>
+                                                      <input type="text" class="form-control" name="off_budjet"/>
                                                   </div>
                                               </div>
                                               <div class="form-group">
-                                                  <label class="control-label col-md-4">Budjet <span class="required">*</span>
+                                                  <label class="control-label col-md-4">Budjet 
                                                   </label>
                                                   <div class="col-md-6">
-                                                      <input type="text" class="form-control" name="budjet" required="required"/>
+                                                      <input type="text" class="form-control" name="budjet"/>
                                                   </div>
                                               </div>
                                               <div class="form-group">
-                                                  <label class="control-label col-md-4">Province <span class="required">*
+                                                  <label class="control-label col-md-4">Province <span >*
                                                  </span>
                                                   </label>
                                                   <div class="col-md-6">
-                                                      <select name="province" id="province" class="form-control"  required>
+                                                      <select name="province" id="province" class="form-control">
                                                           <option value="">Please Select...</option>
                                                             @foreach($province as $key=>$value)
                                                                 <option value="{{$key}}">{{$value}}</option>
                                                               @endforeach
                                                       </select>
+                                                      @error('province')
+                                                      <div style="color:red;">
+                                                        {{$message}}
+                                                      </div>
+                                                      @enderror
                                                   </div>
                                               </div>
                                               <div class="form-group">
-                                                  <label class="control-label col-md-4">District <span class="required">*
+                                                  <label class="control-label col-md-4">District <span  >*
                                                </span>
                                                   </label>
                                                   <div class="col-md-6">
-                                                      <select name="district" id="district" class="form-control"  required>
+                                                      <select name="district" id="district" class="form-control">
                                                           <option value="">Please Select...</option>
                                                               <option value=""></option>>
                                                       </select>
+                                                      @error('district')
+                                                      <div style="color:red;">
+                                                        {{$message}}
+                                                      </div>
+                                                      @enderror
                                                   </div>
                                                 </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-4">Project Manager <span  >*</span>
+                                                    </label>
+                                                    <div class="col-md-6">
+                                                        <input type="text" class="form-control" name="project_manager"/>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-4">Program name
+                                                    </label>
+                                                    <div class="col-md-6">
+                                                      <select name="program_name" id="specific_category" class="form-control"   >
+                                                          <option value="">Please select</option>
+                                                          @foreach($programs as $program)
+                                                             <option value="{{$program->id}}">{{$program->program_name}}</option>
+                                                          @endforeach
+                                                      </select>
+                                                      @error('program_name')
+                                                      <div style="color:red;">
+                                                        {{$message}}
+                                                      </div>
+                                                      @enderror
+                                                    </div>
+                                                  </div>
+
                                             </div>
                                           </div>
                                         </div>
