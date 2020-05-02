@@ -56,7 +56,9 @@ class home extends Controller
       $district = Districts::all()->pluck('district_name', 'id');
       $statuses=['Registered','UnderInvestigation','solved','pending'];
 
-      return view('edit',compact('data','id','broad_category', 'specific_category','programs','projects', 'provinces', 'district','statuses'));
+    //  return $provinces->province_name;exit;
+
+      return view('edit',compact('data','id','broad_category', 'specific_category','programs','projects','provinces', 'district','statuses'));
     }
 
 

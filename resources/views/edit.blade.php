@@ -248,15 +248,7 @@ Update CRM
                                                         </span>
                                                             </label>
                                                             <div class="col-md-12">
-                                                                <select name="province" id="province" class="form-control"  required>
-                                                                  @foreach($provinces as $key)
-                                                                     <option value="{{$key->id}}"
-                                                                       @if($key->id==$data->province_id)
-                                                                       selected
-                                                                       @endif
-                                                                       >{{$key->province_name}}</option>
-                                                                     @endforeach
-                                                                </select>
+                                                              
                                                             </div>
                                                         </div>
                                                     </div>
