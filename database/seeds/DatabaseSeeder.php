@@ -16,6 +16,5 @@ class DatabaseSeeder extends Seeder
         $this->call(DistrictTableSeeder::class);
         $this->call(BroadCategoryTableSeeder::class);
         $this->call(SpecificCategoryTableSeeder::class);
-        $this->call(ReferredProgramTableSeeder::class);
     }
 }

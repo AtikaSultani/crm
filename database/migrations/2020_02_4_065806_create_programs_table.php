@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReferredProgramsTable extends Migration
+class CreateProgramsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,15 @@ class CreateReferredProgramsTable extends Migration
      */
     public function up()
     {
-        Schema::create('referred_programs', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string("referred_program_name");
-            $table->timestamps();
-        });
+      Schema::create('programs', function (Blueprint $table) {
+          $table->bigIncrements('id');
+          $table->string("program_name");
+          $table->date("start_date");
+          $table->date("end_date");
+
+
+          $table->timestamps();
+      });
     }
 
     /**
@@ -27,6 +31,6 @@ class CreateReferredProgramsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('referred_program');
+        Schema::dropIfExists('programs');
     }
 }

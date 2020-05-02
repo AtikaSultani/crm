@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Broad_category;
 use App\Districts;
-use App\Referred_program;
 use App\Specific_category;
 use App\Provinces;
 use App\Projects;
@@ -31,7 +30,7 @@ class home extends Controller
     {
 
        $data=DB::table('complaints')
-            ->join('referred_programs','referred_programs.id','=','complaints.referred_to')
+
             ->join('broad_categories','broad_categories.id','=','complaints.broad_category_id')
             ->join('specific_categories','specific_categories.id','=','complaints.specific_category_id')
             ->join('projects','projects.id','=','complaints.project_id')
@@ -40,19 +39,38 @@ class home extends Controller
             ->join('districts','districts.id','=','complaints.district_id')
             ->get();
 
+
         return view('index',compact('data'));
     }
+
+
+    public function edit($id)
+    {
+      $data = Complaints::find($id);
+      $id=$id;
+      $broad_category = broad_category::all();
+      $specific_category = specific_category::all();
+      $programs=Programs::all();
+      $projects=Projects::all();
+      $provinces = Provinces::all()->pluck('province_name', 'id');
+      $district = Districts::all()->pluck('district_name', 'id');
+      $statuses=['Registered','UnderInvestigation','solved','pending'];
+
+    //  return $provinces->province_name;exit;
+
+      return view('edit',compact('data','id','broad_category', 'specific_category','programs','projects','provinces', 'district','statuses'));
+    }
+
 
     public function create()
     {
         $broad_category = broad_category::all();
-        $referred_programs = referred_program::all();
         $specific_category = specific_category::all();
         $programs=Programs::all();
         $projects=Projects::all();
         $province = Provinces::all()->pluck('province_name', 'id');
         $district = Districts::all()->pluck('district_name', 'id');
-        return view('create', compact('broad_category', 'referred_programs', 'specific_category','programs','projects', 'province', 'district'));
+        return view('create', compact('broad_category', 'specific_category','programs','projects', 'province', 'district'));
     }
 
     public function districts($id)
@@ -65,9 +83,25 @@ class home extends Controller
     public function store(Request $request)
     {
 
-      //return($request);exit;
+       $request->validate([
+        'caller_name'=>"required|max:15",
+        'tel_no_received'=>"required|numeric",
+        'gender'=>"required",
+        'received_date'=>"required|date",
+        'status'=>"required",
+        'quarter'=>"required",
+        'referred_to'=>"required",
+        'broad_category'=>"required",
+        'specific_category'=>"required",
+        'received_by'=>"required",
+        'close_date'=>"required|date",
+        'project_name'=>"required",
+        'program_name'=>"required",
+        'description'=>"required",
+        'province'=>'required',
+        'district'=>'required'
+       ]);
       $file=$request->file('beneficiary_file');
-
 
         //stor user data in database
         Complaints::create([
@@ -115,19 +149,7 @@ class home extends Controller
 
       }
 
-      public function edit($id)
-      {
- //return data from multiple table acording to Id
-        $data = Complaints::find($id);
-             // ->join('referred_programs','referred_programs.id','=','complaints.referred_to')
-             // ->join('broad_categories','broad_categories.id','=','complaints.broad_category_id')
-             // ->join('specific_categories','specific_categories.id','=','complaints.specific_category_id')
-             // ->join('provinces','provinces.id','=','complaints.province_id')
-             // ->join('districts','districts.id','=','complaints.district_id')
-             // ->get();
 
-         return view('edit',compact('data','id'));
-      }
 
 
 }

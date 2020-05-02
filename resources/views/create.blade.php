@@ -41,20 +41,29 @@ CRM Registration
                                             <div class="col-sm-6 reg-right-content-wrapper">
                                                 <div class="form-group">
                                                     <div>
-                                                    <label class="control-label col-md-4"> CallerName <span class="required">*</span>
+                                                    <label class="control-label col-md-4"> CallerName <span  >*</span>
                                                     </label>
                                                     <div class="col-md-6">
-                                                        <input type="text"  class="form-control " name="caller_name"  required="required" />
-                                                        <span id="base_number_field_error" style="color:#f13e64"></span>
+                                                        <input type="text"  class="form-control " name="caller_name"   =" " />
+                                                        @error('caller_name')
+                                                        <div style="color:red;">
+                                                          {{$message}}
+                                                        </div>
+                                                        @enderror
                                                     </div>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="control-label col-md-4"> PhoneNumberRecived <span class="required">*</span>
+                                                    <label class="control-label col-md-4"> PhoneNumberRecived <span  >*</span>
                                                     </label>
                                                     <div class="col-md-6">
-                                                        <input type="number" class="form-control" name="tel_no_received" required="required"/>
+                                                        <input type="number" class="form-control" name="tel_no_received"/>
+                                                        @error('tel_no_received')
+                                                        <div style="color:red;">
+                                                          {{$message}}
+                                                        </div>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -62,17 +71,27 @@ CRM Registration
                                                     </label>
                                                     <div class="col-md-6">
                                                         <select name="gender" id="gender" class="form-control">
-                                                            <option>Please select</option>
+                                                            <option value="">Please select</option>
                                                             <option value="Female">Female</option>
                                                             <option value="Male">Male</option>
                                                         </select>
+                                                        @error('gender')
+                                                        <div style="color:red;">
+                                                          {{$message}}
+                                                        </div>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="control-label col-md-4"> Received Date <span class="required">*</span>
+                                                    <label class="control-label col-md-4"> Received Date <span  >*</span>
                                                     </label>
                                                     <div class="col-md-6">
-                                                        <input type="date" id="picker" class="form-control" name="received_date" required="required"/>
+                                                        <input type="date" id="picker" class="form-control" name="received_date"/>
+                                                        @error('received_date')
+                                                        <div style="color:red;">
+                                                          {{$message}}
+                                                        </div>
+                                                        @enderror
                                                     </div>
                                                 </div>
 
@@ -81,11 +100,17 @@ CRM Registration
                                                     </label>
                                                     <div class="col-md-6">
                                                         <select name="status"  class="form-control">
-                                                            <option>Please select</option>
+                                                            <option value="">Please select</option>
                                                             <option value="Registered">Registered</option>
                                                             <option value="Under investigatio">Under investigation</option>
                                                             <option value="Solved">Solved</option>
+                                                            <option value="Solved">Pending</option>
                                                         </select>
+                                                        @error('status')
+                                                        <div style="color:red;">
+                                                          {{$message}}
+                                                        </div>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -93,12 +118,17 @@ CRM Registration
                                                     </label>
                                                     <div class="col-md-6">
                                                         <select name="quarter" id="quarter" class="form-control">
-                                                            <option>Please select</option>
+                                                            <option value="">Please select</option>
                                                             <option value="First">First Quarter</option>
                                                             <option value="Second">Second Quarter</option>
                                                             <option value="Third">Third Quarter</option>
                                                             <option value="Fourth">Fourth Quarter</option>
                                                         </select>
+                                                        @error('quarter')
+                                                        <div style="color:red;">
+                                                          {{$message}}
+                                                        </div>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -106,15 +136,21 @@ CRM Registration
                                                     </label>
                                                     <div class="col-md-6">
                                                         <select name="referred_to" id="referred_to" class="form-control">
-                                                            <option>Please select</option>
-                                                            @foreach($referred_programs as $referred)
-                                                                <option value="{{$referred->id}}">{{$referred->referred_program_name}}</option>
-                                                            @endforeach
+                                                            <option value="">Please select</option>
+                                                             <option value="pm">PM</option>
+                                                              <option value="officer">Officer</option>
+                                                               <option value="partner">Partner</option>
+                                                                <option value="dcd/cd">DCD/CD</option>
                                                         </select>
+                                                        @error('referred_to')
+                                                        <div style="color:red;">
+                                                          {{$message}}
+                                                        </div>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="control-label col-md-4"> <span class="required">*</span>Beneficiary file
+                                                    <label class="control-label col-md-4"> <span >*</span>Beneficiary file
                                                     </label>
                                                     <div class="col-md-6">
                                                                 <input type="file"  class="form-control " name="beneficiary_file">
@@ -130,12 +166,17 @@ CRM Registration
                                                     <label class="control-label col-md-4">BroadCategory
                                                     </label>
                                                     <div class="col-md-6">
-                                                        <select name="broad_category" id="broad_category" class="form-control" required>
-                                                            <option>Please select</option>
+                                                        <select name="broad_category" id="broad_category" class="form-control"  >
+                                                            <option value="">Please select</option>
                                                             @foreach($broad_category as $b_category)
                                                                <option value="{{$b_category->id}}">{{$b_category->broad_cat_name}}</option>
                                                             @endforeach
                                                         </select>
+                                                        @error('broad_category')
+                                                        <div style="color:red;">
+                                                          {{$message}}
+                                                        </div>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -143,37 +184,51 @@ CRM Registration
                                                     </label>
                                                     <div class="col-md-6">
                                                         <select name="specific_category" id="specific_category" class="form-control">
-                                                            <option>Please select</option>
+                                                            <option value="">Please select</option>
                                                             @foreach($specific_category as $s_category)
                                                                <option value="{{$s_category->id}}">{{$s_category->specifice_cat_name}}</option>
                                                             @endforeach
                                                         </select>
+                                                        @error('specific_category')
+                                                        <div style="color:red;">
+                                                          {{$message}}
+                                                        </div>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="control-label col-md-4"> Received By <span class="required">*</span>
+                                                    <label class="control-label col-md-4"> Received By <span  >*</span>
                                                     </label>
                                                     <div class="col-md-6">
-                                                        <input type="text"  class="form-control " name="received_by"  required="required"/>
-                                                        <span id="base_number_field_error" style="color:#f13e64"></span>
+                                                        <input type="text"  class="form-control " name="received_by"/>
+                                                        @error('received_by')
+                                                        <div style="color:red;">
+                                                          {{$message}}
+                                                        </div>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-md-4">
                                                         Person who shared
                                                         the action
-                                                        <span class="required">*</span>
+                                                        <span  >*</span>
                                                     </label>
                                                     <div class="col-md-6">
-                                                        <input type="text"  class="form-control " name="person_who_shared_action"  required="required" />
+                                                        <input type="text"  class="form-control " name="person_who_shared_action"   =" " />
                                                         <span id="base_number_field_error" style="color:#f13e64"></span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="control-label col-md-4"> Close Date <span class="required">*</span>
+                                                    <label class="control-label col-md-4"> Close Date <span  >*</span>
                                                     </label>
                                                     <div class="col-md-6">
-                                                        <input type="date" class="form-control" name="close_date" required="required"/>
+                                                        <input type="date" class="form-control" name="close_date"/>
+                                                        @error('close_date')
+                                                        <div style="color:red;">
+                                                          {{$message}}
+                                                        </div>
+                                                        @enderror
                                                     </div>
                                                 </div>
 
@@ -182,34 +237,46 @@ CRM Registration
                                                     <label class="control-label col-md-4">Project name
                                                     </label>
                                                     <div class="col-md-6">
-                                                      <select name="project_name" id="specific_category" class="form-control" required>
-                                                          <option>Please select</option>
-                                                          @foreach($projects as $project)
-                                                             <option value="{{$project->id}}">{{$project->project_name}}</option>
-                                                          @endforeach
+                                                      <select name="project_name" id="specific_category" class="form-control"  >
+                                                          <option value="">Please select</option>
+                                                          <option value="1">Project1</option>
+                                                          <option value="2">Project1</option>
                                                       </select>
+                                                      @error('project_name')
+                                                      <div style="color:red;">
+                                                        {{$message}}
+                                                      </div>
+                                                      @enderror
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-md-4">Program name
                                                     </label>
                                                     <div class="col-md-6">
-                                                      <select name="program_name" id="specific_category" class="form-control" required>
-                                                          <option>Please select</option>
-                                                          @foreach($programs as $program)
-                                                             <option value="{{$program->id}}">{{$program->program_name}}</option>
-                                                          @endforeach
+                                                      <select name="program_name" id="specific_category" class="form-control"  >
+                                                          <option value="">Please select</option>
+                                                          <option value="1">Program1</option>
+                                                            <option value="2">Program1</option>
                                                       </select>
+                                                      @error('program_name')
+                                                      <div style="color:red;">
+                                                        {{$message}}
+                                                      </div>
+                                                      @enderror
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="control-label col-md-4"> <span class="required">*</span>Description
+                                                    <label class="control-label col-md-4"> <span  >*</span>Description
                                                     </label>
                                                     <div class="col-md-6">
-                                                                <textarea type="text"  class="form-control " name="description"  required="required" >
+                                                                <textarea type="text"  class="form-control " name="description">
                                                                 </textarea>
-                                                        <span id="base_number_field_error" style="color:#f13e64"></span>
+                                                                @error('description')
+                                                                <div style="color:red;">
+                                                                  {{$message}}
+                                                                </div>
+                                                                @enderror
                                                     </div>
                                                 </div>
 
@@ -226,29 +293,39 @@ CRM Registration
                                                 <div class="row">
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-12" style="text-align:left;">Province <span class="required">*
+                                                            <label class="control-label col-md-12" style="text-align:left;">Province <span  >*
                                                         </span>
                                                             </label>
                                                             <div class="col-md-12">
-                                                                <select name="province" id="province" class="form-control"  required>
+                                                                <select name="province" id="province" class="form-control"   >
                                                                     <option value="">Please Select...</option>
                                                                       @foreach($province as $key=>$value)
                                                                           <option value="{{$key}}">{{$value}}</option>
                                                                         @endforeach
                                                                 </select>
+                                                                @error('province')
+                                                                <div style="color:red;">
+                                                                  {{$message}}
+                                                                </div>
+                                                                @enderror
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-12" style="text-align:left;">District <span class="required">*
+                                                            <label class="control-label col-md-12" style="text-align:left;">District <span  >*
                                                          </span>
                                                             </label>
                                                             <div class="col-md-12">
-                                                                <select name="district" id="district" class="form-control"  required>
+                                                                <select name="district" id="district" class="form-control"   >
                                                                     <option value="">Please Select...</option>
                                                                         <option value=""></option>>
                                                                 </select>
+                                                                @error('district')
+                                                                <div style="color:red;">
+                                                                  {{$message}}
+                                                                </div>
+                                                                @enderror
                                                             </div>
                                                         </div>
                                                     </div>

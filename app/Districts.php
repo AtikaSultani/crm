@@ -10,6 +10,6 @@ class districts extends Model
 
 public function complaints()
 {
-  return $this->belongsTo(Complaints::$this);
+  return $this->hasMany(Complaints::$this);
 }
 }

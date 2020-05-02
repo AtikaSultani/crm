@@ -21,7 +21,7 @@ class CreateComplaintsTable extends Migration
           $table->date('received_date');
           $table->string('status');
           $table->string('quarter');
-          $table->unsignedBigInteger('referred_to');
+          $table->string('referred_to');
           $table->string('beneficiary_file')->nullable();
           $table->unsignedBigInteger('broad_category_id');
           $table->unsignedBigInteger('specific_category_id');
@@ -53,9 +53,7 @@ class CreateComplaintsTable extends Migration
             ->references('id')
             ->on('specific_categories');
 
-          $table->foreign('referred_to')
-            ->references('id')
-            ->on('referred_programs');
+
 
 
 
