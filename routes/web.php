@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+
+Auth::routes();
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -36,5 +39,9 @@ Route::get('/edit/{id}','Home@edit');
 Route::delete('/home/{id}','Home@destroy');
 Route::get('/home/district/{id}','Home@districts');
 
-
-Auth::routes();
+// New UI designs
+Route::prefix('new')->group(function () {
+    Route::get('login', function () {
+        return view('new.login');
+    });
+});

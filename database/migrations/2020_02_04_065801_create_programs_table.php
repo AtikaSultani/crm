@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateProgramsTable extends Migration
 {
+
     /**
      * Run the migrations.
      *
@@ -13,15 +14,13 @@ class CreateProgramsTable extends Migration
      */
     public function up()
     {
-      Schema::create('programs', function (Blueprint $table) {
-          $table->bigIncrements('id');
-          $table->string("program_name");
-          $table->date("start_date");
-          $table->date("end_date");
-
-
-          $table->timestamps();
-      });
+        Schema::create('programs', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string("program_name");
+            $table->date("start_date");
+            $table->date("end_date");
+            $table->timestamps();
+        });
     }
 
     /**
