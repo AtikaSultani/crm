@@ -37,4 +37,9 @@ Route::delete('/home/{id}', 'Home@destroy');
 Route::get('/home/district/{id}', 'Home@districts');
 
 
-
+// New UI designs
+Route::prefix('new')->group(function () {
+    Route::get('login', function () {
+        return view('new.login');
+    });
+});
