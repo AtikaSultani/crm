@@ -28,7 +28,7 @@ CRM Registration
               </header>
               <div class="panel-body">
                 <div class="form">
-                    <form  method="POST"  action="{{url('home') }}" class="form-horizontal" enctype="multipart/form-data">
+                    <form  method="POST"  action="{{url('complaints') }}" class="form-horizontal" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="student_type" value="3">
                             <div class="form-body">

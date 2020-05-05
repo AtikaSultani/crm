@@ -125,7 +125,7 @@
                                 <a class="btn btn-primary badge-pill" style="width:65px;border-radius:20px;font-size:12px;" href="{{url('/complaint/'.$key->complaints_id.'/edit')}}">EDIT</a>
                               </td>
                               <td>
-                                <form action="{{ url('/home/'.$key->complaints_id) }}" method="post">
+                                <form action="{{ url('/complaints/'.$key->complaints_id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
 

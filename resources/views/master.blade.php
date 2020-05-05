@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
@@ -159,7 +158,7 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu">
           <li class="active">
-            <a class="" href="\home">
+            <a class="" href="{{ url('/') }}">
                           <i class="icon_house_alt"></i>
                           <span>Dashboard</span>
                       </a>
@@ -171,8 +170,8 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="{{ url('/home/create') }}">CRM Registration</a></li>
-              <li><a class="" href="{{ url('/home/list') }}">CRM list</a></li>
+              <li><a class="" href="{{ url('/complaints/create') }}">CRM Registration</a></li>
+              <li><a class="" href="{{ url('/complaints') }}">CRM list</a></li>
             </ul>
           </li>
 

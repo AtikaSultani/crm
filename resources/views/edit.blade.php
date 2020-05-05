@@ -30,7 +30,7 @@ Update CRM
               <div class="panel-body">
                 <div class="form">
 
-                    <form  method="post"  action="{{url('home/'.$id) }}" class="form-horizontal" enctype="multipart/form-data">
+                    <form  method="post"  action="{{url('/complaints/'.$id) }}" class="form-horizontal" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 

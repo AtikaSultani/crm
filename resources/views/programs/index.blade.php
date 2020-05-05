@@ -46,7 +46,7 @@
                     CRM List
                 </strong>
                 <div  style="float:right;text-align:right;width:150px;margin-bottom:-10px;margin-top:-5px;background-color:#DAA520;color:#FFF5EE;">
-                  <a href="{{ url('/program/create') }}" style="color:#FFF5EE;text:bold;"  class="btn green" onclick="" title="create new project">
+                  <a href="{{ url('/programs/create') }}" style="color:#FFF5EE;text:bold;"  class="btn green" onclick="" title="create new project">
                       <i class="fa fa-plus"></i>   <strong>Create new Program</strong>
                   </a>
                 </div>
@@ -71,10 +71,9 @@
                     <a class="btn btn-primary badge-pill" style="width:65px;border-radius:20px;font-size:12px;" href="{{ url('/programs/'.$key->id.'/edit') }}">EDIT</a>
                   </td>
                   <td>
-                    <form action="{{ url('/ProgramController/'.$key->id) }}" method="post">
+                    <form action="{{ url('/programs/'.$key->id) }}" method="post">
                         @csrf
                         @method('DELETE')
-
                       <button class="btn btn-danger badge-pill" style="width:75px;border-radius:20px;font-size:12px;" onclick="return confirm('Are you sure to delete this?')" data-confirm="Are you sure to delete this item?" type="submit">DELETE</button>
                     </form>
                   </td>
