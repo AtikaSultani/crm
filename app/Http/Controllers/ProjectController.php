@@ -22,6 +22,7 @@ class ProjectController extends Controller
       ->join('provinces','provinces.id','=','projects.province_id')
       ->join('districts','districts.id','=','projects.district_id')
        ->get();
+       
       return view("projects.index",compact('data'));
 
     }

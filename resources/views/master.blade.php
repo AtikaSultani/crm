@@ -178,14 +178,6 @@
 
 
           <li>
-            <a class="" href="">
-                          <i class="icon_piechart"></i>
-                          <span>Charts</span>
-
-                      </a>
-
-          </li>
-          <li>
             <a class="" href="{{ url('/programs') }}">
                           <i class="icon_piechart"></i>
                           <span>Programs</span>
