@@ -19,7 +19,7 @@ Route::get('/', 'Home@dashboard');
 Route::get('/programs', 'ProgramController@index');
 Route::get('/program/create', 'ProgramController@create');
 Route::post('/programs', 'ProgramController@store');
-Route::get('/edit/{id}', 'ProgramController@edit');
+Route::get('/programs/{id}/edit', 'ProgramController@edit');
 Route::delete('/ProgramController/{id}', 'ProgramController@destroy');
 
 Route::get('/projects', 'ProjectController@index');

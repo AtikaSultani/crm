@@ -68,7 +68,7 @@
                   <td>{{$key->start_date}}</td>
                   <td>{{$key->end_date}}</td>
                   <td class="actions" style="white-space:nowrap">
-                    <a class="btn btn-primary badge-pill" style="width:65px;border-radius:20px;font-size:12px;" href="{{action('ProgramController@edit',$key->id)}}">EDIT</a>
+                    <a class="btn btn-primary badge-pill" style="width:65px;border-radius:20px;font-size:12px;" href="{{ url('/programs/'.$key->id.'/edit') }}">EDIT</a>
                   </td>
                   <td>
                     <form action="{{ url('/ProgramController/'.$key->id) }}" method="post">
