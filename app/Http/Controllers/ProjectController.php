@@ -76,9 +76,9 @@ class ProjectController extends Controller
     }
 
 
-    public function edit(Project $project)
+    public function edit($id)
     {
-        //
+        return 'Please add the edit file of programs';
     }
 
 

@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes();
 
 Route::get('/', 'Home@dashboard');
-
 Route::get('/programs', 'ProgramController@index');
 Route::get('/program/create', 'ProgramController@create');
 Route::post('/programs', 'ProgramController@store');
@@ -32,7 +31,6 @@ Route::post('/home', 'Home@store');
 Route::get('/edit/{id}', 'Home@edit');
 Route::delete('/home/{id}', 'Home@destroy');
 Route::get('/home/district/{id}', 'Home@districts');
-
 
 // New UI designs
 Route::prefix('new')->group(function () {
