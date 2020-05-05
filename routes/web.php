@@ -34,7 +34,6 @@ Route::get('/home/district/{id}', 'Home@districts');
 
 // New UI designs
 Route::prefix('new')->group(function () {
-    Route::get('login', function () {
-        return view('new.login');
-    });
+    Route::view('login', 'new.login');
+    Route::view('reset', 'new.reset');
 });
