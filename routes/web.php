@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes();
 
 Route::get('/', 'Home@dashboard');
-
 Route::get('/programs', 'ProgramController@index');
 Route::get('/program/create', 'ProgramController@create');
 Route::post('/programs', 'ProgramController@store');
@@ -25,7 +24,7 @@ Route::delete('/ProgramController/{id}', 'ProgramController@destroy');
 Route::get('/projects', 'ProjectController@index');
 Route::get('/projects/create', 'ProjectController@create');
 Route::post('/projects', 'ProjectController@store');
-Route::get('/edit/{id}', 'ProjectController@edit');
+Route::get('projects/{id}/edit', 'ProjectController@edit');
 Route::delete('/ProjectController/{id}', 'ProjectController@destroy');
 
 Route::get('/home', 'Home@dashboard');

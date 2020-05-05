@@ -105,10 +105,12 @@ Update CRM
                                                     </label>
                                                     <div class="col-md-6">
                                                         <select name="quarter" id="quarter" class="form-control">
-                                                            <option value="First">First Quarter</option>
-                                                            <option value="Second">Second Quarter</option>
-                                                            <option value="Third">Third Quarter</option>
-                                                            <option value="Fourth">Fourth Quarter</option>
+                                                          @foreach($quarters as $quarter)
+                                                            <option value="{{$quarter}}"
+                                                            @if($quarter == $data->quarter)
+                                                            selected
+                                                            @endif>{{$quarter}}</option>
+                                                          @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
@@ -245,7 +247,7 @@ Update CRM
                                                         </span>
                                                             </label>
                                                             <div class="col-md-12">
-                                                              
+
                                                             </div>
                                                         </div>
                                                     </div>

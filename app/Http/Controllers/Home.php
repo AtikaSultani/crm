@@ -55,12 +55,12 @@ class home extends Controller
         $provinces = Provinces::all()->pluck('province_name', 'id');
         $district = Districts::all()->pluck('district_name', 'id');
         $statuses = ['Registered', 'Under Investigation', 'Solved', 'Pending'];
-
+        $quarters=['First Quarter','Second Quarter','Third Quarter','Fourth Quarter'];
         //  return $provinces->province_name;exit;
 
         return view('edit',
             compact('data', 'id', 'broad_category', 'specific_category', 'programs', 'projects', 'provinces',
-                'district', 'statuses'));
+                'district', 'statuses','quarters'));
     }
 
 
