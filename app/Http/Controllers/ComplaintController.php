@@ -52,8 +52,8 @@ class ComplaintController extends Controller
         $specific_category = Specific_category::all();
         $programs = Program::all();
         $projects = Project::all();
-        $provinces = Province::all()->pluck('province_name', 'id');
-        $districts = District::all()->pluck('district_name', 'id');
+        $provinces = Province::all('id', 'province_name');
+        $districts = District::all('id', 'district_name');
         $statuses = ['Registered', 'Under Investigation', 'Solved', 'Pending'];
         $quarters=['First Quarter','Second Quarter','Third Quarter','Fourth Quarter'];
         $refers=['DCD/CD','Officer','Partner','PM'];

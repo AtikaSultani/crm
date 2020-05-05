@@ -135,7 +135,7 @@ Update CRM
                                                     </label>
                                                     <div class="col-md-6">
                                                       <select name="program_name" id="program_name" class="form-control">
-                                                          @foreach(programs as $program)
+                                                          @foreach($programs as $program)
                                                              <option value="{{$program->id}}"
                                                                @if($program->id==$data->program_id)
                                                                selected
@@ -212,7 +212,7 @@ Update CRM
                                                     <label class="control-label col-md-4"> <span class="required">*</span>Description
                                                     </label>
                                                     <div class="col-md-6">
-                                                                <textarea type="text"  class="form-control " name="description"  required="required" value="{{$data->description}}" />
+                                                                <textarea type="text"  class="form-control " name="description"  required="required">{{$data->description}}</textarea>
                                                         <span id="base_number_field_error" style="color:#f13e64"></span>
                                                     </div>
                                                 </div>
@@ -230,7 +230,7 @@ Update CRM
                                                     </label>
                                                     <div class="col-md-6">
                                                       <select name="project_name" id="project_name" class="form-control">
-                                                          @foreach(projects as $project)
+                                                          @foreach($projects as $project)
                                                              <option value="{{$project->id}}"
                                                                @if($project->id==$data->project_id)
                                                                selected
@@ -278,13 +278,13 @@ Update CRM
                                                          </span>
                                                             </label>
                                                             <div class="col-md-12">
-                                                                <select name="district" id="district" class="form-control"  required>
-                                                                  @foreach($provinces as $province)
-                                                                     <option value="{{$province->id}}"
-                                                                       @if($province->id==$data->province_id)
+                                                                <select name="district"  class="form-control"  required>
+                                                                  @foreach($districts as $district)
+                                                                     <option value="{{$district->id}}"
+                                                                       @if($district->id==$data->district_id)
                                                                        selected
                                                                        @endif
-                                                                       >{{$province->province_name}}</option>
+                                                                       >{{$district->district_name}}</option>
                                                                      @endforeach
                                                                 </select>
                                                             </div>
