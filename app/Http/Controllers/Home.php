@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Broad_category;
-use App\Complaints;
+use App\Complaint;
 use App\Models\District;
 use App\Models\Program;
 use App\Models\Project;
@@ -30,13 +30,13 @@ class home extends Controller
     public function index()
     {
 
-        $data = DB::table('complaints')
-            ->join('broad_categories', 'broad_categories.id', '=', 'complaints.broad_category_id')
-            ->join('specific_categories', 'specific_categories.id', '=', 'complaints.specific_category_id')
-            ->join('projects', 'projects.id', '=', 'complaints.project_id')
-            ->join('programs', 'programs.id', '=', 'complaints.program_id')
-            ->join('provinces', 'provinces.id', '=', 'complaints.province_id')
-            ->join('districts', 'districts.id', '=', 'complaints.district_id')
+        $data = DB::table('complaint')
+            ->join('broad_categories', 'broad_categories.id', '=', 'complaint.broad_category_id')
+            ->join('specific_categories', 'specific_categories.id', '=', 'complaint.specific_category_id')
+            ->join('projects', 'projects.id', '=', 'complaint.project_id')
+            ->join('programs', 'programs.id', '=', 'complaint.program_id')
+            ->join('provinces', 'provinces.id', '=', 'complaint.province_id')
+            ->join('districts', 'districts.id', '=', 'complaint.district_id')
             ->get();
 
 
@@ -46,20 +46,20 @@ class home extends Controller
 
     public function edit($id)
     {
-        $data = Complaints::find($id);
+        $data = Complaint::find($id);
         $id = $id;
         $broad_category = broad_category::all();
-        $specific_category = specific_category::all();
+        $specific_category = Specific_category::all();
         $programs = Program::all();
         $projects = Project::all();
         $provinces = Province::all()->pluck('province_name', 'id');
-        $district = District::all()->pluck('district_name', 'id');
+        $districts = District::all()->pluck('district_name', 'id');
         $statuses = ['Registered', 'Under Investigation', 'Solved', 'Pending'];
         $quarters=['First Quarter','Second Quarter','Third Quarter','Fourth Quarter'];
         $refers=['DCD/CD','Officer','Partner','PM'];
         return view('edit',
             compact('data', 'id', 'broad_category', 'specific_category', 'programs', 'projects', 'provinces',
-                'district', 'statuses','quarters','refers'));
+                'districts', 'statuses','quarters','refers'));
     }
 
 
@@ -108,7 +108,7 @@ class home extends Controller
         $file = $request->file('beneficiary_file');
 
         //stor user data in database
-        Complaints::create([
+        Complaint::create([
             'caller_name'              => $request->caller_name,
             'tel_no_received'          => $request->tel_no_received,
             'gender'                   => $request->gender,
@@ -137,8 +137,8 @@ class home extends Controller
         } else {
             $file->store('upload', 'public');
         }
-        if ('complaints' != '') {
-            return redirect()->back()->with("msg", "The Complaints Registration Was Successfully Completed");
+        if ('complaint' != '') {
+            return redirect()->back()->with("msg", "The Complaint Registration Was Successfully Completed");
         } else {
             return "Please fill the form";
         }
@@ -147,7 +147,7 @@ class home extends Controller
 
     Public function destroy($id)
     {
-        $user = Complaints::findOrFail($id);
+        $user = Complaint::findOrFail($id);
         $user->delete();
 
         return back();

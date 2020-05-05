@@ -134,8 +134,15 @@ Update CRM
                                                     <label class="control-label col-md-4"> Program Name <span class="required">*</span>
                                                     </label>
                                                     <div class="col-md-6">
-                                                        <input type="text"  class="form-control " name="program_name" value="{{$data->program_name}}"  required="required" />
-                                                        <span id="base_number_field_error" style="color:#f13e64"></span>
+                                                      <select name="program_name" id="program_name" class="form-control">
+                                                          @foreach(programs as $program)
+                                                             <option value="{{$program->id}}"
+                                                               @if($program->id==$data->program_id)
+                                                               selected
+                                                               @endif
+                                                               >{{$program->program_name}}</option>
+                                                             @endforeach
+                                                      </select>
                                                     </div>
                                                     </div>
                                                 </div>
@@ -205,8 +212,7 @@ Update CRM
                                                     <label class="control-label col-md-4"> <span class="required">*</span>Description
                                                     </label>
                                                     <div class="col-md-6">
-                                                                <textarea type="text"  class="form-control " name="description"  required="required" value="{{$data->description}}" >
-                                                                </textarea>
+                                                                <textarea type="text"  class="form-control " name="description"  required="required" value="{{$data->description}}" />
                                                         <span id="base_number_field_error" style="color:#f13e64"></span>
                                                     </div>
                                                 </div>
@@ -223,8 +229,15 @@ Update CRM
                                                     <label class="control-label col-md-4"> Project Name <span class="required">*</span>
                                                     </label>
                                                     <div class="col-md-6">
-                                                        <input type="text"  class="form-control " name="project_name"  required="required" value="{{$data->project_name}}" />
-                                                        <span id="base_number_field_error" style="color:#f13e64"></span>
+                                                      <select name="project_name" id="project_name" class="form-control">
+                                                          @foreach(projects as $project)
+                                                             <option value="{{$project->id}}"
+                                                               @if($project->id==$data->project_id)
+                                                               selected
+                                                               @endif
+                                                               >{{$project->project_name}}</option>
+                                                             @endforeach
+                                                      </select>
                                                     </div>
                                                     </div>
                                                 </div>
@@ -247,7 +260,15 @@ Update CRM
                                                         </span>
                                                             </label>
                                                             <div class="col-md-12">
-
+                                                              <select name="province"  class="form-control">
+                                                                  @foreach($provinces as $province)
+                                                                     <option value="{{$province->id}}"
+                                                                       @if($province->id==$data->province_id)
+                                                                       selected
+                                                                       @endif
+                                                                       >{{$province->province_name}}</option>
+                                                                     @endforeach
+                                                              </select>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -258,7 +279,13 @@ Update CRM
                                                             </label>
                                                             <div class="col-md-12">
                                                                 <select name="district" id="district" class="form-control"  required>
-                                                                        <option value=""></option>>
+                                                                  @foreach($provinces as $province)
+                                                                     <option value="{{$province->id}}"
+                                                                       @if($province->id==$data->province_id)
+                                                                       selected
+                                                                       @endif
+                                                                       >{{$province->province_name}}</option>
+                                                                     @endforeach
                                                                 </select>
                                                             </div>
                                                         </div>

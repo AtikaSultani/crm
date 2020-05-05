@@ -4,8 +4,12 @@ namespace App;
 
 use App\Models\District;
 use App\Models\Province;
+use App\Models\Broad_category;
+use App\Models\Specific_category;
+use App\Models\Program;
+use App\Models\Project;
 use Illuminate\Database\Eloquent\Model;
-class complaints extends Model
+class complaint extends Model
 {
   protected $primaryKey = 'complaints_id';
     /**
@@ -18,24 +22,32 @@ class complaints extends Model
         ,'specific_category_id','received_by','person_who_shared_action','close_date','project_id','program_id','description'
         ,'province_id','district_id','village','user_id'];
 
-        public function broad_categorys()
+        public function broad_category()
         {
           return $this->belongsTo(Broad_category::class);
         }
-        public function referred_programs()
-        {
-          return $this->belongsTo(Referred::class);
-        }
-        public function specific_categorys()
+
+        public function specific_category()
         {
           return $this->belongsTo(Specific_category::class);
         }
-        public function provinces()
+
+        public function province()
         {
           return $this->belongsTo(Province::class);
         }
-        public function districts()
+
+        public function district()
         {
           return $this->belongsTo(District::class);
+        }
+
+        public function program()
+        {
+          return $this->belongsTo(Program::class);
+        }
+        public function project()
+        {
+          return $this->belongsTo(Project::class);
         }
 }

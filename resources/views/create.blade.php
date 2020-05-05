@@ -237,7 +237,7 @@ CRM Registration
                                                     <label class="control-label col-md-4">Project name
                                                     </label>
                                                     <div class="col-md-6">
-                                                      <select name="project_name" id="specific_category" class="form-control"  >
+                                                      <select name="project_name" id="project_name" class="form-control"  >
                                                           <option value="">Please select</option>
                                                           <option value="1">Project1</option>
                                                           <option value="2">Project1</option>
