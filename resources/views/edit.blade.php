@@ -105,13 +105,10 @@ Update CRM
                                                     </label>
                                                     <div class="col-md-6">
                                                         <select name="quarter" id="quarter" class="form-control">
-
                                                             <option value="First">First Quarter</option>
                                                             <option value="Second">Second Quarter</option>
                                                             <option value="Third">Third Quarter</option>
                                                             <option value="Fourth">Fourth Quarter</option>
-
-
                                                         </select>
                                                     </div>
                                                 </div>

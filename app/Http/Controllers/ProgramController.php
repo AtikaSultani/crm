@@ -10,42 +10,44 @@ class ProgramController extends Controller
 
     public function index()
     {
-        $data=Programs::all();
+        $data = Programs::all();
 
-        return view("programs.index",compact('data'));
+        return view("programs.index", compact('data'));
     }
 
     public function create()
     {
-      return view('programs.create');
+        return view('programs.create');
     }
+
     public function store(Request $request)
     {
-         $request->validate([
-          'program_name'=>"required|unique:programs",
-          'start_date'=>"required|date",
-          'end_date'=>"required|date",
-         ]);
-        Programs::create([
-          'program_name'=>$request->program_name,
-          'start_date'=>$request->start_date,
-          'end_date'=>$request->end_date
+        $request->validate([
+            'program_name' => "required|unique:programs",
+            'start_date'   => "required|date",
+            'end_date'     => "required|date",
         ]);
-        if ('Programs'!='') {
+        Programs::create([
+            'program_name' => $request->program_name,
+            'start_date'   => $request->start_date,
+            'end_date'     => $request->end_date
+        ]);
+        if ('Programs' != '') {
             return redirect()->back()->with("msg", "The Program Added Successfully ");
         } else {
             return "Please fill the form";
         }
 
     }
+
     public function show(Program $program)
     {
         //
     }
 
-    public function edit(Program $program)
+    public function edit($id)
     {
-        return ("wellcome");exit;
+        return 'Please add the edit file of programs';
     }
 
     public function update(Request $request, Program $program)
@@ -57,9 +59,10 @@ class ProgramController extends Controller
     public function destroy($id)
     {
 
-          $user=Programs::findOrFail($id);
-          $user->delete();
-          return back();
+        $user = Programs::findOrFail($id);
+        $user->delete();
+
+        return back();
 
     }
 }
