@@ -102,9 +102,9 @@ CRM Registration
                                                         <select name="status"  class="form-control">
                                                             <option value="">Please select</option>
                                                             <option value="Registered">Registered</option>
-                                                            <option value="Under investigatio">Under investigation</option>
+                                                            <option value="Under Investigation">Under investigation</option>
                                                             <option value="Solved">Solved</option>
-                                                            <option value="Solved">Pending</option>
+                                                            <option value="Pending">Pending</option>
                                                         </select>
                                                         @error('status')
                                                         <div style="color:red;">
