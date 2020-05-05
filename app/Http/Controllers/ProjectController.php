@@ -22,7 +22,7 @@ class ProjectController extends Controller
       ->join('provinces','provinces.id','=','projects.province_id')
       ->join('districts','districts.id','=','projects.district_id')
        ->get();
-       
+
       return view("projects.index",compact('data'));
 
     }
@@ -79,9 +79,9 @@ class ProjectController extends Controller
     }
 
 
-    public function edit(Project $project)
+    public function edit($id)
     {
-        //
+        return 'Please add the edit file of programs';  
     }
 
 

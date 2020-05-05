@@ -119,10 +119,10 @@ CRM Registration
                                                     <div class="col-md-6">
                                                         <select name="quarter" id="quarter" class="form-control">
                                                             <option value="">Please select</option>
-                                                            <option value="First">First Quarter</option>
-                                                            <option value="Second">Second Quarter</option>
-                                                            <option value="Third">Third Quarter</option>
-                                                            <option value="Fourth">Fourth Quarter</option>
+                                                            <option value="First Quarter">First Quarter</option>
+                                                            <option value="Second Quarter">Second Quarter</option>
+                                                            <option value="Third Quarter">Third Quarter</option>
+                                                            <option value="Fourth Quarter">Fourth Quarter</option>
                                                         </select>
                                                         @error('quarter')
                                                         <div style="color:red;">
@@ -137,10 +137,10 @@ CRM Registration
                                                     <div class="col-md-6">
                                                         <select name="referred_to" id="referred_to" class="form-control">
                                                             <option value="">Please select</option>
-                                                             <option value="pm">PM</option>
-                                                              <option value="officer">Officer</option>
-                                                               <option value="partner">Partner</option>
-                                                                <option value="dcd/cd">DCD/CD</option>
+                                                            <option value="DCD/CD">DCD/CD</option>
+                                                            <option value="officer">Officer</option>
+                                                            <option value="partner">Partner</option>
+                                                            <option value="PM">PM</option>
                                                         </select>
                                                         @error('referred_to')
                                                         <div style="color:red;">

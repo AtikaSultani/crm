@@ -189,7 +189,7 @@ Update CRM
                                                         <span class="required">*</span>
                                                     </label>
                                                     <div class="col-md-6">
-                                                        <input type="text"  class="form-control " name="person_who_shared_action"  required="required" />
+                                                        <input type="text"  class="form-control " name="person_who_shared_action"  required="required" value="{{$data->person_who_shared_action}}" />
                                                         <span id="base_number_field_error" style="color:#f13e64"></span>
                                                     </div>
                                                 </div>
@@ -197,7 +197,7 @@ Update CRM
                                                     <label class="control-label col-md-4"> Close Date <span class="required">*</span>
                                                     </label>
                                                     <div class="col-md-6">
-                                                        <input type="date" class="form-control" name="close_date" required="required" value="{{$data->person_who_shared_action}}"/>
+                                                        <input type="date" class="form-control" name="close_date" required="required" value="{{$data->close_date}}"/>
                                                     </div>
                                                 </div>
 
@@ -205,7 +205,7 @@ Update CRM
                                                     <label class="control-label col-md-4"> <span class="required">*</span>Description
                                                     </label>
                                                     <div class="col-md-6">
-                                                                <textarea type="text"  class="form-control " name="description"  required="required" value={{$data->description}} >
+                                                                <textarea type="text"  class="form-control " name="description"  required="required" value="{{$data->description}}" >
                                                                 </textarea>
                                                         <span id="base_number_field_error" style="color:#f13e64"></span>
                                                     </div>
@@ -223,7 +223,7 @@ Update CRM
                                                     <label class="control-label col-md-4"> Project Name <span class="required">*</span>
                                                     </label>
                                                     <div class="col-md-6">
-                                                        <input type="text"  class="form-control " name="project_name"  required="required" value="{{$data->	project_id}}" />
+                                                        <input type="text"  class="form-control " name="project_name"  required="required" value="{{$data->project_name}}" />
                                                         <span id="base_number_field_error" style="color:#f13e64"></span>
                                                     </div>
                                                     </div>
