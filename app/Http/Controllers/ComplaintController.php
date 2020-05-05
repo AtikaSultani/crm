@@ -30,13 +30,13 @@ class ComplaintController extends Controller
     public function index()
     {
 
-        $data = DB::table('complaint')
-            ->join('broad_categories', 'broad_categories.id', '=', 'complaint.broad_category_id')
-            ->join('specific_categories', 'specific_categories.id', '=', 'complaint.specific_category_id')
-            ->join('projects', 'projects.id', '=', 'complaint.project_id')
-            ->join('programs', 'programs.id', '=', 'complaint.program_id')
-            ->join('provinces', 'provinces.id', '=', 'complaint.province_id')
-            ->join('districts', 'districts.id', '=', 'complaint.district_id')
+        $data = DB::table('complaints')
+            ->join('broad_categories', 'broad_categories.id', '=', 'complaints.broad_category_id')
+            ->join('specific_categories', 'specific_categories.id', '=', 'complaints.specific_category_id')
+            ->join('projects', 'projects.id', '=', 'complaints.project_id')
+            ->join('programs', 'programs.id', '=', 'complaints.program_id')
+            ->join('provinces', 'provinces.id', '=', 'complaints.province_id')
+            ->join('districts', 'districts.id', '=', 'complaints.district_id')
             ->get();
 
 
