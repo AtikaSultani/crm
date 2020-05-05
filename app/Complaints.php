@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Models\District;
+use App\Models\Province;
 use Illuminate\Database\Eloquent\Model;
 class complaints extends Model
 {
@@ -30,10 +32,10 @@ class complaints extends Model
         }
         public function provinces()
         {
-          return $this->belongsTo(Provinces::class);
+          return $this->belongsTo(Province::class);
         }
         public function districts()
         {
-          return $this->belongsTo(Districts::class);
+          return $this->belongsTo(District::class);
         }
 }

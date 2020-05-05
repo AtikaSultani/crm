@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Broad_category;
 use App\Complaints;
-use App\Districts;
-use App\Programs;
-use App\Projects;
-use App\Provinces;
+use App\Models\District;
+use App\Models\Program;
+use App\Models\Project;
+use App\Models\Province;
 use App\Specific_category;
 use DB;
 use Illuminate\Http\Request;
@@ -50,10 +50,10 @@ class home extends Controller
         $id = $id;
         $broad_category = broad_category::all();
         $specific_category = specific_category::all();
-        $programs = Programs::all();
-        $projects = Projects::all();
-        $provinces = Provinces::all()->pluck('province_name', 'id');
-        $district = Districts::all()->pluck('district_name', 'id');
+        $programs = Program::all();
+        $projects = Project::all();
+        $provinces = Province::all()->pluck('province_name', 'id');
+        $district = District::all()->pluck('district_name', 'id');
         $statuses = ['Registered', 'Under Investigation', 'Solved', 'Pending'];
         $quarters=['First Quarter','Second Quarter','Third Quarter','Fourth Quarter'];
         $refers=['DCD/CD','Officer','Partner','PM'];
@@ -67,10 +67,10 @@ class home extends Controller
     {
         $broad_category = broad_category::all();
         $specific_category = specific_category::all();
-        $programs = Programs::all();
-        $projects = Projects::all();
-        $province = Provinces::all()->pluck('province_name', 'id');
-        $district = Districts::all()->pluck('district_name', 'id');
+        $programs = Program::all();
+        $projects = Project::all();
+        $province = Province::all()->pluck('province_name', 'id');
+        $district = District::all()->pluck('district_name', 'id');
 
         return view('create',
             compact('broad_category', 'specific_category', 'programs', 'projects', 'province', 'district'));
@@ -78,7 +78,7 @@ class home extends Controller
 
     public function districts($id)
     {
-        $districts = Districts::where('province_id', $id)->pluck('district_name', 'id');
+        $districts = District::where('province_id', $id)->pluck('district_name', 'id');
 
         return $districts;
     }
@@ -151,8 +151,5 @@ class home extends Controller
         $user->delete();
 
         return back();
-
     }
-
-
 }
