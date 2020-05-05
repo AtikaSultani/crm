@@ -10,7 +10,7 @@ Dashboard
       <div class="count">6.674</div>
       <div class="title">Download</div>
     </div>
-    <!--/.info-box-->
+  <!--/.info-box-->
   </div>
   <!--/.col-->
 
