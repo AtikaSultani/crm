@@ -13,7 +13,7 @@ use DB;
 use Illuminate\Http\Request;
 
 
-class home extends Controller
+class ComplaintController extends Controller
 {
 
     public function __construct()
@@ -129,8 +129,6 @@ class home extends Controller
             'district_id'              => $request->district,
             'village'                  => $request->village,
             'user_id'                  => $request->user_id
-
-
         ]);
         if ($request->file('beneficiary_file') == null) {
             $file = "";

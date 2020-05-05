@@ -14,23 +14,19 @@ use Illuminate\Support\Facades\Auth;
 */
 Auth::routes();
 
-Route::get('/', 'Home@dashboard');
-Route::get('/programs', 'ProgramController@index');
-Route::get('/program/create', 'ProgramController@create');
-Route::post('/programs', 'ProgramController@store');
-Route::get('/programs/{id}/edit', 'ProgramController@edit');
-Route::delete('/ProgramController/{id}', 'ProgramController@destroy');
+Route::get('/', 'ComplaintController@dashboard');
+
+// Porgram routes
+Route::resource('/programs', 'ProgramController');
 
 // project routes
-Route::resource('projects', 'ProjectController');
+Route::resource('/projects', 'ProjectController');
 
-Route::get('/home', 'Home@dashboard');
-Route::get('/home/list', 'Home@index');
-Route::get('/home/create', 'Home@create');
-Route::post('/home', 'Home@store');
-Route::get('/edit/{id}', 'Home@edit');
-Route::delete('/home/{id}', 'Home@destroy');
-Route::get('/home/district/{id}', 'Home@districts');
+// complaints routes
+Route::resource('/complaints', 'ComplaintController');
+
+// districts
+Route::get('/home/district/{id}', 'ComplaintController@districts');
 
 // New UI designs
 Route::prefix('new')->group(function () {
