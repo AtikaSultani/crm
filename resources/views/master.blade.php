@@ -193,18 +193,6 @@
 
           </li>
 
-          <li class="sub-menu">
-            <a href="javascript:;" class="">
-                          <i class="fa fa-bar-chart-o active"></i>
-                          <span>Reports</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-            <ul class="sub">
-              <li><a class="" href="{{url('/home/report')}}">CRM Report</a></li>
-            </ul>
-          </li>
-
-
         </ul>
         <!-- sidebar menu end-->
       </div>

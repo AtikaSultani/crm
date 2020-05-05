@@ -64,7 +64,7 @@ class ProjectController extends Controller
             'project_manager'        => $request->project_manager,
         ]);
         if ('Projects' != '') {
-            return redirect()->back()->with("msg", "The Project Added Successfully ");
+            return redirect('/projects')->with("msg", "The Project Added Successfully ");
         } else {
             return "Please fill the form";
         }

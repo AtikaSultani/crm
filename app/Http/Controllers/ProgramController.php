@@ -35,7 +35,7 @@ class ProgramController extends Controller
             'end_date'     => $request->end_date
         ]);
         if ('Programs' != '') {
-            return redirect()->back()->with("msg", "The Program Added Successfully ");
+            return redirect('/programs')->with("msg", "The Program Added Successfully ");
         } else {
             return "Please fill the form";
         }

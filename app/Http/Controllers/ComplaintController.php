@@ -136,7 +136,7 @@ class ComplaintController extends Controller
             $file->store('upload', 'public');
         }
         if ('complaint' != '') {
-            return redirect()->back()->with("msg", "The Complaint Registration Was Successfully Completed");
+            return redirect('/complaints')->with("msg", "The Complaint Registred Successfully");
         } else {
             return "Please fill the form";
         }

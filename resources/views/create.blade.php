@@ -4,11 +4,7 @@ CRM Registration
 @stop
 @section('main_content')
    <div class="row">
-           @if(session()->has('msg'))
-               <div class="alert alert-success">
-                   {{ session()->get('msg') }}
-               </div>
-           @endif
+          
                <div class="col-lg-12">
               <h3 class="page-header"><i class=""></i>Hotline - Beneficiary Feedback and Complaint Tracking Database</h3>
                 <ol class="breadcrumb" >
@@ -238,9 +234,10 @@ CRM Registration
                                                     </label>
                                                     <div class="col-md-6">
                                                       <select name="project_name" id="project_name" class="form-control"  >
-                                                          <option value="">Please select</option>
-                                                          <option value="1">Project1</option>
-                                                          <option value="2">Project1</option>
+                                                        <option value="">Please select</option>
+                                                        @foreach($projects as $project)
+                                                          <option value="{{$project->id}}">{{$project->project_name}}</option>
+                                                          @endforeach
                                                       </select>
                                                       @error('project_name')
                                                       <div style="color:red;">
@@ -253,10 +250,11 @@ CRM Registration
                                                     <label class="control-label col-md-4">Program name
                                                     </label>
                                                     <div class="col-md-6">
-                                                      <select name="program_name" id="specific_category" class="form-control"  >
-                                                          <option value="">Please select</option>
-                                                          <option value="1">Program1</option>
-                                                            <option value="2">Program1</option>
+                                                      <select name="program_name" class="form-control"  >
+                                                        <option value="">Please select</option>
+                                                          @foreach($programs as $program)
+                                                          <option value="{{$program->id}}">{{$program->program_name}}</option>
+                                                          @endforeach
                                                       </select>
                                                       @error('program_name')
                                                       <div style="color:red;">
