@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Programs;
+use App\Models\Program;
 use Illuminate\Http\Request;
 
 class ProgramController extends Controller
@@ -10,7 +10,7 @@ class ProgramController extends Controller
 
     public function index()
     {
-        $data = Programs::all();
+        $data = Program::all();
 
         return view("programs.index", compact('data'));
     }
@@ -27,7 +27,7 @@ class ProgramController extends Controller
             'start_date'   => "required|date",
             'end_date'     => "required|date",
         ]);
-        Programs::create([
+        Program::create([
             'program_name' => $request->program_name,
             'start_date'   => $request->start_date,
             'end_date'     => $request->end_date
@@ -59,7 +59,7 @@ class ProgramController extends Controller
     public function destroy($id)
     {
 
-        $user = Programs::findOrFail($id);
+        $user = Program::findOrFail($id);
         $user->delete();
 
         return back();

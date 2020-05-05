@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Districts;
-class Districts extends Controller
+class DistrictsController extends Controller
 {
+
     //
 }

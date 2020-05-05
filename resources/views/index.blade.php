@@ -122,7 +122,7 @@
                               <td>{{$key->province_name}}</td>
                               <td>{{$key->district_name}}</td>
                               <td class="actions" style="white-space:nowrap">
-                                <a class="btn btn-primary badge-pill" style="width:65px;border-radius:20px;font-size:12px;" href="{{action('Home@edit',$key->complaints_id)}}">EDIT</a>
+                                <a class="btn btn-primary badge-pill" style="width:65px;border-radius:20px;font-size:12px;" href="{{url('/complaints/'.$key->complaints_id.'/edit')}}">EDIT</a>
                               </td>
                               <td>
                                 <form action="{{ url('/home/'.$key->complaints_id) }}" method="post">

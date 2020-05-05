@@ -22,11 +22,8 @@ Route::post('/programs', 'ProgramController@store');
 Route::get('/programs/{id}/edit', 'ProgramController@edit');
 Route::delete('/ProgramController/{id}', 'ProgramController@destroy');
 
-Route::get('/projects', 'ProjectController@index');
-Route::get('/projects/create', 'ProjectController@create');
-Route::post('/projects', 'ProjectController@store');
-Route::get('/edit/{id}', 'ProjectController@edit');
-Route::delete('/ProjectController/{id}', 'ProjectController@destroy');
+// project routes
+Route::resource('projects', 'ProjectController');
 
 Route::get('/home', 'Home@dashboard');
 Route::get('/home/list', 'Home@index');
