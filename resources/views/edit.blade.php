@@ -47,8 +47,12 @@ Update CRM
                                                     <label class="control-label col-md-4"> CallerName <span class="required">*</span>
                                                     </label>
                                                     <div class="col-md-6">
-                                                        <input type="text"  class="form-control " name="caller_name" value="{{$data->caller_name}}"  required="required" />
-                                                        <span id="base_number_field_error" style="color:#f13e64"></span>
+                                                        <input type="text"  class="form-control " name="caller_name" value="{{$data->caller_name}}"/>
+                                                        @error('caller_name')
+                                                        <div style="color:red;">
+                                                          {{$message}}
+                                                        </div>
+                                                        @enderror
                                                     </div>
                                                     </div>
                                                 </div>
@@ -57,7 +61,12 @@ Update CRM
                                                     <label class="control-label col-md-4"> PhoneNumberRecived <span class="required">*</span>
                                                     </label>
                                                     <div class="col-md-6">
-                                                        <input type="number" class="form-control" name="tel_no_received" value="{{$data->tel_no_received}}" required="required"/>
+                                                        <input type="number" class="form-control" name="tel_no_received" value="{{$data->tel_no_received}}"/>
+                                                        @error('tel_no_received')
+                                                        <div style="color:red;">
+                                                          {{$message}}
+                                                        </div>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -72,16 +81,24 @@ Update CRM
                                                                 <option value="Female">Female</option>
                                                                 <option value="Male">Male</option>
                                                                 @endif
-
-
                                                         </select>
+                                                        @error('gender')
+                                                        <div style="color:red;">
+                                                          {{$message}}
+                                                        </div>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-md-4"> Received Date <span class="required">*</span>
                                                     </label>
                                                     <div class="col-md-6">
-                                                        <input type="date" id="picker" class="form-control" name="received_date" value="{{$data->received_date}}" required="required"/>
+                                                        <input type="date" id="picker" class="form-control" name="received_date" value="{{$data->received_date}}"/>
+                                                        @error('received_date')
+                                                        <div style="color:red;">
+                                                          {{$message}}
+                                                        </div>
+                                                        @enderror
                                                     </div>
                                                 </div>
 
@@ -98,6 +115,11 @@ Update CRM
                                                             @endif>{{$status}}</option>
                                                           @endforeach
                                                         </select>
+                                                        @error('status')
+                                                        <div style="color:red;">
+                                                          {{$message}}
+                                                        </div>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -112,6 +134,11 @@ Update CRM
                                                             @endif>{{$quarter}}</option>
                                                           @endforeach
                                                         </select>
+                                                        @error('quarter')
+                                                        <div style="color:red;">
+                                                          {{$message}}
+                                                        </div>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -124,14 +151,17 @@ Update CRM
                                                                   <option value="officer">Officer</option>
                                                                   <option value="partner">Partner</option>
                                                                   <option value="PM">PM</option>
-
-
                                                         </select>
+                                                        @error('referred_to')
+                                                        <div style="color:red;">
+                                                          {{$message}}
+                                                        </div>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div>
-                                                    <label class="control-label col-md-4"> Program Name <span class="required">*</span>
+                                                    <label class="control-label col-md-4"> Program Name <span >*</span>
                                                     </label>
                                                     <div class="col-md-6">
                                                       <select name="program_name" id="program_name" class="form-control">
@@ -143,6 +173,11 @@ Update CRM
                                                                >{{$program->program_name}}</option>
                                                              @endforeach
                                                       </select>
+                                                      @error('program_name')
+                                                      <div style="color:red;">
+                                                        {{$message}}
+                                                      </div>
+                                                      @enderror
                                                     </div>
                                                     </div>
                                                 </div>
@@ -164,6 +199,11 @@ Update CRM
                                                                >{{$key->broad_cat_name}}</option>
                                                              @endforeach
                                                         </select>
+                                                        @error('broad_category')
+                                                        <div style="color:red;">
+                                                          {{$message}}
+                                                        </div>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -179,14 +219,24 @@ Update CRM
                                                                  >{{$key->specifice_cat_name}}</option>
                                                                @endforeach
                                                         </select>
+                                                        @error('specific_category')
+                                                        <div style="color:red;">
+                                                          {{$message}}
+                                                        </div>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-md-4"> Received By <span class="required">*</span>
                                                     </label>
                                                     <div class="col-md-6">
-                                                        <input type="text"  class="form-control " name="received_by"  required="required" value="{{$data->received_by}}"/>
-                                                        <span id="base_number_field_error" style="color:#f13e64"></span>
+                                                        <input type="text"  class="form-control " name="received_by" value="{{$data->received_by}}"/>
+                                                        @error('received_by')
+                                                        <div style="color:red;">
+                                                          {{$message}}
+                                                        </div>
+                                                        @enderror
+
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -196,15 +246,24 @@ Update CRM
                                                         <span class="required">*</span>
                                                     </label>
                                                     <div class="col-md-6">
-                                                        <input type="text"  class="form-control " name="person_who_shared_action"  required="required" value="{{$data->person_who_shared_action}}" />
-                                                        <span id="base_number_field_error" style="color:#f13e64"></span>
+                                                        <input type="text"  class="form-control " name="person_who_shared_action" value="{{$data->person_who_shared_action}}" />
+                                                        @error('person_who_shared_action')
+                                                        <div style="color:red;">
+                                                          {{$message}}
+                                                        </div>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label col-md-4"> Close Date <span class="required">*</span>
                                                     </label>
                                                     <div class="col-md-6">
-                                                        <input type="date" class="form-control" name="close_date" required="required" value="{{$data->close_date}}"/>
+                                                        <input type="date" class="form-control" name="close_date"  value="{{$data->close_date}}"/>
+                                                        @error('close_date')
+                                                        <div style="color:red;">
+                                                          {{$message}}
+                                                        </div>
+                                                        @enderror
                                                     </div>
                                                 </div>
 
@@ -212,8 +271,13 @@ Update CRM
                                                     <label class="control-label col-md-4"> <span class="required">*</span>Description
                                                     </label>
                                                     <div class="col-md-6">
-                                                                <textarea type="text"  class="form-control " name="description"  required="required">{{$data->description}}</textarea>
-                                                        <span id="base_number_field_error" style="color:#f13e64"></span>
+                                                                <textarea type="text"  class="form-control " name="description">{{$data->description}}</textarea>
+                                                                @error('description')
+                                                                <div style="color:red;">
+                                                                  {{$message}}
+                                                                </div>
+                                                                @enderror
+
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -238,6 +302,11 @@ Update CRM
                                                                >{{$project->project_name}}</option>
                                                              @endforeach
                                                       </select>
+                                                      @error('project_name')
+                                                      <div style="color:red;">
+                                                        {{$message}}
+                                                      </div>
+                                                      @enderror
                                                     </div>
                                                     </div>
                                                 </div>
@@ -269,6 +338,11 @@ Update CRM
                                                                        >{{$province->province_name}}</option>
                                                                      @endforeach
                                                               </select>
+                                                              @error('province')
+                                                              <div style="color:red;">
+                                                                {{$message}}
+                                                              </div>
+                                                              @enderror
                                                             </div>
                                                         </div>
                                                     </div>
@@ -287,6 +361,11 @@ Update CRM
                                                                        >{{$district->district_name}}</option>
                                                                      @endforeach
                                                                 </select>
+                                                                @error('district')
+                                                                <div style="color:red;">
+                                                                  {{$message}}
+                                                                </div>
+                                                                @enderror
                                                             </div>
                                                         </div>
                                                     </div>

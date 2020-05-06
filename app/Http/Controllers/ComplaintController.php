@@ -44,24 +44,6 @@ class ComplaintController extends Controller
     }
 
 
-    public function edit($id)
-    {
-        $data = Complaint::find($id);
-        $id = $id;
-        $broad_category = broad_category::all();
-        $specific_category = Specific_category::all();
-        $programs = Program::all();
-        $projects = Project::all();
-        $provinces = Province::all('id', 'province_name');
-        $districts = District::all('id', 'district_name');
-        $statuses = ['Registered', 'Under Investigation', 'Solved', 'Pending'];
-        $quarters=['First Quarter','Second Quarter','Third Quarter','Fourth Quarter'];
-        $refers=['DCD/CD','Officer','Partner','PM'];
-        return view('edit',
-            compact('data', 'id', 'broad_category', 'specific_category', 'programs', 'projects', 'provinces',
-                'districts', 'statuses','quarters','refers'));
-    }
-
 
     public function create()
     {
@@ -142,6 +124,81 @@ class ComplaintController extends Controller
         }
 
     }
+
+
+    public function edit($id)
+    {
+        $data = Complaint::find($id);
+        $id = $id;
+        $broad_category = broad_category::all();
+        $specific_category = Specific_category::all();
+        $programs = Program::all();
+        $projects = Project::all();
+        $provinces = Province::all('id', 'province_name');
+        $districts = District::all('id', 'district_name');
+        $statuses = ['Registered', 'Under Investigation', 'Solved', 'Pending'];
+        $quarters=['First Quarter','Second Quarter','Third Quarter','Fourth Quarter'];
+        $refers=['DCD/CD','Officer','Partner','PM'];
+        return view('edit',
+            compact('data', 'id', 'broad_category', 'specific_category', 'programs', 'projects', 'provinces',
+                'districts', 'statuses','quarters','refers'));
+    }
+
+    public function update(Request $request ,$id)
+      {
+
+        $request->validate([
+            'caller_name'       => "required|max:15",
+            'tel_no_received'   => "required|numeric",
+            'gender'            => "required",
+            'received_date'     => "required|date",
+            'status'            => "required",
+            'quarter'           => "required",
+            'referred_to'       => "required",
+            'broad_category'    => "required",
+            'specific_category' => "required",
+            'received_by'       => "required",
+            'close_date'        => "required|date",
+            'project_name'      => "required",
+            'program_name'      => "required",
+            'description'       => "required",
+            'province'          => 'required',
+            'district'          => 'required'
+        ]);
+        $file = $request->file('beneficiary_file');
+        $complaint=Complaint::findOrFail($id);
+        $complaint->update([
+            'caller_name'              => $request->caller_name,
+            'tel_no_received'          => $request->tel_no_received,
+            'gender'                   => $request->gender,
+            'received_date'            => $request->received_date,
+            'status'                   => $request->status,
+            'quarter'                  => $request->quarter,
+            'referred_to'              => $request->referred_to,
+            'beneficiary_file'         => $file,
+            'broad_category_id'        => $request->broad_category,
+            'specific_category_id'     => $request->specific_category,
+            'received_by'              => $request->received_by,
+            'person_who_shared_action' => $request->person_who_shared_action,
+            'close_date'               => $request->close_date,
+            'project_id'               => $request->project_name,
+            'program_id'               => $request->program_name,
+            'description'              => $request->description,
+            'province_id'              => $request->province,
+            'district_id'              => $request->district,
+            'village'                  => $request->village,
+            'user_id'                  => $request->user_id
+        ]);
+
+        if ($request->file('beneficiary_file') == null) {
+            $file = "";
+        } else {
+            $file->store('upload', 'public');
+        }
+
+        return redirect("/complaints");
+      }
+
 
     Public function destroy($id)
     {

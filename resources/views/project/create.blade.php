@@ -4,11 +4,7 @@ CRM Registration
 @stop
 @section('main_content')
    <div class="row">
-           @if(session()->has('msg'))
-               <div class="alert alert-success">
-                   {{ session()->get('msg') }}
-               </div>
-           @endif
+
                <div class="col-lg-12">
               <h3 class="page-header"><i class=""></i>Hotline - Beneficiary Feedback and Complaint Tracking Database</h3>
                 <ol class="breadcrumb" >
@@ -166,7 +162,7 @@ CRM Registration
                                                   </div>
                                               </div>
                                               <div class="form-group">
-                                                  <label class="control-label col-md-4">Budjet 
+                                                  <label class="control-label col-md-4">Budjet
                                                   </label>
                                                   <div class="col-md-6">
                                                       <input type="text" class="form-control" name="budget"/>
