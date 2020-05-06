@@ -150,7 +150,7 @@ CRM Registration
                                                   <label class="control-label col-md-4">OnBudjet
                                                   </label>
                                                   <div class="col-md-6">
-                                                      <input type="text" class="form-control" name="on_budjet"/>
+                                                      <input type="text" class="form-control" name="on_budget"/>
 
                                                   </div>
                                               </div>
@@ -158,14 +158,14 @@ CRM Registration
                                                   <label class="control-label col-md-4">OffBudjet
                                                   </label>
                                                   <div class="col-md-6">
-                                                      <input type="text" class="form-control" name="off_budjet"/>
+                                                      <input type="text" class="form-control" name="off_budget"/>
                                                   </div>
                                               </div>
                                               <div class="form-group">
                                                   <label class="control-label col-md-4">Budjet
                                                   </label>
                                                   <div class="col-md-6">
-                                                      <input type="text" class="form-control" name="budjet"/>
+                                                      <input type="text" class="form-control" name="budget"/>
                                                   </div>
                                               </div>
                                               <div class="form-group">
