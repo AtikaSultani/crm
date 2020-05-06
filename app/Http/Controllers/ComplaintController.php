@@ -129,7 +129,7 @@ class ComplaintController extends Controller
     public function edit($id)
     {
         $data = Complaint::find($id);
-        $id = $id;
+
         $broad_category = broad_category::all();
         $specific_category = Specific_category::all();
         $programs = Program::all();
