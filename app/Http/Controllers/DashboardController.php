@@ -4,6 +4,11 @@
 namespace App\Http\Controllers;
 
 
+use App\Charts\ComplaintPerCategoryChart;
+use App\Charts\ComplaintPerGenderChart;
+use App\Charts\ComplaintPerProjectChart;
+use App\Charts\ComplaintPerProvinceChart;
+
 class DashboardController extends Controller
 {
 
@@ -12,8 +17,25 @@ class DashboardController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * Get charts for dashboard page
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function __invoke()
     {
-        return view('dashboard');
+        $province = new ComplaintPerProvinceChart();
+        $province = $province->perProvince();
+
+        $category = new ComplaintPerCategoryChart();
+        $category = $category->perCategory();
+
+        $gender = new ComplaintPerGenderChart();
+        $gender = $gender->perGender();
+
+        $project = new ComplaintPerProjectChart();
+        $project = $project->perProject();
+
+        return view('dashboard', compact('province', 'category', 'gender', 'project'));
     }
 }
