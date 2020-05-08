@@ -82,7 +82,8 @@
                                                 <label class="control-label col-md-4"> Received Date <span>*</span>
                                                 </label>
                                                 <div class="col-md-6">
-                                                    <input type="date" id="picker" class="form-control"
+                                                    <input class="datepicker-here"
+                                                           value="2020-10-10"
                                                            name="received_date"/>
                                                     @error('received_date')
                                                     <div style="color:red;">
@@ -370,28 +371,28 @@
 
         <!-- javascripts -->
         <script type="text/javascript">
-            $(document).ready(function () {
-                $('select[name="province"]').on('change', function () {
-                    var province_id = $(this).val();
-                    if (province_id) {
-                        $.ajax({
-                            url: '/home/district/' + province_id,
-                            type: 'GET',
-                            datatype: 'json',
-                            success: function (data) {
-                                console.log(data);
-                                $('select[name="district"]').empty();
-                                $.each(data, function (key, value) {
-                                    $('select[name="district"]')
-                                        .append('<option value="' + key + '">' + value + '</option>');
-                                });
-                            }
-                        });
-                    } else {
-                        $('select[name="district"]').empty();
-                    }
-                });
-            });
+            // $(document).ready(function () {
+            //     $('select[name="province"]').on('change', function () {
+            //         var province_id = $(this).val();
+            //         if (province_id) {
+            //             $.ajax({
+            //                 url: '/home/district/' + province_id,
+            //                 type: 'GET',
+            //                 datatype: 'json',
+            //                 success: function (data) {
+            //                     console.log(data);
+            //                     $('select[name="district"]').empty();
+            //                     $.each(data, function (key, value) {
+            //                         $('select[name="district"]')
+            //                             .append('<option value="' + key + '">' + value + '</option>');
+            //                     });
+            //                 }
+            //             });
+            //         } else {
+            //             $('select[name="district"]').empty();
+            //         }
+            //     });
+            // });
 
 
         </script>

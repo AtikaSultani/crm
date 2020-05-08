@@ -3,8 +3,11 @@
 <head>
     <title>@yield('title')</title>
     {{-- Style files --}}
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+
 </head>
 <body class="antialiased font-sans text-gray-900 relative h-screen ">
 <div class="flex items-start">
@@ -51,8 +54,8 @@
 </div>
 
 @include('layouts.mobile-sidebar')
-
-<script src="{{ asset('js/jquery.js')}}"></script>
-<script src="{{ asset('/js/new-script.js') }}"></script>
+<script src="{{ asset('js/jquery.min.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="{{ asset('/js/scripts.js') }}"></script>
 </body>
 </html>

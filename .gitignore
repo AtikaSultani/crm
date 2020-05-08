@@ -13,5 +13,6 @@ yarn-error.log
 /nbproject/private/
 
 
-.idea/
+/.idea
 /public/css/app.css
+/public/upload
