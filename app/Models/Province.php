@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Province extends Model
 {
-
     /**
      * Get the complains
      *
@@ -15,6 +14,6 @@ class Province extends Model
      */
     public function complaints()
     {
-        return $this->hasMany(Complaints::$this);
+        return $this->hasMany(Complaint::class);
     }
 }

@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class District extends Model
+class SpecificCategory extends Model
 {
 
     /**
-     * Get the complains
+     * Get complaints
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

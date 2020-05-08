@@ -12,10 +12,10 @@
 @include('layouts.sidebar')
 
 <!-- content -->
-    <div class="w-full">
+    <div class="w-full content">
 
         <!-- Menu -->
-        <div class="flex items-center justify-between p-5 sticky top-0">
+        <div class="flex items-center justify-between p-5 sticky top-0 bg-white">
 
             <!-- Page title -->
             <div class="flex items-center">
@@ -44,7 +44,7 @@
         </div>
 
         {{-- Page contnet --}}
-        <div class="px-5">
+        <div class="px-5 pb-10">
             @yield('content')
         </div>
     </div>

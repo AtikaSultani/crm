@@ -16,14 +16,14 @@ Auth::routes();
 
 Route::get('/', 'DashboardController');
 
+// complaints routes
+Route::resource('/complaints', 'ComplaintController');
+
 // Program routes
 Route::resource('/programs', 'ProgramController');
 
 // project routes
 Route::resource('/projects', 'ProjectController');
-
-// complaints routes
-Route::resource('/complaints', 'ComplaintController');
 
 // districts
 Route::get('/home/district/{id}', 'ComplaintController@districts');

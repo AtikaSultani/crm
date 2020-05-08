@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class District extends Model
+class BroadCategory extends Model
 {
 
+    protected $guarded = [];
+
     /**
-     * Get the complains
+     * Get the complaints
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

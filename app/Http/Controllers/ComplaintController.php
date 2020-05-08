@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Broad_category;
-use App\Complaint;
+use App\Models\BroadCategory;
+use App\Models\Complaint;
 use App\Models\District;
 use App\Models\Program;
 use App\Models\Project;
 use App\Models\Province;
-use App\Specific_category;
-use DB;
+use App\Models\SpecificCategory;
 use Illuminate\Http\Request;
 
 
@@ -21,34 +20,34 @@ class ComplaintController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * Get list of all complaints
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
+        $complaints = Complaint::paginate(10);
 
-        $data = DB::table('complaints')
-            ->join('broad_categories', 'broad_categories.id', '=', 'complaints.broad_category_id')
-            ->join('specific_categories', 'specific_categories.id', '=', 'complaints.specific_category_id')
-            ->join('projects', 'projects.id', '=', 'complaints.project_id')
-            ->join('programs', 'programs.id', '=', 'complaints.program_id')
-            ->join('provinces', 'provinces.id', '=', 'complaints.province_id')
-            ->join('districts', 'districts.id', '=', 'complaints.district_id')
-            ->get();
-
-
-        return view('index', compact('data'));
+        return view('complaint.index', compact('complaints'));
     }
 
 
-
+    /**
+     * Create a new complaint
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function create()
     {
-        $broad_category = broad_category::all();
-        $specific_category = specific_category::all();
+        $broad_category = BroadCategory::all();
+        $specific_category = SpecificCategory::all();
         $programs = Program::all();
         $projects = Project::all();
         $province = Province::all()->pluck('province_name', 'id');
         $district = District::all()->pluck('district_name', 'id');
 
-        return view('create',
+        return view('complaint.create',
             compact('broad_category', 'specific_category', 'programs', 'projects', 'province', 'district'));
     }
 
@@ -131,15 +130,16 @@ class ComplaintController extends Controller
         $provinces = Province::all('id', 'province_name');
         $districts = District::all('id', 'district_name');
         $statuses = ['Registered', 'Under Investigation', 'Solved', 'Pending'];
-        $quarters=['First Quarter','Second Quarter','Third Quarter','Fourth Quarter'];
-        $refers=['DCD/CD','Officer','Partner','PM'];
+        $quarters = ['First Quarter', 'Second Quarter', 'Third Quarter', 'Fourth Quarter'];
+        $refers = ['DCD/CD', 'Officer', 'Partner', 'PM'];
+
         return view('edit',
             compact('data', 'id', 'broad_category', 'specific_category', 'programs', 'projects', 'provinces',
-                'districts', 'statuses','quarters','refers'));
+                'districts', 'statuses', 'quarters', 'refers'));
     }
 
-    public function update(Request $request ,$id)
-      {
+    public function update(Request $request, $id)
+    {
 
         $request->validate([
             'caller_name'       => "required|max:15",
@@ -160,7 +160,7 @@ class ComplaintController extends Controller
             'district'          => 'required'
         ]);
         $file = $request->file('beneficiary_file');
-        $complaint=Complaint::findOrFail($id);
+        $complaint = Complaint::findOrFail($id);
         $complaint->update([
             'caller_name'              => $request->caller_name,
             'tel_no_received'          => $request->tel_no_received,
@@ -191,7 +191,7 @@ class ComplaintController extends Controller
         }
 
         return redirect("/complaints");
-      }
+    }
 
 
     Public function destroy($id)
