@@ -54,8 +54,11 @@
 </div>
 
 @include('layouts.mobile-sidebar')
+
+{{-- scripts--}}
 <script src="{{ asset('js/jquery.min.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+@yield('page-level-js')
 <script src="{{ asset('/js/scripts.js') }}"></script>
 </body>
 </html>
