@@ -24,8 +24,8 @@ class CreateProjectsTable extends Migration
             $table->string("activities");
             $table->string("direct_beneficiaries")->nullable();
             $table->string("indirect_beneficiaries")->nullable();
-            $table->string("on_budgect_project")->nullable();
-            $table->string("off_budgect_project")->nullable();
+            $table->string("on_budget_project")->nullable();
+            $table->string("off_budget_project")->nullable();
             $table->string("budget")->nullable();
             $table->unsignedBigInteger('province_id');
             $table->unsignedBigInteger('district_id');

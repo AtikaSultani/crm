@@ -42,19 +42,28 @@ class ProgramController extends Controller
 
     }
 
-    public function show(Program $program)
-    {
-        //
-    }
-
     public function edit($id)
     {
-        return 'Please add the edit file of programs';
+      $data = Program::find($id);
+
+      return view('programs.edit', compact('data','id'));
     }
 
-    public function update(Request $request, Program $program)
+    public function update(Request $request,$id)
     {
-        //
+      $request->validate([
+          'program_name' => "required|unique:programs",
+          'start_date'   => "required|date",
+          'end_date'     => "required|date",
+      ]);
+
+      $program=Program::findOrFail($id);
+      $program->update([
+        'program_name' => $request->program_name,
+        'start_date'   => $request->start_date,
+        'end_date'     => $request->end_date
+      ]);
+      return redirect('/programs');
     }
 
 

@@ -111,8 +111,8 @@
                             <td>{{$project->activities}}</td>
                             <td>{{$project->direct_beneficiaries}}</td>
                             <td>{{$project->indirect_beneficiaries}}</td>
-                            <td>{{$project->on_budject_project}}</td>
-                            <td>{{$project->off_budject_project}}</td>
+                            <td>{{$project->on_budget_project}}</td>
+                            <td>{{$project->off_budget_project}}</td>
                             <td>{{$project->budjet}}</td>
                             <td>{{$project->province->province_name}}</td>
                             <td>{{$project->district->district_name}}</td>
