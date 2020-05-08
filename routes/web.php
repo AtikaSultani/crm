@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Auth;
 */
 Auth::routes();
 
-Route::get('/', 'ComplaintController@dashboard');
+Route::get('/', 'DashboardController');
 
-// Porgram routes
+// Program routes
 Route::resource('/programs', 'ProgramController');
 
 // project routes
@@ -27,10 +27,3 @@ Route::resource('/complaints', 'ComplaintController');
 
 // districts
 Route::get('/home/district/{id}', 'ComplaintController@districts');
-
-// New UI designs
-Route::prefix('new')->group(function () {
-    Route::view('login', 'new.login');
-    Route::view('reset', 'new.reset');
-    Route::view('admin', 'new.admin');
-});
