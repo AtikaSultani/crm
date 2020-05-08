@@ -32,4 +32,5 @@ Route::get('/home/district/{id}', 'ComplaintController@districts');
 Route::prefix('new')->group(function () {
     Route::view('login', 'new.login');
     Route::view('reset', 'new.reset');
+    Route::view('admin', 'new.admin');
 });

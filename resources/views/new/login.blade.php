@@ -2,10 +2,12 @@
 <html lang="en">
 <head>
     <title>Login Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {{-- Style files --}}
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+
 </head>
-<body class="font-sans antialiased text-gray-900">
+<body class="font-sans text-gray-900">
 <div class="min-h-screen flex items-center justify-center bg-gray-100">
     <div class="max-w-md w-full py-12 px-6">
         <img class="mx-auto h-10 w-auto" src="{{ asset('/images/logo-dark.svg') }}" alt=""/>
@@ -35,7 +37,7 @@
 
             <div class="mt-5">
                 <button type="submit"
-                        class="relative block w-full py-2 px-3 border border-transparent rounded-md text-white font-semibold bg-gray-800 hover:bg-gray-700 focus:bg-gray-900 focus:outline-none focus:shadow-outline sm:text-sm sm:leading-5">
+                        class="relative block w-full py-2 px-3 border border-transparent rounded-md text-white font-semibold bg-blue-lighter hover:bg-blue focus:bg-blue focus:outline-none focus:shadow-outline sm:text-sm sm:leading-5">
                         <span class="absolute left-0 inset-y pl-3">
                 <svg class="h-5 w-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd"
