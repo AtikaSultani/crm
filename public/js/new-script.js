@@ -1,6 +1,13 @@
-jQuery(document).ready(function() {
+jQuery(document).ready(() => {
     // show mobile sidebar
-    $(".toggle-menu-bar").click(function() {
-        $("#mobile-side-bar").fadeToggle(100);
-    });
+    $(".toggle-menu-bar").click(() => {
+        $("#mobile-side-bar").fadeToggle(100)
+    })
+
+    // toggle the forget password link
+    $('#password').focus(() => {
+        $('#forget-password').toggle()
+    }).focusout(() => {
+        $('#forget-password').toggle()
+    })
 });

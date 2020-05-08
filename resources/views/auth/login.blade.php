@@ -1,84 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
-  <meta name="author" content="GeeksLabs">
-  <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
-  <link rel="shortcut icon" href="img/favicon.png">
+    <title>Login Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{-- Style files --}}
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
-  <title>Login Page</title>
-
-  <!-- Bootstrap CSS -->
-  <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet">
-  <!-- bootstrap theme -->
-  <link href="{{ asset('css/bootstrap-theme.css')}}" rel="stylesheet">
-  <!--external css-->
-  <!-- font icon -->
-  <link href="{{ asset('css/elegant-icons-style.css')}}" rel="stylesheet" />
-  <link href="{{ asset('css/font-awesome.css')}}" rel="stylesheet" />
-  <!-- Custom styles -->
-  <link href="{{ asset('css/style.css')}}" rel="stylesheet">
-  <link href="{{ asset('css/style-responsive.css')}}" rel="stylesheet" />
-
-  <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
-  <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- =======================================================
-      Theme Name: NiceAdmin
-      Theme URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-      Author: BootstrapMade
-      Author URL: https://bootstrapmade.com
-    ======================================================= -->
 </head>
+<body class="font-sans text-gray-900">
+<div class="min-h-screen flex items-center justify-center bg-gray-100">
+    <div class="max-w-md w-full py-12 px-6">
+        <img class="mx-auto h-10 w-auto" src="{{ asset('/images/logo-dark.svg') }}" alt=""/>
+        <p class="mt-6 text-sm leading-5 text-center text-gray-900">Log in to your account</p>
+        <form class="mt-5" action="{{ url('login') }}" method="POST">
+            @csrf
+            <input type="hidden" name="remember" value="true"/>
+            <div class="rounded-md shadow-sm">
 
-<body class="login-img3-body">
+                {{-- Email Address --}}
+                <div>
+                    <input aria-label="Email address" name="email" type="email" required
+                           class="border-gray-300 placeholder-gray-500 appearance-none rounded-none relative block w-full px-3 py-2 border text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue focus:z-10 sm:text-sm sm:leading-5 @if($errors->has('email')) border-red @endif"
+                           placeholder="Email address" value="{{ @old('email') }}"/>
+                </div>
 
-  <div class="container" >
+                {{-- Password --}}
+                <div class="-mt-px relative">
+                    <input aria-label="Password" name="password" type="password" id="password" required
+                           class="border-gray-300 placeholder-gray-500 appearance-none rounded-none relative block w-full px-3 py-2 border text-gray-900 rounded-b-md focus:outline-none focus:shadow-outline-blue focus:border-blue focus:z-10 sm:text-sm sm:leading-5 @if($errors->has('email')) border-red @endif"
+                           placeholder="Password"/>
+                    <div class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5"
+                         id="forget-password">
+                        <a href="{{ url('/password/reset') }}" class="text-gray-900 underline">Forgot?</a>
+                    </div>
+                </div>
+            </div>
 
-    <form class="login-form" method="post"  action="{{ route('login') }}">
-        @csrf
-      <div class="login-wrap" >
-        <p class="login-img"><i class="icon_lock_alt"></i></p>
-        <div class="input-group">
-          <span class="input-group-addon"><i class="icon_profile"></i></span>
-            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-          @if($errors->has('email'))
-                                    <span class="help-block" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-        </div>
-        <div class="input-group">
-              <span class="input-group-addon"><i class="icon_key_alt"></i></span>
-            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="current-password">              @error('password')
-              <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
+            @if($errors->has('email'))
+                <p class="mt-2 text-sm leading-5 text-red-darker">
+                    These credentials do not match our records.
+                </p>
+            @endif
+
+            <div class="mt-5">
+                <button type="submit"
+                        class="relative block w-full py-2 px-3 border border-transparent rounded-md text-white font-semibold bg-blue-lighter hover:bg-blue focus:bg-blue focus:outline-none focus:shadow-outline sm:text-sm sm:leading-5">
+                        <span class="absolute left-0 inset-y pl-3">
+                <svg class="h-5 w-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd"
+                        d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                        clip-rule="evenodd"/>
+                </svg>
               </span>
-      @enderror
-      </div>
-  <label class="checkbox">
-      <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-      Remember me
-      <span class="pull-right"> <a href="{{ route('password.request') }}"> Forgot Password?</a></span>
-  </label>
-          <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
-          <p  class="btn btn-info btn-lg btn-block" ><a  href="register" > <span style="color:#ffffff;">Signup</span>  </a></p>
-</div>
-  </form>
-    <div class="text-right">
-      <div class="credits">
+                    Log in
+                </button>
+            </div>
+        </form>
 
+        {{--  Do not have account  --}}
+        <div class="mt-6">
+            <div class="relative">
+                <div class="absolute inset-0 flex items-center">
+                    <div class="w-full border-t border-gray-300"></div>
+                </div>
+                <div class="relative flex justify-center text-sm leading-5">
+                    <span class="px-2 bg-gray-100 text-gray-500">Don't have an account?</span>
+                </div>
+            </div>
+
+            <div class="mt-6">
+                <a href="{{ url('/register') }}"
+                   class="block w-full text-center py-2 px-3 border border-gray-300 rounded-md text-gray-900 font-medium hover:border-gray-400 focus:outline-none focus:border-gray-400 sm:text-sm sm:leading-5">
+                    Create account now
+                </a>
+            </div>
         </div>
     </div>
-  </div>
 
-
+    <script src="{{ asset('js/jquery.js')}}"></script>
+    <script src="{{ asset('/js/new-script.js') }}"></script>
+</div>
 </body>
-
 </html>

@@ -1,52 +1,8 @@
-@extends('master')
-@section('page_bar')
-Dashboard
-@endsection
-@section('main_content')
-<div class="row">
-  <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-    <div class="info-box blue-bg">
-      <i class="fa fa-cloud-download"></i>
-      <div class="count">6.674</div>
-      <div class="title">Download</div>
-    </div>
-  <!--/.info-box-->
-  </div>
-  <!--/.col-->
-
-  <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-    <div class="info-box brown-bg">
-      <i class="fa fa-shopping-cart"></i>
-      <div class="count">7.538</div>
-      <div class="title">Purchased</div>
-    </div>
-    <!--/.info-box-->
-  </div>
-  <!--/.col-->
-
-  <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-    <div class="info-box dark-bg">
-      <i class="fa fa-thumbs-o-up"></i>
-      <div class="count">4.362</div>
-      <div class="title">Order</div>
-    </div>
-    <!--/.info-box-->
-  </div>
-  <!--/.col-->
-
-  <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-    <div class="info-box green-bg">
-      <i class="fa fa-cubes"></i>
-      <div class="count">1.426</div>
-      <div class="title">Stock</div>
-    </div>
-    <!--/.info-box-->
-  </div>
-  <!--/.col-->
-
-</div>
-
-
-
-
-@endsection
+@extends('layouts.master')
+@section('title','Dashboard')
+@section('page-title','Dashboard')
+@section('content')
+<p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut ea eaque eveniet explicabo incidunt, obcaecati officia perferendis repellat vero. Accusamus deleniti dolorum ea hic, mollitia nisi nostrum numquam praesentium quos!
+</p>
+@stop
