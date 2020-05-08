@@ -16,7 +16,7 @@ class Project extends Model
      */
     public function complaints()
     {
-        return $this->hasMany(Complaints::$this);
+        return $this->hasMany(Complaint::class);
     }
 
     /**

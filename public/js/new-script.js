@@ -11,3 +11,9 @@ jQuery(document).ready(() => {
         $('#forget-password').toggle()
     })
 });
+
+
+// Select page
+function selectPage(page) {
+    window.location = `?page=${page.value}`;
+}
