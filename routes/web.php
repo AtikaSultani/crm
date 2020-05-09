@@ -15,9 +15,10 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes();
 
 Route::get('/', 'DashboardController');
-
+Route::get('/complaint-export','ComplaintController@export');
 // complaints routes
 Route::resource('/complaints', 'ComplaintController');
+
 
 // Program routes
 Route::resource('/programs', 'ProgramController');

@@ -9,6 +9,8 @@ use App\Models\Program;
 use App\Models\Project;
 use App\Models\Province;
 use App\Models\SpecificCategory;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ComplaintExport;
 use Illuminate\Http\Request;
 
 
@@ -200,5 +202,9 @@ class ComplaintController extends Controller
         $user->delete();
 
         return back();
+    }
+    public function export()
+    {
+      return Excel::download(new ComplaintExport(),'Complaint Report.xlsx');
     }
 }

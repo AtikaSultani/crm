@@ -7,8 +7,8 @@
         </a>
 
         <button class="text-sm mx-2 bg-yellow text-blue px-2 py-1 rounded-sm focus:outline-none">
-            Export to Excel
-        </button>
+            <a href="{{ url('/complaint-export') }}">Export to Excel</a>
+          </button>
     </div>
 
     <div>
