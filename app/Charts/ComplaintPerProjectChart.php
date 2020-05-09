@@ -30,7 +30,7 @@ class ComplaintPerProjectChart extends AppChart
         // Chart declaration
         $chart->labels($this->projectNames())
             ->type('bar')
-            ->options(parent::setTitle('Complaints Per Category'));
+            ->options(parent::setTitle('Complaints Per Project'));
 
         // complaint count data set
         $chart->dataset('Complaint Total Number', 'bar', $this->getProjectComplaints())
