@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ComplaintExport;
+use App\Http\Requests\ComplaintRequest;
 use App\Models\BroadCategory;
 use App\Models\Complaint;
 use App\Models\District;
@@ -9,9 +11,8 @@ use App\Models\Program;
 use App\Models\Project;
 use App\Models\Province;
 use App\Models\SpecificCategory;
-use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\ComplaintExport;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 class ComplaintController extends Controller
@@ -42,15 +43,14 @@ class ComplaintController extends Controller
      */
     public function create()
     {
-        $broad_category = BroadCategory::all();
-        $specific_category = SpecificCategory::all();
-        $programs = Program::all();
-        $projects = Project::all();
-        $province = Province::all()->pluck('province_name', 'id');
-        $district = District::all()->pluck('district_name', 'id');
+        $broadCategories = BroadCategory::all();
+        $specificCategory = SpecificCategory::all();
+        $programs = Program::all('program_name', 'id');
+        $projects = Project::all('project_name', 'id');
+        $provinces = Province::all()->all('province_name', 'id');
 
         return view('complaint.create',
-            compact('broad_category', 'specific_category', 'programs', 'projects', 'province', 'district'));
+            compact('broadCategories', 'specificCategory', 'programs', 'projects', 'provinces'));
     }
 
     public function districts($id)
@@ -61,27 +61,9 @@ class ComplaintController extends Controller
     }
 
     //this function store data from form to database
-    public function store(Request $request)
+    public function store(ComplaintRequest $request)
     {
 
-        $request->validate([
-            'caller_name'       => "required|max:15",
-            'tel_no_received'   => "required|numeric",
-            'gender'            => "required",
-            'received_date'     => "required|date",
-            'status'            => "required",
-            'quarter'           => "required",
-            'referred_to'       => "required",
-            'broad_category'    => "required",
-            'specific_category' => "required",
-            'received_by'       => "required",
-            'close_date'        => "required|date",
-            'project_name'      => "required",
-            'program_name'      => "required",
-            'description'       => "required",
-            'province'          => 'required',
-            'district'          => 'required'
-        ]);
         $file = $request->file('beneficiary_file');
 
         //stor user data in database
@@ -203,8 +185,9 @@ class ComplaintController extends Controller
 
         return back();
     }
+
     public function export()
     {
-      return Excel::download(new ComplaintExport(),'Complaint Report.xlsx');
+        return Excel::download(new ComplaintExport(), 'Complaint Report.xlsx');
     }
 }

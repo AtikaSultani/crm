@@ -11,9 +11,14 @@ jQuery(document).ready(() => {
         $('#forget-password').toggle()
     });
 
-
-    flatpickr('.datepicker-here', {
-        dateFormat: 'Y-m-d'
+    // Select province
+    $('select#province').on('change', function () {
+        $.ajax({
+            url: `/provinces/${$(this).val()}/districts`,
+            success: function (view) {
+                $('select#district').html(view)
+            }
+        });
     });
 });
 

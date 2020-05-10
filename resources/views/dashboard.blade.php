@@ -6,12 +6,12 @@
         {!! $province->container() !!}
     </div>
 
-    <div class="my-5 flex items-center">
-        <div class="w-full mx-5">
+    <div class="my-5 flex items-center flex-wrap">
+        <div class="w-full md:1/2 mx-5">
             {!! $category->container() !!}
         </div>
 
-        <div class="w-full mx-5">
+        <div class="w-full w-1/2 mx-5">
             {!! $gender->container() !!}
         </div>
     </div>

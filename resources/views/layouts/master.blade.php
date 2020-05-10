@@ -5,7 +5,7 @@
     {{-- Style files --}}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link href="{{ asset('css/datepicker.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
 </head>
@@ -22,7 +22,7 @@
 
             <!-- Page title -->
             <div class="flex items-center">
-                <img src="{{ url('/images/menu-bar.svg') }}" class="h-4 toggle-menu-bar md:hidden ease-in duration-700"
+                <img src="{{ url('/images/menu-bar.svg') }}" class="h-4 toggle-menu-bar md:hidden"
                      alt="">
                 <p class="text-gray-800 text-lg ml-2 font-semibold">@yield('page-title')</p>
             </div>
@@ -57,7 +57,8 @@
 
 {{-- scripts--}}
 <script src="{{ asset('js/jquery.min.js')}}"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="{{ asset('js/datepicker.js') }}"></script>
+<script src="{{ asset('js/i18n/datepicker.en.js') }}"></script>
 @yield('page-level-js')
 <script src="{{ asset('/js/scripts.js') }}"></script>
 </body>
