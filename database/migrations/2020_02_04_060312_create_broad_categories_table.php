@@ -16,7 +16,7 @@ class CreateBroadCategoriesTable extends Migration
     {
         Schema::create('broad_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('broad_cat_name');
+            $table->string('category_name');
             $table->timestamps();
         });
     }

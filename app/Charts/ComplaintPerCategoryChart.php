@@ -48,7 +48,7 @@ class ComplaintPerCategoryChart extends AppChart
      */
     private function categoryNames()
     {
-        return BroadCategory::all()->pluck('broad_cat_name');
+        return BroadCategory::all()->pluck('category_name');
     }
 
     /**
