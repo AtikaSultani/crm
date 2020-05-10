@@ -21,12 +21,12 @@
         <p class="text-gray-400 text-base ml-2">Complaints</p>
     </a>
 
-    <a class="hover:bg-blue-lighter flex items-center w-full p-1 rounded my-2 inline-block" href="#">
+    <a class="hover:bg-blue-lighter flex items-center w-full p-1 rounded my-2 inline-block" href="{{ url('/projects') }}">
         <img src="{{ url('/images/project-icon.png') }}" class="w-5" alt="">
         <p class="text-gray-400 text-base ml-2">Projects</p>
     </a>
 
-    <a class="hover:bg-blue-lighter flex items-center w-full p-1 rounded my-2 inline-block" href="#">
+    <a class="hover:bg-blue-lighter flex items-center w-full p-1 rounded my-2 inline-block" href="{{ url('/programs') }}">
         <img src="{{ url('/images/program-icon.png') }}" class="w-5" alt="">
         <p class="text-gray-400 text-base ml-2">Programs</p>
     </a>

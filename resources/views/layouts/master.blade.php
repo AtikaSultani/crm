@@ -24,7 +24,7 @@
             <div class="flex items-center">
                 <img src="{{ url('/images/menu-bar.svg') }}" class="h-4 toggle-menu-bar md:hidden ease-in duration-700"
                      alt="">
-                <p class="text-gray-800 text-lg ml-2 font-semibold">@yield('page-title', 'Dashboard')</p>
+                <p class="text-gray-800 text-lg ml-2 font-semibold">@yield('page-title')</p>
             </div>
 
             <!-- Avatar -->

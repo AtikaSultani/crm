@@ -10,7 +10,7 @@ class ProgramController extends Controller
 
     public function index()
     {
-        $data = Program::all();
+        $data = Program::paginate(10);
 
         return view("programs.index", compact('data'));
     }

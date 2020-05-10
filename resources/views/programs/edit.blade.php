@@ -1,8 +1,9 @@
-@extends('master')
-@section('title')
-CRM Registration
-@stop
-@section('main_content')
+@extends('layouts.master')
+@section('title', 'Create Complaint')
+@section('page-title')
+<h1>Add New Program</h1>
+@endsection
+@section('content')
    <div class="row">
 
                <div class="col-lg-12">

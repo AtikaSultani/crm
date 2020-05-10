@@ -1,25 +1,13 @@
 @extends('layouts.master')
 @section('title', 'Create Complaint')
-@section('page-title', 'New Complaint')
+@section('page-title')
+<h>Add New Complaint</h>
+@endsection
 @section('content')
     <div class="row">
-        <div class="col-lg-12">
-            <h3 class="page-header"><i class=""></i>Hotline - Beneficiary Feedback and Complaint Tracking Database</h3>
-            <ol class="breadcrumb">
-                <li><i class="fa fa-home"></i><a href="/crm">Home</a></li>
-                <li><i class="fa fa-plus"></i>CRM Registeration</li>
-                <div style="float:right;">
-                    <i class="fa fa-calendar"></i>
-                    <span><?php echo date('l j F Y'); ?></span>
-                </div>
-            </ol>
-        </div>
+
         <section class="panel">
-            <header class="panel-heading">
-                <strong>
-                    CRM Registration
-                </strong>
-            </header>
+
             <div class="panel-body">
                 <div class="form">
                     <form method="POST" action="{{url('complaints') }}" class="form-horizontal"
@@ -371,28 +359,28 @@
 
         <!-- javascripts -->
         <script type="text/javascript">
-            // $(document).ready(function () {
-            //     $('select[name="province"]').on('change', function () {
-            //         var province_id = $(this).val();
-            //         if (province_id) {
-            //             $.ajax({
-            //                 url: '/home/district/' + province_id,
-            //                 type: 'GET',
-            //                 datatype: 'json',
-            //                 success: function (data) {
-            //                     console.log(data);
-            //                     $('select[name="district"]').empty();
-            //                     $.each(data, function (key, value) {
-            //                         $('select[name="district"]')
-            //                             .append('<option value="' + key + '">' + value + '</option>');
-            //                     });
-            //                 }
-            //             });
-            //         } else {
-            //             $('select[name="district"]').empty();
-            //         }
-            //     });
-            // });
+            $(document).ready(function () {
+                $('select[name="province"]').on('change', function () {
+                    var province_id = $(this).val();
+                    if (province_id) {
+                        $.ajax({
+                            url: '/ComplaintController/district/' + province_id,
+                            type: 'GET',
+                            datatype: 'json',
+                            success: function (data) {
+                                console.log(data);
+                                $('select[name="district"]').empty();
+                                $.each(data, function (key, value) {
+                                    $('select[name="district"]')
+                                        .append('<option value="' + key + '">' + value + '</option>');
+                                });
+                            }
+                        });
+                    } else {
+                        $('select[name="district"]').empty();
+                    }
+                });
+            });
 
 
         </script>

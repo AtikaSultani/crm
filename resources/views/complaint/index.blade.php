@@ -1,4 +1,7 @@
 @extends('layouts.master')
+@section('page-title')
+<h>COMPLAINTS LIST</h>
+@endsection
 @section('content')
 
     <div class="flex items-center justify-end my-3">

@@ -107,16 +107,7 @@
 
 
     <header class="header dark-bg">
-      <div class="toggle-nav">
-        <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
-      </div>
-
-      <!--logo start-->
-      <a href="index.html" class="logo">Cor <span class="lite">Daid</span></a>
-      <!--logo end-->
-
-
-      <div class="top-nav notification-row">
+    <div class="top-nav notification-row">
         <!-- notificatoin dropdown start-->
         <ul class="nav pull-right top-menu">
 
@@ -160,20 +151,10 @@
           <li class="active">
             <a class="" href="{{ url('/') }}">
                           <i class="icon_house_alt"></i>
-                          <span>Dashboard</span>
+                          <span></span>
                       </a>
           </li>
-          <li class="sub-menu">
-            <a href="javascript:void(0);" class="">
-                          <i class="icon_document_alt"></i>
-                          <span>CRM</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-            <ul class="sub">
-              <li><a class="" href="{{ url('/complaints/create') }}">CRM Registration</a></li>
-              <li><a class="" href="{{ url('/complaints') }}">CRM list</a></li>
-            </ul>
-          </li>
+
 
 
           <li>

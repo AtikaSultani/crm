@@ -1,29 +1,16 @@
-@extends('master')
-@section('title')
-CRM Registration
-@stop
-@section('main_content')
-   <div class="row">
 
-               <div class="col-lg-12">
-              <h3 class="page-header"><i class=""></i>Hotline - Beneficiary Feedback and Complaint Tracking Database</h3>
-                <ol class="breadcrumb" >
-                  <li><i class="fa fa-home"></i><a href="/projects">Projects</a></li>
-                  <li><i class="fa fa-plus"></i>Add New Project</li>
-                    <div style="float:right;" >
-                    <i class="fa fa-calendar"></i>
-                  <span><?php echo date('l j F Y'); ?></span>
-                    </div>
-                </ol>
-          </div>
-            <section class="panel">
-              <header class="panel-heading">
-                <strong>
-                  Add New Project
-               </strong>
-              </header>
-              <div class="panel-body">
-                <div class="form">
+@extends('layouts.master')
+@section('title', 'Create Complaint')
+@section('page-title')
+<h>Add New Project</h>
+@endsection
+@section('content')
+    <div class="row">
+
+        <section class="panel">
+
+            <div class="panel-body">
+              <div class="form">
                     <form  method="POST"  action="{{url('projects') }}" class="form-horizontal" >
                         @csrf
                         <input type="hidden" name="student_type" value="3">

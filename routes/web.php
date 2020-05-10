@@ -27,4 +27,4 @@ Route::resource('/programs', 'ProgramController');
 Route::resource('/projects', 'ProjectController');
 
 // districts
-Route::get('/home/district/{id}', 'ComplaintController@districts');
+Route::get('/ComplaintController/district/{id}', 'ComplaintController@districts');
