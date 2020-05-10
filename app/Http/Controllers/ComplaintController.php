@@ -207,4 +207,11 @@ class ComplaintController extends Controller
     {
       return Excel::download(new ComplaintExport(),'Complaint Report.xlsx');
     }
+
+
+    public function details($id)
+    {
+      $data=Complaint::find($id);
+      return view('complaint.detail',compact('data','id'));
+    }
 }
