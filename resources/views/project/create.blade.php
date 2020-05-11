@@ -1,265 +1,180 @@
-
 @extends('layouts.master')
-@section('title', 'Create Complaint')
+@section('title', 'Create Project')
 @section('page-title')
-<h>Add New Project</h>
+    <h>Add New Project</h>
 @endsection
 @section('content')
-    <div class="row">
-
-        <section class="panel">
-
-            <div class="panel-body">
-              <div class="form">
-                    <form  method="POST"  action="{{url('projects') }}" class="form-horizontal" >
+              <form  method="POST"  action="{{url('projects') }}" id="create-form" >
                         @csrf
-                        <input type="hidden" name="student_type" value="3">
-                            <div class="form-body">
+                        <div class="border-b">
+                            <div class="flex flex-col md:flex-row justify-between w-full my-3">
+                                <div class="w-full md:w-2/5 flex-shrink-0">
+                                    <p class="text-gray-700 text-lg font-medium">Project Information</p>
+                                    <p class="text-gray-600 leading-relaxed my-3 text-sm">
+                                        Provide the Project name, NGO name, Start Date, End Date, Donors and Activities of project.
+                                    </p>
+                                </div>
+                                <div class="w-full  md:w-3/5 mx-0 md:mx-10">
 
-                                <div class="tab-content" id=''>
+                                    {{-- Project name --}}
+                                    <div class="flex items-start">
+                                      <div class="mb-4 w-full md:w-auto">
+                                        <div class="mb-4">
+                                            <label class="block mb-2 text-sm font-normal text-gray-600" for="title">Project Name</label>
+                                            <input type="text" class="w-full md:w-auto" name="project_name"/>
+                                        </div>
+                                      </div>
 
-                                    <div class="tab-pane active" id="">
-                                        <div class="row reg-content-wrapper">
-
-                                            <div class="col-sm-6 reg-right-content-wrapper">
-                                                <div class="form-group">
-                                                    <div>
-                                                    <label class="control-label col-md-4"> ProjectName <span  >*</span>
-                                                    </label>
-                                                    <div class="col-md-6">
-                                                        <input type="text"  class="form-control " name="project_name"/>
-                                                        @error('project_name')
-                                                        <div style="color:red;">
-                                                          {{$message}}
-                                                        </div>
-                                                        @enderror
-                                                    </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="control-label col-md-4"> NGO Name <span  >*</span>
-                                                    </label>
-                                                    <div class="col-md-6">
-                                                        <input type="text" class="form-control" name="NGO_name"/>
-                                                        @error('NGO_name')
-                                                        <div style="color:red;">
-                                                          {{$message}}
-                                                        </div>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-
-                                                  <div class="form-group">
-                                                      <label class="control-label col-md-4"> StartDate <span >*</span>
-                                                      </label>
-                                                      <div class="col-md-6">
-                                                          <input type="date" id="picker" class="form-control" name="start_date" />
-                                                          @error('start_date')
-                                                          <div style="color:red;">
-                                                            {{$message}}
-                                                          </div>
-                                                          @enderror
-                                                      </div>
-                                                  </div>
-                                                  <div class="form-group">
-                                                      <label class="control-label col-md-4"> EndtDate <span  >*</span>
-                                                      </label>
-                                                      <div class="col-md-6">
-                                                          <input type="date" id="picker" class="form-control" name="end_date"/>
-                                                          @error('end_date')
-                                                          <div style="color:red;">
-                                                            {{$message}}
-                                                          </div>
-                                                          @enderror
-                                                      </div>
-                                                  </div>
-                                                  <div class="form-group">
-                                                      <label class="control-label col-md-4"> Donors <span  >*</span>
-                                                      </label>
-                                                      <div class="col-md-6">
-                                                          <input type="text" class="form-control" name="donors"/>
-                                                          @error('donors')
-                                                          <div style="color:red;">
-                                                            {{$message}}
-                                                          </div>
-                                                          @enderror
-                                                      </div>
-                                                  </div>
-                                                <div class="form-group">
-                                                    <label class="control-label col-md-4"> Activities<span >*</span>
-                                                    </label>
-                                                    <div class="col-md-6">
-                                                      <textarea type="text"  class="form-control " name="activities" >
-                                                      </textarea>
-                                                      @error('activities')
-                                                      <div style="color:red;">
-                                                        {{$message}}
-                                                      </div>
-                                                      @enderror
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="control-label col-md-4">
-                                                        DirectBeneficiaries
-
-                                                    </label>
-                                                    <div class="col-md-6">
-                                                        <input type="text"  class="form-control " name="direct_beneficiaries" />
-                                                        @error('direct_beneficiaries')
-                                                        <div style="color:red;">
-                                                          {{$message}}
-                                                        </div>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <div class="col-sm-6" style="direction: ltr">
-
-
-                                              <div class="form-group">
-                                                  <label class="control-label col-md-4">
-                                                      IndirectBeneficiaries
-
-                                                  </label>
-                                                  <div class="col-md-6">
-                                                      <input type="text"  class="form-control " name="indirect_beneficiaries"/>
-                                                      @error('indirect_beneficiaries')
-                                                      <div style="color:red;">
-                                                        {{$message}}
-                                                      </div>
-                                                      @enderror
-                                                  </div>
-                                              </div>
-                                              <div class="form-group">
-                                                  <label class="control-label col-md-4">OnBudjet
-                                                  </label>
-                                                  <div class="col-md-6">
-                                                      <input type="text" class="form-control" name="on_budget"/>
-
-                                                  </div>
-                                              </div>
-                                              <div class="form-group">
-                                                  <label class="control-label col-md-4">OffBudjet
-                                                  </label>
-                                                  <div class="col-md-6">
-                                                      <input type="text" class="form-control" name="off_budget"/>
-                                                  </div>
-                                              </div>
-                                              <div class="form-group">
-                                                  <label class="control-label col-md-4">Budjet
-                                                  </label>
-                                                  <div class="col-md-6">
-                                                      <input type="text" class="form-control" name="budget"/>
-                                                  </div>
-                                              </div>
-                                              <div class="form-group">
-                                                  <label class="control-label col-md-4">Province <span >*
-                                                 </span>
-                                                  </label>
-                                                  <div class="col-md-6">
-                                                      <select name="province" id="province" class="form-control">
-                                                          <option value="">Please Select...</option>
-                                                            @foreach($province as $key=>$value)
-                                                                <option value="{{$key}}">{{$value}}</option>
-                                                              @endforeach
-                                                      </select>
-                                                      @error('province')
-                                                      <div style="color:red;">
-                                                        {{$message}}
-                                                      </div>
-                                                      @enderror
-                                                  </div>
-                                              </div>
-                                              <div class="form-group">
-                                                  <label class="control-label col-md-4">District <span  >*
-                                               </span>
-                                                  </label>
-                                                  <div class="col-md-6">
-                                                      <select name="district" id="district" class="form-control">
-                                                          <option value="">Please Select...</option>
-                                                              <option value=""></option>>
-                                                      </select>
-                                                      @error('district')
-                                                      <div style="color:red;">
-                                                        {{$message}}
-                                                      </div>
-                                                      @enderror
-                                                  </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="control-label col-md-4">Project Manager <span  >*</span>
-                                                    </label>
-                                                    <div class="col-md-6">
-                                                        <input type="text" class="form-control" name="project_manager"/>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="control-label col-md-4">Program name
-                                                    </label>
-                                                    <div class="col-md-6">
-                                                      <select name="program_name" id="specific_category" class="form-control"   >
-                                                          <option value="">Please select</option>
-                                                          @foreach($programs as $program)
-                                                             <option value="{{$program->id}}">{{$program->program_name}}</option>
-                                                          @endforeach
-                                                      </select>
-                                                      @error('program_name')
-                                                      <div style="color:red;">
-                                                        {{$message}}
-                                                      </div>
-                                                      @enderror
-                                                    </div>
-                                                  </div>
-
-                                            </div>
+                                    {{-- NGO Name --}}
+                                    <div class="mb-4 mx-5  w-full md:w-auto">
+                                      <div class="mb-4">
+                                          <label class="block mb-2 text-sm font-normal text-gray-600" for="title">NGO Name</label>
+                                          <input type="text" class="w-full md:w-auto" name="NGO_name"/>
+                                      </div>
+                                  </div>
+                                  </div>
+                                      {{-- Star Date --}}
+                                      <div class="flex items-start">
+                                        <div class="mb-4 w-full md:w-auto">
+                                          <div class="mb-4">
+                                              <label class="block mb-2 text-sm font-normal text-gray-600" for="title">Start Date</label>
+                                              <input type="date" class="w-full md:w-auto" name="start_date"/>
                                           </div>
                                         </div>
-                                        <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+
+                                    {{-- end Date --}}
+                                      <div class="mb-4 mx-5  w-full md:w-auto">
+                                          <div class="mb-4">
+                                              <label class="block mb-2 text-sm font-normal text-gray-600" for="title">End Date</label>
+                                              <input type="date" class="w-full md:w-auto" name="end_date"/>
+                                          </div>
                                       </div>
+                                    </div>
+                                    {{-- Donors --}}
+                                    <div class="flex items-start">
+                                      <div class="mb-4 w-full md:w-auto">
+                                        <div class="mb-4">
+                                            <label class="block mb-2 text-sm font-normal text-gray-600" for="title">Donors</label>
+                                            <input type="text" class="w-full md:w-auto" name="donors"/>
+                                        </div>
+                                      </div>
+                                      {{-- budjet --}}
+                                      <div class="mb-4 mx-5  w-full md:w-auto">
+                                          <div class="mb-4">
+                                              <label class="block mb-2 text-sm font-normal text-gray-600" for="title">Budjet</label>
+                                              <input type="text" class="w-full md:w-auto" name="budget"/>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    {{-- Direct Beneficiaries --}}
+                                    <div class="flex items-start">
+                                      <div class="mb-4 w-full md:w-auto">
+                                        <div class="mb-4">
+                                            <label class="block mb-2 text-sm font-normal text-gray-600" for="title">Direct Beneficiaries</label>
+                                            <input type="number" class="w-full md:w-auto" name="direct_beneficiaries"/>
+                                        </div>
+                                      </div>
+                                    {{-- Indirect Beneficiaries --}}
+                                    <div class="mb-4 mx-5  w-full md:w-auto">
+                                        <div class="mb-4">
+                                            <label class="block mb-2 text-sm font-normal text-gray-600" for="title">Indirect Beneficiaries</label>
+                                            <input type="number" class="w-full md:w-auto" name="indirect_beneficiaries"/>
+                                        </div>
+                                    </div>
+                                  </div>
+
                                 </div>
                             </div>
-                            <button style="margin-left:80px" type="submit" class="btn btn-primary">Submit</button>
-                          </form>
-                    </div>
-                </div>
-            </section>
+                        </div>
 
-  <!-- container section end -->
+                        <div class="border-b">
+                            <div class="flex flex-col md:flex-row justify-between w-full my-3">
+                                <div class="w-full md:w-2/5 flex-shrink-0">
+                                    <p class="text-gray-700 text-lg font-medium">Category information</p>
+                                    <p class="text-gray-600 leading-relaxed my-3 text-sm">
+                                        Provide the statue, quarter and category information of complaint.
+                                        <br>
+                                        Accurate data in category can help for more accurate report.
+                                    </p>
+                                </div>
+                                <div class="w-full  md:w-3/5 mx-0 md:mx-10">
 
-  <!-- javascripts -->
-       <script type="text/javascript">
-           $(document).ready(function() {
-             $('select[name="province"]').on('change',function(){
-                var province_id=$(this).val();
-                if(province_id)
-                {
-                    $.ajax({
-                        url:'/home/district/'+province_id,
-                        type:'GET',
-                        datatype:'json',
-                        success:function (data) {
-                            console.log(data);
-                            $('select[name="district"]').empty();
-                            $.each(data,function(key,value){
-                                $('select[name="district"]')
-                                .append('<option value="'+key+'">' + value +'</option>');
-                            });
-                        }
-                    });
-                }
-                else{
-                     $('select[name="district"]').empty();
-                 }
-             });
-          } );
+                                    {{-- project and program --}}
+                                    <div class="flex items-start">
+                                    {{-- on budjet --}}
+                                    <div class="flex items-start">
+                                      <div class="mb-4 w-full md:w-auto">
+                                        <div class="mb-4">
+                                            <label class="block mb-2 text-sm font-normal text-gray-600" for="title">OnBudjet</label>
+                                            <input type="text" class="w-full md:w-auto" name="on_budget"/>
+                                        </div>
+                                      </div>
+                                    {{-- off budjet --}}
+                                    <div class="mb-4 mx-5  w-full md:w-auto">
+                                        <div class="mb-4">
+                                            <label class="block mb-2 text-sm font-normal text-gray-600" for="title">OffBudjet</label>
+                                            <input type="text" class="w-full md:w-auto" name="off_budget"/>
+                                        </div>
+                                    </div>
+                                  </div>
+
+                                    {{-- Localtion --}}
+                                    <div class="flex items-start">
+                                        {{-- Province --}}
+                                        <div class="flex items-start">
+                                              <div class="mb-4 w-full md:w-auto">
+                                                  <label class="block mb-2 text-sm font-normal text-gray-600">Province</label>
+                                                  <select name="province_id" class="w-full md:w-auto" id="province">
+                                                      <option value="">Select Province</option>
+                                                      @foreach($province as $key)
+                                                          <option value="{{$key->id}}">{{$key->province_name}}</option>
+                                                      @endforeach
+                                                  </select>
+                                              </div>
+                                            </div>
+
+                                        {{-- Distict --}}
+                                        <div class="mb-4 mx-5  w-full md:w-auto">
+                                            <label class="block mb-2 text-sm font-normal text-gray-600">District</label>
+                                            <select name="district" class="w-full md:w-auto" id="district">
+                                                <option value="">Select District</option>
+                                            </select>
+                                        </div>
+                                      </div>
+                                      {{-- Project Manager --}}
+                                      <div class="mb-4">
+                                          <label class="block mb-2 text-sm font-normal text-gray-600" for="title">Project Manager</label>
+                                          <input type="text" class="w-full md:w-auto" name="project_manager"/>
+                                      </div>
+
+                                      {{-- Program --}}
+                                      <div class="mb-4 mx-5  w-full md:w-auto">
+                                          <label class="block mb-2 text-sm font-normal text-gray-600">Program</label>
+                                          <select name="program_name" class="w-full md:w-auto">
+                                              <option value="">Select Program</option>
+                                              @foreach($programs as $program)
+                                                  <option value="{{ $program->id }}">{{ $program->program_name }}</option>
+                                              @endforeach
+                                          </select>
+                                      </div>
+                                      {{-- Activities --}}
+                                      <div class="mb-4">
+                                          <label class="block mb-2 text-sm font-normal text-gray-600" for="title">Activities</label>
+                                          <textarea type="text"  class="w-full md:w-auto " name="activities" >
+                                          </textarea>
+                                      </div>
+
+                                      <div class="flex flex-col md:flex-row justify-between w-full my-3">
+                                          <div class="flex-shrink-0 w-full md:w-2/5"></div>
+                                          <div class="w-full md:w-3/5  mx-0 md:mx-10">
+                                              <button class="w-full md:w-auto bg-blue text-white px-3 py-1 rounded text-base">Create Project</button>
+                                          </div>
+                                      </div>
+                                  </form>
+                              @stop
 
 
-
-
-       </script>
-
-@endsection
+                              @section('page-level-js')
+                                  <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+                                  {!! JsValidator::formRequest('App\Http\Requests\ComplaintRequest', '#create-form'); !!}
+                              @stop

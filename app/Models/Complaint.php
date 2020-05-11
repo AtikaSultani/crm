@@ -19,7 +19,7 @@ class Complaint extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function boardCategory()
+    public function broadCategory()
     {
         return $this->belongsTo(BroadCategory::class);
     }

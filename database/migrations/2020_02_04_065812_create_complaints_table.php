@@ -26,10 +26,9 @@ class CreateComplaintsTable extends Migration
             $table->string('beneficiary_file')->nullable();
             $table->unsignedBigInteger('broad_category_id');
             $table->unsignedBigInteger('specific_category_id');
-            $table->string('received_by');
             $table->string('person_who_shared_action')->nullable();
             $table->date('close_date');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->unsignedBigInteger('province_id');
             $table->unsignedBigInteger('district_id');
             $table->string('village')->nullable();

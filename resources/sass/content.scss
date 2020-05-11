@@ -1,0 +1,15 @@
+input, select{
+  @apply rounded px-3 py-2 text-sm leading-tight text-gray-700 border border-gray-500 appearance-none;
+}
+
+input:hover{
+  @apply border-blue;
+}
+
+input:focus{
+  @apply outline-none border-blue
+}
+
+select{
+  @apply bg-white outline-none;
+}

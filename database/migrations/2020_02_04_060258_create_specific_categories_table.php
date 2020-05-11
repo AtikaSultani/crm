@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateSpecificCategoriesTable extends Migration
 {
+
     /**
      * Run the migrations.
      *
@@ -15,7 +16,7 @@ class CreateSpecificCategoriesTable extends Migration
     {
         Schema::create('specific_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('specifice_cat_name');
+            $table->string('category_name');
             $table->timestamps();
         });
     }

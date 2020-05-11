@@ -25,8 +25,8 @@ class ProjectController extends Controller
 
     public function create()
     {
-        $province = Province::all()->pluck('province_name', 'id');
-        $district = District::all()->pluck('district_name', 'id');
+        $province = Province::all();
+        $district = District::all();
         $programs = Program::all();
 
         return view('project.create', compact('province', 'district', 'programs'));

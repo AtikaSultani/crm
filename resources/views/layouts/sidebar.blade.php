@@ -1,5 +1,5 @@
 <!-- sidebar -->
-<div class="h-screen w-1/6 hidden md:block ease-in duration-700 sticky top-0 px-5"
+<div class="h-screen w-1/6 hidden md:block sticky top-0 px-5"
      id="sidebar">
 
     {{-- sidebar logo --}}
@@ -12,7 +12,7 @@
     <a class=" @if(request()->is('/')) bg-blue-lighter @endif flex items-center w-full p-1 rounded my-1 mt-10 inline-block"
        href="{{ url('/') }}">
         <img src="{{ url('/images/dashboard-icon.svg') }}" class="w-5" alt="">
-        <p class="text-yellow text-base ml-2">Dashboard</p>
+        <p class="text-gray-400 text-base ml-2">Dashboard</p>
     </a>
 
     <a class="@if(request()->is('complaints*')) bg-blue-lighter @endif hover:bg-blue-lighter flex items-center w-full p-1 rounded my-2 inline-block"

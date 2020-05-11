@@ -46,8 +46,8 @@ class ComplaintController extends Controller
         $specific_category = SpecificCategory::all();
         $programs = Program::all();
         $projects = Project::all();
-        $province = Province::all()->pluck('province_name', 'id');
-        $district = District::all()->pluck('district_name', 'id');
+        $province = Province::all();
+        $district = District::all();
 
         return view('complaint.create',
             compact('broad_category', 'specific_category', 'programs', 'projects', 'province', 'district'));
@@ -64,24 +64,6 @@ class ComplaintController extends Controller
     public function store(Request $request)
     {
 
-        $request->validate([
-            'caller_name'       => "required|max:15",
-            'tel_no_received'   => "required|numeric",
-            'gender'            => "required",
-            'received_date'     => "required|date",
-            'status'            => "required",
-            'quarter'           => "required",
-            'referred_to'       => "required",
-            'broad_category'    => "required",
-            'specific_category' => "required",
-            'received_by'       => "required",
-            'close_date'        => "required|date",
-            'project_name'      => "required",
-            'program_name'      => "required",
-            'description'       => "required",
-            'province'          => 'required',
-            'district'          => 'required'
-        ]);
         $file = $request->file('beneficiary_file');
 
         //stor user data in database
@@ -94,19 +76,19 @@ class ComplaintController extends Controller
             'quarter'                  => $request->quarter,
             'referred_to'              => $request->referred_to,
             'beneficiary_file'         => $file,
-            'broad_category_id'        => $request->broad_category,
-            'specific_category_id'     => $request->specific_category,
-            'received_by'              => $request->received_by,
+            'broad_category_id'        => $request->broad_category_id,
+            'specific_category_id'     => $request->specific_category_id,
             'person_who_shared_action' => $request->person_who_shared_action,
             'close_date'               => $request->close_date,
-            'project_id'               => $request->project_name,
-            'program_id'               => $request->program_name,
+            'project_id'               => $request->project_id,
+            'program_id'               => $request->program_id,
             'description'              => $request->description,
-            'province_id'              => $request->province,
-            'district_id'              => $request->district,
+            'province_id'              => $request->province_id,
+            'district_id'              => $request->district_id,
             'village'                  => $request->village,
             'user_id'                  => $request->user_id
         ]);
+
         if ($request->file('beneficiary_file') == null) {
             $file = "";
         } else {
@@ -198,6 +180,7 @@ class ComplaintController extends Controller
 
     Public function destroy($id)
     {
+      return "welcom";exit;
         $user = Complaint::findOrFail($id);
         $user->delete();
 

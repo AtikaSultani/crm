@@ -14,18 +14,19 @@ class SpecificCategoryTableSeeder extends Seeder
      */
     public function run()
     {
-        SpecificCategory::create(['specifice_cat_name' => 'Quantity of distributed items or cash']);
-        SpecificCategory::create(['specifice_cat_name' => 'Quality of distributed items']);
-        SpecificCategory::create(['specifice_cat_name' => ' Long waiting time at  distribution point']);
-        SpecificCategory::create(['specifice_cat_name' => 'Lack of information about programme']);
-        SpecificCategory::create(['specifice_cat_name' => 'Issues during targeting process (corruption, favoritism…)']);
-        SpecificCategory::create(['specifice_cat_name' => 'Distrust - between staff and beneficiary']);
-        SpecificCategory::create(['specifice_cat_name' => 'Disrespect & arrogance of Cordaid or partner staff']);
-        SpecificCategory::create(['specifice_cat_name' => 'Inaccessible assistance']);
-        SpecificCategory::create(['specifice_cat_name' => 'Broken promises']);
-        SpecificCategory::create(['specifice_cat_name' => 'Unaddressed grievances']);
-        SpecificCategory::create(['specifice_cat_name' => 'Abuse of power & inappropriate behavior of Cordaid or partner staff']);
-        SpecificCategory::create(['specifice_cat_name' => 'Allegation of financial fraud (by Cordaid or partner staff or others)']);
-        SpecificCategory::create(['specifice_cat_name' => 'Other (please specify)']);
+        SpecificCategory::create(['category_name' => 'Quantity of distributed items or cash']);
+        SpecificCategory::create(['category_name' => 'Quality of distributed items']);
+        SpecificCategory::create(['category_name' => ' Long waiting time at  distribution point']);
+        SpecificCategory::create(['category_name' => 'Lack of information about programme']);
+        SpecificCategory::create(['category_name' => 'Issues during targeting process (corruption, favoritism…)']);
+        SpecificCategory::create(['category_name' => 'Distrust - between staff and beneficiary']);
+        SpecificCategory::create(['category_name' => 'Disrespect & arrogance of Cordaid or partner staff']);
+        SpecificCategory::create(['category_name' => 'Inaccessible assistance']);
+        SpecificCategory::create(['category_name' => 'Broken promises']);
+        SpecificCategory::create(['category_name' => 'Unaddressed grievances']);
+        SpecificCategory::create(['category_name' => 'Abuse of power & inappropriate behavior of Cordaid or partner staff']);
+        SpecificCategory::create(['category_name' => 'Allegation of financial fraud (by Cordaid or partner staff or others)']);
+        SpecificCategory::create(['category_name' => 'Has cordaid beneficiary card but receive no assistance']);
+        SpecificCategory::create(['category_name' => 'Other (please specify)']);
     }
 }
