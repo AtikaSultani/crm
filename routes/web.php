@@ -20,13 +20,14 @@ Route::get('/', 'DashboardController');
 // complaints routes
 Route::resource('/complaints', 'ComplaintController');
 Route::get('/complaint-export','ComplaintController@export');
-Route::get('/ComplaintController/details/{id}','ComplaintController@details');
+Route::get('/ComplaintController/ComplaintDetail/{id}','ComplaintController@details');
 
 // Program routes
 Route::resource('/programs', 'ProgramController');
 
 // project routes
 Route::resource('/projects', 'ProjectController');
+Route::get('/ProjectController/ProjectDetail/{id}','ProjectController@ProjectDetail');
 
 // districts
 Route::get('/provinces/{id}/districts', 'ProvinceController@districts');

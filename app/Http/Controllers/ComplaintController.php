@@ -51,20 +51,12 @@ class ComplaintController extends Controller
         $provinces = Province::all();
 
         return view('complaint.create',
-            compact('broadCategories', 'specificCategory', 'programs', 'projects', 'provinces'));
+        compact('broadCategories', 'specificCategory', 'programs', 'projects', 'provinces'));
     }
-
-    public function districts($id)
+//this function store data to database
+    public function store( $request)
     {
-        $districts = District::where('province_id', $id)->pluck('district_name', 'id');
-
-        return $districts;
-    }
-
-    //this function store data from form to database
-    public function store(ComplaintRequest $request)
-    {
-
+       return "welcom";exit;
         $file = $request->file('beneficiary_file');
 
         //stor user data in database
@@ -108,8 +100,8 @@ class ComplaintController extends Controller
     {
         $data = Complaint::find($id);
 
-        $broad_category = broad_category::all();
-        $specific_category = Specific_category::all();
+        $broad_category = BroadCategory::all();
+        $specific_category = SpecificCategory::all();
         $programs = Program::all();
         $projects = Project::all();
         $provinces = Province::all('id', 'province_name');
@@ -118,7 +110,7 @@ class ComplaintController extends Controller
         $quarters = ['First Quarter', 'Second Quarter', 'Third Quarter', 'Fourth Quarter'];
         $refers = ['DCD/CD', 'Officer', 'Partner', 'PM'];
 
-        return view('edit',
+        return view('Complaint.edit',
             compact('data', 'id', 'broad_category', 'specific_category', 'programs', 'projects', 'provinces',
                 'districts', 'statuses', 'quarters', 'refers'));
     }
@@ -187,6 +179,12 @@ class ComplaintController extends Controller
 
         return back();
     }
+    public function districts($id)
+    {
+        $districts = District::where('province_id', $id)->pluck('district_name', 'id');
+
+        return $districts;
+    }
 
     public function export()
     {
@@ -197,6 +195,6 @@ class ComplaintController extends Controller
     public function details($id)
     {
       $data=Complaint::find($id);
-      return view('complaint.detail',compact('data','id'));
+      return view('complaint.ComplaintDetail',compact('data','id'));
     }
 }
