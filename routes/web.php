@@ -16,10 +16,14 @@ Auth::routes();
 
 
 Route::get('/', 'DashboardController');
+<<<<<<< HEAD
 // <<<<<<< HEAD
 // =======
 Route::get('/complaint-export', 'ComplaintController@export');
 //>>>>>>> a4655ce04dfe04127b25592db92b661ff9d59432
+=======
+Route::get('/complaint-export', 'ComplaintController@export');
+>>>>>>> a4655ce04dfe04127b25592db92b661ff9d59432
 // complaints routes
 Route::resource('/complaints', 'ComplaintController');
 Route::get('/complaint-export','ComplaintController@export');
