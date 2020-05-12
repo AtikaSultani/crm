@@ -43,20 +43,12 @@ class ComplaintController extends Controller
      */
     public function create()
     {
-<<<<<<< HEAD
-        $broad_category = BroadCategory::all();
-        $specific_category = SpecificCategory::all();
-        $programs = Program::all();
-        $projects = Project::all();
-        $province = Province::all();
-        $district = District::all();
-=======
+
         $broadCategories = BroadCategory::all();
         $specificCategory = SpecificCategory::all();
-        $programs = Program::all('program_name', 'id');
-        $projects = Project::all('project_name', 'id');
-        $provinces = Province::all()->all('province_name', 'id');
->>>>>>> a4655ce04dfe04127b25592db92b661ff9d59432
+        $programs = Program::all();
+        $projects = Project::all();
+        $provinces = Province::all();
 
         return view('complaint.create',
             compact('broadCategories', 'specificCategory', 'programs', 'projects', 'provinces'));
