@@ -10,7 +10,7 @@
     <a href="{{ url('/complaints/'.$complaint->id.'/edit') }}">Edit</a>
    </button>
 
-        <button class="text-sm text-white bg-red-darker" onclick="deleteResource({{ $complaint->id }}, '/complaints', event)"> Delete </button>
+        <button style="background-color:#FF0000;padding:4px;" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onclick="deleteResource({{ $complaint->id }}, '/complaints', event)">Delete</button>
 </span>
 
     <div style="margin-top:20px;" class="grid grid-cols-2 divide-x divide-gray-600">
