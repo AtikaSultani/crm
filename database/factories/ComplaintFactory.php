@@ -40,7 +40,6 @@ $factory->define(Complaint::class, function (Faker $faker) {
         'beneficiary_file'         => null,
         'broad_category_id'        => BroadCategory::all()->random()->id,
         'specific_category_id'     => SpecificCategory::all()->random()->id,
-        'received_by'              => $faker->text(5),
         'person_who_shared_action' => $faker->text(5),
         'close_date'               => $faker->date('Y-m-d'),
         'description'              => $faker->text(20),

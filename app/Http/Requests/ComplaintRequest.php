@@ -33,15 +33,15 @@ class ComplaintRequest extends FormRequest
             'village'           => "nullable|min:3|max:200",
             'status'            => "required",
             'quarter'           => "required",
-            'broad_category'    => "required",
+            'broad_category_id'    => "required",
             'program_id'        => "required",
             'project_id'        => "required",
-            'specific_category' => "required",
+            'specific_category_id' => "required",
             'referred_to'       => "required",
             'received_by'       => "required",
             'close_date'        => "required|date",
             'received_date'     => "required|date",
-            'description'       => "required",
+            'description'       => "required_if:specific_category_id,14",
         ];
     }
 
@@ -50,6 +50,7 @@ class ComplaintRequest extends FormRequest
         return [
             'tel_no_received.required' => 'Caller phone number is required.',
             'tel_no_received.regex'    => 'Invalid Caller phone number.',
+            'description.required_if' => 'Please provide extra info about category you selected.'
         ];
     }
 }
