@@ -20,7 +20,6 @@ Route::get('/', 'DashboardController');
 // complaints routes
 Route::resource('/complaints', 'ComplaintController');
 Route::get('/complaint-export','ComplaintController@export');
-Route::get('/ComplaintController/ComplaintDetail/{id}','ComplaintController@details');
 
 // Program routes
 Route::resource('/programs', 'ProgramController');

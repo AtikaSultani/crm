@@ -1,242 +1,211 @@
 @extends('layouts.master')
-@section('title', 'Edit Complaint')
-@section('page-title')
-    <h>Edit Complaint</h>
-@endsection
+@section('title', 'Create Complaint')
+@section('page-title', 'Edit Complaint - '.$complaint->caller_name)
 @section('content')
-<form style="margin-left:300px;" action="{{url('/complaints/'.$id) }}" method="post" id="create-form">
-@csrf
-@method('PUT')
-<!-- Caller information -->
+    <form action="{{ url('/complaints') }}" method="post" id="create-form">
 
-            <div  class="w-full  md:w-3/5 mx-0 md:mx-10">
+        {{-- Calleer information --}}
+        <p class="pt-5 pb-3 text-lg font-semibold text-gray-600">Caller information</p>
+        <div class="w-full bg-gray-100 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-5 rounded-sm gap-5">
+            {{-- Caller name --}}
+            <div class="mb-4">
+                <label for="caller_name">Caller Name</label>
+                <input type="text" id="caller_name" value="{{ $complaint->caller_name }}" name="caller_name"/>
+            </div>
 
-              {{-- Localtion --}}
-              <div class="flex items-start">
-                {{-- Caller name --}}
-              <div  class="mb-4 w-full md:w-auto">
-                    <label class="block mb-2 text-sm font-normal text-gray-600" for="title">Caller Name</label>
-                    <input type="text" class="w-full md:w-auto" id="caller_name" name="caller_name" value="{{$data->caller_name}}"/>
-                </div>
+            {{-- Tell number received --}}
+            <div class="mb-4">
+                <label for="title">Phone number</label>
+                <input type="text" id="tel_no_received" value="{{ $complaint->tel_no_received }}"
+                       name="tel_no_received"/>
+            </div>
 
-                {{-- Tell number received --}}
-                <div class="mb-4 mx-5  w-full md:w-auto">
-                    <label class="block mb-2 text-sm font-normal text-gray-600" for="title">Phone number</label>
-                    <input type="text" class="w-full md:w-auto" id="tel_no_received" name="tel_no_received" value="{{$data->tel_no_received}}"/>
-                </div>
-              </div>
-              <div class="flex items-start">
-                {{-- Recived Date --}}
-              <div  class="mb-4 w-full md:w-auto">
-                    <label class="block mb-2 text-sm font-normal text-gray-600" for="title">Recived Date</label>
-                    <input class="datepicker-here" data-language='en' data-date-format="yyyy-mm-dd" id="dob"  value="{{$data->received_date}}" name="received_date"/>
-                </div>
+            {{-- gender --}}
+            <div class="mb-4">
+                <label for="gender">Gender</label>
+                <select name="gender" id="gender">
+                    <option value="Male" @if($complaint->gender == 'Male') selected @endif>Male</option>
+                    <option value="Female" @if($complaint->gender == 'female') selected @endif>Female</option>
+                </select>
+            </div>
 
-                {{-- close datae --}}
-                <div class="mb-4 mx-5  w-full md:w-auto">
-                    <label class="block mb-2 text-sm font-normal text-gray-600" for="title">Close date</label>
-                    <input class="datepicker-here" data-language='en' data-date-format="yyyy-mm-dd" id="dob"  value="{{$data->close_date}}" name="close_date"/>
-                </div>
-              </div>
-              {{-- Localtion --}}
-              <div class="flex items-start">
-                {{-- Province --}}
-                    <div class="mb-4 w-full md:w-auto">
-                        <label class="block mb-2 text-sm font-normal text-gray-600">Province</label>
-                        <select name="province_id" class="w-full md:w-auto" id="province">
-                          @foreach($provinces as $province)
-                             <option value="{{$province->id}}"
-                               @if($province->id==$data->province_id)
-                               selected
-                               @endif
-                               >{{$province->province_name}}</option>
-                             @endforeach
-                        </select>
-                    </div>
+            {{-- Retrived by --}}
+            <div class="mb-4">
+                <label>Receive By </label>
+                <input type="text" disabled value="{{ $complaint->user->name }}">
+            </div>
 
-                    {{-- Distict --}}
-                    <div class="mb-4 mx-5  w-full md:w-auto">
-                        <label class="block mb-2 text-sm font-normal text-gray-600">District</label>
-                        <select name="district_id" class="w-full md:w-auto" id="district">
-                          @foreach($districts as $district)
-                             <option value="{{$district->id}}"
-                               @if($district->id==$data->district_id)
-                               selected
-                               @endif
-                               >{{$district->district_name}}</option>
-                             @endforeach
-                        </select>
-                    </div>
-                   <div class="flex items-start">
-                        {{-- Village --}}
-                                <div class="mb-4 w-full md:w-auto">
-                                    <label class="block mb-2 text-sm font-normal text-gray-600">Village</label>
-                                    <input type="text" class="w-full md:w-auto" name="village" value="{{$data->village	}}">
-                                </div>
-                            </div>
-                      </div>
+            {{-- Recieve date --}}
+            <div class="mb-4">
+                <label>Receive Date {{$complaint->receive_date}} </label>
+                <input type="text" name="received_date" class="datepicker-here"
+                       data-language='en'
+                       data-date-format="yyyy-mm-dd"
+                       value="{{$complaint->received_date}}"/>
+            </div>
 
+            {{-- Province --}}
+            <div class="mb-4">
+                <label>Province</label>
+                <select name="province_id" id="province">
+                    <option value="">Select Province</option>
+                    @foreach($provinces as $province)
+                        <option value="{{$province->id}}"
+                                @if($province->id == $complaint->province_id) selected @endif>{{$province->province_name}}</option>
+                    @endforeach
+                </select>
+            </div>
 
-                              <div class="flex items-start">
+            {{-- Distict --}}
+            <div class="mb-4 ">
+                <label>District</label>
+                <select name="district_id" id="district"></select>
+            </div>
 
-                                {{-- gender --}}
-                                <div class="mb-4 w-full md:w-auto">
-                                    <label class="block mb-2 text-sm font-normal text-gray-600" for="title">Gender</label>
-                                    <select name="gender" class="w-full md:w-auto">
-                                      @if($data->gender=='Male')
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
-                                      @else
-                                      <option value="Female">Female</option>
-                                      <option value="Male">Male</option>
-                                      @endif
-                                    </select>
-                                </div>
-                                  {{-- status --}}
-                                  <div class="mb-4 mx-5 w-full md:w-auto">
-                                      <label class="block mb-2 text-sm font-normal text-gray-600" for="title">Status</label>
-                                      <select name="status" class="w-full md:w-auto">
-                                        @foreach($statuses as $status)
-                                          <option value="{{$status}}"
-                                          @if($status==$data->status)
-                                          selected
-                                          @endif>{{$status}}</option>
-                                        @endforeach
-                                      </select>
-                                  </div>
+            {{-- Village --}}
+            <div class="mb-4">
+                <label>Village</label>
+                <input type="text" name="village" value="{{ $complaint->village }}">
+            </div>
 
-                                  {{-- Quarter --}}
-                                  <div class="mb-4 mx-5 w-full md:w-auto">
-                                      <label class="block mb-2 text-sm font-normal text-gray-600" for="title">Quarter</label>
-                                      <select name="status" class="w-full md:w-auto">
-                                        @foreach($quarters as $quarter)
-                                          <option value="{{$quarter}}"
-                                          @if($quarter == $data->quarter)
-                                          selected
-                                          @endif>{{$quarter}}</option>
-                                        @endforeach
-                                      </select>
-                                      </div>
-                                  </div>
+        </div>
 
-                                  <div class="flex items-start">
-                                    {{-- Borad category --}}
-                                    <div class="mb-4  w-full md:w-auto">
-                                        <label class="block mb-2 text-sm font-normal text-gray-600" for="title">Board Category</label>
-                                        <select name="broad_category_id" class="w-full md:w-auto">
-                                          @foreach($broad_category as $key)
-                                             <option value="{{$key->id}}"
-                                               @if($key->id==$data->broad_category_id)
-                                               selected
-                                               @endif
-                                               >{{$key->category_name}}</option>
-                                             @endforeach
-                                        </select>
-                                    </div>
+        {{-- Category and details --}}
+        <p class="pt-5 pb-3 text-lg font-semibold text-gray-600">Category & actions</p>
+        <div class="w-full bg-gray-100 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-5 rounded-sm gap-5">
+            {{-- Status --}}
+            <div class="mb-4">
+                <label for="status">Status</label>
+                <select name="status" id="status">
+                    <option value="Registered" @if($complaint->status == 'Registered') selected @endif>Registered
+                    </option>
+                    <option value="Under Investigation"
+                            @if($complaint->status == 'Under Investigation') selected @endif>Under investigation
+                    </option>
+                    <option value="Solved" @if($complaint->status == 'Solved') selected @endif>Solved</option>
+                    <option value="Pending" @if($complaint->status == 'Pending') selected @endif>Pending</option>
+                </select>
+            </div>
 
-                                    {{--beneficiaryFile --}}
-                                    <div class="mb-4 mx-5  w-full md:w-auto">
-                                        <label class="block mb-2 text-sm font-normal text-gray-600" for="grid-first-name">
-                                          beneficiaryFile
-                                        </label>
-                                        <input class="w-full md:w-auto" id="" type="file" name="beneficiary_file">
-                                      </div>
+            {{-- Quarter --}}
+            <div class="mb-4">
+                <label for="quarter">Quarter</label>
+                <select name="quarter" id="quarter">
+                    <option value="">Please select</option>
+                    <option value="First Quarter" @if($complaint->quarter == 'First Quarter') selected @endif>First
+                        Quarter
+                    </option>
+                    <option value="Second Quarter" @if($complaint->quarter == 'Second Quarter') selected @endif>Second
+                        Quarter
+                    </option>
+                    <option value="Third Quarter" @if($complaint->quarter == 'Third Quarter') selected @endif>Third
+                        Quarter
+                    </option>
+                    <option value="Fourth Quarter" @if($complaint->quarter == 'Fourth Quarter') selected @endif>Fourth
+                        Quarter
+                    </option>
+                </select>
+            </div>
 
-                                  </div>
+            {{-- Recieve date --}}
+            <div class="mb-4">
+                <label>Close Date </label>
+                <input type="text" name="receive_date" class="datepicker-here"
+                       data-language='en'
+                       data-date-format="yyyy-mm-dd"/>
+            </div>
 
-                                          <div class="flex items-start">
+            {{-- Project --}}
+            <div class="mb-4">
+                <label for="project">Project</label>
+                <select name="project_id" id="project">
+                    <option value="">Select Project</option>
+                    @foreach($projects as $project)
+                        <option value="{{ $project->id }}">{{ $project->project_name }}</option>
+                    @endforeach
+                </select>
+            </div>
 
-                                          {{-- Project --}}
-                                          <div class="mb-4 w-full md:w-auto">
-                                              <label class="block mb-2 text-sm font-normal text-gray-600">Project</label>
-                                              <select name="project_id" class="w-full md:w-auto">
-                                                @foreach($projects as $project)
-                                                   <option value="{{$project->id}}"
-                                                     @if($project->id==$data->project_id)
-                                                     selected
-                                                     @endif
-                                                     >{{$project->project_name}}</option>
-                                                   @endforeach
-                                              </select>
-                                          </div>
-                                          {{-- Program --}}
-                                          <div class="mb-4 mx-5  w-full md:w-auto">
-                                              <label class="block mb-2 text-sm font-normal text-gray-600" for="title">Program</label>
-                                              <select name="program_name" class="w-full md:w-auto">
-                                                  <option value="">Select Program</option>
-                                                  @foreach($programs as $program)
-                                                     <option value="{{$program->id}}"
-                                                       @if($program->id==$data->program_id)
-                                                       selected
-                                                       @endif
-                                                       >{{$program->program_name}}</option>
-                                                     @endforeach
-                                              </select>
-                                          </div>
-                                          {{-- referred to --}}
-                                          <div class="mb-4 mx-5 w-full md:w-auto">
-                                              <label class="block mb-2 text-sm font-normal text-gray-600" for="title">Referred To</label>
-                                                  <select name="referred_to" class="w-full md:w-auto">
-                                                    @foreach($refers as $referred)
-                                                       <option value="{{$referred}}"
-                                                         @if($referred==$data->referred_to)
-                                                         selected
-                                                         @endif
-                                                         >{{$referred}}</option>
-                                                       @endforeach
-                                                  </select>
-                                          </div>
-                                        </div>
-                                              <div class="flex items-start">
-                                                {{-- person_who_shared_action --}}
-                                                <div class="mb-4 w-full md:w-auto">
-                                                  <label class="block mb-2 text-sm font-normal text-gray-600">
-                                                    Person who shared the action
-                                                  </label>
-                                                  <input class="w-full md:w-auto" name="person_who_shared_action" id="" type="text" value="{{$data->person_who_shared_action}}">
+            {{-- Program --}}
+            <div class="mb-4">
+                <label for="program">Program</label>
+                <select name="program_id" id="program">
+                    <option value="">Select Program</option>
+                    @foreach($programs as $program)
+                        <option value="{{ $program->id }}">{{ $program->program_name }}</option>
+                    @endforeach
+                </select>
+            </div>
 
-                                                </div>
+            {{-- Broad category --}}
+            <div class="mb-4">
+                <label for="broad-category">Broad Category</label>
+                <select name="broad_category_id" id="broad-category">
+                    <option value="">Please select</option>
+                    @foreach($broadCategories as $category)
+                        <option value="{{$category->id}}">{{ $category->category_name}}</option>
+                    @endforeach
+                </select>
+            </div>
 
-                                                </div>
-                                                  {{-- specific category --}}
-                                                <div class="flex items-start">
-                                                <div class="mb-4 w-full md:w-auto">
-                                                    <label class="block mb-2 text-sm font-normal text-gray-600" for="title">Specific
-                                                        Category</label>
-                                                    <select name="broad_category_id" class="w-full md:w-auto truncate">
-                                                        <option value="">Please select</option>
-                                                        @foreach($specific_category as $key)
-                                                           <option value="{{$key->id}}"
-                                                             @if($key->id==$data->specific_category_id)
-                                                             selected
-                                                             @endif
-                                                             >{{$key->category_name}}</option>
-                                                           @endforeach
-                                                    </select>
-                                                </div>
-                                              </div>
-                                              @if($key->category_name == 'Other (please specify)')
-                                              <div class="flex items-start">
-                                                <div class="mb-4  w-full md:w-auto">
-                                                  <label class="block mb-2 text-sm font-normal text-gray-600" for="title">Description</label>
-                                                  <textarea class="w-full md:w-auto"></textarea>
-                                                </div>
-                                              </div>
-                                              @endif
-                                              <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-                                                {{-- submit button --}}
+            {{-- Specific category --}}
+            <div class="mb-4 col-span-2 md:col-span-3 lg:col-span-2 ">
+                <label for="specific-category">Specific Category</label>
+                <select name="specific_category_id" id="specific-category">
+                    <option value="">Please select</option>
+                    @foreach($specificCategory as $category)
+                        <option value="{{$category->id}}">{{ $category->category_name}}</option>
+                    @endforeach
+                </select>
+            </div>
 
-                                                  <div class="mb-4 w-full md:w-auto">
-                                                    <button class="w-full md:w-auto bg-blue text-white px-3 py-1 rounded text-base">Create Project</button>
-                                                </div>
-                                              </div>
+            {{-- Description --}}
+            <div class="mb-4 col-span-2 md:col-span-3 lg:col-span-4" id="description-container">
+                <label for="specific-category">Description</label>
+                <textarea name="description" id="description" rows="4"></textarea>
+            </div>
+
+            {{-- Refered to--}}
+            <div class="mb-4">
+                <label>Referred To </label>
+                <input type="text" name="referred_to">
+            </div>
+
+            {{-- Person who shared action--}}
+            <div class="mb-4">
+                <label>Person who shared action</label>
+                <input type="text" name="person_who_shared_action">
+            </div>
 
 
-                                          </form>
-                                          @stop
+            {{-- Attachment to--}}
+            <div class="mb-4 col-span-2 md:col-span-3 lg:col-span-2">
+                <label>Attachment</label>
+                <input type="file" name="beneficiary_file">
+            </div>
 
+        </div>
 
-                              @section('page-level-js')
-                                  <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
-                                  {!! JsValidator::formRequest('App\Http\Requests\ComplaintRequest', '#create-form'); !!}
-                              @stop
+        <div class="flex justify-end my-5">
+            <button type="submit"
+                    class="text-white bg-blue-lighter hover:bg-blue text-base hover:shadow-lg focus:outline-none px-3 py-1 rounded-sm">
+                Create Now
+            </button>
+        </div>
+
+    </form>
+@stop
+
+@section('page-level-js')
+    <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+    {!! JsValidator::formRequest('App\Http\Requests\ComplaintRequest', '#create-form'); !!}
+
+    <script>
+        $.ajax({
+            url: `/provinces/${$('select#province').val()}/districts?district={{ $complaint->district_id }}`,
+            success: function (view) {
+                $('select#district').html(view)
+            }
+        });
+    </script>
+@stop

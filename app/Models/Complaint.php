@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Complaint extends Model
@@ -13,6 +14,16 @@ class Complaint extends Model
      * @var array
      */
     protected $guarded = [];
+
+    /**
+     * Get the user of complaint
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     /**
      * Get the board category

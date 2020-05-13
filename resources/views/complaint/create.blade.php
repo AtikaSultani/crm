@@ -1,8 +1,6 @@
 @extends('layouts.master')
 @section('title', 'Create Complaint')
-@section('page-title')
-    <h>Add New Complaint</h>
-@endsection
+@section('page-title', 'Add New Complaint')
 @section('content')
     <form action="{{ url('/complaints') }}" method="post" id="create-form">
 
@@ -40,7 +38,7 @@
             {{-- Recieve date --}}
             <div class="mb-4">
                 <label>Receive Date </label>
-                <input type="text" name="receive_date" class="datepicker-here"
+                <input type="text" name="received_date" class="datepicker-here"
                        data-language='en'
                        data-date-format="yyyy-mm-dd"
                        value="{{date('Y-m-d')}}"/>
@@ -51,8 +49,8 @@
                 <label>Province</label>
                 <select name="province_id" id="province">
                     <option value="">Select Province</option>
-                    @foreach($provinces as $key)
-                        <option value="{{$key->id}}">{{$key->province_name}}</option>
+                    @foreach($provinces as $province)
+                        <option value="{{$province->id}}">{{$province->province_name}}</option>
                     @endforeach
                 </select>
             </div>
