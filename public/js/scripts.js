@@ -28,13 +28,44 @@ jQuery(document).ready(() => {
     $('select#specific-category').on('change', function () {
         if ($(this).val() == 14) {
             $('#description-container').show();
-        }else{
+        } else {
             $('#description-container').hide();
             $('#description').val(null);
         }
     });
+
+    // Modal
+    $('.modal, .modal span.cursor-pointer, a.close-modal').click(function () {
+        $('.modal').fadeOut(100);
+    })
+
+    $('.modal *').click(function (event) {
+        event.stopPropagation();
+    });
+
+    $(document).on('keydown', function (e) {
+        if (e.keyCode === 27) { // ESC
+            $('div.modal').fadeOut(200);
+        }
+    });
 });
 
+
+/**
+ * Delete resource
+ *
+ * @param  id
+ * @param route
+ * @param  event
+ */
+function deleteResource(id, route, event) {
+    event.preventDefault();
+    $('div.delete-modal')
+        .fadeIn(200)
+        .removeClass('invisible');
+
+    $('form#delete-form').attr('action', `${baseUrl}/${route}/${id}`);
+}
 
 // Select page
 function selectPage(page) {

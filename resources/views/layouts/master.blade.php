@@ -52,6 +52,10 @@
 
         </div>
     </div>
+
+
+    {{-- include partials --}}
+    @yield('include')
 </div>
 
 @include('layouts.mobile-sidebar')
