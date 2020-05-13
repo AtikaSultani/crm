@@ -10,6 +10,7 @@ use App\Models\Program;
 use App\Models\Project;
 use App\Models\Province;
 use App\Models\SpecificCategory;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -131,10 +132,12 @@ class ComplaintController extends Controller
     /**
      * Export complaints to excel
      *
+     * @param  Request  $request
      * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
      */
-    public function export()
+    public function export(Request $request)
     {
-        return Excel::download(new ComplaintExport(), 'Complaint Report on '.now()->format('Y-m-d').'.xlsx');
+        return Excel::download(new ComplaintExport($request->all()),
+            'Complaint Report on '.now()->format('Y-m-d').'.xlsx');
     }
 }

@@ -161,7 +161,7 @@
             <div class="mb-4">
                 <label for="program">Refereed to</label>
                 <select name="referred_to" id="referred_to">
-                    <option value="PM"> PM</option>
+                    <option value="PM">PM</option>
                     <option value="Officer">Officer</option>
                     <option value="Partner">Partner</option>
                     <option value="DCD/CD">DCD/CD</option>

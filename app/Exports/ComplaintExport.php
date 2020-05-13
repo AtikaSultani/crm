@@ -3,61 +3,37 @@
 namespace App\Exports;
 
 use App\Models\Complaint;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
-use Maatwebsite\Excel\Concerns\WithHeadings;
-use Maatwebsite\Excel\Concerns\WithEvents;
-use Maatwebsite\Excel\Events\BeforeExport;
-use Maatwebsite\Excel\Events\AfterSheet;
 
-class ComplaintExport implements FromCollection,shouldAutoSize,WithHeadings
+class ComplaintExport implements FromView, ShouldAutoSize
 {
-    /**
-    * @return \Illuminate\Support\Collection
-    */
-    public function headings(): array
-   {
-       return [
-            '#',
-            'caller name',
-            'tel_no_received',
-            'gender',
-            'received_date',
-            'status',
-            'quarter',
-            'referred_to',
-            'beneficiary_file',
-            'broad_category_id',
-            'specific_category_id',
-            'received_by',
-            'person_who_shared_action',
-            'close_date',
-            'description',
-            'province_id',
-            'district_id',
-            'village',
-            'user_id',
-            'project_id',
-            'program_id',
-            'created_at',
-            'updated_at',
-       ];
-   }
-   public function registerEvents(): array
-    {
-        return [
-            AfterSheet::class => function (AfterSheet $event) {
-                $event->sheet->getStyle('A1:W1')->applyFromArray([
-                    'font' => [
-                        'bold' => true
-                              ]
-                          ]);
-                      },
-                  ];
-              }
 
-    public function collection()
+    protected $request;
+
+    public function __construct($request)
     {
-        return Complaint::all();
+        $this->request = $request;
+    }
+
+    /**
+     * @return View
+     */
+    public function view(): View
+    {
+        $complaints = Complaint::query();
+
+        if ($this->request['year']) {
+            $complaints->whereYear('received_date', $this->request['year']);
+        }
+
+        if ($this->request['quarter']) {
+            $complaints->where('quarter', $this->request['quarter']);
+        }
+
+        $complaints = $complaints->get();
+
+        return view('complaint.partial.export-view')->with(['complaints' => $complaints]);
     }
 }

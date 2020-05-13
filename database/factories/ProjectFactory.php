@@ -21,11 +21,11 @@ use Faker\Generator as Faker;
 
 $factory->define(Project::class, function (Faker $faker) {
     return [
-        "project_name"           => $faker->text(5),
-        "NGO_name"               => $faker->text(5),
+        "project_name"           => $faker->realText(10),
+        "NGO_name"               => $faker->text(10),
         "start_date"             => $faker->date('Y-m-d'),
         "end_date"               => $faker->date('Y-m-d'),
-        "donors"                 => $faker->text(5),
+        "donors"                 => $faker->text(15),
         "activities"             => $faker->text(40),
         "direct_beneficiaries"   => $faker->text(5),
         "indirect_beneficiaries" => $faker->text(5),
@@ -34,7 +34,7 @@ $factory->define(Project::class, function (Faker $faker) {
         "budget"                 => $faker->numberBetween(1, 2300),
         'province_id'            => Province::all()->random()->id,
         'district_id'            => District::all()->random()->id,
-        'project_manager'        => $faker->text(5),
+        'project_manager'        => $faker->name,
         'program_id'             => Program::all()->random()->id
     ];
 });

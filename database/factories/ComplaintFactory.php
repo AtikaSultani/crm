@@ -30,22 +30,22 @@ $factory->define(Complaint::class, function (Faker $faker) {
     $quarter = ['First Quarter', 'Second Quarter', 'Third Quarter', 'Fourth Quarter'];
 
     return [
-        'caller_name'              => $faker->text(10),
-        'tel_no_received'          => $faker->text(5),
+        'caller_name'              => $faker->name,
+        'tel_no_received'          => $faker->phoneNumber,
         'gender'                   => $gender[$faker->numberBetween(0, 1)],
-        'received_date'            => $faker->date('Y-m-d'),
+        'received_date'            => $faker->dateTimeBetween('-4 years', now()),
         'status'                   => $status[$faker->numberBetween(0, 3)],
         'quarter'                  => $quarter[$faker->numberBetween(0, 3)],
-        'referred_to'              => $faker->text(10),
+        'referred_to'              => $faker->name,
         'beneficiary_file'         => null,
         'broad_category_id'        => BroadCategory::all()->random()->id,
         'specific_category_id'     => SpecificCategory::all()->random()->id,
-        'person_who_shared_action' => $faker->text(5),
+        'person_who_shared_action' => $faker->name,
         'close_date'               => $faker->date('Y-m-d'),
         'description'              => $faker->text(20),
         'province_id'              => Province::all()->random()->id,
         'district_id'              => District::all()->random()->id,
-        'village'                  => $faker->text(5),
+        'village'                  => $faker->text(10),
         'user_id'                  => User::all()->random()->id,
         'project_id'               => Project::all()->random()->id,
         'program_id'               => Program::all()->random()->id

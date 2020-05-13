@@ -1,17 +1,19 @@
 @extends('layouts.master')
 @section('page-title')
-<h>Complaints List</h>
+    <h>Complaints List</h>
 @endsection
 @section('content')
 
     <div class="flex items-center justify-end my-3">
-        <a class="text-sm bg-blue text-white px-2 py-1 rounded-sm focus:outline-none" href="{{ url('/complaints/create') }}">
+        <a class="text-sm bg-blue text-white px-2 py-1 rounded-sm focus:outline-none"
+           href="{{ url('/complaints/create') }}">
             Add New
         </a>
 
-        <button class="text-sm mx-2 bg-yellow text-blue px-2 py-1 rounded-sm focus:outline-none">
-            <a href="{{ url('/complaint-export') }}">Export to Excel</a>
-          </button>
+        <button class="text-sm mx-2 bg-yellow text-blue px-2 py-1 rounded-sm focus:outline-none"
+                onclick="exportComplaint()">
+            Export to Excel
+        </button>
     </div>
 
     <div>
@@ -29,7 +31,8 @@
             @foreach($complaints as $complaint)
                 <tr>
                     <td>{{ $complaint->id }}</td>
-                    <td class="text-blue cursor-pointer"><a href="{{ url('/complaints/'.$complaint->id) }}">{{ $complaint->caller_name }}</a></td>
+                    <td class="text-blue cursor-pointer"><a
+                                href="{{ url('/complaints/'.$complaint->id) }}">{{ $complaint->caller_name }}</a></td>
                     <td>{{ $complaint->status }}</td>
                     <td>{{ $complaint->quarter }}</td>
                     <td>{{ $complaint->province->province_name }} | {{ $complaint->district->district_name}}</td>
@@ -41,3 +44,7 @@
     </div>
 
 @endsection
+
+@section('include')
+    @include('complaint.partial.export-modal')
+@stop
