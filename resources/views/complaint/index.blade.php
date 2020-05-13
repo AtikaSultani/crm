@@ -29,7 +29,7 @@
             @foreach($complaints as $complaint)
                 <tr>
                     <td>{{ $complaint->id }}</td>
-                    <td><a href="{{ url('/ComplaintController/details/'.$complaint->id) }}">{{ $complaint->caller_name }}</a></td>
+                    <td><a href="{{ url('/ComplaintController/ComplaintDetail/'.$complaint->id) }}">{{ $complaint->caller_name }}</a></td>
                     <td>{{ $complaint->status }}</td>
                     <td>{{ $complaint->quarter }}</td>
                     <td>{{ $complaint->province->province_name }} | {{ $complaint->district->district_name}}</td>

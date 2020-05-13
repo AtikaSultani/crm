@@ -19,6 +19,8 @@ class Project extends Model
         return $this->hasMany(Complaint::class);
     }
 
+
+
     /**
      * Get the province of project
      *
@@ -46,6 +48,6 @@ class Project extends Model
      */
     public function program()
     {
-        return $this->belongsTo(Project::class);
+        return $this->belongsTo(Program::class);
     }
 }

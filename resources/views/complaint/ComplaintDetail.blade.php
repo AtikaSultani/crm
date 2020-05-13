@@ -1,21 +1,17 @@
 @extends('layouts.master')
-@section('title', 'Create Complaint')
+@section('title', 'Complaint Detail')
 @section('page-title')
-<h>Details of Complaint</h>
+<h>Complaint Detail</h>
 @endsection
 @section('content')
+<span>
+  <button style="margin-left:20px;padding-top:3px;padding-bottom:3px;background-color:#B0C4DE;color:#fff;" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+    <a href="{{ url('/complaints/'.$data->id.'/edit') }}">Edit</a>
+   </button>
+</span>
 
-<button style="margin-left:20px;padding-top:3px;padding-bottom:3px;background-color:#B0C4DE;color:#fff;" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-  <a href="#">Edit</a>
- </button>
 
- <form style="margin-top:-30px;" action="{{url('/ComplaintController/'.$data->id) }}" method="post">
-      @csrf
-        @method('DELETE')
-      <button style="margin-left:100px;padding-top:3px;;padding-bottom:3px;background-color:#FF0000;color:#fff;" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onclick="return confirm('Are you sure to delete this?')">
-          Delete
-        </button>
-  </form>
+ 
 
 
   <div style="margin-top:20px;" class="grid grid-cols-2 divide-x divide-gray-600">

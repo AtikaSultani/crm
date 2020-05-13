@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <title>@yield('title')</title>
+
     {{-- Style files --}}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -48,6 +49,7 @@
         {{-- Page contnet --}}
         <div class="px-5 pb-10">
             @yield('content')
+          
         </div>
     </div>
 </div>

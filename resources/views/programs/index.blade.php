@@ -21,6 +21,8 @@
               <th>Program Name</th>
               <th>StartDate</th>
               <th>EndDate</th>
+              <th>Edit</th>
+              <th>Delete</th>
               <!-- <th>Actions</th> -->
             </tr>
             </thead>
@@ -31,15 +33,17 @@
                 <td>{{$key->program_name}}</td>
                 <td>{{$key->start_date}}</td>
                 <td>{{$key->end_date}}</td>
-                <!-- <td class="actions" style="white-space:nowrap">
-                  <a class="btn btn-primary badge-pill" style="width:65px;border-radius:20px;font-size:12px;" href="{{ url('/programs/'.$key->id.'/edit') }}">EDIT</a>
+                <td class="actions" style="white-space:nowrap">
+                  <button type="button" style="margin-left:20px;padding-top:3px;padding-bottom:3px;background-color:#B0C4DE;color:#fff;" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" name="button"><a href="{{ url('/programs/'.$key->id.'/edit') }}">Edit</a></button>
 
+                </td>
+                <td>
                   <form action="{{ url('/programs/'.$key->id) }}" method="post">
                       @csrf
                       @method('DELETE')
-                    <button class="btn btn-danger badge-pill" style="width:75px;border-radius:20px;font-size:12px;" onclick="return confirm('Are you sure to delete this?')" data-confirm="Are you sure to delete this item?" type="submit">DELETE</button>
+                    <button style="margin-left:100px;padding-top:3px;;padding-bottom:3px;background-color:#FF0000;color:#fff;" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onclick="return confirm('Are you sure to delete this?')" >Delete</button>
                   </form>
-                </td> -->
+                </td>
 
               </tr>
               @endforeach

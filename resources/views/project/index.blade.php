@@ -31,7 +31,7 @@
                     @foreach($projects as $project)
                         <tr>
                             <td>{{$project->id }}</td>
-                            <td>{{$project->project_name}}</td>
+                            <td><a href="{{ url('/ProjectController/ProjectDetail/'.$project->id) }}">{{$project->project_name}}</a></td>
                             <td>{{$project->NGO_name}}</td>
                             <td>{{$project->start_date}}</td>
                             <td>{{$project->end_date}}</td>

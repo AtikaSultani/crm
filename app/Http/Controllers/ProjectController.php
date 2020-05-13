@@ -128,17 +128,19 @@ class ProjectController extends Controller
     }
 
 
-    /**
-     * Delete project
-     *
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
+
     public function destroy($id)
     {
+      return "delete";exit;
         $project = Project::findOrFail($id);
         $project->delete();
 
         return back();
+    }
+
+    public function ProjectDetail($id)
+    {
+      $data=Project::find($id);
+      return view('project.ProjectDetails',compact('data','id'));
     }
 }

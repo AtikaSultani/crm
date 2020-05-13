@@ -18,4 +18,9 @@ class Program extends Model
     {
         return $this->hasMany(Complaint::$this);
     }
+
+    public function projects()
+    {
+        return $this->hasMany(project::$this);
+    }
 }

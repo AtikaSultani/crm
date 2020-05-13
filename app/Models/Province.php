@@ -18,6 +18,11 @@ class Province extends Model
         return $this->hasMany(Complaint::class);
     }
 
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
+    }
+
     /**
      * Get district of province
      *
