@@ -6,7 +6,8 @@
         @method('PUT')
         @csrf
         {{-- Calleer information --}}
-        <p class="pt-5 pb-3 text-lg font-semibold text-gray-600">Caller information <span class="text-sm font-normal text-gray-500"> {{ $complaint->caller_name }}</span> </p>
+        <p class="pt-5 pb-3 text-lg font-semibold text-gray-600">Caller information <span
+                    class="text-sm font-normal text-gray-500"> {{ $complaint->caller_name }}</span></p>
         <div class="w-full bg-gray-100 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-5 rounded-sm gap-5">
             {{-- Caller name --}}
             <div class="mb-4">

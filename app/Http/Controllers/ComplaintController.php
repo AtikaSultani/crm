@@ -10,7 +10,6 @@ use App\Models\Program;
 use App\Models\Project;
 use App\Models\Province;
 use App\Models\SpecificCategory;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -112,7 +111,7 @@ class ComplaintController extends Controller
         $complaint = Complaint::findOrFail($id);
         $complaint->update($request->all());
 
-        return redirect("/complaints");
+        return redirect("/complaints/".$complaint->id);
     }
 
     /**

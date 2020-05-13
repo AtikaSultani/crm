@@ -9,14 +9,17 @@
           class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
     <a href="{{ url('/complaints/'.$complaint->id.'/edit') }}">Edit</a>
    </button>
+
+        <button class="text-sm text-white bg-red-darker" onclick="deleteResource({{ $complaint->id }}, '/complaints', event)"> Delete </button>
 </span>
-    
+
     <div style="margin-top:20px;" class="grid grid-cols-2 divide-x divide-gray-600">
         <div class="text-center">
             <label> <span style="font-weight:bold;">Caller Name</span> : {{$complaint->caller_name}}</label>
             <br>
             <br>
-            <label> <span style="font-weight:bold;">Phone Number Recived</span> : {{$complaint->tel_no_received}}</label>
+            <label> <span style="font-weight:bold;">Phone Number Recived</span> : {{$complaint->tel_no_received}}
+            </label>
             <br>
             <br>
             <label> <span style="font-weight:bold;">Gender</span> : {{$complaint->gender}}</label>
@@ -49,10 +52,12 @@
             <label> <span style="font-weight:bold;">Close Date</span> : {{$complaint->close_date}}</label>
             <br>
             <br>
-            <label> <span style="font-weight:bold;">Province Name</span> : {{$complaint->province->province_name}}</label>
+            <label> <span style="font-weight:bold;">Province Name</span> : {{$complaint->province->province_name}}
+            </label>
             <br>
             <br>
-            <label> <span style="font-weight:bold;">District Name</span> : {{$complaint->district->district_name}}</label>
+            <label> <span style="font-weight:bold;">District Name</span> : {{$complaint->district->district_name}}
+            </label>
             <br>
             <br>
             <label> <span style="font-weight:bold;">Project Name</span> : {{$complaint->project->project_name}}</label>
@@ -71,3 +76,7 @@
 
     </div>
 @endsection
+
+@section('include')
+    @include('helper.delete')
+@stop
