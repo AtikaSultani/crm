@@ -11,15 +11,15 @@
 
 </head>
 <body class="antialiased font-sans text-gray-900 relative h-screen ">
-<div class="flex items-start">
+<div class="flex items-start bg-gray-200">
 
 @include('layouts.sidebar')
 
 <!-- content -->
-    <div class="w-full content">
+    <div class="w-full content min-h-screen">
 
         <!-- Menu -->
-        <div class="flex items-center justify-between p-5 sticky top-0 bg-white">
+        <div class="flex items-center justify-between px-5 py-2 sticky top-0 bg-white">
 
             <!-- Page title -->
             <div class="flex items-center">
@@ -49,7 +49,7 @@
         {{-- Page contnet --}}
         <div class="px-5 pb-10">
             @yield('content')
-          
+
         </div>
     </div>
 </div>

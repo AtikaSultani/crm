@@ -1,15 +1,19 @@
-input, select{
-  @apply rounded px-3 py-2 text-sm leading-tight text-gray-700 border border-gray-500 appearance-none;
+input, select, textarea {
+  @apply rounded px-3 py-2 text-sm leading-tight text-gray-700 border border-gray-500 appearance-none w-full;
 }
 
-input:hover{
+input:hover, textarea {
   @apply border-blue;
 }
 
-input:focus{
-  @apply outline-none border-blue
+input:focus, select:focus, textarea:focus {
+  @apply outline-none border-blue shadow-outline-blue;
 }
 
-select{
+select {
   @apply bg-white outline-none;
+}
+
+label {
+  @apply block mb-2 text-sm font-normal text-gray-600;
 }

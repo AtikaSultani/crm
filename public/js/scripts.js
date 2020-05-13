@@ -13,12 +13,25 @@ jQuery(document).ready(() => {
 
     // Select province
     $('select#province').on('change', function () {
-        $.ajax({
-            url: `/provinces/${$(this).val()}/districts`,
-            success: function (view) {
-                $('select#district').html(view)
-            }
-        });
+        if ($(this).val() != '') {
+            $.ajax({
+                url: `/provinces/${$(this).val()}/districts`,
+                success: function (view) {
+                    $('select#district').html(view)
+                }
+            });
+        }
+        $('select#district').html('');
+    });
+
+    // select the specific category
+    $('select#specific-category').on('change', function () {
+        if ($(this).val() == 14) {
+            $('#description-container').show();
+        }else{
+            $('#description-container').hide();
+        }
+
     });
 });
 
