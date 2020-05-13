@@ -30,8 +30,8 @@ jQuery(document).ready(() => {
             $('#description-container').show();
         }else{
             $('#description-container').hide();
+            $('#description').val(null);
         }
-
     });
 });
 

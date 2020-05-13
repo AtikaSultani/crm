@@ -1,14 +1,13 @@
 @extends('layouts.master')
 @section('title', 'Create Complaint')
-@section('page-title')
-    <h>Add New Complaint</h>
-@endsection
+@section('page-title', 'Add New Complaint')
 @section('content')
     <form action="{{ url('/complaints') }}" method="post" id="create-form">
-
+        @csrf
         {{-- Calleer information --}}
         <p class="pt-5 pb-3 text-lg font-semibold text-gray-600">Caller information</p>
         <div class="w-full bg-gray-100 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-5 rounded-sm gap-5">
+
             {{-- Caller name --}}
             <div class="mb-4">
                 <label for="caller_name">Caller Name</label>
@@ -40,7 +39,7 @@
             {{-- Recieve date --}}
             <div class="mb-4">
                 <label>Receive Date </label>
-                <input type="text" name="receive_date" class="datepicker-here"
+                <input type="text" name="received_date" class="datepicker-here"
                        data-language='en'
                        data-date-format="yyyy-mm-dd"
                        value="{{date('Y-m-d')}}"/>
@@ -51,8 +50,8 @@
                 <label>Province</label>
                 <select name="province_id" id="province">
                     <option value="">Select Province</option>
-                    @foreach($provinces as $key)
-                        <option value="{{$key->id}}">{{$key->province_name}}</option>
+                    @foreach($provinces as $province)
+                        <option value="{{$province->id}}">{{$province->province_name}}</option>
                     @endforeach
                 </select>
             </div>
@@ -76,6 +75,7 @@
         {{-- Category and details --}}
         <p class="pt-5 pb-3 text-lg font-semibold text-gray-600">Category & actions</p>
         <div class="w-full bg-gray-100 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-5 rounded-sm gap-5">
+
             {{-- Status --}}
             <div class="mb-4">
                 <label for="status">Status</label>
@@ -102,7 +102,7 @@
             {{-- Recieve date --}}
             <div class="mb-4">
                 <label>Close Date </label>
-                <input type="text" name="receive_date" class="datepicker-here"
+                <input type="text" name="close_date" class="datepicker-here"
                        data-language='en'
                        data-date-format="yyyy-mm-dd" value="{{date('Y-m-d')}}"/>
             </div>
@@ -152,19 +152,19 @@
             </div>
 
             {{-- Description --}}
-            <div class="mb-4 col-span-2 md:col-span-3 lg:col-span-4" id="description-container">
+            <div class="mb-4 col-span-2 md:col-span-3 lg:col-span-4" hidden id="description-container">
                 <label for="specific-category">Description</label>
                 <textarea name="description" id="description" rows="4"></textarea>
             </div>
 
             {{-- Refered to--}}
             <div class="mb-4">
-                <label for="program">Program</label>
+                <label for="program">Refereed to</label>
                 <select name="referred_to" id="referred_to">
-                    <option value="">Select Program</option>
-                    @foreach($refers as $key)
-                        <option value="{{$key}}">{{$key}}</option>
-                    @endforeach
+                    <option value="PM"> PM</option>
+                    <option value="Officer">Officer</option>
+                    <option value="Partner">Partner</option>
+                    <option value="DCD/CD">DCD/CD</option>
                 </select>
             </div>
 
@@ -173,7 +173,6 @@
                 <label>Person who shared action</label>
                 <input type="text" name="person_who_shared_action">
             </div>
-
 
             {{-- Attachment to--}}
             <div class="mb-4 col-span-2 md:col-span-3 lg:col-span-2">

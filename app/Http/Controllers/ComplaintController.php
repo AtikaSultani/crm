@@ -6,12 +6,12 @@ use App\Exports\ComplaintExport;
 use App\Http\Requests\ComplaintRequest;
 use App\Models\BroadCategory;
 use App\Models\Complaint;
-use App\Models\District;
 use App\Models\Program;
 use App\Models\Project;
 use App\Models\Province;
 use App\Models\SpecificCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
 
@@ -30,11 +30,23 @@ class ComplaintController extends Controller
      */
     public function index()
     {
-        $complaints = Complaint::paginate(10);
+        $complaints = Complaint::latest()->paginate(10);
 
         return view('complaint.index', compact('complaints'));
     }
 
+    /**
+     * Get the complaint details
+     *
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function show($id)
+    {
+        $complaint = Complaint::findOrFail($id);
+
+        return view('complaint.details', compact('complaint'));
+    }
 
     /**
      * Create a new complaint
@@ -43,159 +55,87 @@ class ComplaintController extends Controller
      */
     public function create()
     {
+        $broadCategories = BroadCategory::all();
+        $specificCategory = SpecificCategory::all();
+        $programs = Program::all();
+        $projects = Project::all();
+        $provinces = Province::all();
+
+        return view('complaint.create',
+            compact('broadCategories', 'specificCategory', 'programs', 'projects', 'provinces'));
+    }
+
+    /**
+     * Get store the complaints
+     *
+     * @param  ComplaintRequest  $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function store(ComplaintRequest $request)
+    {
+        Auth::user()->complaints()->create($request->all());
+
+        return redirect('/complaints')->with([
+            'message' => 'Complaint created successfully', 'status' => true
+        ]);
+    }
+
+    /**
+     * Get the edit view of complaint
+     *
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit($id)
+    {
+        $complaint = Complaint::find($id);
 
         $broadCategories = BroadCategory::all();
         $specificCategory = SpecificCategory::all();
         $programs = Program::all();
         $projects = Project::all();
         $provinces = Province::all();
-        $refers = ['DCD/CD', 'Officer', 'Partner', 'PM'];
 
-        return view('complaint.create',
-        compact('broadCategories', 'specificCategory', 'programs', 'projects', 'provinces','refers'));
-    }
-//this function store data to database
-    public function store( $request)
-    {
-       return "welcom";exit;
-        $file = $request->file('beneficiary_file');
-
-        //stor user data in database
-        Complaint::create([
-            'caller_name'              => $request->caller_name,
-            'tel_no_received'          => $request->tel_no_received,
-            'gender'                   => $request->gender,
-            'received_date'            => $request->received_date,
-            'status'                   => $request->status,
-            'quarter'                  => $request->quarter,
-            'referred_to'              => $request->referred_to,
-            'beneficiary_file'         => $file,
-            'broad_category_id'        => $request->broad_category_id,
-            'specific_category_id'     => $request->specific_category_id,
-            'person_who_shared_action' => $request->person_who_shared_action,
-            'close_date'               => $request->close_date,
-            'project_id'               => $request->project_id,
-            'program_id'               => $request->program_id,
-            'description'              => $request->description,
-            'province_id'              => $request->province_id,
-            'district_id'              => $request->district_id,
-            'village'                  => $request->village,
-            'user_id'                  => $request->user_id
-        ]);
-
-        if ($request->file('beneficiary_file') == null) {
-            $file = "";
-        } else {
-            $file->store('upload', 'public');
-        }
-        if ('complaint' != '') {
-            return redirect('/complaints')->with("msg", "The Complaint Registred Successfully");
-        } else {
-            return "Please fill the form";
-        }
-
+        return view('complaint.edit',
+            compact('broadCategories', 'specificCategory', 'programs', 'projects', 'provinces', 'complaint'));
     }
 
-
-    public function edit($id)
+    /**
+     * Update the complaints
+     *
+     * @param  ComplaintRequest  $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function update(ComplaintRequest $request, $id)
     {
-        $data = Complaint::find($id);
-
-        $broad_category = BroadCategory::all();
-        $specific_category = SpecificCategory::all();
-        $programs = Program::all();
-        $projects = Project::all();
-        $provinces = Province::all('id', 'province_name');
-        $districts = District::all('id', 'district_name');
-        $statuses = ['Registered', 'Under Investigation', 'Solved', 'Pending'];
-        $quarters = ['First Quarter', 'Second Quarter', 'Third Quarter', 'Fourth Quarter'];
-        $refers = ['DCD/CD', 'Officer', 'Partner', 'PM'];
-
-        return view('Complaint.edit',
-            compact('data', 'id', 'broad_category', 'specific_category', 'programs', 'projects', 'provinces',
-                'districts', 'statuses', 'quarters', 'refers'));
-    }
-
-    public function update(Request $request, $id)
-    {
-
-        $request->validate([
-            'caller_name'       => "required|max:15",
-            'tel_no_received'   => "required|numeric",
-            'gender'            => "required",
-            'received_date'     => "required|date",
-            'status'            => "required",
-            'quarter'           => "required",
-            'referred_to'       => "required",
-            'broad_category'    => "required",
-            'specific_category' => "required",
-            'received_by'       => "required",
-            'close_date'        => "required|date",
-            'project_name'      => "required",
-            'program_name'      => "required",
-            'description'       => "required",
-            'province'          => 'required',
-            'district'          => 'required'
-        ]);
-        $file = $request->file('beneficiary_file');
         $complaint = Complaint::findOrFail($id);
-        $complaint->update([
-            'caller_name'              => $request->caller_name,
-            'tel_no_received'          => $request->tel_no_received,
-            'gender'                   => $request->gender,
-            'received_date'            => $request->received_date,
-            'status'                   => $request->status,
-            'quarter'                  => $request->quarter,
-            'referred_to'              => $request->referred_to,
-            'beneficiary_file'         => $file,
-            'broad_category_id'        => $request->broad_category,
-            'specific_category_id'     => $request->specific_category,
-            'received_by'              => $request->received_by,
-            'person_who_shared_action' => $request->person_who_shared_action,
-            'close_date'               => $request->close_date,
-            'project_id'               => $request->project_name,
-            'program_id'               => $request->program_name,
-            'description'              => $request->description,
-            'province_id'              => $request->province,
-            'district_id'              => $request->district,
-            'village'                  => $request->village,
-            'user_id'                  => $request->user_id
-        ]);
-
-        if ($request->file('beneficiary_file') == null) {
-            $file = "";
-        } else {
-            $file->store('upload', 'public');
-        }
+        $complaint->update($request->all());
 
         return redirect("/complaints");
     }
 
-
+    /**
+     * Get delete the complaints
+     *
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     Public function destroy($id)
     {
-      return "welcom";exit;
-        $user = Complaint::findOrFail($id);
-        $user->delete();
+        $complaints = Complaint::findOrFail($id);
+        $complaints->delete();
 
-        return back();
-    }
-    public function districts($id)
-    {
-        $districts = District::where('province_id', $id)->pluck('district_name', 'id');
-
-        return $districts;
+        return redirect("/complaints");
     }
 
+    /**
+     * Export complaints to excel
+     *
+     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
+     */
     public function export()
     {
-        return Excel::download(new ComplaintExport(), 'Complaint Report.xlsx');
-    }
-
-
-    public function details($id)
-    {
-      $data=Complaint::find($id);
-      return view('complaint.ComplaintDetail',compact('data','id'));
+        return Excel::download(new ComplaintExport(), 'Complaint Report on '.now()->format('Y-m-d').'.xlsx');
     }
 }
