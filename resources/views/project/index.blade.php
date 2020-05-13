@@ -1,7 +1,7 @@
 
 @extends('layouts.master')
 @section('page-title')
-<h>PROJECTS LIST</h>
+<h>Projects List</h>
 @endsection
 @section('content')
 <div class="flex items-center justify-end my-3">

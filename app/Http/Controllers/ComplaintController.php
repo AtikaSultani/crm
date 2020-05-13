@@ -49,9 +49,10 @@ class ComplaintController extends Controller
         $programs = Program::all();
         $projects = Project::all();
         $provinces = Province::all();
+        $refers = ['DCD/CD', 'Officer', 'Partner', 'PM'];
 
         return view('complaint.create',
-        compact('broadCategories', 'specificCategory', 'programs', 'projects', 'provinces'));
+        compact('broadCategories', 'specificCategory', 'programs', 'projects', 'provinces','refers'));
     }
 //this function store data to database
     public function store( $request)

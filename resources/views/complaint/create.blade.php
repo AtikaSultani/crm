@@ -104,7 +104,7 @@
                 <label>Close Date </label>
                 <input type="text" name="receive_date" class="datepicker-here"
                        data-language='en'
-                       data-date-format="yyyy-mm-dd"/>
+                       data-date-format="yyyy-mm-dd" value="{{date('Y-m-d')}}"/>
             </div>
 
             {{-- Project --}}
@@ -159,10 +159,14 @@
 
             {{-- Refered to--}}
             <div class="mb-4">
-                <label>Referred To </label>
-                <input type="text" name="referred_to">
+                <label for="program">Program</label>
+                <select name="referred_to" id="referred_to">
+                    <option value="">Select Program</option>
+                    @foreach($refers as $key)
+                        <option value="{{$key}}">{{$key}}</option>
+                    @endforeach
+                </select>
             </div>
-
 
             {{-- Person who shared action--}}
             <div class="mb-4">
