@@ -1,11 +1,12 @@
 @extends('layouts.master')
 @section('title', 'Create Complaint')
-@section('page-title', 'Edit Complaint - '.$complaint->caller_name)
+@section('page-title', 'Edit Complaint')
 @section('content')
-    <form action="{{ url('/complaints') }}" method="post" id="create-form">
-
+    <form action="{{ url('/complaints/'.$complaint->id) }}" method="post" id="edit-form">
+        @method('PUT')
+        @csrf
         {{-- Calleer information --}}
-        <p class="pt-5 pb-3 text-lg font-semibold text-gray-600">Caller information</p>
+        <p class="pt-5 pb-3 text-lg font-semibold text-gray-600">Caller information <span class="text-sm font-normal text-gray-500"> {{ $complaint->caller_name }}</span> </p>
         <div class="w-full bg-gray-100 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-5 rounded-sm gap-5">
             {{-- Caller name --}}
             <div class="mb-4">
@@ -110,8 +111,9 @@
             {{-- Recieve date --}}
             <div class="mb-4">
                 <label>Close Date </label>
-                <input type="text" name="receive_date" class="datepicker-here"
+                <input type="text" name="close_date" class="datepicker-here"
                        data-language='en'
+                       value="{{ $complaint->close_date }}"
                        data-date-format="yyyy-mm-dd"/>
             </div>
 
@@ -119,9 +121,9 @@
             <div class="mb-4">
                 <label for="project">Project</label>
                 <select name="project_id" id="project">
-                    <option value="">Select Project</option>
                     @foreach($projects as $project)
-                        <option value="{{ $project->id }}">{{ $project->project_name }}</option>
+                        <option value="{{ $project->id }}"
+                                @if($complaint->project_id == $project->id) selected @endif>{{ $project->project_name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -130,9 +132,9 @@
             <div class="mb-4">
                 <label for="program">Program</label>
                 <select name="program_id" id="program">
-                    <option value="">Select Program</option>
                     @foreach($programs as $program)
-                        <option value="{{ $program->id }}">{{ $program->program_name }}</option>
+                        <option value="{{ $program->id }}"
+                                @if($complaint->program_id == $program->id) selected @endif>{{ $program->program_name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -141,9 +143,10 @@
             <div class="mb-4">
                 <label for="broad-category">Broad Category</label>
                 <select name="broad_category_id" id="broad-category">
-                    <option value="">Please select</option>
+
                     @foreach($broadCategories as $category)
-                        <option value="{{$category->id}}">{{ $category->category_name}}</option>
+                        <option value="{{$category->id}}"
+                                @if($complaint->broad_category_id == $category->id) selected @endif>{{ $category->category_name}}</option>
                     @endforeach
                 </select>
             </div>
@@ -152,31 +155,43 @@
             <div class="mb-4 col-span-2 md:col-span-3 lg:col-span-2 ">
                 <label for="specific-category">Specific Category</label>
                 <select name="specific_category_id" id="specific-category">
-                    <option value="">Please select</option>
                     @foreach($specificCategory as $category)
-                        <option value="{{$category->id}}">{{ $category->category_name}}</option>
+                        <option value="{{$category->id}}"
+                                @if($complaint->specific_category_id == $category->id) selected @endif>{{ $category->category_name}}</option>
                     @endforeach
                 </select>
             </div>
 
             {{-- Description --}}
-            <div class="mb-4 col-span-2 md:col-span-3 lg:col-span-4" id="description-container">
+            <div class="mb-4 col-span-2 md:col-span-3 lg:col-span-4"
+                 @if($complaint->specific_category_id != 14) hidden @endif id="description-container">
                 <label for="specific-category">Description</label>
-                <textarea name="description" id="description" rows="4"></textarea>
+                <textarea name="description" id="description" rows="4"> {{ $complaint->description }}</textarea>
             </div>
 
             {{-- Refered to--}}
             <div class="mb-4">
                 <label>Referred To </label>
-                <input type="text" name="referred_to">
+                <select name="referred_to" id="referred_to">
+                    <option value="PM" @if($complaint->referred_to == 'PM') selected @endif> PM
+                    </option>
+                    <option value="Officer" @if($complaint->referred_to == 'Officer') selected @endif>
+                        Officer
+                    </option>
+                    <option value="Partner"
+                            @if($complaint->referred_to == 'Partner') selected @endif>Partner
+                    </option>
+                    <option value="DCD/CD" @if($complaint->referred_to == 'DCD/CD') selected @endif>
+                        DCD/CD
+                    </option>
+                </select>
             </div>
 
             {{-- Person who shared action--}}
             <div class="mb-4">
                 <label>Person who shared action</label>
-                <input type="text" name="person_who_shared_action">
+                <input type="text" name="person_who_shared_action" value="{{ $complaint->person_who_shared_action }}">
             </div>
-
 
             {{-- Attachment to--}}
             <div class="mb-4 col-span-2 md:col-span-3 lg:col-span-2">
@@ -189,7 +204,7 @@
         <div class="flex justify-end my-5">
             <button type="submit"
                     class="text-white bg-blue-lighter hover:bg-blue text-base hover:shadow-lg focus:outline-none px-3 py-1 rounded-sm">
-                Create Now
+                Save Changes
             </button>
         </div>
 
@@ -198,7 +213,7 @@
 
 @section('page-level-js')
     <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
-    {!! JsValidator::formRequest('App\Http\Requests\ComplaintRequest', '#create-form'); !!}
+    {!! JsValidator::formRequest('App\Http\Requests\ComplaintRequest', '#edit-form'); !!}
 
     <script>
         $.ajax({

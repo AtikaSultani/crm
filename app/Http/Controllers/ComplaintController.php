@@ -10,6 +10,7 @@ use App\Models\Program;
 use App\Models\Project;
 use App\Models\Province;
 use App\Models\SpecificCategory;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -29,7 +30,7 @@ class ComplaintController extends Controller
      */
     public function index()
     {
-        $complaints = Complaint::paginate(10);
+        $complaints = Complaint::latest()->paginate(10);
 
         return view('complaint.index', compact('complaints'));
     }
@@ -74,7 +75,9 @@ class ComplaintController extends Controller
     {
         Auth::user()->complaints()->create($request->all());
 
-        return redirect('/complaints');
+        return redirect('/complaints')->with([
+            'message' => 'Complaint created successfully', 'status' => true
+        ]);
     }
 
     /**
@@ -97,7 +100,13 @@ class ComplaintController extends Controller
             compact('broadCategories', 'specificCategory', 'programs', 'projects', 'provinces', 'complaint'));
     }
 
-
+    /**
+     * Update the complaints
+     *
+     * @param  ComplaintRequest  $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function update(ComplaintRequest $request, $id)
     {
         $complaint = Complaint::findOrFail($id);
@@ -105,7 +114,6 @@ class ComplaintController extends Controller
 
         return redirect("/complaints");
     }
-
 
     /**
      * Get delete the complaints
@@ -121,7 +129,6 @@ class ComplaintController extends Controller
         return redirect("/complaints");
     }
 
-
     /**
      * Export complaints to excel
      *
@@ -129,6 +136,6 @@ class ComplaintController extends Controller
      */
     public function export()
     {
-        return Excel::download(new ComplaintExport(), 'Complaint Report.xlsx');
+        return Excel::download(new ComplaintExport(), 'Complaint Report on '.now()->format('Y-m-d').'.xlsx');
     }
 }

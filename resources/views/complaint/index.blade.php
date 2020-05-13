@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('page-title')
-<h>COMPLAINTS LIST</h>
+<h>Complaints List</h>
 @endsection
 @section('content')
 

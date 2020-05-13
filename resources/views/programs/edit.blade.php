@@ -1,28 +1,14 @@
 @extends('layouts.master')
-@section('title', 'Create Complaint')
+@section('title', 'Edit Program')
 @section('page-title')
-<h1>Add New Program</h1>
+<h>Edit Program</h>
 @endsection
 @section('content')
    <div class="row">
 
-               <div class="col-lg-12">
-              <h3 class="page-header"><i class=""></i>Hotline - Beneficiary Feedback and Complaint Tracking Database</h3>
-                <ol class="breadcrumb" >
-                  <li><i class="fa fa-home"></i><a href="/projects">Programs</a></li>
-                  <li><i class="fa fa-plus"></i>Add New Program</li>
-                    <div style="float:right;" >
-                    <i class="fa fa-calendar"></i>
-                  <span><?php echo date('l j F Y'); ?></span>
-                    </div>
-                </ol>
-          </div>
+
             <section class="panel">
-              <header class="panel-heading">
-                <strong>
-                  Add New Project
-               </strong>
-              </header>
+
               <div class="panel-body">
                 <div class="form">
                     <form  method="post"  action="{{url('/programs/'.$id) }}" class="form-vertical" >
@@ -84,7 +70,11 @@
                                       </div>
                                 </div>
                             </div>
-                            <button style="margin-left:80px" type="submit" class="btn btn-primary">Submit</button>
+                          </br>
+                            <div class="mb-4 w-full md:w-auto">
+                              <button class="w-full md:w-auto bg-blue text-white px-3 py-1 rounded text-base">save</button>
+
+                          </div>
                           </form>
                     </div>
                 </div>

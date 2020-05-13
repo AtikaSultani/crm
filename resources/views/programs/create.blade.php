@@ -1,8 +1,8 @@
 
 @extends('layouts.master')
-@section('title', 'Create Complaint')
+@section('title', 'Create Program')
 @section('page-title')
-<h>Add New Complaint</h>
+<h>Add New Program</h>
 @endsection
 @section('content')
     <div class="row">
@@ -42,7 +42,9 @@
                                                   <label class="control-label col-md-4"> StartDate <span >*</span>
                                                   </label>
                                                   <div class="col-md-6">
-                                                      <input type="date" id="picker" class="form-control" name="start_date" />
+                                                      <input type="text"  name="start_date" class="datepicker-here" data-language='en'
+                                                             data-date-format="yyyy-mm-dd"
+                                                             value="{{date('Y-m-d')}}" />
                                                       @error('start_date')
                                                       <div style="color:red;">
                                                         {{$message}}
@@ -54,7 +56,9 @@
                                                   <label class="control-label col-md-4"> EndtDate <span  >*</span>
                                                   </label>
                                                   <div class="col-md-6">
-                                                      <input type="date" id="picker" class="form-control" name="end_date"/>
+                                                      <input type="text" class="datepicker-here" data-language='en'name="end_date"
+                                                             data-date-format="yyyy-mm-dd"
+                                                             value="{{date('Y-m-d')}}"/>
                                                       @error('end_date')
                                                       <div style="color:red;">
                                                         {{$message}}
@@ -62,14 +66,21 @@
                                                       @enderror
                                                   </div>
                                               </div>
+
+
                                             </div>
+
                                           </div>
                                         </div>
                                         <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                                       </div>
                                 </div>
                             </div>
-                            <button style="margin-left:80px" type="submit" class="btn btn-primary">Submit</button>
+                          </br>
+                            <div class="mb-4 w-full md:w-auto">
+                              <button class="w-full md:w-auto bg-blue text-white px-3 py-1 rounded text-base">Create Program</button>
+
+                          </div>
                           </form>
 
                         </div>
