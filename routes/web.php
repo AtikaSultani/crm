@@ -19,7 +19,7 @@ Route::get('/', 'DashboardController');
 
 // complaints routes
 Route::resource('/complaints', 'ComplaintController');
-Route::get('/complaint-export','ComplaintController@export');
+Route::post('/complaint-export','ComplaintController@export');
 
 // Program routes
 Route::resource('/programs', 'ProgramController');

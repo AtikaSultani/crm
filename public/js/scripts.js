@@ -50,7 +50,6 @@ jQuery(document).ready(() => {
     });
 });
 
-
 /**
  * Delete resource
  *
@@ -65,6 +64,19 @@ function deleteResource(id, route, event) {
         .removeClass('invisible');
 
     $('form#delete-form').attr('action', `${baseUrl}/${route}/${id}`);
+}
+
+/**
+ * Export complaints modal
+ *
+ * @param  id
+ * @param route
+ * @param  event
+ */
+function exportComplaint() {
+    $('div#export-modal')
+        .fadeIn(200)
+        .removeClass('invisible');
 }
 
 // Select page
