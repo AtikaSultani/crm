@@ -19,45 +19,18 @@
                     <th>StartDate</th>
                     <th>EndDate</th>
                     <th>Donors</th>
-                    <th>Activities</th>
-                    <!-- <th>DirectBeneficiaries</th>
-                    <th>IndirectBeneficiaries</th>
-                    <th>OnBudjet</th>
-                    <th>OffBudject</th>
-                    <th>Budject</th> -->
                     <th>Provinces</th>
-                    <!-- <th>Actions</th> -->
                     </thead>
                     @foreach($projects as $project)
                         <tr>
                             <td>{{$project->id }}</td>
-                            <td><a href="{{ url('/ProjectController/ProjectDetail/'.$project->id) }}">{{$project->project_name}}</a></td>
+                            <td class="text-blue cursor-pointer"><a href="{{ url('/projects/'.$project->id) }}">{{$project->project_name}}</a></td>
                             <td>{{$project->NGO_name}}</td>
                             <td>{{$project->start_date}}</td>
                             <td>{{$project->end_date}}</td>
                             <td>{{$project->donors}}</td>
-                            <td>{{$project->activities}}</td>
-                            <!-- <td>{{$project->direct_beneficiaries}}</td>
-                            <td>{{$project->indirect_beneficiaries}}</td>
-                            <td>{{$project->on_budget_project}}</td>
-                            <td>{{$project->off_budget_project}}</td>
-                            <td>{{$project->budjet}}</td> -->
                             <td>{{$project->province->province_name}}|{{$project->district->district_name}}</td>
-                            <!-- <td class="actions" style="white-space:nowrap">
-                                <a class="btn btn-primary badge-pill"
-                                   style="width:65px;border-radius:20px;font-size:12px;"
-                                   href="{{ url('/projects/'.$project->id.'/edit')}}">EDIT</a>
-
-                                <form action="{{ url('/projects/'.$project->id) }}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-danger badge-pill"
-                                            style="width:75px;border-radius:20px;font-size:12px;"
-                                            onclick="return confirm('Are you sure to delete this?')"
-                                            data-confirm="Are you sure to delete this item?" type="submit">DELETE
-                                    </button>
-                                </form>
-                            </td> -->
+                          
                         </tr>
                     @endforeach
                 </table>

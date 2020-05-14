@@ -26,7 +26,6 @@ Route::resource('/programs', 'ProgramController');
 
 // project routes
 Route::resource('/projects', 'ProjectController');
-Route::get('/ProjectController/ProjectDetail/{id}','ProjectController@ProjectDetail');
 
 // districts
 Route::get('/provinces/{id}/districts', 'ProvinceController@districts');

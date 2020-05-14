@@ -33,7 +33,11 @@
                     <td>{{ $complaint->id }}</td>
                     <td class="text-blue cursor-pointer"><a
                                 href="{{ url('/complaints/'.$complaint->id) }}">{{ $complaint->caller_name }}</a></td>
+                    @if($complaint->status == 'Pending')
+                    <td style="color:#FF0000">{{ $complaint->status }}</td>
+                    @else
                     <td>{{ $complaint->status }}</td>
+                    @endif
                     <td>{{ $complaint->quarter }}</td>
                     <td>{{ $complaint->province->province_name }} | {{ $complaint->district->district_name}}</td>
                 </tr>

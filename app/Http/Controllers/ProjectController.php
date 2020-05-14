@@ -34,18 +34,7 @@ class ProjectController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'project_name'    => "required|unique:projects",
-            'NGO_name'        => "required",
-            'program_name'    => "required",
-            'start_date'      => "required|date",
-            'end_date'        => "required|date",
-            'donors'          => "required",
-            'activities'      => "required",
-            'province'        => "required",
-            'district'        => "required",
-            'project_manager' => "required"
-        ]);
+
         Project::create([
             'project_name'           => $request->project_name,
             'NGO_name'               => $request->NGO_name,
@@ -69,12 +58,6 @@ class ProjectController extends Controller
             return "Please fill the form";
         }
     }
-
-    public function show(Project $project)
-    {
-        //
-    }
-
 
     public function edit($id)
     {
@@ -131,14 +114,14 @@ class ProjectController extends Controller
 
     public function destroy($id)
     {
-      return "delete";exit;
         $project = Project::findOrFail($id);
         $project->delete();
 
-        return back();
+        return redirect("/projects");
     }
 
-    public function ProjectDetail($id)
+     // it shows the project details
+    public function show($id)
     {
       $data=Project::find($id);
       return view('project.ProjectDetails',compact('data','id'));

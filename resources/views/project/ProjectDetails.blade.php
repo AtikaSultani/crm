@@ -3,21 +3,16 @@
 @section('page-title')
 <h>Project Detail</h>
 @endsection
-
-
 @section('content')
 
-    <button type="button" name="button" style="margin-left:20px;padding-top:3px;padding-bottom:3px;background-color:#B0C4DE;color:#fff;" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-        <a href="{{ url('/projects/'.$data->id.'/edit') }}">Edit</a>
-       </button>
+<span>
+<button style="margin-left:20px;padding-top:3px;padding-bottom:3px;background-color:#B0C4DE;color:#fff;"
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+<a href="{{ url('/projects/'.$data->id.'/edit') }}">Edit</a>
+</button>
 
-      <!-- <form style="margin-top:-30px;" action="{{ url('/ProjectController/'.$data->id) }}" method="post">
-           @csrf
-             @method('DELETE')
-           <button style="margin-left:100px;padding-top:3px;;padding-bottom:3px;background-color:#FF0000;color:#fff;" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onclick="return confirm('Are you sure to delete this?')">
-               Delete
-             </button>
-       </form> -->
+    <button style="background-color:#FF0000;padding-top:4px;padding-bottom: 4px; font-size:15px" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onclick="deleteResource({{ $data->id }}, '/projects', event)">Delete</button>
+</span>
 
   <div style="margin-top:20px;" class="grid grid-cols-2 divide-x divide-gray-600">
   <div class="text-center">
@@ -68,3 +63,7 @@
 
   </div>
 @endsection
+
+@section('include')
+    @include('helper.delete')
+@stop
