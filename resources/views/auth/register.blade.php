@@ -29,7 +29,7 @@
 <body class="login-img3-body" >
 
 <div class="container">
-    <form class="login-form" method="POST" action="{{ route('register') }}" >
+    <form class="login-form" method="POST" action="{{ url('register') }}" >
         @csrf
         <div class="login-wrap" >
             <p class="login-img"><i class="fa fa-user"></i></p>
@@ -69,7 +69,7 @@
             </div>
 
             <button class="btn btn-primary btn-lg btn-block" type="submit">Register</button>
-            <p  class="btn btn-info btn-lg btn-block" ><a id="login" href="{{ route('login') }}"><span style="color:#ffffff;">Allready have account?</span></a></p>
+            <p  class="btn btn-info btn-lg btn-block" ><a id="login" href="{{ route('login') }}"><span>Allready have account</span></a></p>
         </div>
     </form>
 
