@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProjectRequest;
 use App\Models\District;
 use App\Models\Program;
 use App\Models\Project;
@@ -10,6 +11,11 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     /**
      * Display a listing of the resource.
@@ -23,6 +29,11 @@ class ProjectController extends Controller
         return view("project.index", compact('projects'));
     }
 
+    /**
+     * Get create view of projects
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function create()
     {
         $province = Province::all();
@@ -32,9 +43,14 @@ class ProjectController extends Controller
         return view('project.create', compact('province', 'district', 'programs'));
     }
 
-    public function store(Request $request)
+    /**
+     * Get store a new project
+     *
+     * @param  ProjectRequest  $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|string
+     */
+    public function store(ProjectRequest $request)
     {
-
         Project::create([
             'project_name'           => $request->project_name,
             'NGO_name'               => $request->NGO_name,
@@ -45,8 +61,8 @@ class ProjectController extends Controller
             'activities'             => $request->activities,
             'direct_beneficiaries'   => $request->direct_beneficiaries,
             'indirect_beneficiaries' => $request->indirect_beneficiaries,
-            'on_budget_project'     => $request->on_budget,
-            'off_budget_project'    => $request->off_budget,
+            'on_budget_project'      => $request->on_budget,
+            'off_budget_project'     => $request->off_budget,
             'budget'                 => $request->budget,
             'province_id'            => $request->province,
             'district_id'            => $request->district,
@@ -61,55 +77,46 @@ class ProjectController extends Controller
 
     public function edit($id)
     {
-      $data=Project::find($id);
-      $provinces = Province::all('id', 'province_name');
-      $programs = Program::all();
-      $districts = District::all('id', 'district_name');
-        return view('project.edit', compact('data','id','provinces','districts','programs'));
+        $data = Project::find($id);
+        $provinces = Province::all('id', 'province_name');
+        $programs = Program::all();
+        $districts = District::all('id', 'district_name');
+
+        return view('project.edit', compact('data', 'id', 'provinces', 'districts', 'programs'));
     }
 
 
     /**
      * Update project
      *
-     * @param  Request  $request
-     * @param  Project  $project
+     * @param  ProjectRequest  $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, $id)
+    public function update(ProjectRequest $request, $id)
     {
-      $request->validate([
-          'project_name'    => "required|unique:projects",
-          'NGO_name'        => "required",
-          'program_name'    => "required",
-          'start_date'      => "required|date",
-          'end_date'        => "required|date",
-          'donors'          => "required",
-          'activities'      => "required",
-          'province'        => "required",
-          'district'        => "required",
-          'project_manager' => "required"
-      ]);
-      $project=Project::findOrFail($id);
-      $project->update([
-        'project_name'           => $request->project_name,
-        'NGO_name'               => $request->NGO_name,
-        'program_id'             => $request->program_name,
-        'start_date'             => $request->start_date,
-        'end_date'               => $request->end_date,
-        'donors'                 => $request->donors,
-        'activities'             => $request->activities,
-        'direct_beneficiaries'   => $request->direct_beneficiaries,
-        'indirect_beneficiaries' => $request->indirect_beneficiaries,
-        'on_budget_project'     => $request->on_budget,
-        'off_budget_project'    => $request->off_budget,
-        'budget'                 => $request->budget,
-        'province_id'            => $request->province,
-        'district_id'            => $request->district,
-        'project_manager'        => $request->project_manager,
-      ]);
-      return redirect('/projects');
-    }
+        $project = Project::findOrFail($id);
 
+        $project->update([
+            'project_name'           => $request->project_name,
+            'NGO_name'               => $request->NGO_name,
+            'program_id'             => $request->program_name,
+            'start_date'             => $request->start_date,
+            'end_date'               => $request->end_date,
+            'donors'                 => $request->donors,
+            'activities'             => $request->activities,
+            'direct_beneficiaries'   => $request->direct_beneficiaries,
+            'indirect_beneficiaries' => $request->indirect_beneficiaries,
+            'on_budget_project'      => $request->on_budget,
+            'off_budget_project'     => $request->off_budget,
+            'budget'                 => $request->budget,
+            'province_id'            => $request->province,
+            'district_id'            => $request->district,
+            'project_manager'        => $request->project_manager,
+        ]);
+
+        return redirect('/projects');
+    }
 
 
     public function destroy($id)
@@ -120,10 +127,11 @@ class ProjectController extends Controller
         return redirect("/projects");
     }
 
-     // it shows the project details
+    // it shows the project details
     public function show($id)
     {
-      $data=Project::find($id);
-      return view('project.ProjectDetails',compact('data','id'));
+        $data = Project::find($id);
+
+        return view('project.ProjectDetails', compact('data', 'id'));
     }
 }

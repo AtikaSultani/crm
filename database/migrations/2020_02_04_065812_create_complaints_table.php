@@ -38,11 +38,13 @@ class CreateComplaintsTable extends Migration
 
             $table->foreign('program_id')
                 ->references('id')
-                ->on('programs');
+                ->on('programs')
+                ->onDelete('cascade');
 
             $table->foreign('project_id')
                 ->references('id')
-                ->on('projects');
+                ->on('projects')
+                ->onDelete('cascade');
 
             $table->foreign('province_id')
                 ->references('id')
@@ -54,16 +56,18 @@ class CreateComplaintsTable extends Migration
 
             $table->foreign('broad_category_id')
                 ->references('id')
-                ->on('broad_categories');
+                ->on('broad_categories')
+                ->onDelete('cascade');
 
             $table->foreign('specific_category_id')
                 ->references('id')
-                ->on('specific_categories');
+                ->on('specific_categories')
+                ->onDelete('cascade');
 
             $table->foreign('user_id')
                 ->references('id')
-                ->on('users');
-
+                ->on('users')
+                ->onDelete('cascade');
 
             $table->timestamps();
         });

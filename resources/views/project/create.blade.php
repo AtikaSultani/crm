@@ -131,5 +131,5 @@
 
 @section('page-level-js')
     <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
-    {!! JsValidator::formRequest('App\Http\Requests\ComplaintRequest', '#create-form'); !!}
+    {!! JsValidator::formRequest('App\Http\Requests\ProjectRequest', '#create-form'); !!}
 @stop

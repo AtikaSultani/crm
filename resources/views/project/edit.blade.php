@@ -2,9 +2,9 @@
 @section('title', 'Edit Project')
 @section('page-title', 'Edit Project')
 @section('content')
-<form  action="{{url('/projects/'.$id) }}" method="POST" id="create-form">
-  @method('PUT')
-   @csrf
+    <form action="{{url('/projects/'.$id) }}" method="POST" id="edit-form">
+        @method('PUT')
+        @csrf
 
         {{-- Project information --}}
         <p class="pt-5 pb-3 text-lg font-semibold text-gray-600">Project information</p>
@@ -24,11 +24,11 @@
 
             {{-- Start Date --}}
             <div class="mb-4">
-              <label for="title">Start Date</label>
-              <input type="text" name="start_date" class="datepicker-here"
-                     data-language='en'
-                     data-date-format="yyyy-mm-dd"
-                     value="{{$data->start_date}}"/>
+                <label for="title">Start Date</label>
+                <input type="text" name="start_date" class="datepicker-here"
+                       data-language='en'
+                       data-date-format="yyyy-mm-dd"
+                       value="{{$data->start_date}}"/>
             </div>
 
             {{-- End Date --}}
@@ -47,17 +47,18 @@
             </div>
 
 
-
             {{-- Direct Beneficiary --}}
             <div class="mb-4">
                 <label>Direct Beneficiary </label>
-                <input type="text" id="direct_beneficiary" name="direct_beneficiary" value="{{$data->direct_beneficiaries}}"/>
+                <input type="text" id="direct_beneficiary" name="direct_beneficiary"
+                       value="{{$data->direct_beneficiaries}}"/>
             </div>
 
             {{-- Indirect Beneficiary --}}
             <div class="mb-4">
                 <label>Indirect Beneficiary </label>
-                <input type="text" id="indirect_beneficiary" name="indirect_beneficiary" value="{{$data->indirect_beneficiaries}}"/>
+                <input type="text" id="indirect_beneficiary" name="indirect_beneficiary"
+                       value="{{$data->indirect_beneficiaries}}"/>
             </div>
 
             {{-- on budget --}}
@@ -78,19 +79,18 @@
             </div>
 
 
-
             {{-- Province --}}
             <div class="mb-4">
                 <label>Province</label>
                 <select name="province_id" id="province">
                     <option value="">Select Province</option>
                     @foreach($provinces as $province)
-                       <option value="{{$province->id}}"
-                         @if($province->id==$data->province_id)
-                         selected
-                         @endif
-                         >{{$province->province_name}}</option>
-                       @endforeach
+                        <option value="{{$province->id}}"
+                                @if($province->id==$data->province_id)
+                                selected
+                                @endif
+                        >{{$province->province_name}}</option>
+                    @endforeach
                 </select>
             </div>
 
@@ -98,13 +98,13 @@
             <div class="mb-4 ">
                 <label>District</label>
                 <select name="district_id" id="district">
-                  @foreach($districts as $district)
-                     <option value="{{$district->id}}"
-                       @if($district->id==$data->district_id)
-                       selected
-                       @endif
-                       >{{$district->district_name}}</option>
-                     @endforeach
+                    @foreach($districts as $district)
+                        <option value="{{$district->id}}"
+                                @if($district->id==$data->district_id)
+                                selected
+                                @endif
+                        >{{$district->district_name}}</option>
+                    @endforeach
                 </select>
             </div>
             {{-- Program Manager --}}
@@ -119,12 +119,12 @@
                 <select name="program_id" id="program">
                     <option value="">Select Program</option>
                     @foreach($programs as $program)
-                       <option value="{{$program->id}}"
-                         @if($program->id==$data->program_id)
-                         selected
-                         @endif
-                         >{{$program->program_name}}</option>
-                       @endforeach
+                        <option value="{{$program->id}}"
+                                @if($program->id==$data->program_id)
+                                selected
+                                @endif
+                        >{{$program->program_name}}</option>
+                    @endforeach
                 </select>
             </div>
             {{-- ACTIVITIES --}}
@@ -145,7 +145,8 @@
     </form>
 @stop
 
+
 @section('page-level-js')
     <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
-    {!! JsValidator::formRequest('App\Http\Requests\ComplaintRequest', '#create-form'); !!}
+    {!! JsValidator::formRequest('App\Http\Requests\ProjectRequest', '#edit-form'); !!}
 @stop
