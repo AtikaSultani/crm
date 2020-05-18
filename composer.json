@@ -15,7 +15,8 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^1.1",
         "maatwebsite/excel": "^3.1",
-        "proengsoft/laravel-jsvalidation": "^4.0"
+        "proengsoft/laravel-jsvalidation": "^4.0",
+        "spatie/laravel-permission": "^3.12"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
