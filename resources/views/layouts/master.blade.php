@@ -6,6 +6,12 @@
     {{-- Style files --}}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    {{-- Csrf token --}}
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    {{-- Base Url --}}
+    <meta name="base-url" content="{{ url('/') }}">
+
     <link href="{{ asset('css/datepicker.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
@@ -19,7 +25,7 @@
     <div class="w-full content min-h-screen">
 
         <!-- Menu -->
-        <div class="flex items-center justify-between px-5 py-2 sticky top-0 bg-white">
+        <div class="flex items-center justify-between px-5 py-2 sticky top-0 bg-white z-10">
 
             <!-- Page title -->
             <div class="flex items-center">

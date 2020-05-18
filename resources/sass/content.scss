@@ -14,26 +14,30 @@ select {
   @apply bg-white outline-none;
 }
 
+
 label {
   @apply block mb-2 text-sm font-normal text-gray-600;
 }
 
 .bg-modal {
-    background-color: rgba(84, 92, 110, 0.7);
+  background-color: rgba(84, 92, 110, 0.7);
 }
 
-
 .hide-toast {
-    animation-name: hide-toast;
-    left: -100%;
-    animation-duration: 2s;
-    display: none !important;
+  animation-name: hide-toast;
+  left: -100%;
+  animation-duration: 2s;
+  display: none !important;
 }
 
 .loading-message {
-    position: fixed;
-    bottom: 100px;
-    left: 70px;
-    z-index: 51;
-    display: none;
+  position: fixed;
+  bottom: 100px;
+  left: 70px;
+  z-index: 51;
+  display: none;
+}
+
+.pretty .state label:before, .pretty .state label:after{
+  top: calc((0% - (100% - 1em)) - -21%) !important;
 }
