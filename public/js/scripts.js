@@ -1,3 +1,4 @@
+let baseUrl = $('meta[name*="base-url"]').attr('content');
 jQuery(document).ready(() => {
     // show mobile sidebar
     $(".toggle-menu-bar").click(() => {
@@ -82,4 +83,45 @@ function exportComplaint() {
 // Select page
 function selectPage(page) {
     window.location = `?page=${page.value}`;
+}
+
+
+function assignRole(userId, event) {
+    event.preventDefault();
+    $.ajax({
+        type: 'GET',
+        url: '/users/' + userId + '/assign-role',
+        success: function (view) {
+            $('#assign-role-body').html(view);
+            $('#assign-role-modal').fadeIn(200)
+                .removeClass('invisible');
+        }
+    });
+}
+
+
+/**
+ * Edit the role
+ *
+ * @param id
+ */
+function editRole(id, event) {
+    event.preventDefault();
+    $.ajax({
+        type: 'GET',
+        url: `${baseUrl}/roles/${id}/edit`,
+        success: function (view) {
+            $('div#edit-role-content').html(view);
+
+            $('div#edit-role').fadeIn(100)
+                .removeClass('invisible');
+        }
+    })
+}
+
+// Create role modal
+function createRole() {
+    $('div#create-role')
+        .fadeIn(200)
+        .removeClass('invisible');
 }
