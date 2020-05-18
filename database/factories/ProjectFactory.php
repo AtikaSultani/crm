@@ -22,6 +22,7 @@ use Faker\Generator as Faker;
 $factory->define(Project::class, function (Faker $faker) {
     return [
         "project_name"           => $faker->realText(10),
+        "project_code"           => $faker->text(5),
         "NGO_name"               => $faker->text(10),
         "start_date"             => $faker->date('Y-m-d'),
         "end_date"               => $faker->date('Y-m-d'),

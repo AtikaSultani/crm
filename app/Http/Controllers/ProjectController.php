@@ -53,6 +53,7 @@ class ProjectController extends Controller
     {
         Project::create([
             'project_name'           => $request->project_name,
+            'project_code'           => $request->project_code,
             'NGO_name'               => $request->NGO_name,
             'program_id'             => $request->program_name,
             'start_date'             => $request->start_date,
@@ -99,6 +100,7 @@ class ProjectController extends Controller
 
         $project->update([
             'project_name'           => $request->project_name,
+            'project_code'           => $request->project_code,
             'NGO_name'               => $request->NGO_name,
             'program_id'             => $request->program_name,
             'start_date'             => $request->start_date,

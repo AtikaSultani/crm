@@ -26,6 +26,7 @@ class ProjectRequest extends FormRequest
     {
         return [
             'project_name'    => "required|unique:projects,project_name",
+            'project_code'        => "required",
             'NGO_name'        => "required",
             'program_name'    => "required",
             'start_date'      => "required|date",
@@ -34,7 +35,12 @@ class ProjectRequest extends FormRequest
             'activities'      => "required",
             'province'        => "required",
             'district'        => "required",
-            'project_manager' => "required"
+            'project_manager' => "required",
+            'direct_beneficiary'=> "required",
+            'indirect_beneficiary'=> "required",
+            'on_budget'       => "required",
+            'off_budget'      => "required",
+            'budget'          => "required"
         ];
     }
 }

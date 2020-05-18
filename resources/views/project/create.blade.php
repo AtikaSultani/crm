@@ -13,6 +13,11 @@
                 <label for="caller_name">Project Name</label>
                 <input type="text" id="project_name" name="project_name"/>
             </div>
+            {{-- project code --}}
+            <div class="mb-4">
+                <label for="caller_name">Project Code</label>
+                <input type="text" id="project_code" name="project_code"/>
+            </div>
 
             {{-- NGO Name --}}
             <div class="mb-4">
@@ -95,10 +100,10 @@
                     <option value="">Select District</option>
                 </select>
             </div>
-            {{-- Program Manager --}}
+            {{-- Prject Manager --}}
             <div class="mb-4">
                 <label>Program Manager</label>
-                <input type="text" id="program_manager" name="program_manager"/>
+                <input type="text" id="program_manager" name="project_manager"/>
             </div>
 
             {{-- Program --}}

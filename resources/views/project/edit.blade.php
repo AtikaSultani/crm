@@ -2,7 +2,7 @@
 @section('title', 'Edit Project')
 @section('page-title', 'Edit Project')
 @section('content')
-    <form action="{{url('/projects/'.$id) }}" method="POST" id="edit-form">
+    <form action="{{ url('/Projects/'.$data->id) }}" method="POST" id="edit-form">
         @method('PUT')
         @csrf
 
@@ -14,6 +14,11 @@
             <div class="mb-4">
                 <label for="caller_name">Project Name</label>
                 <input type="text" id="project_name" name="project_name" value="{{$data->project_name}}"/>
+            </div>
+            {{-- project code --}}
+            <div class="mb-4">
+                <label for="caller_name">Project code</label>
+                <input type="text" id="project_name" name="project_code" value="{{$data->project_code}}"/>
             </div>
 
             {{-- NGO Name --}}
