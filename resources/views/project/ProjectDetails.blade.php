@@ -19,6 +19,9 @@
     <label > <span style="font-weight:bold;">Project Name</span> : {{$data->project_name }}</label>
     <br>
     <br>
+    <label > <span style="font-weight:bold;">Project Code</span> : {{$data->project_code }}</label>
+    <br>
+    <br>
     <label> <span style="font-weight:bold;">NGO Name</span> : {{$data->NGO_name}}</label>
     <br>
     <br>
