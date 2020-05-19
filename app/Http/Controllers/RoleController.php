@@ -11,6 +11,11 @@ use Spatie\Permission\Models\Role;
 class RoleController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware(['auth', 'verified']);
+    }
+
     /**
      * Get the roles paginated
      *

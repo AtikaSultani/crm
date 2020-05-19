@@ -14,6 +14,12 @@
             Enter your email and we'll send you a link to reset your password.
         </p>
 
+        @if (session('status'))
+            <p class="my-2 text-sm leading-5 text-green-800 text-center">
+                {{ session('status') }}
+            </p>
+        @endif
+
         <form method="POST" action="{{ route('password.email') }}">
             @csrf
             {{-- email address --}}
