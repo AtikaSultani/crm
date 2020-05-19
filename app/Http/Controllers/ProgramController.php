@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 class ProgramController extends Controller
 {
 
+
+    public function __construct()
+    {
+        $this->middleware(['auth', 'verified']);
+    }
+
     public function index()
     {
         $data = Program::paginate(10);
@@ -19,7 +25,6 @@ class ProgramController extends Controller
     {
         return view('programs.create');
     }
-
 
 
     public function store(Request $request)
@@ -44,26 +49,27 @@ class ProgramController extends Controller
 
     public function edit($id)
     {
-      $data = Program::find($id);
+        $data = Program::find($id);
 
-      return view('programs.edit', compact('data','id'));
+        return view('programs.edit', compact('data', 'id'));
     }
 
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
-      $request->validate([
-          'program_name' => "required|unique:programs",
-          'start_date'   => "required|date",
-          'end_date'     => "required|date",
-      ]);
+        $request->validate([
+            'program_name' => "required|unique:programs",
+            'start_date'   => "required|date",
+            'end_date'     => "required|date",
+        ]);
 
-      $program=Program::findOrFail($id);
-      $program->update([
-        'program_name' => $request->program_name,
-        'start_date'   => $request->start_date,
-        'end_date'     => $request->end_date
-      ]);
-      return redirect('/programs');
+        $program = Program::findOrFail($id);
+        $program->update([
+            'program_name' => $request->program_name,
+            'start_date'   => $request->start_date,
+            'end_date'     => $request->end_date
+        ]);
+
+        return redirect('/programs');
     }
 
 

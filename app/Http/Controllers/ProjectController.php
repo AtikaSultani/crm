@@ -7,14 +7,14 @@ use App\Models\District;
 use App\Models\Program;
 use App\Models\Project;
 use App\Models\Province;
-use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
 
+
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth', 'verified']);
     }
 
     /**
