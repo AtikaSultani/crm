@@ -32,17 +32,16 @@ class BackupDatabase extends Command
     public function __construct()
     {
         parent::__construct();
-        $backupName = 'Backup_'.date('Y').'_'.date('m').'_'.date('d').'.sql';
+        $backupName = 'Backup-'.now()->format('Y-m-d-H-s-i').'.sql';
 
-        $this->process = new Process([
-                sprintf(
-                    'mysqldump -u%s -p%s %s > %s',
-                    config('database.connections.mysql.username'),
-                    config('database.connections.mysql.password'),
-                    config('database.connections.mysql.database'),
-                    storage_path('backups/'.$backupName)
-                )
-            ]
+        $this->process = Process::fromShellCommandline(
+            sprintf(
+                'mysqldump -u%s -p%s %s > %s',
+                config('database.connections.mysql.username'),
+                config('database.connections.mysql.password'),
+                config('database.connections.mysql.database'),
+                storage_path('backups/'.$backupName)
+            )
         );
     }
 

@@ -3,7 +3,8 @@
 @section('page-title','Application Setting')
 
 @section('content')
-    <div class="flex items-center justify-end my-3">
+    <div class="flex items-center justify-between my-3">
+        <p class="text-gray-700 font-semibold">10 Most Recent Database Backups</p>
         <a class="text-sm bg-blue text-white px-2 py-1 rounded-sm focus:outline-none"
            href="{{ url('/backups/backup-now') }}">
             Backup Now
@@ -16,9 +17,7 @@
                 <th>File Name</th>
                 <th>Created At</th>
                 <th>File Size</th>
-
                 <th>Download</th>
-
             </tr>
             </thead>
             <tbody>

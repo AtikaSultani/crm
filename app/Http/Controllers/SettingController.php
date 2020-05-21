@@ -11,6 +11,7 @@ class SettingController extends Controller
 
     public function __construct()
     {
+        $this->middleware('auth');
 //        $this->middleware(['permission:View Backups'])->only('index');
 //        $this->middleware(['permission:Download Backup'])->only('download');
     }
@@ -22,7 +23,9 @@ class SettingController extends Controller
      */
     public function index()
     {
-        $databases = $this->backups();
+        $databases = collect($this->backups())->sortByDesc(function ($database) {
+            return $database->getATime();
+        })->take(10);
 
         return view('setting.index', compact('databases'));
     }
