@@ -50,7 +50,7 @@
     </a>
 
     <a class="@if(request()->is('settings*')) bg-blue-lighter @endif hover:bg-blue-lighter flex items-center w-full p-1 rounded my-2 inline-block"
-       href="#">
+       href="{{ url('/settings') }}">
         <img src="{{ url('/images/setting-icon.png') }}" class="w-5" alt="">
         <p class="text-gray-400 text-base ml-2">Setting</p>
     </a>
