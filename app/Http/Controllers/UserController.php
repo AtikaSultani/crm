@@ -53,5 +53,16 @@ class UserController extends Controller
        return redirect('/users');
      }
 
+     /**
+      * Get list of users paginated
+      *
+      * @delete user
+      */
 
+      public function destroy($id)
+      {
+        $user=User::findOrFail($id);
+        $user->delete();
+        return redirect('/users');
+      }
 }
