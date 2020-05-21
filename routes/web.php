@@ -39,4 +39,9 @@ Route::group(['middleware' => 'prevent.back.history'], function () {
     Route::post('/roles/{id}/sync-permissions', 'RoleController@syncPermissions');
     // Role routes
     Route::resource('/roles', 'RoleController');
+
+    // Back up routes
+    Route::get('/settings', 'SettingController@index');
+    Route::get('backups/download/{file}', 'BackupController@download');
+    Route::get('backups/backup-now', 'BackupController@backup');
 });
