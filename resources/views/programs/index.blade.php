@@ -38,11 +38,7 @@
 
                 </td>
                 <td>
-                  <form action="{{ url('/programs/'.$key->id) }}" method="post">
-                      @csrf
-                      @method('DELETE')
-                    <button   class="bg-white hover:bg-grey-lightest text-grey-darkest font-semibold py-2 px-4 border border-grey-light rounded shadow" onclick="return confirm('Are you sure to delete this?')" >Delete</button>
-                  </form>
+                    <button type="button" class="bg-white hover:bg-grey-lightest text-grey-darkest font-semibold py-2 px-4 border border-grey-light rounded shadow" name="button" onclick="deleteResource({{ $key->id }}, '/programs', event)">Delete</button>
                 </td>
 
               </tr>
@@ -53,3 +49,6 @@
     </div>
 
 @endsection
+@section('include')
+    @include('helper.delete')
+@stop

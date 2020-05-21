@@ -10,6 +10,8 @@
             <th>Name</th>
             <th>Email</th>
             <th>Role</th>
+            <th>Edit</th>
+            <th>Delete</th>
             </thead>
             <tbody>
             @foreach($users as $user)
@@ -18,7 +20,7 @@
                         {{ $user->id }}
                     </td>
                     <td>
-                        <a href="{{ url('/users/'.$user->id) }}" class="text-blue">{{ $user->name }}</a>
+                        {{ $user->name }}
                     </td>
                     <td>
                         {{ $user->email }}
@@ -36,6 +38,14 @@
                             @endif
                         </a>
                     </td>
+                    <td class="actions" style="white-space:nowrap">
+                      <button type="button" class="bg-white hover:bg-grey-lightest text-grey-darkest font-semibold py-2 px-4 border border-grey-light rounded shadow" name="button"><a href="{{ url('/users/'.$user->id.'/edit') }}">Edit</a></button>
+
+                    </td>
+                    <td>
+                        <button type="button" class="bg-white hover:bg-grey-lightest text-grey-darkest font-semibold py-2 px-4 border border-grey-light rounded shadow" name="button" onclick="deleteResource({{ $user->id }}, '/users', event)">Delete</button>
+                    </td>
+
                 </tr>
             @endforeach
             </tbody>
@@ -47,7 +57,9 @@
     </div>
 
 @endsection
-
+@section('include')
+    @include('helper.delete')
+@stop
 
 
 @section('include')

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
@@ -24,9 +25,33 @@ class UserController extends Controller
 
         return view('user.index', compact('users'));
     }
-
-    public function show($id)
+    /**
+     * Get list of users paginated
+     *
+     * @edit user
+     */
+    public function edit($id)
     {
-        return 'Coming soon';
+      $user=User::find($id);
+      return view('user.edit',compact('user'));
     }
+
+    /**
+     * Get list of users paginated
+     *
+     * @update user
+     */
+
+     public function update(UserRequest $request,$id)
+     {
+       $user = User::findOrFail($id);
+       $user->update([
+           'name' => $request->name,
+           'email'   => $request->email,
+       ]);
+
+       return redirect('/users');
+     }
+
+
 }

@@ -69,11 +69,11 @@ class ProjectController extends Controller
             'district_id'            => $request->district,
             'project_manager'        => $request->project_manager,
         ]);
-        if ('Projects' != '') {
-            return redirect('/projects')->with("msg", "The Project Added Successfully ");
-        } else {
-            return "Please fill the form";
-        }
+
+            return redirect('/projects')->with([
+                'message' => 'Project created successfully', 'status' => true
+              ]);
+
     }
 
     public function edit($id)
@@ -117,7 +117,7 @@ class ProjectController extends Controller
             'project_manager'        => $request->project_manager,
         ]);
 
-        return redirect('/projects');
+        return redirect("/projects/".$project->id);
     }
 
 

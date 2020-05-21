@@ -1,7 +1,7 @@
 @extends('layouts.master')
-@section('title', 'Edit Program')
+@section('title', 'Edit User')
 @section('page-title')
-<h>Edit Program</h>
+<h>Edit User</h>
 @endsection
 @section('content')
    <div class="row">
@@ -11,7 +11,7 @@
 
               <div class="panel-body">
                 <div class="form">
-                    <form  method="post"  action="{{url('/programs/'.$id) }}" class="form-vertical" id="edit-form">
+                    <form  method="post"  action="{{url('/users/'.$user->id) }}" class="form-vertical" id="edit-form" >
                         @csrf
                         @method('PUT')
                         <input type="hidden" name="student_type" value="3">
@@ -25,30 +25,24 @@
                                             <div class="col-sm-6 reg-right-content-wrapper">
                                                 <div class="form-group">
                                                     <div>
-                                                    <label class="control-label col-md-4"> ProgramName <span  >*</span>
+                                                    <label class="control-label col-md-4"> User Name <span  >*</span>
                                                     </label>
                                                     <div class="col-md-6">
-                                                        <input type="text"  class="form-control " name="program_name" value="{{$data->program_name}}"/>
-                                                      
+                                                        <input type="text"  class="form-control " name="user_name" value="{{$user->name}}"/>
+
                                                     </div>
                                                     </div>
                                                 </div>
 
 
+
                                               <div class="form-group">
-                                                  <label class="control-label col-md-4"> StartDate <span >*</span>
+                                                  <label class="control-label col-md-4"> Email <span  >*</span>
                                                   </label>
                                                   <div class="col-md-6">
-                                                      <input type="date" id="picker" class="form-control" name="start_date" value="{{$data->start_date}}" />
+                                                      <input type="text" id="picker" class="form-control" name="email" value="{{$user->email}}"/>
 
                                                   </div>
-                                              </div>
-                                              <div class="form-group">
-                                                  <label class="control-label col-md-4"> EndtDate <span  >*</span>
-                                                  </label>
-                                                  <div class="col-md-6">
-                                                      <input type="date" id="picker" class="form-control" name="end_date" value="{{$data->end_date}}"/>
-                                                    </div>
                                               </div>
                                             </div>
                                           </div>

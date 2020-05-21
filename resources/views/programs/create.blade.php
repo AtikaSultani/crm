@@ -11,7 +11,7 @@
 
             <div class="panel-body">
               <div class="form">
-                    <form  method="POST"  action="{{url('programs') }}" class="form-vertical" >
+                    <form  method="POST"  action="{{url('programs') }}" class="form-vertical" id="create-form">
                         @csrf
                         <input type="hidden" name="student_type" value="3">
                             <div class="form-body">
@@ -28,11 +28,7 @@
                                                     </label>
                                                     <div class="col-md-6">
                                                         <input type="text"  class="form-control " name="program_name"/>
-                                                        @error('program_name')
-                                                        <div style="color:red;">
-                                                          {{$message}}
-                                                        </div>
-                                                        @enderror
+
                                                     </div>
                                                     </div>
                                                 </div>
@@ -45,25 +41,17 @@
                                                       <input type="text"  name="start_date" class="datepicker-here" data-language='en'
                                                              data-date-format="yyyy-mm-dd"
                                                              value="{{date('Y-m-d')}}" />
-                                                      @error('start_date')
-                                                      <div style="color:red;">
-                                                        {{$message}}
-                                                      </div>
-                                                      @enderror
+
                                                   </div>
                                               </div>
                                               <div class="form-group">
                                                   <label class="control-label col-md-4"> EndtDate <span  >*</span>
                                                   </label>
                                                   <div class="col-md-6">
-                                                      <input type="text" class="datepicker-here" data-language='en'name="end_date"
+                                                      <input type="text" class="datepicker-here" data-language='en' name="end_date"
                                                              data-date-format="yyyy-mm-dd"
                                                              value="{{date('Y-m-d')}}"/>
-                                                      @error('end_date')
-                                                      <div style="color:red;">
-                                                        {{$message}}
-                                                      </div>
-                                                      @enderror
+
                                                   </div>
                                               </div>
 
@@ -91,3 +79,7 @@
                 </section>
 
                 @endsection
+                @section('page-level-js')
+                    <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+                    {!! JsValidator::formRequest('App\Http\Requests\ProjectRequest', '#create-form'); !!}
+                @stop
