@@ -119,9 +119,36 @@ function editRole(id, event) {
     })
 }
 
+/**
+ * Edit the program
+ *
+ * @param id
+ */
+function editProgram(id, event) {
+    event.preventDefault();
+    $.ajax({
+        type: 'GET',
+        url: `${baseUrl}/programs/${id}/edit`,
+        success: function (view) {
+            $('div#edit-program-content').html(view);
+
+            $('div#edit-program').fadeIn(100)
+                .removeClass('invisible');
+        }
+    })
+}
+
 // Create role modal
 function createRole() {
     $('div#create-role')
+        .fadeIn(200)
+        .removeClass('invisible');
+}
+
+
+// Create role modal
+function createProgram() {
+    $('div#create-program')
         .fadeIn(200)
         .removeClass('invisible');
 }

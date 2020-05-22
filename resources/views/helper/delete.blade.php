@@ -1,5 +1,5 @@
 {{-- Delete Modal --}}
-<div class="fixed pin bg-modal h-screen w-screen invisible modal delete-modal">
+<div class="fixed pin bg-modal h-screen w-screen invisible modal delete-modal z-50">
     <div class="relative bg-white max-w-xl mx-auto mt-16 rounded  py-4 px-6 shadow-2xl">
 
         <form method="POST" id="delete-form">

@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Project;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Request;
 
 class ProjectRequest extends FormRequest
 {
@@ -24,23 +26,48 @@ class ProjectRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'project_name'    => "required|unique:projects,project_name",
-            'project_code'        => "required",
-            'NGO_name'        => "required",
-            'program_name'    => "required",
-            'start_date'      => "required|date",
-            'end_date'        => "required|date",
-            'donors'          => "required",
-            'activities'      => "required",
-            'province'        => "required",
-            'district'        => "required",
-            'project_manager' => "required",
-            'direct_beneficiary'=> "required",
-            'indirect_beneficiary'=> "required",
-            'on_budget'       => "required",
-            'off_budget'      => "required",
-            'budget'          => "required"
-        ];
+        $project = Project::find($this->route('project'));
+
+        switch (Request::method()) {
+            case 'PUT':
+            case 'PATCH':
+                return [
+                    'project_name'           => "required|unique:projects,project_name,".$project->id,
+                    'project_code'           => "required",
+                    'ngo_name'               => "required",
+                    'program_id'             => "required|numeric",
+                    'start_date'             => "required|date",
+                    'end_date'               => "required|date",
+                    'donors'                 => "required|string|min:3",
+                    'activities'             => "required",
+                    'province_id'            => "required",
+                    'district_id'            => "required",
+                    'project_manager'        => "required",
+                    'direct_beneficiaries'   => "required",
+                    'indirect_beneficiaries' => "required",
+                    'on_budget'              => "required",
+                    'off_budget'             => "required",
+                    'budget'                 => "required"
+                ];
+            case "GET" :
+                return [
+                    'project_name'           => "required|unique:projects,project_name",
+                    'project_code'           => "required",
+                    'ngo_name'               => "required",
+                    'program_id'             => "required|numeric",
+                    'start_date'             => "required|date",
+                    'end_date'               => "required|date",
+                    'donors'                 => "required|string|min:3",
+                    'activities'             => "required",
+                    'province_id'            => "required",
+                    'district_id'            => "required",
+                    'project_manager'        => "required",
+                    'direct_beneficiaries'   => "required",
+                    'indirect_beneficiaries' => "required",
+                    'on_budget'              => "required",
+                    'off_budget'             => "required",
+                    'budget'                 => "required"
+                ];
+        }
     }
 }

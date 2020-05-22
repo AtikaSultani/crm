@@ -7,6 +7,7 @@ use App\Models\District;
 use App\Models\Program;
 use App\Models\Project;
 use App\Models\Province;
+use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
@@ -24,7 +25,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::paginate(10);
+        $projects = Project::latest()->paginate(10);
 
         return view("project.index", compact('projects'));
     }
@@ -44,6 +45,19 @@ class ProjectController extends Controller
     }
 
     /**
+     * Get project details
+     *
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function show($id)
+    {
+        $data = Project::find($id);
+
+        return view('project.details', compact('data', 'id'));
+    }
+
+    /**
      * Get store a new project
      *
      * @param  ProjectRequest  $request
@@ -51,31 +65,20 @@ class ProjectController extends Controller
      */
     public function store(ProjectRequest $request)
     {
-        Project::create([
-            'project_name'           => $request->project_name,
-            'project_code'           => $request->project_code,
-            'NGO_name'               => $request->NGO_name,
-            'program_id'             => $request->program_name,
-            'start_date'             => $request->start_date,
-            'end_date'               => $request->end_date,
-            'donors'                 => $request->donors,
-            'activities'             => $request->activities,
-            'direct_beneficiaries'   => $request->direct_beneficiaries,
-            'indirect_beneficiaries' => $request->indirect_beneficiaries,
-            'on_budget_project'      => $request->on_budget,
-            'off_budget_project'     => $request->off_budget,
-            'budget'                 => $request->budget,
-            'province_id'            => $request->province,
-            'district_id'            => $request->district,
-            'project_manager'        => $request->project_manager,
-        ]);
+        Project::create($request->all());
 
-            return redirect('/projects')->with([
-                'message' => 'Project created successfully', 'status' => true
-              ]);
+        return redirect('/projects')->with([
+            'message' => 'Project created successfully', 'status' => true
+        ]);
 
     }
 
+    /**
+     * Get edit form of project
+     *
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function edit($id)
     {
         $data = Project::find($id);
@@ -85,7 +88,6 @@ class ProjectController extends Controller
 
         return view('project.edit', compact('data', 'id', 'provinces', 'districts', 'programs'));
     }
-
 
     /**
      * Update project
@@ -98,24 +100,7 @@ class ProjectController extends Controller
     {
         $project = Project::findOrFail($id);
 
-        $project->update([
-            'project_name'           => $request->project_name,
-            'project_code'           => $request->project_code,
-            'NGO_name'               => $request->NGO_name,
-            'program_id'             => $request->program_name,
-            'start_date'             => $request->start_date,
-            'end_date'               => $request->end_date,
-            'donors'                 => $request->donors,
-            'activities'             => $request->activities,
-            'direct_beneficiaries'   => $request->direct_beneficiaries,
-            'indirect_beneficiaries' => $request->indirect_beneficiaries,
-            'on_budget_project'      => $request->on_budget,
-            'off_budget_project'     => $request->off_budget,
-            'budget'                 => $request->budget,
-            'province_id'            => $request->province,
-            'district_id'            => $request->district,
-            'project_manager'        => $request->project_manager,
-        ]);
+        $project->update($request->all());
 
         return redirect("/projects/".$project->id);
     }
@@ -127,13 +112,5 @@ class ProjectController extends Controller
         $project->delete();
 
         return redirect("/projects");
-    }
-
-    // it shows the project details
-    public function show($id)
-    {
-        $data = Project::find($id);
-
-        return view('project.ProjectDetails', compact('data', 'id'));
     }
 }
