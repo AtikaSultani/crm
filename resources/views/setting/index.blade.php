@@ -45,23 +45,21 @@
                             <div class="w-full">
                                 <div class="flex flex-wrap">
                                     @foreach ($log->properties['attributes'] as $key => $attribute)
-                                        <div class="w-auto bg-gray-400  p-3 rounded my-1 mx-2">
+                                        <div class="w-auto bg-gray-300 px-2 py-1 rounded my-1 mx-2">
                                             <span class="text-gray-600 capitalize">{{str_replace('_', ' ', $key) }}</span>
                                             : {{ $attribute }}
                                         </div>
                                     @endforeach
                                 </div>
                             </div>
-
                         @else
-
                             <div class="w-full">
                                 <div class="flex flex-wrap">
                                     @foreach ($log->properties['attributes'] as $key => $attribute)
-                                        <div class="w-auto bg-gray-400  p-3 rounded my-1 mx-2">
+                                        <div class="w-auto bg-gray-300 px-2 py-1 rounded my-1 mx-2">
                                             <span class="text-gray-900 capitalize">{{str_replace('_', ' ', $key) }}</span>
                                             : <span
-                                                    class="line-through text-red-700">{{ $log->properties['old'][$key] }}</span>
+                                                    class="line-through text-red-darker">{{ $log->properties['old'][$key] }}</span>
                                             <span>
                                              {{ $attribute }}
                                         </span>
