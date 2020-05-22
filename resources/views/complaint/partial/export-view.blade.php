@@ -15,6 +15,7 @@
         <th>Broad Category</th>
         <th>Specific Category</th>
         <th>Project</th>
+        <th>Project Code</th>
         <th>Program</th>
         <th>Received By</th>
         <th>Close Date</th>
@@ -40,6 +41,7 @@
             <td>{{ $complaint->broadCategory->category_name}}</td>
             <td>{{ $complaint->specificCategory->category_name}}</td>
             <td>{{ $complaint->project->project_name}}</td>
+            <td>{{ $complaint->project->project_code}}</td>
             <td>{{ $complaint->program->program_name}}</td>
             <td>{{ $complaint->user->name}}</td>
             <td>{{ $complaint->close_date}}</td>
