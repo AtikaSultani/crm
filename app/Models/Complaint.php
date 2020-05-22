@@ -4,9 +4,17 @@ namespace App\Models;
 
 use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Complaint extends Model
 {
+    use LogsActivity;
+
+    // Activity log properties
+    protected static $logAttributes = ['*'];
+    protected static $logAttributesToIgnore = ['updated_at'];
+    protected static $logName = 'Complaint';
+    protected static $logOnlyDirty = true;
 
     /**
      * The attributes that are mass assignable.

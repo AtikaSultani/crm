@@ -4,15 +4,22 @@ namespace App;
 
 use App\Models\Complaint;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\SoftDelete;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Permission\Traits\HasRoles;
-use Illuminate\Database\Eloquent\SoftDelete;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
 
-    use Notifiable, HasRoles;
+    use Notifiable, HasRoles, LogsActivity;
+
+    // Activity log properties
+    protected static $logAttributes = ['*'];
+    protected static $logAttributesToIgnore = ['password', 'updated_at', 'remember_token'];
+    protected static $logName = 'User';
+    protected static $logOnlyDirty = true;
 
     /**
      * The attributes that are mass assignable.
