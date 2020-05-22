@@ -32,6 +32,10 @@ class ComplaintExport implements FromView, ShouldAutoSize
             $complaints->where('quarter', $this->request['quarter']);
         }
 
+        if ($this->request['project']) {
+            $complaints->where('project_id', $this->request['project']);
+        }
+
         $complaints = $complaints->get();
 
         return view('complaint.partial.export-view')->with(['complaints' => $complaints]);

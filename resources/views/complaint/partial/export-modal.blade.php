@@ -28,6 +28,19 @@
                     <option value="Fourth Quarter">Fourth Quarter</option>
                 </select>
             </div>
+
+            {{-- Project code --}}
+            <div class="mb-4">
+                <label for="project">Project</label>
+                <select name="project" id="project">
+                    <option value="">All</option>
+                    @foreach($projects as $project)
+                        <option value="{{ $project->id  }}">
+                            {{ $project->project_code }}
+                            - <span class="text-gray-600">{{ $project->project_name }}</span></option>
+                    @endforeach
+                </select>
+            </div>
         </form>
 
         {{-- Modal footer --}}
