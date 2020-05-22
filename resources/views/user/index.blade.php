@@ -10,8 +10,7 @@
             <th>Name</th>
             <th>Email</th>
             <th>Role</th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <th></th>
             </thead>
             <tbody>
             @foreach($users as $user)
@@ -38,14 +37,13 @@
                             @endif
                         </a>
                     </td>
-                    <td class="actions" style="white-space:nowrap">
-                      <button type="button" class="bg-white hover:bg-grey-lightest text-grey-darkest font-semibold py-2 px-4 border border-grey-light rounded shadow" name="button"><a href="{{ url('/users/'.$user->id.'/edit') }}">Edit</a></button>
-
+                    <td class="actions">
+                        <button class="text-red-darker px-2 py-px float-right focus:outline-none"
+                                onclick="deleteResource({{$user->id}},'users', event)">Delete
+                        </button>
+                        <a onclick="editUser({{ $user->id }}, event)"
+                           class="underline cursor-pointer text-blue float-right mx-4">Edit</a>
                     </td>
-                    <td>
-                        <button type="button" class="bg-white hover:bg-grey-lightest text-grey-darkest font-semibold py-2 px-4 border border-grey-light rounded shadow" name="button" onclick="deleteResource({{ $user->id }}, '/users', event)">Delete</button>
-                    </td>
-
                 </tr>
             @endforeach
             </tbody>
@@ -59,12 +57,5 @@
 @endsection
 @section('include')
     @include('helper.delete')
-@stop
-
-
-@section('include')
-    {{-- Assing Role Modal --}}
-    <div class="fixed pin bg-modal h-screen w-screen invisible modal" id="assign-role-modal">
-        <div class="relative bg-white max-w-xl mx-auto mt-16 rounded  py-4 px-6 shadow-2xl" id="assign-role-body"></div>
-    </div>
+    @include('user.partial.modal')
 @stop

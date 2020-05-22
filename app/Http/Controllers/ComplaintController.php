@@ -31,8 +31,9 @@ class ComplaintController extends Controller
     public function index()
     {
         $complaints = Complaint::latest()->paginate(10);
+        $projects = Project::all();
 
-        return view('complaint.index', compact('complaints'));
+        return view('complaint.index', compact('complaints', 'projects'));
     }
 
     /**

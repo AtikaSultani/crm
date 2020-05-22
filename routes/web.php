@@ -19,7 +19,6 @@ Route::group(['middleware' => 'prevent.back.history'], function () {
 
     // complaints routes
     Route::resource('/complaints', 'ComplaintController');
-    Route::post('/complaint-export', 'ComplaintController@export');
 
     // Program routes
     Route::resource('/programs', 'ProgramController');
@@ -46,3 +45,4 @@ Route::group(['middleware' => 'prevent.back.history'], function () {
 });
 
 Route::get('backups/download/{file}', 'BackupController@download');
+Route::post('/complaint-export', 'ComplaintController@export');
