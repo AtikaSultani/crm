@@ -49,7 +49,7 @@ class ProjectRequest extends FormRequest
                     'off_budget'             => "required",
                     'budget'                 => "required"
                 ];
-            case "GET" :
+            default :
                 return [
                     'project_name'           => "required|unique:projects,project_name",
                     'project_code'           => "required",
