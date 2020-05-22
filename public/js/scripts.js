@@ -1,4 +1,4 @@
-let baseUrl = $('meta[name*="base-url"]').attr('content');
+baseUrl = $('meta[name*="base-url"]').attr('content');
 jQuery(document).ready(() => {
     // show mobile sidebar
     $(".toggle-menu-bar").click(() => {
@@ -124,4 +124,19 @@ function createRole() {
     $('div#create-role')
         .fadeIn(200)
         .removeClass('invisible');
+}
+
+/**
+ * View logs details
+ * @param element
+ */
+function viewLogDetails(element) {
+    if (element.innerText == 'Details') {
+        $(element).text('Hide');
+        $(element).removeClass('text-blue').addClass('text-red-darker')
+    } else {
+        $(element).text("Details");
+        $(element).removeClass('text-red-darker').addClass('text-blue')
+    }
+    $(element).parent().parent().next('tr').fadeToggle(100);
 }
