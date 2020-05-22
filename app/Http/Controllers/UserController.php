@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use App\Http\Requests\UserRequest;
+use App\User;
 
 class UserController extends Controller
 {
@@ -20,49 +20,57 @@ class UserController extends Controller
      */
     public function index()
     {
-
         $users = User::paginate(10);
 
         return view('user.index', compact('users'));
     }
+
     /**
      * Get list of users paginated
      *
      * @edit user
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
     {
-      $user=User::find($id);
-      return view('user.edit',compact('user'));
+        $user = User::find($id);
+
+        return view('user.edit', compact('user'));
     }
 
     /**
      * Get list of users paginated
      *
      * @update user
+     * @param  UserRequest  $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
+    public function update(UserRequest $request, $id)
+    {
+        $user = User::findOrFail($id);
 
-     public function update(UserRequest $request,$id)
-     {
-       $user = User::findOrFail($id);
-       $user->update([
-           'name' => $request->name,
-           'email'   => $request->email,
-       ]);
+        $user->update([
+            'name'  => $request->name,
+            'email' => $request->email,
+        ]);
 
-       return redirect('/users');
-     }
-
-     /**
-      * Get list of users paginated
-      *
-      * @delete user
-      */
-
-      public function destroy($id)
-      {
-        $user=User::findOrFail($id);
-        $user->delete();
         return redirect('/users');
-      }
+    }
+
+    /**
+     * Get list of users paginated
+     *
+     * @delete user
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect('/users');
+    }
 }
