@@ -2,76 +2,81 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProgramRequest;
 use App\Models\Program;
-use Illuminate\Http\Request;
 
 class ProgramController extends Controller
 {
-
 
     public function __construct()
     {
         $this->middleware(['auth', 'verified']);
     }
 
+    /**
+     * Get list of programs
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
-        $data = Program::paginate(10);
+        $programs = Program::latest()->paginate(10);
 
-        return view("programs.index", compact('data'));
+        return view("programs.index", compact('programs'));
     }
 
-    public function create()
-    {
-        return view('programs.create');
-    }
-
-
+    /**
+     * Store new program
+     *
+     * @param  ProgramRequest  $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|string
+     */
     public function store(ProgramRequest $request)
     {
-      
-        Program::create([
-            'program_name' => $request->program_name,
-            'start_date'   => $request->start_date,
-            'end_date'     => $request->end_date
-        ]);
-        if ('Programs' != '') {
-            return redirect('/programs')->with("msg", "The Program Added Successfully ");
-        } else {
-            return "Please fill the form";
-        }
+        Program::create($request->all());
 
+        return redirect('/programs')->with("message", "The Program Added Successfully ");
     }
 
+    /**
+     * Edit Program
+     *
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function edit($id)
     {
-        $data = Program::find($id);
+        $program = Program::findOrFail($id);
 
-        return view('programs.edit', compact('data', 'id'));
+        return view('programs.edit', compact('program'));
     }
 
+    /**
+     * Update program
+     *
+     * @param  ProgramRequest  $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function update(ProgramRequest $request, $id)
     {
-
-
         $program = Program::findOrFail($id);
-        $program->update([
-            'program_name' => $request->program_name,
-            'start_date'   => $request->start_date,
-            'end_date'     => $request->end_date
-        ]);
+        $program->update($request->all());
 
         return redirect('/programs');
     }
 
-
+    /**
+     * Get delete program
+     *
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy($id)
     {
-
         $user = Program::findOrFail($id);
         $user->delete();
 
         return back();
-
     }
 }

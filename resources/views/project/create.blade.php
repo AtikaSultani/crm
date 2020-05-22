@@ -13,6 +13,7 @@
                 <label for="caller_name">Project Name</label>
                 <input type="text" id="project_name" name="project_name"/>
             </div>
+
             {{-- project code --}}
             <div class="mb-4">
                 <label for="caller_name">Project Code</label>
@@ -21,17 +22,17 @@
 
             {{-- NGO Name --}}
             <div class="mb-4">
-                <label for="title">NGO Name</label>
-                <input type="text" id="NGO_name" name="NGO_name"/>
+                <label for="ngo_name">NGO Name</label>
+                <input type="text" id="ngo_name" name="ngo_name"/>
             </div>
 
             {{-- Start Date --}}
             <div class="mb-4">
-              <label for="title">Start Date</label>
-              <input type="text" name="start_date" class="datepicker-here"
-                     data-language='en'
-                     data-date-format="yyyy-mm-dd"
-                     value="{{date('Y-m-d')}}"/>
+                <label for="title">Start Date</label>
+                <input type="text" name="start_date" class="datepicker-here"
+                       data-language='en'
+                       data-date-format="yyyy-mm-dd"
+                       value="{{date('Y-m-d')}}"/>
             </div>
 
             {{-- End Date --}}
@@ -49,18 +50,16 @@
                 <input type="text" id="donors" name="donors"/>
             </div>
 
-
-
             {{-- Direct Beneficiary --}}
             <div class="mb-4">
                 <label>Direct Beneficiary </label>
-                <input type="text" id="direct_beneficiary" name="direct_beneficiary"/>
+                <input type="text" id="direct_beneficiary" name="direct_beneficiaries"/>
             </div>
 
             {{-- Indirect Beneficiary --}}
             <div class="mb-4">
                 <label>Indirect Beneficiary </label>
-                <input type="text" id="indirect_beneficiary" name="indirect_beneficiary"/>
+                <input type="text" id="indirect_beneficiary" name="indirect_beneficiaries"/>
             </div>
 
             {{-- on budget --}}
@@ -79,7 +78,6 @@
                 <label>Budget</label>
                 <input type="text" id="budget" name="budget"/>
             </div>
-
 
 
             {{-- Province --}}

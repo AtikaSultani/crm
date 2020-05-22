@@ -2,7 +2,7 @@
 @section('title', 'Edit Project')
 @section('page-title', 'Edit Project')
 @section('content')
-    <form action="{{ url('/Projects/'.$data->id) }}" method="POST" id="edit-form">
+    <form action="{{ url('projects/'.$data->id) }}" method="POST" id="edit-form">
         @method('PUT')
         @csrf
 
@@ -18,13 +18,13 @@
             {{-- project code --}}
             <div class="mb-4">
                 <label for="caller_name">Project code</label>
-                <input type="text" id="project_name" name="project_code" value="{{$data->project_code}}"/>
+                <input type="text"  name="project_code" value="{{$data->project_code}}"/>
             </div>
 
             {{-- NGO Name --}}
             <div class="mb-4">
                 <label for="title">NGO Name</label>
-                <input type="text" id="NGO_name" name="NGO_name" value="{{$data->NGO_name}}"/>
+                <input type="text" id="NGO_name" name="ngo_name" value="{{$data->ngo_name}}"/>
             </div>
 
             {{-- Start Date --}}
@@ -55,27 +55,27 @@
             {{-- Direct Beneficiary --}}
             <div class="mb-4">
                 <label>Direct Beneficiary </label>
-                <input type="text" id="direct_beneficiary" name="direct_beneficiary"
+                <input type="text" id="direct_beneficiary" name="direct_beneficiaries"
                        value="{{$data->direct_beneficiaries}}"/>
             </div>
 
             {{-- Indirect Beneficiary --}}
             <div class="mb-4">
                 <label>Indirect Beneficiary </label>
-                <input type="text" id="indirect_beneficiary" name="indirect_beneficiary"
+                <input type="text" id="indirect_beneficiary" name="indirect_beneficiaries"
                        value="{{$data->indirect_beneficiaries}}"/>
             </div>
 
             {{-- on budget --}}
             <div class="mb-4">
                 <label>On Budget</label>
-                <input type="text" id="on_budget" name="on_budget" value="{{$data->on_budget_project}}"/>
+                <input type="text" id="on_budget" name="on_budget" value="{{$data->on_budget}}"/>
             </div>
 
             {{-- Off Budget --}}
             <div class="mb-4">
                 <label>Off Budget</label>
-                <input type="text" id="off_budget" name="off_budget" value="{{$data->off_budget_project}}"/>
+                <input type="text" id="off_budget" name="off_budget" value="{{$data->off_budget}}"/>
             </div>
             {{-- Budget --}}
             <div class="mb-4">
@@ -112,10 +112,10 @@
                     @endforeach
                 </select>
             </div>
-            {{-- Program Manager --}}
+            {{-- project Manager --}}
             <div class="mb-4">
-                <label>Program Manager</label>
-                <input type="text" id="program_manager" name="program_manager" value="{{$data->project_manager}}"/>
+                <label>Project Manager</label>
+                <input type="text" id="project_manager" name="project_manager" value="{{$data->project_manager}}"/>
             </div>
 
             {{-- Program --}}

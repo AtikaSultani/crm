@@ -1,78 +1,29 @@
-@extends('layouts.master')
-@section('title', 'Edit Program')
-@section('page-title')
-<h>Edit Program</h>
-@endsection
-@section('content')
-   <div class="row">
+<form method="post" action="{{url('/programs/'.$program->id) }}" class="form-vertical" id="edit-program-form">
+    @csrf
+    @method('PUT')
+    <div class="my-2">
+        <label for="">Program name</label>
+        <input type="text" autofocus name="program_name" value="{{ $program->program_name }}">
+    </div>
 
+    <div class="my-2">
+        <label for="">Start Date</label>
+        <input type="text" class="datepicker-here" data-language='en'
+               name="start_date"
+               data-date-format="yyyy-mm-dd"
+               value="{{$program->start_date}}"/>
+    </div>
 
-            <section class="panel">
+    <div class="my-2">
+        <label for="">End Date</label>
+        <input type="text" class="datepicker-here" data-language='en'
+               name="end_date"
+               data-date-format="yyyy-mm-dd"
+               value="{{$program->end_date}}"/>
+    </div>
+</form>
 
-              <div class="panel-body">
-                <div class="form">
-                    <form  method="post"  action="{{url('/programs/'.$id) }}" class="form-vertical" id="edit-form">
-                        @csrf
-                        @method('PUT')
-                        <input type="hidden" name="student_type" value="3">
-                            <div class="form-body">
-
-                                <div class="tab-content" id=''>
-
-                                    <div class="tab-pane active" id="">
-                                        <div class="row reg-content-wrapper">
-
-                                            <div class="col-sm-6 reg-right-content-wrapper">
-                                                <div class="form-group">
-                                                    <div>
-                                                    <label class="control-label col-md-4"> ProgramName <span  >*</span>
-                                                    </label>
-                                                    <div class="col-md-6">
-                                                        <input type="text"  class="form-control " name="program_name" value="{{$data->program_name}}"/>
-                                                      
-                                                    </div>
-                                                    </div>
-                                                </div>
-
-
-                                              <div class="form-group">
-                                                  <label class="control-label col-md-4"> StartDate <span >*</span>
-                                                  </label>
-                                                  <div class="col-md-6">
-                                                      <input type="date" id="picker" class="form-control" name="start_date" value="{{$data->start_date}}" />
-
-                                                  </div>
-                                              </div>
-                                              <div class="form-group">
-                                                  <label class="control-label col-md-4"> EndtDate <span  >*</span>
-                                                  </label>
-                                                  <div class="col-md-6">
-                                                      <input type="date" id="picker" class="form-control" name="end_date" value="{{$data->end_date}}"/>
-                                                    </div>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </div>
-                                        <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-                                      </div>
-                                </div>
-                            </div>
-                          </br>
-                            <div class="mb-4 w-full md:w-auto">
-                              <button class="w-full md:w-auto bg-blue text-white px-3 py-1 rounded text-base">save</button>
-
-                          </div>
-                          </form>
-                    </div>
-                </div>
-            </section>
-
-  <!-- container section end -->
-
-  <!-- javascripts -->
-
-@endsection
-@section('page-level-js')
-    <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
-    {!! JsValidator::formRequest('App\Http\Requests\ProjectRequest', '#edit-form'); !!}
-@stop
+{!! JsValidator::formRequest('App\Http\Requests\ProgramRequest', '#edit-program-form'); !!}
+<script>
+    $('.datepicker-here').datepicker()
+</script>

@@ -18,15 +18,15 @@ class CreateProjectsTable extends Migration
             $table->bigIncrements('id');
             $table->string("project_name");
             $table->string("project_code");
-            $table->string("NGO_name");
+            $table->string("ngo_name");
             $table->date("start_date");
             $table->date("end_date");
             $table->string("donors");
             $table->string("activities");
             $table->string("direct_beneficiaries")->nullable();
             $table->string("indirect_beneficiaries")->nullable();
-            $table->string("on_budget_project")->nullable();
-            $table->string("off_budget_project")->nullable();
+            $table->string("on_budget")->nullable();
+            $table->string("off_budget")->nullable();
             $table->string("budget")->nullable();
             $table->unsignedBigInteger('province_id');
             $table->unsignedBigInteger('district_id');
