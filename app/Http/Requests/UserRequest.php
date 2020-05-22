@@ -2,10 +2,13 @@
 
 namespace App\Http\Requests;
 
+use App\User;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 
 class UserRequest extends FormRequest
 {
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -13,7 +16,7 @@ class UserRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,10 +26,20 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-          'user_name'    => "required",
-          'email'        => "required|unique",
-
-        ];
+        switch (Request::method()) {
+            case 'PUT':
+            case 'PATCH':
+                $user = User::find($this->route('user'));
+                return [
+                    'email' => 'required|email|max:255|unique:users,email,'.$user->id,
+                    'name'  => 'required|string|min:3|max:255'
+                ];
+                break;
+            default:
+                return [
+                    'email' => 'required|email|max:255|unique:user,',
+                    'name'  => 'required|string|min:3|max:255'
+                ];
+        }
     }
 }

@@ -85,7 +85,7 @@ function selectPage(page) {
     window.location = `?page=${page.value}`;
 }
 
-
+// Assign role to user
 function assignRole(userId, event) {
     event.preventDefault();
     $.ajax({
@@ -114,6 +114,25 @@ function editRole(id, event) {
             $('div#edit-role-content').html(view);
 
             $('div#edit-role').fadeIn(100)
+                .removeClass('invisible');
+        }
+    })
+}
+
+/**
+ * Edit the role
+ *
+ * @param id
+ */
+function editUser(id, event) {
+    event.preventDefault();
+    $.ajax({
+        type: 'GET',
+        url: `${baseUrl}/users/${id}/edit`,
+        success: function (view) {
+            $('div#edit-user-content').html(view);
+
+            $('div#edit-user').fadeIn(100)
                 .removeClass('invisible');
         }
     })

@@ -21,6 +21,7 @@ label {
 
 .bg-modal {
   background-color: rgba(84, 92, 110, 0.7);
+  @apply z-50;
 }
 
 .hide-toast {
