@@ -13,9 +13,16 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {
+
+        // Complaints
         Permission::create(['name' => 'Create Complaint']);
         Permission::create(['name' => 'View Complaints']);
         Permission::create(['name' => 'Delete Complaint']);
         Permission::create(['name' => 'Edit Complaint']);
+        Permission::create(['name' => 'Export Complaints']);
+
+        // Project
+
+        // Program
     }
 }
