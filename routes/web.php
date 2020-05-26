@@ -34,6 +34,9 @@ Route::group(['middleware' => 'prevent.back.history'], function () {
     Route::get('/users/{id}/assign-role', 'RoleController@getUserRole');
     Route::post('/users/{id}/assign-role', 'RoleController@assignRole');
 
+    // user profile
+    Route::resource('/profile', 'UserController');
+
     // Sync permission to a role
     Route::post('/roles/{id}/sync-permissions', 'RoleController@syncPermissions');
     // Role routes

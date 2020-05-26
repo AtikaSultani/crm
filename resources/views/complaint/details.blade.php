@@ -64,6 +64,8 @@
             <br>
             <label> <span style="font-weight:bold;">Project Name</span> : {{$complaint->project->project_name}}</label>
             <br>
+            <label> <span style="font-weight:bold;">Project Code</span> : {{$complaint->project->project_code}}</label>
+            <br>
             <br>
             <label> <span style="font-weight:bold;">Program Name</span> : {{$complaint->program->program_name}}</label>
             <br>

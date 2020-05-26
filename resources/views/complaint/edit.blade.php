@@ -85,7 +85,6 @@
                             @if($complaint->status == 'Under Investigation') selected @endif>Under investigation
                     </option>
                     <option value="Solved" @if($complaint->status == 'Solved') selected @endif>Solved</option>
-                    <option value="Pending" @if($complaint->status == 'Pending') selected @endif>Pending</option>
                 </select>
             </div>
 
@@ -103,9 +102,7 @@
                     <option value="Third Quarter" @if($complaint->quarter == 'Third Quarter') selected @endif>Third
                         Quarter
                     </option>
-                    <option value="Fourth Quarter" @if($complaint->quarter == 'Fourth Quarter') selected @endif>Fourth
-                        Quarter
-                    </option>
+                  
                 </select>
             </div>
 

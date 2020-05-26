@@ -83,7 +83,6 @@
                     <option value="Registered">Registered</option>
                     <option value="Under Investigation">Under investigation</option>
                     <option value="Solved">Solved</option>
-                    <option value="Pending">Pending</option>
                 </select>
             </div>
 
@@ -95,7 +94,6 @@
                     <option value="First Quarter">First Quarter</option>
                     <option value="Second Quarter">Second Quarter</option>
                     <option value="Third Quarter">Third Quarter</option>
-                    <option value="Fourth Quarter">Fourth Quarter</option>
                 </select>
             </div>
 

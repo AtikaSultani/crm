@@ -25,13 +25,12 @@
                     <option value="First Quarter">First Quarter</option>
                     <option value="Second Quarter">Second Quarter</option>
                     <option value="Third Quarter">Third Quarter</option>
-                    <option value="Fourth Quarter">Fourth Quarter</option>
                 </select>
             </div>
 
             {{-- Project code --}}
             <div class="mb-4">
-                <label for="project">Project</label>
+                <label for="project">Project Code</label>
                 <select name="project" id="project">
                     <option value="">All</option>
                     @foreach($projects as $project)

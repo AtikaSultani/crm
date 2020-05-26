@@ -102,7 +102,7 @@ class ProjectController extends Controller
 
         $project->update($request->all());
 
-        return redirect("/projects/".$project->id);
+        return redirect("/projects");
     }
 
 

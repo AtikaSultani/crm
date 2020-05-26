@@ -16,7 +16,6 @@ class UserController extends Controller
     /**
      * Get list of users paginated
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
@@ -26,11 +25,7 @@ class UserController extends Controller
     }
 
     /**
-     * Get list of users paginated
-     *
      * @edit user
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
     {
@@ -40,12 +35,7 @@ class UserController extends Controller
     }
 
     /**
-     * Get list of users paginated
-     *
      * @update user
-     * @param  UserRequest  $request
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(UserRequest $request, $id)
     {
@@ -60,11 +50,7 @@ class UserController extends Controller
     }
 
     /**
-     * Get list of users paginated
-     *
      * @delete user
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy($id)
     {
@@ -72,5 +58,14 @@ class UserController extends Controller
         $user->delete();
 
         return redirect('/users');
+    }
+
+    /**
+     * @User profile
+     */
+    public function show($id)
+    {
+      $user=User::findOrFail($id);
+      return view('user.profile',compact('user')) ;
     }
 }
