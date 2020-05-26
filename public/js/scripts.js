@@ -80,6 +80,12 @@ function exportComplaint() {
         .removeClass('invisible');
 }
 
+//user Profile
+function UserProfile() {
+    $('div#ResetPassword_modal')
+        .fadeIn(200)
+        .removeClass('invisible');
+}
 // Select page
 function selectPage(page) {
     window.location = `?page=${page.value}`;

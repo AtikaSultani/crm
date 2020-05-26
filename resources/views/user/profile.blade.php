@@ -14,7 +14,8 @@
           <br>
           <div class="flex justify my-5">
               <button type="submit"
-                      class="text-white bg-blue-lighter hover:bg-blue text-base hover:shadow-lg focus:outline-none px-3 py-1 rounded-sm">
+                      class="text-white bg-blue-lighter hover:bg-blue text-base hover:shadow-lg focus:outline-none px-3 py-1 rounded-sm"
+                        onclick="UserProfile()">
                   Reset Password
               </button>
           </div>
@@ -24,5 +25,5 @@
 @endsection
 
 @section('include')
-    @include('helper.delete')
+    @include('user.partial.ResetPassword_modal')
 @stop
