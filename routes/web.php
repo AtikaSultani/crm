@@ -29,6 +29,9 @@ Route::group(['middleware' => 'prevent.back.history'], function () {
     // districts
     Route::get('/provinces/{id}/districts', 'ProvinceController@districts');
 
+    // projects per province
+    Route::get('/provinces/{id}/projects', 'ProvinceController@projects');
+
     // users routes
     Route::resource('/users', 'UserController');
     Route::get('/users/{id}/assign-role', 'RoleController@getUserRole');

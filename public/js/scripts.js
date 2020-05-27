@@ -25,6 +25,19 @@ jQuery(document).ready(() => {
         $('select#district').html('');
     });
 
+    // Select province then related project will list
+    $('select#province').on('change', function () {
+        if ($(this).val() != '') {
+            $.ajax({
+                url: `/provinces/${$(this).val()}/projects`,
+                success: function (view) {
+                    $('select#project').html(view)
+                }
+            });
+        }
+        $('select#project').html('');
+    });
+
     // select the specific category
     $('select#specific-category').on('change', function () {
         if ($(this).val() == 14) {

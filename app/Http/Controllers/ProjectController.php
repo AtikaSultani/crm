@@ -113,4 +113,12 @@ class ProjectController extends Controller
 
         return redirect("/projects");
     }
+
+////list all project per province
+    public function projects($id)
+    {
+        $project = Project::find($id);
+
+        return view('helper.project', compact('project'));
+    }
 }

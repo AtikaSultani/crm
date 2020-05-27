@@ -56,6 +56,7 @@ class ComplaintController extends Controller
      */
     public function create()
     {
+        $complaint = Complaint::all();
         $broadCategories = BroadCategory::all();
         $specificCategory = SpecificCategory::all();
         $programs = Program::all();
@@ -63,7 +64,7 @@ class ComplaintController extends Controller
         $provinces = Province::all();
 
         return view('complaint.create',
-            compact('broadCategories', 'specificCategory', 'programs', 'projects', 'provinces'));
+            compact('broadCategories', 'specificCategory', 'programs', 'projects', 'provinces','complaint'));
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Province;
+use App\Models\Project;
 
 class ProvinceController extends Controller
 {
@@ -23,5 +24,12 @@ class ProvinceController extends Controller
         $province = Province::find($id);
 
         return view('helper.district', compact('province'));
+    }
+ //retunr all projects per province
+    public function Projects($id)
+    {
+        $project = Project::find($id);
+
+        return view('helper.project', compact('project'));
     }
 }
