@@ -39,13 +39,13 @@
 
     <a class="@if(request()->is('users*')) bg-blue-lighter @endif hover:bg-blue-lighter flex items-center w-full p-1 rounded my-2 inline-block"
        href="{{ url('/users') }}">
-        <img src="{{ url('/images/users-icon.png') }}" class="w-5" alt="">
+        <img src="{{ url('/images/users_icon.png') }}" class="w-5" alt="">
         <p class="text-gray-400 text-base ml-2">Users</p>
     </a>
 
     <a class="@if(request()->is('roles*')) bg-blue-lighter @endif hover:bg-blue-lighter flex items-center w-full p-1 rounded my-2 inline-block"
        href="{{ url('/roles') }}">
-        <img src="{{ url('/images/users-icon.png') }}" class="w-5" alt="">
+        <img src="{{ url('/images/role_icon.png') }}" class="w-5" alt="">
         <p class="text-gray-400 text-base ml-2">Roles</p>
     </a>
 
