@@ -33,7 +33,7 @@
             <label> <span style="font-weight:bold;">Status</span> : {{$complaint->status}}</label>
             <br>
             <br>
-            <label> <span style="font-weight:bold;">Quarter</span> : {{$complaint->quarter}}</label>
+            <label> <span style="font-weight:bold;">Term</span> : {{$complaint->term}}</label>
             <br>
             <br>
             <label> <span style="font-weight:bold;">Referred To</span> : {{$complaint->referred_to}}</label>

@@ -86,14 +86,14 @@
                 </select>
             </div>
 
-            {{-- Quarter --}}
+            {{-- Term --}}
             <div class="mb-4">
-                <label for="quarter">Quarter</label>
-                <select name="quarter" id="quarter">
+                <label for="term">Term</label>
+                <select name="term" id="term">
                     <option value="">Please select</option>
-                    <option value="First Quarter">First Quarter</option>
-                    <option value="Second Quarter">Second Quarter</option>
-                    <option value="Third Quarter">Third Quarter</option>
+                    <option value="T1">T1</option>
+                    <option value="T2">T2</option>
+                    <option value="T3">T3</option>
                 </select>
             </div>
 

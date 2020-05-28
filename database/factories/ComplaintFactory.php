@@ -26,16 +26,16 @@ use Illuminate\Database\Eloquent\Factory;
 
 $factory->define(Complaint::class, function (Faker $faker) {
     $gender = ['Male', 'Female'];
-    $status = ['Registered', 'Under Investigation', 'Solved', 'Pending'];
-    $quarter = ['First Quarter', 'Second Quarter', 'Third Quarter', 'Fourth Quarter'];
+    $status = ['Registered', 'Under Investigation', 'Solved'];
+    $term = ['T1', 'T2', 'T3'];
 
     return [
         'caller_name'              => $faker->name,
         'tel_no_received'          => $faker->phoneNumber,
         'gender'                   => $gender[$faker->numberBetween(0, 1)],
         'received_date'            => $faker->dateTimeBetween('-4 years', now()),
-        'status'                   => $status[$faker->numberBetween(0, 3)],
-        'quarter'                  => $quarter[$faker->numberBetween(0, 3)],
+        'status'                   => $status[$faker->numberBetween(0, 2)],
+        'term'                  => $term[$faker->numberBetween(0, 2)],
         'referred_to'              => $faker->name,
         'beneficiary_file'         => null,
         'broad_category_id'        => BroadCategory::all()->random()->id,

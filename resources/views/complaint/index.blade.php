@@ -23,7 +23,7 @@
                 <th>Id</th>
                 <th>Caller Name</th>
                 <th>Status</th>
-                <th>Quarter</th>
+                <th>Term</th>
                 <th>Province</th>
             </tr>
             </thead>
@@ -42,7 +42,7 @@
                       {{ $complaint->status }}
                     </td>
                     @endif
-                    <td>{{ $complaint->quarter }}</td>
+                    <td>{{ $complaint->term }}</td>
                     <td>{{ $complaint->province->province_name }} | {{ $complaint->district->district_name}}</td>
                 </tr>
             @endforeach

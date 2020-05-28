@@ -88,21 +88,21 @@
                 </select>
             </div>
 
-            {{-- Quarter --}}
+            {{-- Term --}}
             <div class="mb-4">
-                <label for="quarter">Quarter</label>
-                <select name="quarter" id="quarter">
+                <label for="Term">Term</label>
+                <select name="term" id="term">
                     <option value="">Please select</option>
-                    <option value="First Quarter" @if($complaint->quarter == 'First Quarter') selected @endif>First
-                        Quarter
+                    <option value="T1" @if($complaint->term == 'T1') selected @endif>T1
+
                     </option>
-                    <option value="Second Quarter" @if($complaint->quarter == 'Second Quarter') selected @endif>Second
-                        Quarter
+                    <option value="T2" @if($complaint->term == 'T2') selected @endif>T2
+
                     </option>
-                    <option value="Third Quarter" @if($complaint->quarter == 'Third Quarter') selected @endif>Third
-                        Quarter
+                    <option value="T3" @if($complaint->term == 'T3') selected @endif>T3
+
                     </option>
-                  
+
                 </select>
             </div>
 

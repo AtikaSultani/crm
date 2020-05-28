@@ -6,7 +6,7 @@
         <th>Phone</th>
         <th>Gender</th>
         <th>Status</th>
-        <th>Quarter</th>
+        <th>Term</th>
         <th>Province</th>
         <th>District</th>
         <th>Village</th>
@@ -32,7 +32,7 @@
             <td>{{ $complaint->tel_no_received }}</td>
             <td>{{ $complaint->gender }}</td>
             <td>{{ $complaint->status }}</td>
-            <td>{{ $complaint->quarter }}</td>
+            <td>{{ $complaint->term }}</td>
             <td>{{ $complaint->province->province_name }} </td>
             <td>{{ $complaint->district->district_name}}</td>
             <td>{{ $complaint->village}}</td>

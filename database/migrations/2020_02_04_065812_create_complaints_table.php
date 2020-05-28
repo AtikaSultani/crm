@@ -21,7 +21,7 @@ class CreateComplaintsTable extends Migration
             $table->string('gender');
             $table->date('received_date');
             $table->string('status');
-            $table->string('quarter');
+            $table->string('term');
             $table->string('referred_to');
             $table->string('beneficiary_file')->nullable();
             $table->unsignedBigInteger('broad_category_id');

@@ -28,8 +28,8 @@ class ComplaintExport implements FromView, ShouldAutoSize
             $complaints->whereYear('received_date', $this->request['year']);
         }
 
-        if ($this->request['quarter']) {
-            $complaints->where('quarter', $this->request['quarter']);
+        if ($this->request['term']) {
+            $complaints->where('term', $this->request['term']);
         }
 
         if ($this->request['project']) {
