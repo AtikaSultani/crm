@@ -46,7 +46,7 @@ class UserController extends Controller
             'email' => $request->email,
         ]);
 
-        return redirect('/users');
+        return back();
     }
 
     /**

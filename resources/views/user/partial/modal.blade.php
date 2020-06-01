@@ -10,7 +10,7 @@
 
         {{-- Modal header --}}
         <div class="flex items-center justify-between text-lg  text-gray-700">
-            <span> Edit User </span>
+            <span> Edit Info </span>
             <span class="cursor-pointer"> &times </span>
         </div>
 

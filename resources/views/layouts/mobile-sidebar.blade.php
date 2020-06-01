@@ -45,7 +45,7 @@
 
         <a class="@if(request()->is('users*')) bg-blue-lighter @endif hover:bg-blue-lighter flex items-center w-2/3 p-2 rounded my-1 inline-block"
            href="{{ url('/users') }}">
-            <img src="{{ url('/images/users-icon.png') }}" class="w-6" alt="">
+            <img src="{{ url('/images/users_icon.png') }}" class="w-6" alt="">
             <p class="text-white  text-lg ml-3">Users</p>
         </a>
 
