@@ -15,6 +15,25 @@
             </button>
         </div>
     </div>
+
+    <div class="my-3">
+        <p>Your permissions</p>
+        <div class="grid grid-cols-4 col-gap-2">
+            @foreach($user->getAllPermissions() as $permission)
+                <div class="my-5">
+                    <div class="pretty p-default p-round p-thick flex  items-center">
+                    <input type="checkbox" disabled name="permissions[]"
+                           checked
+                           id="permission-{{$permission->id}}" value="{{ $permission->id }}"/>
+                    <div class="state p-primary-o">
+                        <label class="text-gray-800"
+                               for="permission-{{$permission->id}}">{{ $permission->name }}</label>
+                    </div>
+                </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
 @endsection
 
 @section('page-level-js')
