@@ -93,12 +93,13 @@ function exportComplaint() {
         .removeClass('invisible');
 }
 
-//user Profile
+// user change password
 function UserProfile() {
-    $('div#ResetPassword_modal')
+    $('div#change-password')
         .fadeIn(200)
         .removeClass('invisible');
 }
+
 // Select page
 function selectPage(page) {
     window.location = `?page=${page.value}`;
@@ -142,6 +143,7 @@ function editRole(id, event) {
  * Edit the role
  *
  * @param id
+ * @param event
  */
 function editUser(id, event) {
     event.preventDefault();
