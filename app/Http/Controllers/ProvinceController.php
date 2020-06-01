@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Province;
-use App\Models\Project;
 
 class ProvinceController extends Controller
 {
@@ -25,11 +24,17 @@ class ProvinceController extends Controller
 
         return view('helper.district', compact('province'));
     }
- //retunr all projects per province
-    public function Projects($id)
-    {
-        $project = Project::find($id);
 
-        return view('helper.project', compact('project'));
+    /**
+     * Get all project of province
+     *
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function projects($id)
+    {
+        $province = Province::find($id);
+
+        return view('helper.project', compact('province'));
     }
 }

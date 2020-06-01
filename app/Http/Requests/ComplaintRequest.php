@@ -32,7 +32,7 @@ class ComplaintRequest extends FormRequest
             'gender'                   => "required",
             'village'                  => "nullable|min:3|max:200",
             'status'                   => "required",
-            'quarter'                  => "required",
+            'term'                     => "required",
             'broad_category_id'        => "required",
             'program_id'               => "required",
             'project_id'               => "required",

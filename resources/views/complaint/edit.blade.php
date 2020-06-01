@@ -7,7 +7,7 @@
         @csrf
         {{-- Calleer information --}}
         <p class="pt-5 pb-3 text-lg font-semibold text-gray-600">Caller information <span
-                    class="text-sm font-normal text-gray-500"> {{ $complaint->caller_name }}</span></p>
+                class="text-sm font-normal text-gray-500"> {{ $complaint->caller_name }}</span></p>
         <div class="w-full bg-gray-100 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-5 rounded-sm gap-5">
             {{-- Caller name --}}
             <div class="mb-4">
@@ -94,15 +94,11 @@
                 <select name="term" id="term">
                     <option value="">Please select</option>
                     <option value="T1" @if($complaint->term == 'T1') selected @endif>T1
-
                     </option>
                     <option value="T2" @if($complaint->term == 'T2') selected @endif>T2
-
                     </option>
                     <option value="T3" @if($complaint->term == 'T3') selected @endif>T3
-
                     </option>
-
                 </select>
             </div>
 
@@ -118,12 +114,7 @@
             {{-- Project --}}
             <div class="mb-4">
                 <label for="project">Project</label>
-                <select name="project_id" id="project">
-                    @foreach($projects as $project)
-                        <option value="{{ $project->id }}"
-                                @if($complaint->project_id == $project->id) selected @endif>{{ $project->project_name }}</option>
-                    @endforeach
-                </select>
+                <select name="project_id" id="project"></select>
             </div>
 
             {{-- Program --}}
@@ -218,6 +209,13 @@
             url: `/provinces/${$('select#province').val()}/districts?district={{ $complaint->district_id }}`,
             success: function (view) {
                 $('select#district').html(view)
+            }
+        });
+
+        $.ajax({
+            url: `/provinces/${$('select#project').val()}/projects?project={{ $complaint->project_id }}`,
+            success: function (view) {
+                $('select#project').html(view)
             }
         });
     </script>
