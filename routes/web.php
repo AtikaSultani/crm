@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,7 +50,13 @@ Route::group(['middleware' => 'prevent.back.history'], function () {
     // Back up routes
     Route::get('/settings', 'SettingController@index');
     Route::get('backups/backup-now', 'BackupController@backup');
+
+
 });
 
+// Download files
+Route::get('download', function () {
+    return Storage::download(request('file'));
+});
 Route::get('backups/download/{file}', 'BackupController@download');
 Route::post('/complaint-export', 'ComplaintController@export');

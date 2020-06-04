@@ -12,6 +12,7 @@ use App\Models\Province;
 use App\Models\SpecificCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 
 
@@ -64,7 +65,7 @@ class ComplaintController extends Controller
         $provinces = Province::all();
 
         return view('complaint.create',
-            compact('broadCategories', 'specificCategory', 'programs', 'projects', 'provinces','complaint'));
+            compact('broadCategories', 'specificCategory', 'programs', 'projects', 'provinces', 'complaint'));
     }
 
     /**
@@ -75,7 +76,13 @@ class ComplaintController extends Controller
      */
     public function store(ComplaintRequest $request)
     {
-        Auth::user()->complaints()->create($request->all());
+        $requestData = $request->all();
+        if ($request->hasFile('beneficiary_file')) {
+            $path = Storage::putFile('complaints', $request->file('beneficiary_file'));
+            $requestData['beneficiary_file'] = $path;
+        }
+
+        Auth::user()->complaints()->create($requestData);
 
         return redirect('/complaints')->with([
             'message' => 'Complaint created successfully', 'status' => true
@@ -112,7 +119,15 @@ class ComplaintController extends Controller
     public function update(ComplaintRequest $request, $id)
     {
         $complaint = Complaint::findOrFail($id);
-        $complaint->update($request->all());
+
+        $requestData = $request->all();
+        if ($request->hasFile('beneficiary_file')) {
+            Storage::delete($complaint->beneficiary_file);
+            $path = Storage::putFile('complaints', $request->file('beneficiary_file'));
+            $requestData['beneficiary_file'] = $path;
+        }
+
+        $complaint->update($requestData);
 
         return redirect("/complaints/".$complaint->id);
     }
@@ -123,10 +138,12 @@ class ComplaintController extends Controller
      * @param $id
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    Public function destroy($id)
+    public function destroy($id)
     {
-        $complaints = Complaint::findOrFail($id);
-        $complaints->delete();
+        $complaint = Complaint::findOrFail($id);
+        $complaint->delete();
+
+        Storage::delete($complaint->beneficiary_file);
 
         return redirect("/complaints");
     }

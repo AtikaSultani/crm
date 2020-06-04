@@ -72,5 +72,5 @@
 @endsection
 
 @section('include')
-    @include('helper.delete')
+    @include('helper.delete', ['test' => 'I am fine'])
 @stop

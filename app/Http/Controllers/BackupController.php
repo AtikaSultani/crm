@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class BackupController extends Controller
@@ -22,16 +23,16 @@ class BackupController extends Controller
      */
     public function download($file)
     {
-//        $logProperty = [
-//            'attributes' => [
-//                'file' => $file
-//            ]
-//        ];
+        $logProperty = [
+            'attributes' => [
+                'file' => $file
+            ]
+        ];
 
-//        activity('Back up')
-//            ->causedBy(Auth::id())
-//            ->withProperties($logProperty)
-//            ->log('Downloaded');
+        activity('Back up')
+            ->causedBy(Auth::id())
+            ->withProperties($logProperty)
+            ->log('Downloaded');
 
         return Storage::disk('backups')->download($file, $file);
     }

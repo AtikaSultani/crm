@@ -77,6 +77,8 @@ function deleteResource(id, route, event) {
         .fadeIn(200)
         .removeClass('invisible');
 
+    // if(route == 'project')
+
     $('form#delete-form').attr('action', `${baseUrl}/${route}/${id}`);
 }
 
