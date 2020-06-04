@@ -21,7 +21,7 @@ class ProjectController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
@@ -52,9 +52,9 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        $data = Project::find($id);
+        $project = Project::find($id);
 
-        return view('project.details', compact('data', 'id'));
+        return view('project.details', compact('project'));
     }
 
     /**
