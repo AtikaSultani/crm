@@ -2,7 +2,7 @@
 @section('title', 'Create Complaint')
 @section('page-title', 'Edit Complaint')
 @section('content')
-    <form action="{{ url('/complaints/'.$complaint->id) }}" method="post" id="edit-form">
+    <form action="{{ url('/complaints/'.$complaint->id) }}" method="post" id="edit-form" enctype="multipart/form-data">
         @method('PUT')
         @csrf
         {{-- Calleer information --}}
@@ -205,15 +205,18 @@
     {!! JsValidator::formRequest('App\Http\Requests\ComplaintRequest', '#edit-form'); !!}
 
     <script>
+
+        const province = $('select#province').val();
+
         $.ajax({
-            url: `/provinces/${$('select#province').val()}/districts?district={{ $complaint->district_id }}`,
+            url: `/provinces/${province}/districts?district={{ $complaint->district_id }}`,
             success: function (view) {
                 $('select#district').html(view)
             }
         });
 
         $.ajax({
-            url: `/provinces/${$('select#project').val()}/projects?project={{ $complaint->project_id }}`,
+            url: `/provinces/${province}/projects?project={{ $complaint->project_id }}`,
             success: function (view) {
                 $('select#project').html(view)
             }

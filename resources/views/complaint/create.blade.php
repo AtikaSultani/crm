@@ -2,7 +2,7 @@
 @section('title', 'Create Complaint')
 @section('page-title', 'Add New Complaint')
 @section('content')
-    <form action="{{ url('/complaints') }}" method="post" id="create-form">
+    <form action="{{ url('/complaints') }}" method="post" id="create-form" enctype="multipart/form-data">
         @csrf
         {{-- Calleer information --}}
         <p class="pt-5 pb-3 text-lg font-semibold text-gray-600">Caller information</p>

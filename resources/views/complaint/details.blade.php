@@ -1,84 +1,128 @@
 @extends('layouts.master')
 @section('title', 'Complaint Detail')
-@section('page-title')
-    <h>Complaint Detail</h>
-@endsection
+@section('page-title','Complaint Detail')
 @section('content')
-    <span>
-  <button style="margin-left:20px;padding-top:3px;padding-bottom:3px;background-color:#B0C4DE;color:#fff;"
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-    <a href="{{ url('/complaints/'.$complaint->id.'/edit') }}">Edit</a>
-   </button>
 
-        <button style="background-color:#FF0000;padding-top:4px;padding-bottom: 4px; font-size:15px"
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
-                onclick="deleteResource({{ $complaint->id }}, 'complaints', event)">Delete</button>
-</span>
 
-    <div style="margin-top:20px;" class="grid grid-cols-2 divide-x divide-gray-600">
-        <div class="text-center">
-            <label> <span style="font-weight:bold;">Caller Name</span> : {{$complaint->caller_name}}</label>
-            <br>
-            <br>
-            <label> <span style="font-weight:bold;">Phone Number Recived</span> : {{$complaint->tel_no_received}}
-            </label>
-            <br>
-            <br>
-            <label> <span style="font-weight:bold;">Gender</span> : {{$complaint->gender}}</label>
-            <br>
-            <br>
-            <label> <span style="font-weight:bold;">Recieved Date</span> : {{$complaint->received_date}}</label>
-            <br>
-            <br>
-            <label> <span style="font-weight:bold;">Status</span> : {{$complaint->status}}</label>
-            <br>
-            <br>
-            <label> <span style="font-weight:bold;">Term</span> : {{$complaint->term}}</label>
-            <br>
-            <br>
-            <label> <span style="font-weight:bold;">Referred To</span> : {{$complaint->referred_to}}</label>
-            <br>
-            <br>
-            <label> <span style="font-weight:bold;">Broad Category</span> : {{$complaint->broadCategory->category_name}}
-            </label>
-            <br>
-            <br>
-            <label> <span style="font-weight:bold;">Specific Category</span>
-                : {{$complaint->specificCategory->category_name}}</label>
+
+    <div class="flex justify-end items-center py-2">
+        <a class="text-blue underline" href="{{ url('/complaints/'.$complaint->id.'/edit') }}">Edit</a>
+        <a class="bg-red-darker px-2 text-sm cursor-pointer py-px text-white rounded-sm mx-2"
+           onclick="deleteResource({{ $complaint->id }}, 'complaints', event)">Delete
+        </a>
+    </div>
+
+    <p class="pb-3 text-lg font-semibold text-gray-600">Caller information</p>
+    <div class="w-full bg-gray-100 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-5 rounded-sm gap-5">
+
+        <div class="info">
+            <p>Caller Name</p>
+            <p>{{ $complaint->caller_name }}</p>
         </div>
-        <div class="text-center">
-            <label> <span style="font-weight:bold;">Person Who Shared The Action</span>
-                : {{$complaint->person_who_shared_action}}</label>
-            <br>
-            <br>
-            <label> <span style="font-weight:bold;">Close Date</span> : {{$complaint->close_date}}</label>
-            <br>
-            <br>
-            <label> <span style="font-weight:bold;">Province Name</span> : {{$complaint->province->province_name}}
-            </label>
-            <br>
-            <br>
-            <label> <span style="font-weight:bold;">District Name</span> : {{$complaint->district->district_name}}
-            </label>
-            <br>
-            <br>
-            <label> <span style="font-weight:bold;">Project Name</span> : {{$complaint->project->project_name}}</label>
-            <br>
-            <label> <span style="font-weight:bold;">Project Code</span> : {{$complaint->project->project_code}}</label>
-            <br>
-            <br>
-            <label> <span style="font-weight:bold;">Program Name</span> : {{$complaint->program->program_name}}</label>
-            <br>
-            <br>
-            <label> <span style="font-weight:bold;">Call Recived By</span> : {{ Auth::user()->name }}</label>
-            <br>
-            <br>
-            @if($complaint->description != "")
-                <label> <span style="font-weight:bold;">Description</span> : {{$complaint->description}}</label>
-            @endif
+
+        <div class="info">
+            <p>Phone Number Received</p>
+            <p>{{ $complaint->tel_no_received }}</p>
+        </div>
+
+        <div class="info">
+            <p>Gender</p>
+            <p>{{ $complaint->gender }}</p>
+        </div>
+
+        <div class="info">
+            <p>Received Date</p>
+            <p>{{ $complaint->received_date }}</p>
+        </div>
+
+        <div class="info">
+            <p>Received By</p>
+            <p>{{ $complaint->user->name }}</p>
+        </div>
+
+        <div class="info">
+            <p>Province</p>
+            <p>{{ $complaint->province->province_name }}</p>
+        </div>
+
+        <div class="info">
+            <p>District</p>
+            <p>{{ $complaint->district->district_name }}</p>
+        </div>
+
+        <div class="info">
+            <p>Village</p>
+            <p>{{ $complaint->village }}</p>
         </div>
 
     </div>
+
+
+    <p class="pb-3 text-lg font-semibold text-gray-600 mt-10">Category & action</p>
+    <div class="w-full bg-gray-100 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-5 rounded-sm gap-5">
+
+        <div class="info">
+            <p>Status</p>
+            <p>{{ $complaint->status }}</p>
+        </div>
+
+        <div class="info">
+            <p>Term</p>
+            <p>{{ $complaint->term }}</p>
+        </div>
+
+        <div class="info">
+            <p>Close Date</p>
+            <p>{{ $complaint->close_date }}</p>
+        </div>
+
+        <div class="info">
+            <p>Project</p>
+            <p>{{ $complaint->project->project_name }}</p>
+        </div>
+
+        <div class="info">
+            <p>Program</p>
+            <p>{{ $complaint->program->program_name }}</p>
+        </div>
+
+        <div class="info">
+            <p>Broad Category</p>
+            <p>{{ $complaint->broadCategory->category_name }}</p>
+        </div>
+
+        <div class="info">
+            <p>Specific Category</p>
+            <p>{{ $complaint->specificCategory->category_name }}</p>
+        </div>
+
+        <div class="info">
+            <p>Refereed To</p>
+            <p>{{ $complaint->referred_to }}</p>
+        </div>
+
+        <div class="info">
+            <p>Who action shared</p>
+            <p>{{ $complaint->person_who_shared_action ?: 'No one yet' }}</p>
+        </div>
+
+        <div class="info">
+            <p>Attachments</p>
+            <p>
+                @if($complaint->beneficiary_file)
+                    <a class="text-blue" href="{{ url('download?file='.$complaint->beneficiary_file) }}">Download</a>
+                @else
+                    No Attachment
+                @endif
+            </p>
+        </div>
+
+        <div class="info">
+            <p>Description</p>
+            <p>{{ $complaint->description ?: 'No description' }}</p>
+        </div>
+    </div>
+
 @endsection
 
 @section('include')
