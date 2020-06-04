@@ -3,8 +3,6 @@
 @section('page-title','Complaint Detail')
 @section('content')
 
-
-
     <div class="flex justify-end items-center py-2">
         <a class="text-blue underline" href="{{ url('/complaints/'.$complaint->id.'/edit') }}">Edit</a>
         <a class="bg-red-darker px-2 text-sm cursor-pointer py-px text-white rounded-sm mx-2"

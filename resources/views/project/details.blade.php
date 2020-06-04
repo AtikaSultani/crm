@@ -1,73 +1,97 @@
 @extends('layouts.master')
 @section('title', 'Project Detail')
-@section('page-title')
-    <h>Project Detail</h>
-@endsection
+@section('page-title', 'Project Details')
 @section('content')
 
-    <span>
-<button style="margin-left:20px;padding-top:3px;padding-bottom:3px;background-color:#B0C4DE;color:#fff;"
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-<a href="{{ url('/projects/'.$data->id.'/edit') }}">Edit</a>
-</button>
+    <div class="flex justify-end items-center py-2">
+        <a class="text-blue underline" href="{{ url('/projects/'.$project->id.'/edit') }}">Edit</a>
+        <a class="bg-red-darker px-2 text-sm cursor-pointer py-px text-white rounded-sm mx-2"
+           onclick="deleteResource({{ $project->id }}, 'projects', event)">Delete
+        </a>
+    </div>
 
-    <button style="background-color:#FF0000;padding-top:4px;padding-bottom: 4px; font-size:15px"
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
-            onclick="deleteResource({{ $data->id }}, 'projects', event)">Delete</button>
-</span>
+    <p class="pb-3 text-lg font-semibold text-gray-600">Basic information</p>
+    <div class="w-full bg-gray-100 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-5 rounded-sm gap-5">
 
-    <div style="margin-top:20px;" class="grid grid-cols-2 divide-x divide-gray-600">
-        <div class="text-center">
-            <label> <span style="font-weight:bold;">Project Name</span> : {{$data->project_name }}</label>
-            <br>
-            <br>
-            <label> <span style="font-weight:bold;">Project Code</span> : {{$data->project_code }}</label>
-            <br>
-            <br>
-            <label> <span style="font-weight:bold;">NGO Name</span> : {{$data->NGO_name}}</label>
-            <br>
-            <br>
-            <label> <span style="font-weight:bold;">Start Date</span> : {{$data->start_date}}</label>
-            <br>
-            <br>
-            <label> <span style="font-weight:bold;">End Date</span> : {{$data->end_date}}</label>
-            <br>
-            <br>
-            <label> <span style="font-weight:bold;">Direct Beneficiaries</span> : {{$data->direct_beneficiaries}}
-            </label>
-            <br>
-            <br>
-            <label> <span style="font-weight:bold;">Indirect Beneficiaries</span> : {{$data->indirect_beneficiaries}}
-            </label>
-            <br>
-            <br>
-            <label> <span style="font-weight:bold;">On Budget Project</span> : {{$data->on_budget_project}}</label>
-            <br>
-            <br>
-            <label> <span style="font-weight:bold;">Off Budget Project</span> : {{$data->off_budget_project}}</label>
-        </div>
-        <div class="text-center">
-            <label> <span style="font-weight:bold;">Budget</span> : {{$data->budget}}</label>
-            <br>
-            <br>
-            <label> <span style="font-weight:bold;">Project Manager</span> : {{$data->project_manager}}</label>
-            <br>
-            <br>
-            <label> <span style="font-weight:bold;">Province Name</span> : {{$data->province->province_name}}</label>
-            <br>
-            <br>
-            <label> <span style="font-weight:bold;">District Name</span> : {{$data->district->district_name}}</label>
-            <br>
-            <br>
-            <label> <span style="font-weight:bold;">Program Name</span> : {{$data->program->program_name}}</label>
-            <br>
-            <br>
-            <label> <span style="font-weight:bold;">Activities</span> : {{$data->activities}}</label>
-            <br>
-            <br>
-            <label> <span style="font-weight:bold;">Donors</span> : {{$data->donors}}</label>
+        <div class="info">
+            <p>Project Name</p>
+            <p>{{ $project->project_name }}</p>
         </div>
 
+        <div class="info">
+            <p>Project Code</p>
+            <p>{{ $project->project_code }}</p>
+        </div>
+
+        <div class="info">
+            <p>NGO name</p>
+            <p>{{ $project->ngo_name }}</p>
+        </div>
+
+        <div class="info">
+            <p>Start Date</p>
+            <p>{{ $project->start_date }}</p>
+        </div>
+
+        <div class="info">
+            <p>End Date</p>
+            <p>{{ $project->end_date }}</p>
+        </div>
+
+        <div class="info">
+            <p>Direct Beneficiaries</p>
+            <p>{{ $project->direct_beneficiaries }}</p>
+        </div>
+
+        <div class="info">
+            <p>Indirect Beneficiaries</p>
+            <p>{{ $project->indirect_beneficiaries }}</p>
+        </div>
+
+        <div class="info">
+            <p>On Budget Project</p>
+            <p>{{ $project->on_budget_project }}</p>
+        </div>
+
+        <div class="info">
+            <p>Off Budget Project</p>
+            <p>{{ $project->off_budget_project }}</p>
+        </div>
+
+        <div class="info">
+            <p> Budget </p>
+            <p>{{ $project->budget }}</p>
+        </div>
+
+        <div class="info">
+            <p> Project Manager </p>
+            <p>{{ $project->project_manager }}</p>
+        </div>
+
+        <div class="info">
+            <p>Province</p>
+            <p>{{ $project->province->province_name }}</p>
+        </div>
+
+        <div class="info">
+            <p>District</p>
+            <p>{{ $project->district->district_name }}</p>
+        </div>
+
+        <div class="info">
+            <p>Program</p>
+            <p>{{ $project->program->program_name }}</p>
+        </div>
+
+        <div class="info">
+            <p>Activities</p>
+            <p>{{ $project->activities }}</p>
+        </div>
+
+        <div class="info">
+            <p>Donors</p>
+            <p>{{ $project->donors }}</p>
+        </div>
     </div>
 @endsection
 

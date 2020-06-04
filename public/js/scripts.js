@@ -209,3 +209,8 @@ function viewLogDetails(element) {
     }
     $(element).parent().parent().next('tr').fadeToggle(100);
 }
+
+function showFilter() {
+    $('#complaint-filter-button').hide();
+    $('#complaint-filter').show();
+}

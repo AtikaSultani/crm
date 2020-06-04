@@ -29,7 +29,7 @@ class SettingController extends Controller
     /**
      * Get all files of back ups
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Support\Collection
      */
     private function backups()
     {

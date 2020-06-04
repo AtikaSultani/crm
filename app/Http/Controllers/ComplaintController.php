@@ -31,10 +31,29 @@ class ComplaintController extends Controller
      */
     public function index()
     {
-        $complaints = Complaint::latest()->paginate(10);
+        $complaints = Complaint::latest();
         $projects = Project::all();
+        $provinces = Province::all();
 
-        return view('complaint.index', compact('complaints', 'projects'));
+        if ( ! empty(request('province'))) {
+            $complaints->where('province_id', request('province'));
+        }
+
+        if (!empty(request('status'))) {
+            $complaints->where('status', request('status'));
+        }
+
+        if (!empty(request('caller_name'))) {
+            $complaints->where('caller_name', request('caller_name'));
+        }
+
+        if (!empty(request('term'))) {
+            $complaints->where('term', request('term'));
+        }
+
+        $complaints = $complaints->paginate(10);
+
+        return view('complaint.index', compact('complaints', 'projects', 'provinces'));
     }
 
     /**
