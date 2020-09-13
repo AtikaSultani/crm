@@ -33,7 +33,7 @@ class ComplaintRequest extends FormRequest
             'district_id'              => 'required|numeric',
             'village'                  => "nullable|min:3|max:200",
             'status'                   => "required",
-            'term'                     => "required",
+            'quarter'                     => "required",
             'close_date'               => 'required|date',
             'project_id'               => "required",
             'program_id'               => "required",

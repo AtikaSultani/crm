@@ -61,12 +61,14 @@
                 </div>
 
                 <div class="w-full md:w-1/2 lg:w-1/4 px-2">
-                    <label for="term">Term</label>
-                    <select name="term" id="term">
-                        <option value="">All Terms</option>
-                        <option value="T1" @if (request('term') == 'T1')selected @endif>T1</option>
-                        <option value="T2" @if (request('term') == 'T2')selected @endif>T2</option>
-                        <option value="T3" @if (request('term') == 'T3')selected @endif>T3</option>
+                    <label for="term">All Quarter</label>
+                    <select name="quarter" id="quarter">
+                        <option value="">All Quarter</option>
+                        <option value="First Quarter" @if (request('Quarter') == 'First Quarter')selected @endif>First Quarter</option>
+                        <option value="Second Quarter" @if (request('Quarter') == 'Second Quarter')selected @endif>Second Quarter</option>
+                        <option value="Third Quarter" @if (request('Quarter') == 'Third Quarter')selected @endif>Third Quarter</option>
+                        <option value="Fourth Quarter" @if (request('Quarter') == 'Fourth Quarter')selected @endif>Fourth Quarter</option>
+
                     </select>
                 </div>
 
@@ -93,7 +95,7 @@
                 <th>Id</th>
                 <th>Caller Name</th>
                 <th>Status</th>
-                <th>Term</th>
+                <th>Quarter</th>
                 <th>Province</th>
             </tr>
             </thead>
@@ -112,7 +114,7 @@
                             {{ $complaint->status }}
                         </td>
                     @endif
-                    <td>{{ $complaint->term }}</td>
+                    <td>{{ $complaint->quarter}}</td>
                     <td>{{ $complaint->province->province_name }} | {{ $complaint->district->district_name}}</td>
                 </tr>
             @endforeach

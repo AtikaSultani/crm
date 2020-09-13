@@ -16,7 +16,7 @@
                     <th>No</th>
                     <th>ProjectName</th>
                     <th>ProjectCode</th>
-                    <th>NGOname</th>
+                    <th>PartnerName</th>
                     <th>StartDate</th>
                     <th>EndDate</th>
                     <th>Donors</th>
@@ -27,7 +27,7 @@
                             <td>{{$project->id }}</td>
                             <td class="text-blue cursor-pointer"><a href="{{ url('/projects/'.$project->id) }}">{{$project->project_name}}</a></td>
                             <td>{{$project->project_code}}</td>
-                            <td>{{$project->NGO_name}}</td>
+                            <td>{{$project->partner_name}}</td>
                             <td>{{$project->start_date}}</td>
                             <td>{{$project->end_date}}</td>
                             <td>{{$project->donors}}</td>

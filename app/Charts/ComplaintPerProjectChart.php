@@ -46,7 +46,7 @@ class ComplaintPerProjectChart extends AppChart
      */
     private function projectNames()
     {
-        return Project::all()->pluck('project_name');
+        return Project::all()->pluck('project_code');
     }
 
     /**

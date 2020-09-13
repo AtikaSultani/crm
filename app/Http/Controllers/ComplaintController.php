@@ -47,8 +47,8 @@ class ComplaintController extends Controller
             $complaints->where('caller_name', request('caller_name'));
         }
 
-        if (!empty(request('term'))) {
-            $complaints->where('term', request('term'));
+        if (!empty(request('quarter'))) {
+            $complaints->where('quarter', request('quarter'));
         }
 
         $complaints = $complaints->paginate(10);
@@ -82,6 +82,7 @@ class ComplaintController extends Controller
         $programs = Program::all();
         $projects = Project::all();
         $provinces = Province::all();
+      //  $mode=('PDM Survey','Exist Interview','Comunity Feedback');
 
         return view('complaint.create',
             compact('broadCategories', 'specificCategory', 'programs', 'projects', 'provinces', 'complaint'));

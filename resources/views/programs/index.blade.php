@@ -17,8 +17,7 @@
             <tr>
                 <th>No</th>
                 <th>Program Name</th>
-                <th>StartDate</th>
-                <th>EndDate</th>
+
                 <th></th>
             </tr>
             </thead>
@@ -27,8 +26,6 @@
                 <tr>
                     <td>{{$program->id }}</td>
                     <td>{{$program->program_name}}</td>
-                    <td>{{$program->start_date}}</td>
-                    <td>{{$program->end_date}}</td>
                     <td class="actions" style="white-space:nowrap">
                         <button class="text-red-darker px-2 py-px float-right focus:outline-none"
                                 onclick="deleteResource({{$program->id}},'programs', event)">Delete

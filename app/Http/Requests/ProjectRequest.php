@@ -34,7 +34,7 @@ class ProjectRequest extends FormRequest
                 return [
                     'project_name'           => "required|unique:projects,project_name,".$project->id,
                     'project_code'           => "required",
-                    'ngo_name'               => "required",
+                    'partner_name'            => "required",
                     'program_id'             => "required|numeric",
                     'start_date'             => "required|date",
                     'end_date'               => "required|date",
@@ -43,17 +43,13 @@ class ProjectRequest extends FormRequest
                     'province_id'            => "required",
                     'district_id'            => "required",
                     'project_manager'        => "required",
-                    'direct_beneficiaries'   => "required",
-                    'indirect_beneficiaries' => "required",
-                    'on_budget'              => "required",
-                    'off_budget'             => "required",
-                    'budget'                 => "required"
+
                 ];
             default :
                 return [
                     'project_name'           => "required|unique:projects,project_name",
                     'project_code'           => "required",
-                    'ngo_name'               => "required",
+                    'partner_name'               => "required",
                     'program_id'             => "required|numeric",
                     'start_date'             => "required|date",
                     'end_date'               => "required|date",
@@ -62,11 +58,7 @@ class ProjectRequest extends FormRequest
                     'province_id'            => "required",
                     'district_id'            => "required",
                     'project_manager'        => "required",
-                    'direct_beneficiaries'   => "required",
-                    'indirect_beneficiaries' => "required",
-                    'on_budget'              => "required",
-                    'off_budget'             => "required",
-                    'budget'                 => "required"
+                  
                 ];
         }
     }

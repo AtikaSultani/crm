@@ -22,8 +22,8 @@
 
             {{-- NGO Name --}}
             <div class="mb-4">
-                <label for="ngo_name">NGO Name</label>
-                <input type="text" id="ngo_name" name="ngo_name"/>
+                <label for="partner_name">Partner Name</label>
+                <input type="text" id="partner_name" name="partner_name"/>
             </div>
 
             {{-- Start Date --}}
@@ -62,21 +62,11 @@
                 <input type="text" id="indirect_beneficiary" name="indirect_beneficiaries"/>
             </div>
 
-            {{-- on budget --}}
-            <div class="mb-4">
-                <label>On Budget</label>
-                <input type="text" id="on_budget" name="on_budget"/>
-            </div>
 
-            {{-- Off Budget --}}
+            {{-- Total Budget --}}
             <div class="mb-4">
-                <label>Off Budget</label>
-                <input type="text" id="off_budget" name="off_budget"/>
-            </div>
-            {{-- Budget --}}
-            <div class="mb-4">
-                <label>Budget</label>
-                <input type="text" id="budget" name="budget"/>
+                <label>Total Budget</label>
+                <input type="text" id="total_budget" name="total_budget"/>
             </div>
 
 
@@ -100,8 +90,8 @@
             </div>
             {{-- Prject Manager --}}
             <div class="mb-4">
-                <label>Program Manager</label>
-                <input type="text" id="program_manager" name="project_manager"/>
+                <label>Project Manager</label>
+                <input type="text" id="project_manager" name="project_manager"/>
             </div>
 
             {{-- Program --}}

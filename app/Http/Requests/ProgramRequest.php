@@ -33,14 +33,14 @@ class ProgramRequest extends FormRequest
 
                 return [
                     'program_name' => "required|unique:programs,program_name,".$program->id,
-                    'start_date'   => "required|date",
-                    'end_date'     => "required|date",
+                    // 'start_date'   => "required|date",
+                    // 'end_date'     => "required|date",
                 ];
             default :
                 return [
                     'program_name' => "required|unique:programs,program_name",
-                    'start_date'   => "required|date",
-                    'end_date'     => "required|date",
+                    // 'start_date'   => "required|date",
+                    // 'end_date'     => "required|date",
                 ];
         }
     }

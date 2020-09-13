@@ -392,6 +392,7 @@ class DistrictTableSeeder extends Seeder
         District::create(['district_name' => 'Ghurian', 'province_id' => 33]);
         District::create(['district_name' => 'Farsi', 'province_id' => 33]);
         District::create(['district_name' => 'Karukh', 'province_id' => 33]);
+        District::create(['district_name' => 'Robat Sangi', 'province_id' => 33]);
         District::create(['district_name' => 'Kushk', 'province_id' => 33]);
         District::create(['district_name' => 'Khushki Kuhna', 'province_id' => 33]);
         District::create(['district_name' => 'Kuhsan', 'province_id' => 33]);

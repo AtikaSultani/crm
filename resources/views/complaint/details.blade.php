@@ -65,8 +65,8 @@
         </div>
 
         <div class="info">
-            <p>Term</p>
-            <p>{{ $complaint->term }}</p>
+            <p>Quarter</p>
+            <p>{{ $complaint->quarter }}</p>
         </div>
 
         <div class="info">

@@ -33,6 +33,7 @@ class ProgramController extends Controller
      */
     public function store(ProgramRequest $request)
     {
+       
         Program::create($request->all());
 
         return redirect('/programs')->with("message", "The Program Added Successfully ");

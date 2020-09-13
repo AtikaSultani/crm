@@ -21,10 +21,10 @@
                 <input type="text"  name="project_code" value="{{$data->project_code}}"/>
             </div>
 
-            {{-- NGO Name --}}
+            {{-- Partner Name --}}
             <div class="mb-4">
-                <label for="title">NGO Name</label>
-                <input type="text" id="NGO_name" name="ngo_name" value="{{$data->ngo_name}}"/>
+                <label for="title">Patner Name</label>
+                <input type="text" id="partner_name" name="partner_name" value="{{$data->partner_name}}"/>
             </div>
 
             {{-- Start Date --}}
@@ -66,21 +66,11 @@
                        value="{{$data->indirect_beneficiaries}}"/>
             </div>
 
-            {{-- on budget --}}
-            <div class="mb-4">
-                <label>On Budget</label>
-                <input type="text" id="on_budget" name="on_budget" value="{{$data->on_budget}}"/>
-            </div>
 
-            {{-- Off Budget --}}
+            {{--Total Budget --}}
             <div class="mb-4">
-                <label>Off Budget</label>
-                <input type="text" id="off_budget" name="off_budget" value="{{$data->off_budget}}"/>
-            </div>
-            {{-- Budget --}}
-            <div class="mb-4">
-                <label>Budget</label>
-                <input type="text" id="budget" name="budget" value="{{$data->budget}}"/>
+                <label>Total Budget</label>
+                <input type="text" id="total_budget" name="total_budget" value="{{$data->total_budget}}"/>
             </div>
 
 

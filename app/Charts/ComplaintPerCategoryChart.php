@@ -34,7 +34,7 @@ class ComplaintPerCategoryChart extends AppChart
         // complaint count data set
         $chart->dataset('Complaint Total Number', 'pie', $this->getCategoryComplaints())
             ->options([
-                'backgroundColor' => ['#E6FFFA', '#81E6D9', '#38B2AC', '#2C7A7B','#234E52']
+                'backgroundColor' => ['#00e676 ', '#81c784', '#69f0ae ', '#388e3c','#1b5e20']
             ]);
 
         return $chart;

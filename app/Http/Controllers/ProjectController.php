@@ -37,6 +37,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
+
         $province = Province::all();
         $district = District::all();
         $programs = Program::all();
@@ -44,6 +45,17 @@ class ProjectController extends Controller
         return view('project.create', compact('province', 'district', 'programs'));
     }
 
+
+
+    public function store(ProjectRequest $request)
+    {
+        Project::create($request->all());
+
+        return redirect('/projects')->with([
+            'message' => 'Project created successfully', 'status' => true
+        ]);
+
+    }
     /**
      * Get project details
      *
@@ -63,15 +75,7 @@ class ProjectController extends Controller
      * @param  ProjectRequest  $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|string
      */
-    public function store(ProjectRequest $request)
-    {
-        Project::create($request->all());
 
-        return redirect('/projects')->with([
-            'message' => 'Project created successfully', 'status' => true
-        ]);
-
-    }
 
     /**
      * Get edit form of project

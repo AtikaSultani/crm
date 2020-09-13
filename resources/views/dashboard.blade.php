@@ -2,21 +2,21 @@
 @section('title','Dashboard')
 @section('page-title','Dashboard')
 @section('content')
-    <div class="w-full">
+    <div style="weight:50px">
         {!! $province->container() !!}
     </div>
 
-    <div class="my-5 flex items-center flex-wrap">
-        <div class="w-full md:1/2 mx-5">
+    <div>
+        <div>
             {!! $category->container() !!}
         </div>
 
-        <div class="w-full w-1/2 mx-5">
+        <div>
             {!! $gender->container() !!}
         </div>
     </div>
 
-    <div class="w-full my-10">
+    <div>
         {!! $project->container() !!}
     </div>
 

@@ -24,8 +24,8 @@
         </div>
 
         <div class="info">
-            <p>NGO name</p>
-            <p>{{ $project->ngo_name }}</p>
+            <p>Partner name</p>
+            <p>{{ $project->partner_name }}</p>
         </div>
 
         <div class="info">
@@ -48,19 +48,11 @@
             <p>{{ $project->indirect_beneficiaries }}</p>
         </div>
 
-        <div class="info">
-            <p>On Budget Project</p>
-            <p>{{ $project->on_budget_project }}</p>
-        </div>
+
 
         <div class="info">
-            <p>Off Budget Project</p>
-            <p>{{ $project->off_budget_project }}</p>
-        </div>
-
-        <div class="info">
-            <p> Budget </p>
-            <p>{{ $project->budget }}</p>
+            <p>Total Budget </p>
+            <p>{{ $project->total_budget }}</p>
         </div>
 
         <div class="info">

@@ -1,8 +1,8 @@
 <?php
 
 use App\Models\Complaint;
-use App\Models\Program;
 use App\Models\Project;
+use App\Models\Program;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(DistrictTableSeeder::class);
         $this->call(BroadCategoryTableSeeder::class);
         $this->call(SpecificCategoryTableSeeder::class);
+      // $this->call(programTableSeeder::class);
         $this->call('ProgramSeeder');
         $this->call('ProjectSeeder');
         $this->call('ComplaintSeeder');

@@ -35,7 +35,7 @@ class ComplaintPerGenderChart extends AppChart
         // complaint count data set
         $chart->dataset('Complaint Total Number', 'pie', $this->getGenderComplaints())
             ->options([
-                'backgroundColor' => ['#FEB2B2', '#F56565']
+                'backgroundColor' => ['#b2dfdb', '#00796b']
             ]);
 
         return $chart;
