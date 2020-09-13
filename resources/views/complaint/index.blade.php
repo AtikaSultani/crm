@@ -5,7 +5,7 @@
     <div class="flex items-center justify-between my-3">
 
         <div>
-            @if(!request()->has('province'))
+            @if(!request()->query())
             <button
                 onclick="showFilter()"
                 id="complaint-filter-button"
@@ -31,7 +31,7 @@
     </div>
 
     {{-- complaint filter --}}
-    <div class=" flex-wrap p-2 border shadow-lg  bg-white my-3 rounded py-3" @if(!request()->has('province')) hidden
+    <div class=" flex-wrap p-2 border shadow-lg  bg-white my-3 rounded py-3" @if(!request()->query()) hidden
          @endif id="complaint-filter">
         <form action="{{ url('complaints') }}">
             <div class="flex items-center">
