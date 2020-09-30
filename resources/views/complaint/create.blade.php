@@ -48,7 +48,7 @@
             {{-- Province --}}
             <div class="mb-4">
                 <label>Province</label>
-                <select name="province_id" id="province">
+                <select name="province_id" id="province" multi>
                     <option value="">Select Province</option>
                     @foreach($provinces as $province)
                         <option value="{{$province->id}}">{{$province->province_name}}</option>
@@ -86,14 +86,15 @@
                 </select>
             </div>
 
-            {{-- Term --}}
+            {{-- Quarter --}}
             <div class="mb-4">
-                <label for="term">Term</label>
-                <select name="term" id="term">
+                <label for="quarter">Quarter</label>
+                <select name="quarter" id="quarter">
                     <option value="">Please select</option>
-                    <option value="T1">T1</option>
-                    <option value="T2">T2</option>
-                    <option value="T3">T3</option>
+                    <option value="First Quarter">First Quarter</option>
+                    <option value="Second Quarter">Second Quarter</option>
+                    <option value="Third Quarter">Third Quarter</option>
+                    <option value="Fourth Quarter">Fourth Quarter</option>
                 </select>
             </div>
 

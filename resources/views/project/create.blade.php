@@ -1,8 +1,15 @@
 @extends('layouts.master')
 @section('title', 'Create Project')
 @section('page-title', 'Add New Project')
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+
+
 @section('content')
-    <form action="{{ url('/projects') }}" method="post" id="create-form">
+    <form action="{{ url('/projects') }}" method="post" id="create-form" enctype="multipart/form-data">
         @csrf
         {{-- Project information --}}
         <p class="pt-5 pb-3 text-lg font-semibold text-gray-600">Project information</p>
@@ -73,21 +80,47 @@
             {{-- Province --}}
             <div class="mb-4">
                 <label>Province</label>
-                <select name="province_id" id="province">
-                    <option value="">Select Province</option>
-                    @foreach($province as $province)
-                        <option value="{{$province->id}}">{{$province->province_name}}</option>
-                    @endforeach
+                <select multiple id="dropdown" class="form-control selectpicker" data-size="10" data-live-search="true" data-style="btn-#FFFAFA" >
+                                <option value="Orozgan">Orozgan</option>
+                                <option value="Badqis">Badqis</option>
+                                <option value="Bamyan">Bamyan</option>
+                                <option value="Badakhshan">Badakhshan</option>
+                                <option value="Baqlan">Baqlan</option>
+                                <option value="Balkh">Balkh</option>
+                                <option value="Parwan">Parwan</option>
+                                <option value="Paktia">Paktia</option>
+                                <option value="Paktika">Paktika</option>
+                                <option value="Pnjshir">Pnjshir</option>
+                                <option value="Takhar">Takhar</option>
+                                <option value="Jawzjan">Jawzjan</option>
+                                <option value="Khost">Khost</option>
+                                <option value="Daikondy">Daikondy</option>
+                                <option value="Zabol">Zabol</option>
+                                <option value="SarePole">SarePole</option>
+                                <option value="Samangan">Samangan</option>
+                                <option value="ghazni">ghazni</option>
+                                <option value="ghore">ghore</option>
+                                <option value="Faryab">Faryab</option>
+                                <option value="Farah">Farah</option>
+                                <option value="Kandahar">Kandahar</option>
+                                <option value="Kabul">Kabul</option>
+                                <option value="Kapisa">Kapisa</option>
+                                <option value="Kunduz">Kunduz</option>
+                                <option value="Kunar">Kunar</option>
+                                <option value="Laghman">Laghman</option>
+                                <option value="Logar">Logar</option>
+                                <option value="Nangarhar">Nangarhar</option>
+                                <option value="Norestan">Norestan</option>
+                                <option value="Nimruz">Nimruz</option>
+                                <option value="Wardak">Wardak</option>
+                                <option value="Herat">Herat</option>
+                                <option value="Helmand">Helmand</option>
+
+
                 </select>
             </div>
 
-            {{-- Distict --}}
-            <div class="mb-4 ">
-                <label>District</label>
-                <select name="district_id" id="district">
-                    <option value="">Select District</option>
-                </select>
-            </div>
+
             {{-- Prject Manager --}}
             <div class="mb-4">
                 <label>Project Manager</label>
@@ -126,3 +159,8 @@
     <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
     {!! JsValidator::formRequest('App\Http\Requests\ProjectRequest', '#create-form'); !!}
 @stop
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('select').selectpicker();
+    });
+</script>

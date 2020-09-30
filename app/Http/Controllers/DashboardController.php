@@ -8,12 +8,14 @@ use App\Charts\ComplaintPerCategoryChart;
 use App\Charts\ComplaintPerGenderChart;
 use App\Charts\ComplaintPerProjectChart;
 use App\Charts\ComplaintPerProvinceChart;
+use App\Models\Province;
 
 class DashboardController extends Controller
 {
 
     public function __construct()
     {
+
         $this->middleware(['auth', 'verified']);
     }
 
@@ -35,7 +37,8 @@ class DashboardController extends Controller
 
         $project = new ComplaintPerProjectChart();
         $project = $project->perProject();
+        $provinces = Province::all();
 
-        return view('dashboard', compact('province', 'category', 'gender', 'project'));
+        return view('dashboard', compact('province', 'category', 'gender', 'project','provinces'));
     }
 }

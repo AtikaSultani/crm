@@ -50,6 +50,7 @@ class ProjectController extends Controller
     public function store(ProjectRequest $request)
     {
         Project::create($request->all());
+        $input['cat'] = json_encode($input['cat']);
 
         return redirect('/projects')->with([
             'message' => 'Project created successfully', 'status' => true

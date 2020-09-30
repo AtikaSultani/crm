@@ -64,10 +64,10 @@
                     <label for="term">All Quarter</label>
                     <select name="quarter" id="quarter">
                         <option value="">All Quarter</option>
-                        <option value="First Quarter" @if (request('Quarter') == 'First Quarter')selected @endif>First Quarter</option>
-                        <option value="Second Quarter" @if (request('Quarter') == 'Second Quarter')selected @endif>Second Quarter</option>
-                        <option value="Third Quarter" @if (request('Quarter') == 'Third Quarter')selected @endif>Third Quarter</option>
-                        <option value="Fourth Quarter" @if (request('Quarter') == 'Fourth Quarter')selected @endif>Fourth Quarter</option>
+                        <option value="First Quarter" @if (request('quarter') == 'First Quarter')selected @endif>First Quarter</option>
+                        <option value="Second Quarter" @if (request('quarter') == 'Second Quarter')selected @endif>Second Quarter</option>
+                        <option value="Third Quarter" @if (request('quarter') == 'Third Quarter')selected @endif>Third Quarter</option>
+                        <option value="Fourth Quarter" @if (request('quarter') == 'Fourth Quarter')selected @endif>Fourth Quarter</option>
 
                     </select>
                 </div>
