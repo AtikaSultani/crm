@@ -55,8 +55,10 @@ class ComplaintPerProvinceChart extends AppChart
      */
     private function getProvinceComplaints()
     {
-        return Province::all()->map(function ($province) {
-            return $province->complaints->count();
-        });
+
+           return Province::all()->map(function ($province) {
+               return $province->complaints->count();
+           });
+
     }
 }

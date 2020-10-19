@@ -4,6 +4,7 @@ namespace App\Charts;
 
 
 use App\Models\Complaint;
+use Illuminate\Support\Facades\DB;
 
 class ComplaintPerStatusChart extends AppChart
 {
@@ -48,7 +49,10 @@ class ComplaintPerStatusChart extends AppChart
      */
     private function statusNames()
     {
-        return Complaints::all()->pluck('status');
+        return Complaint::groupBy('status')
+        ->selectRaw('count(*) as total, status')
+        ->get()
+        ->pluck('status');
     }
 
     /**
@@ -58,8 +62,11 @@ class ComplaintPerStatusChart extends AppChart
      */
     private function getStatusComplaints()
     {
-        return Complaint::all()->map(function ($status) {
-            return $status->complaints->count();
-        });
+      //info(Complaint::groupBy('status')->select('status',DB::raw('count(*) as total'))->get());
+
+        return Complaint::groupBy('status')
+        ->selectRaw('count(*) as total, status')
+        ->get()
+        ->pluck('total');
     }
 }

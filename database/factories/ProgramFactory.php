@@ -20,7 +20,6 @@ use Illuminate\Support\Str;
 $factory->define(Program::class, function (Faker $faker) {
     return [
         'program_name' => $faker->text(5),
-        'start_date' => $faker->date('Y-m-d'),
-        'end_date' 		=> $faker->date('Y-m-d')
+      
     ];
 });

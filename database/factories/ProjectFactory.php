@@ -33,7 +33,6 @@ $factory->define(Project::class, function (Faker $faker) {
 
         "total_budget"                 => $faker->numberBetween(1, 2300),
         'province_id'            => Province::all()->random()->id,
-        'district_id'            => District::all()->random()->id,
         'project_manager'        => $faker->name,
         'program_id'             => Program::all()->random()->id
     ];

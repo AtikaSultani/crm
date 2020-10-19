@@ -31,7 +31,7 @@
                             <td>{{$project->start_date}}</td>
                             <td>{{$project->end_date}}</td>
                             <td>{{$project->donors}}</td>
-                            <td>{{$project->province->province_name}}|{{$project->district->district_name}}</td>
+                            <td>{{$project->province->province_name}}</td>
 
                         </tr>
                     @endforeach

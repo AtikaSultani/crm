@@ -8,6 +8,7 @@ use App\Charts\ComplaintPerCategoryChart;
 use App\Charts\ComplaintPerGenderChart;
 use App\Charts\ComplaintPerProjectChart;
 use App\Charts\ComplaintPerProvinceChart;
+use App\Charts\ComplaintPerStatusChart;
 use App\Models\Province;
 
 class DashboardController extends Controller
@@ -37,8 +38,13 @@ class DashboardController extends Controller
 
         $project = new ComplaintPerProjectChart();
         $project = $project->perProject();
+
+        $status = new ComplaintPerStatusChart();
+        $status = $status->perStatus();
+
         $provinces = Province::all();
 
-        return view('dashboard', compact('province', 'category', 'gender', 'project','provinces'));
+
+        return view('dashboard', compact('province', 'category', 'gender', 'project','status','provinces'));
     }
 }

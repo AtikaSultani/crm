@@ -2,27 +2,24 @@
 @section('title','Dashboard')
 @section('page-title','Dashboard')
 @section('content')
-<form action="{{ url('complaints') }}">
+<form action="/" method="get">
     <div class="flex items-center">
         <div class="w-full md:w-1/2 lg:w-1/4 px-2">
             <label for="province">Province</label>
             <select name="province" id="province">
                 <option value="">All Provinces</option>
-
+            
             </select>
         </div>
 
         <div class="w-full md:w-1/2 lg:w-1/4 px-2">
             <label for="year">Year</label>
             <select name="year" id="year">
-                <option value="">All</option>
-                <!-- <option value="Registered" @if (request('status') == 'Registered')selected @endif>Registered -->
-                </option>
-                <!-- <option value="Under Investigation"
-                        @if (request('status') == 'Under Investigation')selected @endif>
-                    Under investigation
-                </option> -->
-                <!-- <option value="Solved" @if (request('status') == 'Solved')selected @endif>Solved</option> -->
+              <option value="">All</option>
+              @foreach(range(Carbon\Carbon::now()->year, 2019)  as $year)
+                  <option value="{{ $year }}">{{ $year }}</option>
+              @endforeach
+
             </select>
         </div>
 
@@ -30,6 +27,20 @@
             <label for="month">Month</label>
             <select name="month" id="month">
                 <option value="">All</option>
+
+                   <option value="01">January</option>
+                   <option value="02">February</option>
+                   <option value="03">March</option>
+                   <option value="04">April</option>
+                   <option value="05">May</option>
+                   <option value="06">June</option>
+                   <option value="07">July</option>
+                   <option value="08">August</option>
+                   <option value="09">September</option>
+                   <option value="10">October</option>
+                   <option value="11">November</option>
+                   <option value="12">December</option>
+
 
             </select>
         </div>
@@ -73,7 +84,7 @@
            {!! $project->container() !!}
     </div>
       <div class="mb-4">
-
+          {!! $status->container() !!}
     </div>
     </div>
 
@@ -89,4 +100,5 @@
     {!! $category->script() !!}
     {!! $gender->script() !!}
     {!! $project->script() !!}
+    {!! $status->script() !!}
 @stop

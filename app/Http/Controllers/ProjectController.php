@@ -49,6 +49,7 @@ class ProjectController extends Controller
 
     public function store(ProjectRequest $request)
     {
+      return "wellcom";exit;
         Project::create($request->all());
         $input['cat'] = json_encode($input['cat']);
 

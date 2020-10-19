@@ -60,6 +60,13 @@
         </a>
     @endcan
 
+    @can('View Roles')
+        <a class="@if(request()->is('roles*')) bg-blue-lighter @endif hover:bg-blue-lighter flex items-center w-full p-1 rounded my-2 inline-block"
+           href="{{ url('/guidline') }}">
+            <img src="{{ url('/images/role_icon.png') }}" class="w-5" alt="">
+            <p class="text-gray-400 text-base ml-2">Guidline</p>
+        </a>
+    @endcan
     @if(Auth::user()->can('View Activity Log') || Auth::user()->can('View Backups'))
         <a class="@if(request()->is('settings*')) bg-blue-lighter @endif hover:bg-blue-lighter flex items-center w-full p-1 rounded my-2 inline-block"
            href="{{ url('/settings') }}">

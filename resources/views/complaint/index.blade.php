@@ -2,6 +2,7 @@
 @section('page-title', 'Complaints List')
 @section('content')
 
+
     <div class="flex items-center justify-between my-3">
 
         <div>
