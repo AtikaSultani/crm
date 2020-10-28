@@ -46,18 +46,18 @@ class ProjectController extends Controller
     }
 
 
-
     public function store(ProjectRequest $request)
     {
-      return "wellcom";exit;
-        Project::create($request->all());
-        $input['cat'] = json_encode($input['cat']);
+
+        $project = Project::create($request->all());
+
+        $project->provinces()->sync($request->provinces);
 
         return redirect('/projects')->with([
             'message' => 'Project created successfully', 'status' => true
         ]);
-
     }
+
     /**
      * Get project details
      *
