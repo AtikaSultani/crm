@@ -33,11 +33,11 @@ class Project extends Model
     /**
      * Get the province of project
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function district()
+    public function districts()
     {
-        return $this->belongsTo(District::class);
+        return $this->belongsToMany(District::class);
     }
 
     /**

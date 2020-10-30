@@ -49,7 +49,6 @@
         </div>
 
 
-
         <div class="info">
             <p>Total Budget </p>
             <p>{{ $project->total_budget }}</p>
@@ -62,12 +61,16 @@
 
         <div class="info">
             <p>Province</p>
-            <p>{{ $project->province->province_name }}</p>
+            @foreach($project->provinces as $province)
+                <p>{{ $province }}</p>
+            @endforeach
         </div>
 
         <div class="info">
             <p>District</p>
-            <p>{{ $project->district->district_name }}</p>
+            @foreach($project->districts as $district)
+                <p>{{ $district->district_name }}</p>
+            @endforeach
         </div>
 
         <div class="info">
