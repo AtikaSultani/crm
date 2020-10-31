@@ -37,18 +37,16 @@ class ProjectController extends Controller
      */
     public function create()
     {
-
-        $province = Province::all();
+        $provinces = Province::all();
         $district = District::all();
         $programs = Program::all();
 
-        return view('project.create', compact('province', 'district', 'programs'));
+        return view('project.create', compact('provinces', 'district', 'programs'));
     }
 
 
     public function store(ProjectRequest $request)
     {
-
         $project = Project::create($request->all());
 
         $project->provinces()->sync($request->provinces);
@@ -70,14 +68,6 @@ class ProjectController extends Controller
 
         return view('project.details', compact('project'));
     }
-
-    /**
-     * Get store a new project
-     *
-     * @param  ProjectRequest  $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|string
-     */
-
 
     /**
      * Get edit form of project
@@ -107,6 +97,8 @@ class ProjectController extends Controller
         $project = Project::findOrFail($id);
 
         $project->update($request->all());
+
+        $project->provinces()->sync($request->provinces);
 
         return redirect("/projects");
     }

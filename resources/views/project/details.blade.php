@@ -60,16 +60,9 @@
         </div>
 
         <div class="info">
-            <p>Province</p>
+            <p>Provinces</p>
             @foreach($project->provinces as $province)
-                <p>{{ $province }}</p>
-            @endforeach
-        </div>
-
-        <div class="info">
-            <p>District</p>
-            @foreach($project->districts as $district)
-                <p>{{ $district->district_name }}</p>
+                <span class="px-2 py-1 bg-gray-300 rounded-full my-1">{{ $province->province_name }}</span>
             @endforeach
         </div>
 

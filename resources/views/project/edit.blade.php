@@ -1,6 +1,9 @@
 @extends('layouts.master')
 @section('title', 'Edit Project')
 @section('page-title', 'Edit Project')
+@section('page-level-css')
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
+@stop
 @section('content')
     <form action="{{ url('projects/'.$data->id) }}" method="POST" id="edit-form">
         @method('PUT')
@@ -18,12 +21,12 @@
             {{-- project code --}}
             <div class="mb-4">
                 <label for="caller_name">Project code</label>
-                <input type="text"  name="project_code" value="{{$data->project_code}}"/>
+                <input type="text" name="project_code" value="{{$data->project_code}}"/>
             </div>
 
             {{-- Partner Name --}}
             <div class="mb-4">
-                <label for="title">Patner Name</label>
+                <label for="title">Partner Name</label>
                 <input type="text" id="partner_name" name="partner_name" value="{{$data->partner_name}}"/>
             </div>
 
@@ -77,31 +80,14 @@
             {{-- Province --}}
             <div class="mb-4">
                 <label>Province</label>
-                <select name="province_id" id="province">
+                <select name="provinces[]" multiple="multiple" id="province">
                     <option value="">Select Province</option>
                     @foreach($provinces as $province)
-                        <option value="{{$province->id}}"
-                                @if($province->id==$data->province_id)
-                                selected
-                                @endif
-                        >{{$province->province_name}}</option>
+                        <option value="{{$province->id}}">{{$province->province_name}}</option>
                     @endforeach
                 </select>
             </div>
 
-            {{-- Distict --}}
-            <div class="mb-4 ">
-                <label>District</label>
-                <select name="district_id" id="district">
-                    @foreach($districts as $district)
-                        <option value="{{$district->id}}"
-                                @if($district->id==$data->district_id)
-                                selected
-                                @endif
-                        >{{$district->district_name}}</option>
-                    @endforeach
-                </select>
-            </div>
             {{-- project Manager --}}
             <div class="mb-4">
                 <label>Project Manager</label>
@@ -117,7 +103,7 @@
                         <option value="{{$program->id}}"
                                 @if($program->id==$data->program_id)
                                 selected
-                                @endif
+                            @endif
                         >{{$program->program_name}}</option>
                     @endforeach
                 </select>
@@ -142,6 +128,17 @@
 
 
 @section('page-level-js')
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
     <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
     {!! JsValidator::formRequest('App\Http\Requests\ProjectRequest', '#edit-form'); !!}
+
+    <script>
+        $("#province").select2({
+            maximumSelectionLength: 10
+        });
+
+        $('#province').val([
+            @foreach($data->provinces as $province) {{ $province->id }} , @endforeach
+        ]).trigger('change');
+    </script>
 @stop

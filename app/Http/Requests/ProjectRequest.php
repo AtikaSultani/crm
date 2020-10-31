@@ -40,7 +40,7 @@ class ProjectRequest extends FormRequest
                     'end_date'        => "required|date",
                     'donors'          => "required|string|min:3",
                     'activities'      => "required",
-                    'district_id'     => "required",
+                    'provinces'       => "required",
                     'project_manager' => "required",
                 ];
             default :
@@ -53,7 +53,7 @@ class ProjectRequest extends FormRequest
                     'end_date'        => "required|date",
                     'donors'          => "required|string|min:3",
                     'activities'      => "required",
-                    'district_id'     => "required",
+                    'provinces'       => "required",
                     'project_manager' => "required"
                 ];
         }

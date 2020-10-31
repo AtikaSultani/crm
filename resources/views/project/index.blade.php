@@ -33,9 +33,11 @@
                     <td>{{$project->end_date}}</td>
                     <td>{{$project->donors}}</td>
                     <td>
-                        @foreach($project->provinces as $province)
+                        @forelse($project->provinces as $province)
                             <span class="m-1 bg-gray-200 rounded-full py-1 px-2">{{$province->province_name}}</span>
-                        @endforeach
+                        @empty
+                            <span class="text-gray-400">No Province</span>
+                        @endforelse
                     </td>
                 </tr>
             @endforeach

@@ -2,10 +2,6 @@
 <html lang="en">
 <head>
 
-
-
-
-
     <title>@yield('title')</title>
 
     {{-- Style files --}}
@@ -19,6 +15,8 @@
 
     <link href="{{ asset('css/datepicker.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+
+    @yield('page-level-css')
 
 </head>
 <body class="antialiased font-sans text-gray-900 relative h-screen ">
@@ -76,7 +74,6 @@
 <script src="{{ asset('js/datepicker.js') }}"></script>
 <script src="{{asset('js/Chart.min.js')}}"></script>
 
-</script>
 <script src="{{ asset('js/i18n/datepicker.en.js') }}"></script>
 @yield('page-level-js')
 <script src="{{ asset('/js/scripts.js') }}"></script>
