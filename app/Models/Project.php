@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
 
-    protected $guarded = [];
+    protected $guarded = ['provinces'];
 
     /**
      * Get the complains of project
@@ -20,25 +20,14 @@ class Project extends Model
     }
 
 
-
     /**
      * Get the province of project
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function province()
+    public function provinces()
     {
-        return $this->belongsTo(Province::class);
-    }
-
-    /**
-     * Get the province of project
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function district()
-    {
-        return $this->belongsTo(District::class);
+        return $this->belongsToMany(Province::class);
     }
 
     /**

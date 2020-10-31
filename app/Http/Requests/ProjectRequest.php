@@ -32,33 +32,29 @@ class ProjectRequest extends FormRequest
             case 'PUT':
             case 'PATCH':
                 return [
-                    'project_name'           => "required|unique:projects,project_name,".$project->id,
-                    'project_code'           => "required",
-                    'partner_name'            => "required",
-                    'program_id'             => "required|numeric",
-                    'start_date'             => "required|date",
-                    'end_date'               => "required|date",
-                    'donors'                 => "required|string|min:3",
-                    'activities'             => "required",
-                    'province_id'            => "required",
-                    'district_id'            => "required",
-                    'project_manager'        => "required",
-
+                    'project_name'    => "required|unique:projects,project_name,".$project->id,
+                    'project_code'    => "required",
+                    'partner_name'    => "required",
+                    'program_id'      => "required|numeric",
+                    'start_date'      => "required|date",
+                    'end_date'        => "required|date",
+                    'donors'          => "required|string|min:3",
+                    'activities'      => "required",
+                    'provinces'       => "required",
+                    'project_manager' => "required",
                 ];
             default :
                 return [
-                    'project_name'           => "required|unique:projects,project_name",
-                    'project_code'           => "required",
-                    'partner_name'               => "required",
-                    'program_id'             => "required|numeric",
-                    'start_date'             => "required|date",
-                    'end_date'               => "required|date",
-                    'donors'                 => "required|string|min:3",
-                    'activities'             => "required",
-                    'province_id'            => "required",
-                    'district_id'            => "required",
-                    'project_manager'        => "required",
-                  
+                    'project_name'    => "required|unique:projects,project_name",
+                    'project_code'    => "required",
+                    'partner_name'    => "required",
+                    'program_id'      => "required|numeric",
+                    'start_date'      => "required|date",
+                    'end_date'        => "required|date",
+                    'donors'          => "required|string|min:3",
+                    'activities'      => "required",
+                    'provinces'       => "required",
+                    'project_manager' => "required"
                 ];
         }
     }

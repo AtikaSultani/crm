@@ -14,6 +14,7 @@
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
+        "livewire/livewire": "^2.3",
         "maatwebsite/excel": "^3.1",
         "proengsoft/laravel-jsvalidation": "^4.0",
         "spatie/laravel-activitylog": "^3.14",

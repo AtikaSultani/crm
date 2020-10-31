@@ -1,15 +1,13 @@
 @extends('layouts.master')
 @section('title', 'Create Project')
 @section('page-title', 'Add New Project')
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 
+@section('page-level-css')
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
+@stop
 
 @section('content')
-    <form action="{{ url('/projects') }}" method="post" id="create-form" enctype="multipart/form-data">
+    <form action="{{ url('/projects') }}" method="post" id="create-form">
         @csrf
         {{-- Project information --}}
         <p class="pt-5 pb-3 text-lg font-semibold text-gray-600">Project information</p>
@@ -80,43 +78,10 @@
             {{-- Province --}}
             <div class="mb-4">
                 <label>Province</label>
-                <select multiple id="dropdown" class="form-control selectpicker" data-size="10" data-live-search="true" data-style="btn-#FFFAFA" >
-                                <option value="1">Orozgan</option>
-                                <option value="2">Badqis</option>
-                                <option value="3">Bamyan</option>
-                                <option value="4">Badakhshan</option>
-                                <option value="5">Baqlan</option>
-                                <option value="6">Balkh</option>
-                                <option value="7">Parwan</option>
-                                <option value="8">Paktia</option>
-                                <option value="9">Paktika</option>
-                                <option value="10">Pnjshir</option>
-                                <option value="11">Takhar</option>
-                                <option value="12">Jawzjan</option>
-                                <option value="13">Khost</option>
-                                <option value="14">Daikondy</option>
-                                <option value="15">Zabol</option>
-                                <option value="16">SarePole</option>
-                                <option value="17">Samangan</option>
-                                <option value="18">ghazni</option>
-                                <option value="19">ghore</option>
-                                <option value="20">Faryab</option>
-                                <option value="21">Farah</option>
-                                <option value="22">Kandahar</option>
-                                <option value="23">Kabul</option>
-                                <option value="24">Kapisa</option>
-                                <option value="25">Kunduz</option>
-                                <option value="26">Kunar</option>
-                                <option value="27">Laghman</option>
-                                <option value="28">Logar</option>
-                                <option value="29">Nangarhar</option>
-                                <option value="30">Norestan</option>
-                                <option value="31">Nimruz</option>
-                                <option value="32">Wardak</option>
-                                <option value="33">Herat</option>
-                                <option value="34">Helmand</option>
-
-
+                <select name="provinces[]" multiple id="province" class="form-control">
+                    @foreach($provinces as $province)
+                        <option value="{{$province->id}}">{{ $province->province_name }}</option>
+                    @endforeach
                 </select>
             </div>
 
@@ -156,11 +121,12 @@
 @stop
 
 @section('page-level-js')
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
     <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
     {!! JsValidator::formRequest('App\Http\Requests\ProjectRequest', '#create-form'); !!}
+    <script>
+        $("#province").select2({
+            maximumSelectionLength: 10
+        });
+    </script>
 @stop
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('select').selectpicker();
-    });
-</script>
