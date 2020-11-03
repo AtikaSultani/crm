@@ -64,6 +64,26 @@ class ComplaintPerCategoryChart extends AppChart
                 return $category->complaints()->whereProvinceId(request('province'))->count();
             }
 
+            // quarter
+            if (request('quarter')) {
+                return $category->complaints()->whereQuarter(request('quarter'))->count();
+            }
+
+            // month
+            if (request('month')) {
+                $year = request('year') ? request('year') : now()->year;
+
+                return $category->complaints()
+                    ->whereYear('received_date', $year)
+                    ->whereMonth('received_date', request('month'))
+                    ->count();
+            }
+
+            // year
+            if (request('year')) {
+                return $category->complaints()->whereYear('received_date', request('year'))->count();
+            }
+
             return $category->complaints->count();
         });
     }

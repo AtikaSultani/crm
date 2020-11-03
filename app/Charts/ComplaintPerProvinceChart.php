@@ -60,11 +60,36 @@ class ComplaintPerProvinceChart extends AppChart
     private function getProvinceComplaints()
     {
 
+        $provinces = Province::query();
+
+        // province
         if (request('province')) {
-            return [Province::find(request('province'))->complaints->count()];
+            $provinces = $provinces->whereId(request('province'));
         }
 
-        return Province::all()->map(function ($province) {
+
+        return $provinces->get()->map(function ($province) {
+
+            // quarter
+            if (request('quarter')) {
+                return $province->complaints()->whereQuarter(request('quarter'))->count();
+            }
+
+            // month
+            if (request('month')) {
+                $year = request('year') ? request('year') : now()->year;
+
+                return $province->complaints()
+                    ->whereYear('received_date', $year)
+                    ->whereMonth('received_date', request('month'))
+                    ->count();
+            }
+
+            // year
+            if (request('year')) {
+                return $province->complaints()->whereYear('received_date', request('year'))->count();
+            }
+
             return $province->complaints->count();
         });
     }

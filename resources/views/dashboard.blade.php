@@ -20,51 +20,42 @@
                 <select name="year" id="year">
                     <option value="">All</option>
                     @foreach(range(Carbon\Carbon::now()->year, 2019)  as $year)
-                        <option value="{{ $year }}">{{ $year }}</option>
+                        <option @if(request('year') == $year) selected @endif value="{{ $year }}">{{ $year }}</option>
                     @endforeach
-
                 </select>
             </div>
 
+
+            {{-- Month --}}
             <div class="w-full md:w-1/2 lg:w-1/4 px-2">
                 <label for="month">Month</label>
                 <select name="month" id="month">
                     <option value="">All</option>
-
-                    <option value="01">January</option>
-                    <option value="02">February</option>
-                    <option value="03">March</option>
-                    <option value="04">April</option>
-                    <option value="05">May</option>
-                    <option value="06">June</option>
-                    <option value="07">July</option>
-                    <option value="08">August</option>
-                    <option value="09">September</option>
-                    <option value="10">October</option>
-                    <option value="11">November</option>
-                    <option value="12">December</option>
-
-
+                    @for($m=1; $m<=12; ++$m)
+                        <option @if(request('month') == $m) selected @endif value="{{ $m }}">
+                            {{ date('F', mktime(0, 0, 0, $m, 1))}}
+                        </option>
+                    @endfor
                 </select>
             </div>
 
+            {{-- Quarter --}}
             <div class="w-full md:w-1/2 lg:w-1/4 px-2">
                 <label for="quarter">Quarter</label>
                 <select name="quarter" id="quarter">
                     <option value="">All</option>
-                    <option value="First Quarter" @if (request('quarter') == 'First Quarter')selected @endif>First
-                        Quarter
+                    <option value="First Quarter" @if (request('quarter') == 'First Quarter')selected @endif>
+                        First Quarter
                     </option>
-                    <option value="Second Quarter" @if (request('quarter') == 'Second Quarter')selected @endif>Second
-                        Quarter
+                    <option value="Second Quarter" @if (request('quarter') == 'Second Quarter')selected @endif>
+                        Second Quarter
                     </option>
-                    <option value="Third Quarter" @if (request('quarter') == 'Third Quarter')selected @endif>Third
-                        Quarter
+                    <option value="Third Quarter" @if (request('quarter') == 'Third Quarter')selected @endif>
+                        Third Quarter
                     </option>
-                    <option value="Fourth Quarter" @if (request('quarter') == 'Fourth Quarter')selected @endif>Fourth
-                        Quarter
+                    <option value="Fourth Quarter" @if (request('quarter') == 'Fourth Quarter')selected @endif>
+                        Fourth Quarter
                     </option>
-
                 </select>
             </div>
         </div>
@@ -77,7 +68,7 @@
         </div>
     </form>
 
-    <div class="w-full">
+    <div class="w-full mt-4">
 
         <div class="flex flex-wrap mb-6 bg-gray-100">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0 ">
