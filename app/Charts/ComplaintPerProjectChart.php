@@ -56,7 +56,32 @@ class ComplaintPerProjectChart extends AppChart
      */
     private function getProjectComplaints()
     {
+
         return Project::all()->map(function ($project) {
+            if (request('province')) {
+                return $project->complaints()->whereProvinceId(request('province'))->count();
+            }
+
+            // quarter
+            if (request('quarter')) {
+                return $project->complaints()->whereQuarter(request('quarter'))->count();
+            }
+
+            // month
+            if (request('month')) {
+                $year = request('year') ? request('year') : now()->year;
+
+                return $project->complaints()
+                    ->whereYear('received_date', $year)
+                    ->whereMonth('received_date', request('month'))
+                    ->count();
+            }
+
+            // year
+            if (request('year')) {
+                return $project->complaints()->whereYear('received_date', request('year'))->count();
+            }
+
             return $project->complaints->count();
         });
     }

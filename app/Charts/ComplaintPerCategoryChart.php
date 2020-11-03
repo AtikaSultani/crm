@@ -34,7 +34,7 @@ class ComplaintPerCategoryChart extends AppChart
         // complaint count data set
         $chart->dataset('Complaint Total Number', 'pie', $this->getCategoryComplaints())
             ->options([
-                'backgroundColor' => ['#00e676 ', '#81c784', '#69f0ae ', '#388e3c','#1b5e20']
+                'backgroundColor' => ['#00e676 ', '#81c784', '#69f0ae ', '#388e3c', '#1b5e20']
             ]);
 
         return $chart;
@@ -59,6 +59,31 @@ class ComplaintPerCategoryChart extends AppChart
     private function getCategoryComplaints()
     {
         return BroadCategory::all()->map(function ($category) {
+
+            if (request('province')) {
+                return $category->complaints()->whereProvinceId(request('province'))->count();
+            }
+
+            // quarter
+            if (request('quarter')) {
+                return $category->complaints()->whereQuarter(request('quarter'))->count();
+            }
+
+            // month
+            if (request('month')) {
+                $year = request('year') ? request('year') : now()->year;
+
+                return $category->complaints()
+                    ->whereYear('received_date', $year)
+                    ->whereMonth('received_date', request('month'))
+                    ->count();
+            }
+
+            // year
+            if (request('year')) {
+                return $category->complaints()->whereYear('received_date', request('year'))->count();
+            }
+
             return $category->complaints->count();
         });
     }

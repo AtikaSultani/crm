@@ -49,9 +49,33 @@ class ComplaintPerGenderChart extends AppChart
      */
     private function getGenderComplaints()
     {
-        $maleCount = Complaint::where('gender', 'Male')->count();
-        $femaleCount = Complaint::where('gender', 'Female')->count();
+        $complaints = Complaint::query();
 
-        return [$maleCount, $femaleCount];
+        if (request('province')) {
+            $complaints = $complaints->whereProvinceId(request('province'));
+        }
+
+        // quarter
+        if (request('quarter')) {
+            $complaints = $complaints->whereQuarter(request('quarter'));
+        }
+
+        // month
+        if (request('month')) {
+            $year = request('year') ? request('year') : now()->year;
+
+            $complaints = $complaints->whereYear('received_date', $year)
+                ->whereMonth('received_date', request('month'));
+        }
+
+        // year
+        if (request('year')) {
+            $complaints = $complaints->whereYear('received_date', request('year'));
+        }
+
+        return $complaints->get()->groupBy('gender')
+            ->map(function ($group) {
+                return $group->count();
+            })->values()->all();
     }
 }
