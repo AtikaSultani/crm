@@ -2,7 +2,7 @@
     <div class="pagination">
 
         <span class="text-gray-600 text-sm px-1">Go to</span>
-        <select class="w-24 text-sm overflow-y-auto py-1 outline-none rounded-sm" onchange="selectPage(this, `{{http_build_query(Request::all())}}`)">
+        <select class="w-24 text-sm overflow-y-auto py-1 outline-none rounded-sm" onchange="selectPage(this)">
             @foreach ($elements as $element)
                 {{-- Array Of Links --}}
                 @if (is_array($element))
