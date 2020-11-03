@@ -99,13 +99,8 @@ function UserProfile() {
     $("div#change-password").fadeIn(200).removeClass("invisible");
 }
 
-// Select page
-function selectPage(page, url) {
-    if (url == null) {
-        window.location = `?page=${page.value}`;
-    } else {
-        window.location = `?page=${page.value}&${url}`;
-    }
+function selectPage(page) {
+    window.location = `?page=${page.value}`;
 }
 
 // Assign role to user
