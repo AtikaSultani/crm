@@ -1,5 +1,12 @@
 <div class="mt-3">
 
+    <div class="flex items-center justify-end mt-2">
+        <a class="text-sm bg-blue text-white px-2 py-1 rounded-sm focus:outline-none"
+           href="{{ url('/complaints/create') }}">
+            Add New
+        </a>
+    </div>
+
     <div class="py-6 flex">
 
         <div class="w-1/4 mx-2">
