@@ -41,10 +41,14 @@ class ComplaintPerProvinceChart extends AppChart
     /**
      * Get the name of provinces
      *
-     * @return \Illuminate\Support\Collection
+     * @return array|\Illuminate\Support\Collection
      */
     private function provinceNames()
     {
+        if (request('province')) {
+            return [Province::find(request('province'))->province_name];
+        }
+
         return Province::all()->pluck('province_name');
     }
 
@@ -56,9 +60,12 @@ class ComplaintPerProvinceChart extends AppChart
     private function getProvinceComplaints()
     {
 
-           return Province::all()->map(function ($province) {
-               return $province->complaints->count();
-           });
+        if (request('province')) {
+            return [Province::find(request('province'))->complaints->count()];
+        }
 
+        return Province::all()->map(function ($province) {
+            return $province->complaints->count();
+        });
     }
 }
