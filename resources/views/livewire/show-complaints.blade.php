@@ -5,6 +5,11 @@
            href="{{ url('/complaints/create') }}">
             Add New
         </a>
+
+        <button class="text-sm mx-2 bg-yellow text-blue px-2 py-1 rounded-sm focus:outline-none"
+                onclick="exportComplaint()">
+            Export to Excel
+        </button>
     </div>
 
     <div class="py-6 flex">
