@@ -73,7 +73,8 @@
                     </td>
                 @endif
                 <td>{{ $complaint->quarter}}</td>
-                <td>{{ $complaint->province->province_name }} | {{ $complaint->district->district_name}}</td>
+                <td>{{ $complaint->province->province_name }}
+                    | {{ $complaint->district ? $complaint->district->district_name: 'Unspecified'}}</td>
             </tr>
         @endforeach
         </tbody>

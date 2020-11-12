@@ -45,7 +45,7 @@
 
         <div class="info">
             <p>District</p>
-            <p>{{ $complaint->district->district_name }}</p>
+            <p>{{ $complaint->district ? $complaint->district->district_name: 'Unspecified' }}</p>
         </div>
 
         <div class="info">
@@ -76,12 +76,12 @@
 
         <div class="info">
             <p>Project</p>
-            <p>{{ $complaint->project->project_name }}</p>
+            <p>{{ $complaint->project ? $complaint->project->project_name: 'Unspecified' }}</p>
         </div>
 
         <div class="info">
             <p>Program</p>
-            <p>{{ $complaint->program->program_name }}</p>
+            <p>{{ $complaint->program ? $complaint->program->program_name : 'Unspecified' }}</p>
         </div>
 
         <div class="info">

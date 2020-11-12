@@ -88,16 +88,21 @@
                 </select>
             </div>
 
-            {{-- Term --}}
+            {{-- Quarter --}}
             <div class="mb-4">
-                <label for="Term">Term</label>
-                <select name="term" id="term">
-                    <option value="">Please select</option>
-                    <option value="T1" @if($complaint->term == 'T1') selected @endif>T1
+                <label for="quarter">Quarter</label>
+                <select name="quarter" id="quarter">
+                    <option value="First Quarter" @if($complaint->quarter == 'First Quarter') selected @endif>First
+                        Quarter
                     </option>
-                    <option value="T2" @if($complaint->term == 'T2') selected @endif>T2
+                    <option value="Second Quarter" @if($complaint->quarter == 'Second Quarter') selected @endif>Second
+                        Quarter
                     </option>
-                    <option value="T3" @if($complaint->term == 'T3') selected @endif>T3
+                    <option value="Third Quarter" @if($complaint->quarter == 'Third Quarter') selected @endif>Third
+                        Quarter
+                    </option>
+                    <option value="Fourth Quarter" @if($complaint->quarter == 'Fourth Quarter') selected @endif>Fourth
+                        Quarter
                     </option>
                 </select>
             </div>
@@ -121,6 +126,7 @@
             <div class="mb-4">
                 <label for="program">Program</label>
                 <select name="program_id" id="program">
+                    <option value="">Unspecified</option>
                     @foreach($programs as $program)
                         <option value="{{ $program->id }}"
                                 @if($complaint->program_id == $program->id) selected @endif>{{ $program->program_name }}</option>

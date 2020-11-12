@@ -125,8 +125,6 @@
     <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
     {!! JsValidator::formRequest('App\Http\Requests\ProjectRequest', '#create-form'); !!}
     <script>
-        $("#province").select2({
-            maximumSelectionLength: 10
-        });
+        $("#province").select2();
     </script>
 @stop
