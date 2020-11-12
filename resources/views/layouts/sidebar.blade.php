@@ -40,7 +40,7 @@
     @endcan
 
 
-    <div class="bg-gray-300 w-2/3 my-px my-1">
+    <div class="bg-gray-300 my-px my-1">
         <hr>
     </div>
 

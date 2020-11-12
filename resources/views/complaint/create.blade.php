@@ -121,7 +121,7 @@
             <div class="mb-4">
                 <label for="program">Program</label>
                 <select name="program_id" id="program">
-                    <option value="">Select Program</option>
+                    <option value="">Unspecified</option>
                     @foreach($programs as $program)
                         <option value="{{ $program->id }}">{{ $program->program_name }}</option>
                     @endforeach

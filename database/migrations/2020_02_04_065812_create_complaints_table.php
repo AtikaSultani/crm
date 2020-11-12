@@ -29,8 +29,8 @@ class CreateComplaintsTable extends Migration
             $table->string('person_who_shared_action')->nullable();
             $table->date('close_date');
             $table->string('description')->nullable();
-            $table->unsignedBigInteger('province_id');
-            $table->unsignedBigInteger('district_id');
+            $table->unsignedBigInteger('province_id')->nullable();
+            $table->unsignedBigInteger('district_id')->nullable();
             $table->string('village')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('project_id')->nullable();

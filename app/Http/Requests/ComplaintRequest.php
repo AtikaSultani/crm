@@ -29,14 +29,14 @@ class ComplaintRequest extends FormRequest
             'tel_no_received'          => "required|regex:/[07]{2}\d{8}/|min:10|max:10",
             'gender'                   => "required",
             'received_date'            => "required|date",
-            'province_id'              => 'required|numeric',
-            'district_id'              => 'required|numeric',
+            'province_id'              => 'nullable|numeric',
+            'district_id'              => 'nullable|numeric',
             'village'                  => "nullable|min:3|max:200",
             'status'                   => "required",
-            'quarter'                     => "required",
+            'quarter'                  => "required",
             'close_date'               => 'required|date',
-            'project_id'               => "required",
-            'program_id'               => "required",
+            'project_id'               => "nullable|numeric",
+            'program_id'               => "nullable|numeric",
             'broad_category_id'        => "required",
             'specific_category_id'     => "required",
             'description'              => "required_if:specific_category_id,14",
@@ -57,7 +57,7 @@ class ComplaintRequest extends FormRequest
             'tel_no_received.required' => 'Caller phone number is required.',
             'tel_no_received.regex'    => 'Invalid Caller phone number.',
             'description.required_if'  => 'Please provide extra info about category you selected.',
-            'beneficiary_file.max'    => "The file can't be more the 5 MB."
+            'beneficiary_file.max'     => "The file can't be more the 5 MB."
         ];
     }
 }
