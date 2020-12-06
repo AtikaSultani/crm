@@ -21,6 +21,7 @@
             <th>EndDate</th>
             <th>Donors</th>
             <th>Provinces</th>
+            <th>Duration</th>
             </thead>
             @foreach($projects as $project)
                 <tr>
@@ -39,6 +40,15 @@
                             <span class="text-gray-400">No Province</span>
                         @endforelse
                     </td>
+                    @if($project->end_date <= date('Y-m-d'))
+                        <td style="color:#FF0000;">
+                          Closed
+                        </td>
+                        @else
+                            <td>
+                                Running
+                            </td>
+                        @endif
                 </tr>
             @endforeach
         </table>
