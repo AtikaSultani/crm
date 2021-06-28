@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+
 
 class GuidlineController extends Controller
 {

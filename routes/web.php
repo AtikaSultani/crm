@@ -50,7 +50,7 @@ Route::group(['middleware' => 'prevent.back.history'], function () {
     // Back up routes
     Route::get('/settings', 'SettingController@index');
     Route::get('backups/backup-now', 'BackupController@backup');
-
+    Route::resource('/guidline','GuidlineController');
 
 });
 

@@ -5,7 +5,7 @@
     {{-- sidebar logo --}}
     <div class="flex justify-center mt-5">
         <a href="{{ url('/') }}">
-            <img src="{{ asset('images/logo-white.svg') }}" class="h-12 block" alt="">
+            <img src="{{ asset('images/cordaid-logo.svg') }}" class="h-12 block" alt="">
         </a>
     </div>
 

@@ -10,7 +10,7 @@
 <body class="font-sans text-gray-900">
 <div class="min-h-screen flex items-center justify-center bg-gray-100">
     <div class="max-w-md w-full py-12 px-6">
-        <img class="mx-auto h-10 w-auto" src="{{ asset('/images/logo-dark.svg') }}" alt=""/>
+        <img class="mx-auto h-10 w-auto" src="{{ asset('/images/cordaid-logo.svg') }}" alt=""/>
         <p class="mt-6 text-sm leading-5 text-center text-gray-900">Log in to your account</p>
         <form class="mt-5" action="{{ url('login') }}" method="POST">
             @csrf
@@ -31,7 +31,7 @@
                            placeholder="Password"/>
                     <div class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5"
                          id="forget-password">
-                        <a href="{{ url('/password/reset') }}" class="text-gray-900 underline">Forgot?</a>
+                        <!-- <a href="{{ url('/password/reset') }}" class="text-gray-900 underline">Forgot?</a> -->
                     </div>
                 </div>
             </div>
@@ -58,7 +58,7 @@
         </form>
 
         {{--  Do not have account  --}}
-        <div class="mt-6">
+        <!-- <div class="mt-6">
             <div class="relative">
                 <div class="absolute inset-0 flex items-center">
                     <div class="w-full border-t border-gray-300"></div>
@@ -74,7 +74,7 @@
                     Create account now
                 </a>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <script src="{{ asset('js/jquery.js')}}"></script>

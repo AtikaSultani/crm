@@ -11,6 +11,7 @@ use App\Models\Project;
 use App\Models\Province;
 use App\Models\SpecificCategory;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
@@ -34,6 +35,8 @@ class ComplaintController extends Controller
         $complaints = Complaint::latest();
         $projects = Project::all();
         $provinces = Province::all();
+        $roles = Role::all();
+
 
         if ( ! empty(request('province'))) {
             $complaints->where('province_id', request('province'));
@@ -53,7 +56,7 @@ class ComplaintController extends Controller
 
         $complaints = $complaints->paginate(10);
 
-        return view('complaint.index', compact('complaints', 'projects', 'provinces'));
+        return view('complaint.index', compact('complaints', 'projects', 'provinces','roles'));
     }
 
     /**

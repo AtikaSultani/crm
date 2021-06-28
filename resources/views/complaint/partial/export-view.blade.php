@@ -34,7 +34,9 @@
             <td>{{ $complaint->status }}</td>
             <td>{{ $complaint->quarter }}</td>
             <td>{{ $complaint->province->province_name }} </td>
-            <td>{{ $complaint->district->district_name}}</td>
+            <td>
+           {{ $complaint->district_id != null ? $complaint->district->district_name : 'Unknown'}}
+           </td>
             <td>{{ $complaint->village}}</td>
             <td>{{ $complaint->received_date}}</td>
             <td>{{ $complaint->referred_to}}</td>
@@ -42,7 +44,10 @@
             <td>{{ $complaint->specificCategory->category_name}}</td>
             <td>{{ $complaint->project->project_name}}</td>
             <td>{{ $complaint->project->project_code}}</td>
-            <td>{{ $complaint->program->program_name}}</td>
+            <td>
+              {{ $complaint->program_id  != null ? $complaint->program->program_name : 'Unknown'}}
+
+            </td>
             <td>{{ $complaint->user->name}}</td>
             <td>{{ $complaint->close_date}}</td>
             <td>{{ $complaint->person_who_shared_action}}</td>

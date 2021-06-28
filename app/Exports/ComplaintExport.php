@@ -23,6 +23,7 @@ class ComplaintExport implements FromView, ShouldAutoSize
     public function view(): View
     {
         $complaints = Complaint::query();
+        
 
         if ($this->request['year']) {
             $complaints->whereYear('received_date', $this->request['year']);
