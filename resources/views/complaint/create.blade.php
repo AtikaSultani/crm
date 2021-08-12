@@ -110,8 +110,9 @@
             <div class="mb-4">
                 <label for="project">Project</label>
                 <select name="project_id" id="project">
-                    <option value="">Select Project</option>
+                      <option value="">select project</option>
                     @foreach($projects as $project)
+                    <option value="0">No project in this province</option>
                         <option value="{{ $project->id }}">{{ $project->project_name }}</option>
                     @endforeach
                 </select>
@@ -151,7 +152,7 @@
             </div>
 
             {{-- Description --}}
-            <div class="mb-4 col-span-2 md:col-span-3 lg:col-span-4" hidden id="description-container">
+            <div class="mb-4 col-span-2 md:col-span-3 lg:col-span-4" >
                 <label for="specific-category">Description</label>
                 <textarea name="description" id="description" rows="4"></textarea>
             </div>

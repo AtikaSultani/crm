@@ -16,7 +16,7 @@ class CreateComplaintsTable extends Migration
     {
         Schema::create('complaints', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('caller_name');
+            $table->string('caller_name')->nullable();;
             $table->string('tel_no_received')->nullable();
             $table->string('gender');
             $table->date('received_date');
