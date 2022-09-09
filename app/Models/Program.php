@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Program extends Model
 {
+
+    use HasFactory;
 
     protected $guarded = [];
 
@@ -16,11 +19,11 @@ class Program extends Model
      */
     public function complaints()
     {
-        return $this->hasMany(Complaint::$this);
+        return $this->hasMany(Complaint::class);
     }
 
     public function projects()
     {
-        return $this->hasMany(project::$this);
+        return $this->hasMany(Project::class);
     }
 }

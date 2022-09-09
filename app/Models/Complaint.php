@@ -2,19 +2,15 @@
 
 namespace App\Models;
 
-use App\User;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 class Complaint extends Model
 {
-    use LogsActivity;
 
-    // Activity log properties
-    protected static $logAttributes = ['*'];
-    protected static $logAttributesToIgnore = ['updated_at'];
-    protected static $logName = 'Complaint';
-    protected static $logOnlyDirty = true;
+    use LogsActivity, HasFactory;
 
     /**
      * The attributes that are mass assignable.
@@ -92,4 +88,14 @@ class Complaint extends Model
     {
         return $this->belongsTo(Project::class);
     }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logAll()
+            ->logExcept(['updated_at'])
+            ->logOnlyDirty()
+            ->useLogName('Complaint');
+    }
+
 }

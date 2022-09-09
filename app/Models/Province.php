@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\complaints;
 use Illuminate\Database\Eloquent\Model;
 
 class Province extends Model

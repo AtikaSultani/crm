@@ -1,35 +1,36 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
 
 use App\Models\Program;
-use App\Models\Project;
-use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-/*
-|--------------------------------------------------------------------------
-| Model Factories
-|--------------------------------------------------------------------------
-|
-| This directory should contain each of the model factory definitions for
-| your application. Factories provide a convenient way to generate new
-| model instances for testing / seeding your application's database.
-|
-*/
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Project>
+ */
+class ProjectFactory extends Factory
+{
 
-$factory->define(Project::class, function (Faker $faker) {
-    return [
-        "project_name"           => $faker->realText(10),
-        "project_code"           => $faker->text(5),
-        "partner_name"           => $faker->text(10),
-        "start_date"             => $faker->date('Y-m-d'),
-        "end_date"               => $faker->date('Y-m-d'),
-        "donors"                 => $faker->text(15),
-        "activities"             => $faker->text(40),
-        "direct_beneficiaries"   => $faker->text(5),
-        "indirect_beneficiaries" => $faker->text(5),
-        "total_budget"           => $faker->numberBetween(1, 2300),
-        'project_manager'        => $faker->name,
-        'program_id'             => Program::all()->random()->id
-    ];
-});
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition()
+    {
+        return [
+            "project_name"           => fake()->realText(10),
+            "project_code"           => fake()->text(5),
+            "partner_name"           => fake()->text(10),
+            "start_date"             => fake()->date(),
+            "end_date"               => fake()->date(),
+            "donors"                 => fake()->text(15),
+            "activities"             => fake()->text(40),
+            "direct_beneficiaries"   => fake()->text(5),
+            "indirect_beneficiaries" => fake()->text(5),
+            "total_budget"           => fake()->numberBetween(1, 2300),
+            'project_manager'        => fake()->name,
+            'program_id'             => Program::all()->random()->id
+        ];
+    }
+}
